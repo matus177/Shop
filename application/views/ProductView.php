@@ -20,7 +20,7 @@
                             </p>
                         <?php } ?>
                         <h4>
-                            <a type="button" href="<?php echo base_url('Cart') ?>" id="<?php echo $value->id ?>"
+                            <a type="button" href="<?php echo base_url('Cart/addToCart') ?>?id=<?php echo $value->id ?>"
                                class="btn btn-success">Kupit</a>
                             <span class="pull-right"><?php echo $value->product_price; ?> &euro;</span>
                         </h4>
@@ -30,14 +30,3 @@
         <?php endforeach; ?>
     </ul>
 </div>
-<script>
-    $(document).ready(function () {
-        $('.product_footer a').click(function (e) {
-            var idOfButton = e.target.id;
-            $.ajax({
-                url: '<?php echo base_url('Cart/addToCart/') ?>' + idOfButton,
-                type: 'GET'
-            });
-        });
-    });
-</script>

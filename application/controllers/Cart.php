@@ -19,20 +19,21 @@ class Cart extends CI_Controller
 
     public function addToCart()
     {
-        $id = $this->uri->segment(3);
-        $data = $this->ProductModel->selectProductToCart($id);
+        $id = $this->input->get('id');
+        $arrayOfProducts = $this->ProductModel->selectProductToCart($id);
         $cartData = array();
-        foreach ($data as $datas) {
+        foreach ($arrayOfProducts as $product) {
             $cartData = array(
-                'id' => $datas->id,
+                'id' => $product->id,
                 'qty' => 1,
-                'price' => $datas->product_price,
-                'name' => $datas->product_name
+                'price' => $product->product_price,
+                'name' => $product->product_name
             );
         }
-        if ($this->cart->insert($cartData)) {
-            for ($i = 1; $i <= $cartData['qty']; $i++)
-                $this->db->limit(1)->set('flag', 'C')->where('product_id', $cartData['id'])->where('flag', 'A')->update('storage');
+        if($this->cart->insert($cartData)){
+            $this->ProductModel->updateProduct($id);
+        }else{
+            echo 'Produkt nieje mozne vlozit do kosika!';
         }
     }
 
