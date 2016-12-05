@@ -1,0 +1,110 @@
+failed, ::1, Chrome 53.0.2785.143, Windows 7, 2016-10-20 08:48:25, a@a.sk, a
+success, 1, a, a, ::1, Chrome 53.0.2785.143, Windows 7, 2016-10-20 08:49:15
+success, 1, a, a, ::1, Chrome 53.0.2785.143, Windows 7, 2016-10-20 08:57:42
+success, 1, a, a, ::1, Chrome 53.0.2785.143, Windows 7, 2016-10-20 08:58:02
+success, 1, a, a, ::1, Chrome 53.0.2785.143, Windows 7, 2016-10-20 09:03:36
+success, 1, a, a, ::1, Chrome 53.0.2785.143, Windows 7, 2016-10-20 09:04:33
+success, 1, a, a, ::1, Chrome 53.0.2785.143, Windows 7, 2016-10-20 09:04:55
+success, 1, a, a, ::1, Chrome 53.0.2785.143, Windows 7, 2016-10-20 09:06:30
+success, 1, a, a, ::1, Chrome 53.0.2785.143, Windows 7, 2016-10-20 09:07:01
+success, 1, a, a, ::1, Chrome 53.0.2785.143, Windows 7, 2016-10-20 09:09:54
+success, 1, a, a, ::1, Chrome 53.0.2785.143, Windows 7, 2016-10-20 09:13:42
+success, 1, a, a, ::1, Chrome 53.0.2785.143, Windows 7, 2016-10-20 09:13:54
+success, 1, a, a, ::1, Chrome 53.0.2785.143, Windows 7, 2016-10-20 09:17:44
+success, 1, a, a, ::1, Chrome 53.0.2785.143, Windows 7, 2016-10-20 09:17:51
+success, 1, a, a, ::1, Chrome 53.0.2785.143, Windows 7, 2016-10-20 09:18:36
+success, 1, a, a, ::1, Chrome 53.0.2785.143, Windows 7, 2016-10-20 09:19:28
+success, 1, a, a, ::1, Chrome 53.0.2785.143, Windows 7, 2016-10-20 09:19:32
+success, 1, a, a, ::1, Chrome 53.0.2785.143, Windows 7, 2016-10-20 09:20:20
+success, 1, a, a, ::1, Chrome 53.0.2785.143, Windows 7, 2016-10-20 09:20:30
+success, 1, a, a, ::1, Chrome 53.0.2785.143, Windows 7, 2016-10-20 09:20:34
+success, 1, a, a, ::1, Chrome 53.0.2785.143, Windows 7, 2016-10-20 09:24:35
+success, 1, a, a, ::1, Chrome 53.0.2785.143, Windows 7, 2016-10-20 09:24:39
+success, 1, a, a, ::1, Chrome 53.0.2785.143, Windows 7, 2016-10-20 09:25:00
+success, 1, a, a, ::1, Chrome 53.0.2785.143, Windows 7, 2016-10-20 09:25:05
+success, 1, a, a, ::1, Chrome 53.0.2785.143, Windows 7, 2016-10-20 09:26:04
+success, 1, a, a, ::1, Chrome 53.0.2785.143, Windows 7, 2016-10-20 09:26:08
+success, 1, a, a, ::1, Chrome 53.0.2785.143, Windows 7, 2016-10-20 09:26:20
+success, 1, a, a, ::1, Chrome 53.0.2785.143, Windows 7, 2016-10-20 09:26:24
+success, 1, a, a, ::1, Chrome 53.0.2785.143, Windows 7, 2016-10-20 09:27:55
+failed, ::1, Chrome 53.0.2785.143, Windows 7, 2016-10-20 09:30:56, a@a.sk, asdasd
+success, 1, a, a, ::1, Chrome 53.0.2785.143, Windows 7, 2016-10-20 09:36:48
+success, 1, a, a, ::1, Chrome 53.0.2785.143, Windows 7, 2016-10-20 09:37:00
+success, 1, a, a, ::1, Chrome 53.0.2785.143, Windows 7, 2016-10-20 09:41:03
+success, 1, a, a, ::1, Chrome 53.0.2785.143, Windows 7, 2016-10-20 09:46:44
+success, 1, a, a, ::1, Chrome 53.0.2785.143, Windows 7, 2016-10-20 09:46:53
+success, 1, a, a, ::1, Chrome 53.0.2785.143, Windows 7, 2016-10-20 09:48:41
+success, 1, a, a, ::1, Chrome 53.0.2785.143, Windows 7, 2016-10-20 10:56:24
+success, 1, a, a, ::1, Chrome 53.0.2785.143, Windows 7, 2016-10-20 11:03:52
+failed, ::1, Chrome 53.0.2785.143, Windows 7, 2016-10-20 11:03:59, a@a.sk, asda
+success, 2, a, a, ::1, Chrome 53.0.2785.143, Windows 7, 2016-10-20 11:08:10
+success, 3, a, a, ::1, Chrome 53.0.2785.143, Windows 7, 2016-10-20 11:10:24
+success, 1, a, a, ::1, Chrome 53.0.2785.143, Windows 7, 2016-10-20 14:14:01
+failed, ::1, Chrome 53.0.2785.143, Windows 7, 2016-10-20 14:14:51, a@a, a
+failed, ::1, Chrome 53.0.2785.143, Windows 7, 2016-10-20 14:15:23, a@a, a
+failed, ::1, Chrome 53.0.2785.143, Windows 7, 2016-10-20 14:18:59, a@a, a
+failed, ::1, Chrome 53.0.2785.143, Windows 7, 2016-10-20 14:19:15, a@a, a
+success, 1, a, a, ::1, Chrome 53.0.2785.143, Windows 10, 2016-10-22 10:55:12
+failed, ::1, Chrome 53.0.2785.143, Windows 10, 2016-10-22 15:25:49, a@a.sk, aa
+success, 1, a, a, ::1, Chrome 53.0.2785.143, Windows 7, 2016-10-25 09:36:54
+success, 1, a, a, ::1, Chrome 53.0.2785.143, Windows 7, 2016-10-25 09:38:29
+success, 1, a, a, ::1, Chrome 53.0.2785.143, Windows 7, 2016-10-25 09:39:19
+success, 1, a, a, ::1, Chrome 53.0.2785.143, Windows 7, 2016-10-25 09:45:47
+success, 1, a, a, ::1, Chrome 53.0.2785.143, Windows 7, 2016-10-25 10:12:36
+success, 1, a, a, ::1, Chrome 53.0.2785.143, Windows 7, 2016-10-25 12:53:56
+success, 1, a, a, ::1, Chrome 53.0.2785.143, Windows 7, 2016-10-25 15:02:42
+success, 1, a, a, ::1, Chrome 54.0.2840.71, Windows 7, 2016-10-25 17:57:06
+success, 1, a, a, ::1, Chrome 54.0.2840.71, Windows 7, 2016-10-25 18:01:45
+success, 1, a, a, ::1, Chrome 54.0.2840.71, Windows 7, 2016-10-26 11:51:47
+success, 1, a, a, ::1, Chrome 54.0.2840.71, Windows 7, 2016-10-26 13:18:19
+success, 1, a, a, ::1, Chrome 54.0.2840.71, Windows 7, 2016-10-26 13:23:21
+success, 1, a, a, ::1, Chrome 53.0.2785.143, Windows 7, 2016-10-27 11:09:39
+success, 1, a, a, ::1, Chrome 53.0.2785.143, Windows 7, 2016-10-27 12:30:02
+success, 1, a, a, ::1, Chrome 53.0.2785.143, Windows 7, 2016-10-27 12:32:18
+failed, ::1, Chrome 53.0.2785.143, Windows 7, 2016-10-27 12:34:26, a@a.sk, aa
+success, 1, a, a, ::1, Chrome 53.0.2785.143, Windows 7, 2016-10-27 12:34:31
+failed, ::1, Chrome 53.0.2785.143, Windows 7, 2016-10-27 12:37:52, a@a.sk, aaa
+success, 1, a, a, ::1, Chrome 53.0.2785.143, Windows 7, 2016-10-27 12:38:04
+failed, ::1, Chrome 53.0.2785.143, Windows 7, 2016-10-27 12:40:50, a@a.sk, asdasd
+success, 1, a, a, ::1, Chrome 53.0.2785.143, Windows 7, 2016-10-27 12:41:06
+success, 1, a, a, ::1, Chrome 53.0.2785.143, Windows 7, 2016-10-27 14:02:24
+success, 0, a, a, ::1, Chrome 53.0.2785.143, Windows 7, 2016-10-27 14:07:48
+failed, ::1, Chrome 53.0.2785.143, Windows 7, 2016-10-27 14:24:08, a@a.sk, a
+success, 1, a, a, ::1, Chrome 53.0.2785.143, Windows 7, 2016-10-27 14:24:30
+success, 1, a, a, ::1, Chrome 53.0.2785.143, Windows 7, 2016-10-27 14:26:14
+success, 1, a, a, ::1, Chrome 53.0.2785.143, Windows 7, 2016-10-27 14:26:42
+success, 1, a, a, ::1, Chrome 53.0.2785.143, Windows 7, 2016-10-27 14:27:18
+failed, ::1, Chrome 53.0.2785.143, Windows 7, 2016-10-27 14:27:33, a@a.sk, aa
+success, 1, a, a, ::1, Chrome 53.0.2785.143, Windows 7, 2016-10-27 14:27:52
+success, 1, a, a, ::1, Chrome 53.0.2785.143, Windows 7, 2016-10-27 14:28:08
+success, 1, a, a, ::1, Chrome 53.0.2785.143, Windows 7, 2016-10-27 14:28:27
+success, 1, a, a, ::1, Chrome 53.0.2785.143, Windows 7, 2016-10-27 15:26:27
+success, 1, a, a, ::1, Chrome 53.0.2785.143, Windows 7, 2016-10-27 15:36:39
+success, 1, a, a, ::1, Chrome 53.0.2785.143, Windows 7, 2016-10-27 15:54:48
+success, 2, a, a, ::1, Chrome 53.0.2785.143, Windows 7, 2016-10-27 15:55:26
+success, 1, a, a, ::1, Chrome 53.0.2785.143, Windows 7, 2016-10-27 16:00:15
+success, 1, a, a, ::1, Chrome 54.0.2840.87, Windows 7, 2016-11-04 09:32:47
+failed, ::1, Chrome 54.0.2840.87, Windows 7, 2016-11-04 11:36:53, a@a.sk, aaa
+failed, ::1, Chrome 54.0.2840.87, Windows 7, 2016-11-04 12:21:16, a@a.sk, aa
+failed, ::1, Chrome 54.0.2840.87, Windows 7, 2016-11-04 12:37:27, a@a.sk, aa
+success, 1, a, a, ::1, Chrome 54.0.2840.99, Windows 10, 2016-11-12 20:40:34
+success, 1, a, a, ::1, Chrome 54.0.2840.99, Windows 10, 2016-11-13 12:17:51
+success, 1, a, a, ::1, Chrome 54.0.2840.87, Windows 7, 2016-11-14 09:24:29
+success, 1, a, a, ::1, Chrome 54.0.2840.99, Windows 10, 2016-11-17 12:44:02
+failed, ::1, Chrome 54.0.2840.99, Windows 10, 2016-11-17 12:44:13, a@a.sk, aa
+success, 1, a, a, ::1, Chrome 54.0.2840.99, Windows 10, 2016-11-17 12:44:38
+failed, ::1, Chrome 54.0.2840.99, Windows 10, 2016-11-17 12:45:24, a@a.sk, aa
+success, 1, a, a, ::1, Chrome 54.0.2840.99, Windows 10, 2016-11-17 12:45:28
+success, 1, a, a, ::1, Chrome 54.0.2840.99, Windows 10, 2016-11-17 16:42:25
+success, 1, a, a, ::1, Chrome 54.0.2840.99, Windows 10, 2016-11-18 11:33:27
+success, 1, a, a, ::1, Chrome 54.0.2840.99, Windows 7, 2016-11-21 10:08:26
+success, 1, a, a, ::1, Chrome 54.0.2840.99, Windows 7, 2016-11-21 10:08:55
+success, 1, a, a, ::1, Chrome 54.0.2840.99, Windows 7, 2016-11-21 10:10:04
+success, 1, a, a, ::1, Chrome 54.0.2840.99, Windows 7, 2016-11-21 10:13:01
+success, 1, a, a, ::1, Chrome 54.0.2840.99, Windows 7, 2016-11-21 10:17:19
+success, 1, a, a, ::1, Chrome 54.0.2840.99, Windows 7, 2016-11-21 10:37:11
+success, 1, a, a, ::1, Chrome 54.0.2840.99, Windows 7, 2016-11-21 11:21:50
+success, 1, a, a, ::1, Chrome 54.0.2840.99, Windows 7, 2016-11-22 09:18:46
+success, 1, a, a, ::1, Chrome 54.0.2840.99, Windows 7, 2016-11-29 15:18:45
+success, 1, a, a, ::1, Chrome 54.0.2840.99, Windows 7, 2016-11-29 16:21:31
+failed, ::1, Chrome 54.0.2840.99, Windows 7, 2016-12-02 12:01:35, soldier1994@azet.sk, a

@@ -1,0 +1,20 @@
+.required-fields label:after {
+    color: red;
+    content: " *";
+}
+
+#delivery-data {
+    margin-top: 50px;
+}
+
+#facture-data {
+    margin-top: 50px;
+}
+
+#company-data {
+    margin-top: 50px;
+}
+
+.button-register {
+    float: right;
+}

@@ -1,0 +1,57 @@
+<?php defined('BASEPATH') OR exit('No direct script access allowed');
+
+class UserModel extends CI_Model
+{
+    public function __construct()
+    {
+        parent::__construct();
+    }
+
+    function insertNewUser($userCredentials)
+    {
+        return $this->db->insert('login', $userCredentials);
+    }
+
+    function insertAllUserData($userFactureData, $userDeliveryData, $userCompanyData)
+    {
+        $this->db->trans_start();
+        $this->db->insert('personal_data', $userFactureData);
+        $this->db->insert('delivery_data', $userDeliveryData);
+        $this->db->insert('company_data', $userCompanyData);
+        $this->db->trans_complete();
+
+        return $this->db->trans_status() ? true : false;
+    }
+
+    public function validateUser($data)
+    {
+        $this->load->library('encryption');
+        $data['password'] = hash('sha512', $data['password']);
+        $query = $this->db->select('login.id, email, role, fact_name, fact_surname')->join('personal_data', 'personal_data.id = login.id', 'left')->get_where('login', $data);
+
+        if ($query->num_rows()) {
+            $row = $query->row_array();
+            unset($row['password']);
+            $row['id'] = $this->encryption->encrypt($row['id']);
+            $row['role'] = $this->encryption->encrypt($row['role']);
+            $this->_data = $row;
+        }
+
+        return $query->row();
+    }
+
+    public function isUserExist($email)
+    {
+        return $this->db->where('email', $email)->get('login')->result() ? true : false;
+    }
+
+    public function verifyResetPasswordCode($email, $code)
+    {
+        return ($code == md5($this->config->item('salt') . $this->db->where('email', $email)->get('login')->row()->email)) ? true : false;
+    }
+
+    public function getData()
+    {
+        return $this->_data;
+    }
+}
