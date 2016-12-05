@@ -27,7 +27,7 @@ class Login extends CI_Controller
             $this->session->set_flashdata('category_warning', validation_errors());
         }
         $this->createLog();
-        redirect('home');
+        redirect('Home');
     }
 
     public function createLog()
@@ -78,6 +78,6 @@ class Login extends CI_Controller
         $this->session->unset_userdata($userData);
         $this->session->set_flashdata('category_success', 'Uzivatel bol uspesne odhlaseny.');
 
-        redirect('home');
+        redirect('Home');
     }
 }
