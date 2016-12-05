@@ -30,9 +30,9 @@ class Cart extends CI_Controller
                 'name' => $product->product_name
             );
         }
-        if($this->cart->insert($cartData)){
+        if ($this->cart->insert($cartData)) {
             $this->ProductModel->updateProduct($id);
-        }else{
+        } else {
             echo 'Produkt nieje mozne vlozit do kosika!';
         }
     }
