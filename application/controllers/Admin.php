@@ -2,7 +2,7 @@
 
 /**
  * This controller can be accessed
- * for Admin group only
+ * for Admin group onlya
  */
 class Admin extends MY_Controller
 {
