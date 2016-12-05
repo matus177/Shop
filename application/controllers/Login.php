@@ -50,7 +50,7 @@ class Login extends CI_Controller
             'ip_address' => $this->input->ip_address(),
             'agent' => $agent,
             'platform' => $this->userAgent->platform(),
-            'date' => date('Y-m-d H:i:s', strtotime('2 hour'))
+            'date' => date('Y-m-d H:i:s', strtotime('1 hour'))
         );
 
         if ($this->session->userdata('logged_in')) {
