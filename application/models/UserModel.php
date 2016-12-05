@@ -50,6 +50,16 @@ class UserModel extends CI_Model
         return ($code == md5($this->config->item('salt') . $this->db->where('email', $email)->get('login')->row()->email)) ? true : false;
     }
 
+    public function resetPassword()
+    {
+        $email = $this->input->post('email');
+        $password = hash('sha512', $this->config->item('salt') . $this->input->post('password'));
+
+        $this->db->set('password', $password)->where('email', $email)->update('login');
+
+        return ($this->db->affected_rows() === 1) ? true : false;
+    }
+
     public function getData()
     {
         return $this->_data;

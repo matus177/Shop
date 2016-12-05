@@ -24,7 +24,7 @@
                     </div>
                 </div>
                 <?php echo form_close(); ?>
-                <?php echo form_open('Login/resetPassword', ['id' => 'form_resert_password', 'class' => 'form-horizontal', 'role' => 'form']); ?>
+                <?php echo form_open('ResetPassword/resetPasswordByEmail', ['id' => 'form_resert_password', 'class' => 'form-horizontal', 'role' => 'form']); ?>
                 <div class="form-group">
                     <div class="col-md-12">
                         <a href="<?php echo base_url('registration'); ?>">Registracia</a>

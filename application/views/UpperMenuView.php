@@ -4,8 +4,14 @@
             <a class="navbar-brand" href="<?php echo base_url('Home'); ?>">Matus Shop</a>
         </div>
         <ul class="nav navbar-nav">
-            <li><a href="<?php echo site_url("admin") ?>">admin</a></li>
-            <li><a href="<?php echo site_url("employee") ?>">employee</a></li>
+            <?php if ($this->encryption->decrypt($this->session->role) == 'Admin') { ?>
+                <li><a href="<?php echo base_url("Admin"); ?>"><span class="glyphicon glyphicon-eye-open"></span> Admin</a>
+                </li>
+            <?php } ?>
+            <?php if ($this->session->userdata("logged_in")) { ?>
+                <li><a href="<?php echo base_url("#"); ?>"><span class="glyphicon glyphicon-cog"></span> Nastavenie uctu</a>
+                </li>
+            <?php } ?>
         </ul>
         <ul class="nav navbar-nav navbar-right">
             <li>

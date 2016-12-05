@@ -1,9 +1,9 @@
 <?php
 
-$config['protocol'] = 'sendmail';
-$config['smtp_host'] = 'smtp.azet.sk';
-$config['smtp_user'] = 'Soldier1994@azet.sk';
-$config['smtp_pass'] = 'profesional';
+$config['protocol'] = 'smtp';
+$config['smtp_host'] = 'smtp.seznam.cz';
+$config['smtp_user'] = 'shop-support@seznam.cz';
+$config['smtp_pass'] = 'asdf456987123';
 $config['smtp_port'] = 25;
 $config['smtp_timeout'] = 30;
 $config['charset'] = 'utf-8';
