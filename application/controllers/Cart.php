@@ -19,7 +19,7 @@ class Cart extends CI_Controller
 
     public function addToCart()
     {
-        $id = $this->input->get('id');
+        $id = $this->uri->segment(3);
         $arrayOfProducts = $this->ProductModel->selectProductToCart($id);
         $cartData = array();
         foreach ($arrayOfProducts as $product) {
@@ -30,11 +30,8 @@ class Cart extends CI_Controller
                 'name' => $product->product_name
             );
         }
-        if ($this->cart->insert($cartData)) {
+        if ($this->cart->insert($cartData))
             $this->ProductModel->updateProduct($id);
-        } else {
-            echo 'Produkt nieje mozne vlozit do kosika!';
-        }
     }
 
     public function updateCart()
