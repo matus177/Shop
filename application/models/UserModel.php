@@ -64,4 +64,22 @@ class UserModel extends CI_Model
     {
         return $this->_data;
     }
+
+    public function getAllUserData($id)
+    {
+        $query = $this->db->select()->join('personal_data', 'personal_data.id = login.id', 'left')->join('delivery_data', 'delivery_data.id = login.id', 'left')->join('company_data', 'company_data.id = login.id', 'left')->where('login.id', $id)->get('login')->row_array();
+        unset($query['password']);
+        unset($query['role']);
+        return $query;
+    }
+
+    public function updateEmail($email, $id)
+    {
+        return $this->db->set('email', $email)->where('id', $id)->update('login');
+    }
+
+    public function updatePhone($phone, $id)
+    {
+        return $this->db->set('fact_phone', $phone)->where('id', $id)->update('personal_data');
+    }
 }

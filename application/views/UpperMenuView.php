@@ -9,7 +9,9 @@
                 </li>
             <?php } ?>
             <?php if ($this->session->userdata("logged_in")) { ?>
-                <li><a href="<?php echo base_url("#"); ?>"><span class="glyphicon glyphicon-cog"></span> Nastavenie uctu</a>
+                <li>
+                    <a href="<?php echo base_url('UserAccountSettings/updateAccount/UserAccountBasicInfoView'); ?>"><span
+                                class="glyphicon glyphicon-cog"></span> Nastavenie uctu</a>
                 </li>
             <?php } ?>
         </ul>

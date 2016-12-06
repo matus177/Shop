@@ -7,12 +7,13 @@
     <script src="<?php echo base_url('assets/lib/bootstrap-3.3.7/js/jquery.min.js'); ?>"></script>
     <script src="<?php echo base_url('assets/lib/bootstrap-3.3.7/js/bootstrap.js'); ?>"></script>
     <link href="<?php echo base_url('assets/lib/bootstrap-3.3.7/css/bootstrap.css'); ?>" rel="stylesheet">
-    <link href="<?php echo base_url('assets/lib/bootstrap-3.3.7/css/bootstrap.min.css'); ?>" rel="stylesheet" >
+    <link href="<?php echo base_url('assets/lib/bootstrap-3.3.7/css/bootstrap.min.css'); ?>" rel="stylesheet">
     <link href="<?php echo base_url('assets/css/login.css'); ?>" rel="stylesheet"/>
     <link href="<?php echo base_url('assets/css/register.css'); ?>" rel="stylesheet"/>
     <script src="<?php echo base_url('assets/js/jquery-ui-autocomplete.js'); ?>"></script>
     <link href="<?php echo base_url('assets/css/jquery-ui-autocomplete.css'); ?>" rel="stylesheet"/>
     <link href="<?php echo base_url('assets/css/style.css'); ?>" rel="stylesheet"/>
     <link href="<?php echo base_url('assets/css/left-menu.css'); ?>" rel="stylesheet"/>
+    <link href="<?php echo base_url('assets/css/user-account-settings-menu.css'); ?>" rel="stylesheet"/>
 </head>
 <body>
