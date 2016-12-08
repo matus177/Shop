@@ -82,4 +82,16 @@ class UserModel extends CI_Model
     {
         return $this->db->set('fact_phone', $phone)->where('id', $id)->update('personal_data');
     }
+
+    public function checkOldPassword($oldPass, $userId)
+    {
+        $pass = $password = hash('sha512', $this->config->item('salt') . $oldPass);
+
+        return $this->db->where('password', $pass)->where('id', $userId)->get('login')->row();
+    }
+
+    public function updateOldPassword($pass, $userId)
+    {
+        return $this->db->set('password', $pass)->where('id', $userId)->update('login');
+    }
 }

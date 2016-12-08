@@ -37,4 +37,33 @@ class UserAccountSettings extends MY_Controller
         $id = $this->input->get('id');
         $this->UserModel->updatePhone($phone, $id);
     }
+
+    public function updateOldPassword()
+    {
+        $inputDatas = $this->input->post();
+        $userId = $this->encryption->decrypt($this->session->id);
+        $userData = $this->session->userdata;
+
+        $this->form_validation->set_rules('oldPass', 'Stare heslo', 'required|xss_clean|max_length[30]');
+        $this->form_validation->set_rules('newPass', 'Nove heslo', 'required|matches[cPass]|xss_clean|max_length[30]');
+        $this->form_validation->set_rules('cPass', 'Opakovane heslo', 'required|xss_clean|max_length[30]');
+        $this->form_validation->set_message('matches', 'Hesla sa nezhoduju.');
+        $this->session->unset_userdata($userData);
+
+        if ($this->form_validation->run()) {
+            if (!is_null($this->UserModel->checkOldPassword($inputDatas['oldPass'], $userId))) {
+                $newPass = hash('sha512', $inputDatas['newPass']);
+                $this->UserModel->updateOldPassword($newPass, $userId);
+                $this->session->unset_userdata($userData);
+                $this->session->set_flashdata('category_success', 'Heslo bolo zmenene. Boli ste odhlaseny.');
+                redirect('Home');
+            } else {
+                $this->session->set_flashdata('category_danger', 'Chybne zadane stare heslo.');
+            }
+        } else {
+            $this->session->set_flashdata('category_warning', validation_errors());
+        }
+
+        redirect('UserAccountSettings/updateAccount/UserAccountBasicInfoView');
+    }
 }

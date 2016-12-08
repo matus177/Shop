@@ -1,4 +1,5 @@
 <div class="col-md-9">
+    <?php $this->load->view('FlashMessagesView'); ?>
     <table class="">
         <tbody>
         <tr>
@@ -6,7 +7,7 @@
                 <p>Prihlasovací e-mail:</p>
             </td>
             <td>
-                <p class="email" style="margin-left: 15px"><?php echo $data['email'] ?> <a id="updateEmail"
+                <p class="email" style="margin-left: 15px"><?php echo $data['email'] ?> <a href="" id="updateEmail"
                                                                                            class="glyphicon glyphicon-pencil"
                                                                                            aria-hidden="true"></a></p>
             </td>
@@ -16,14 +17,20 @@
                 <p>Telefón:</p>
             </td>
             <td>
-                <p class="phone" style="margin-left: 15px"><?php echo $data['fact_phone'] ?> <a id="updatePhone"
+                <p class="phone" style="margin-left: 15px"><?php echo $data['fact_phone'] ?> <a href="" id="updatePhone"
                                                                                                 class="glyphicon glyphicon-pencil"></a>
                 </p>
             </td>
         </tr>
         <tr>
             <td>
-                <button type="button" class="btn btn-primary">Zmenit heslo</button>
+                <a type="button" href="" class="btn btn-primary" data-toggle="modal"
+                   data-target="#update_password_modal"> Zmenit heslo</a>
+                <div class="modal fade" id="update_password_modal" data-backdrop="static" data-keyboard="false">
+                    <div class="modal-dialog">
+                        <div class="modal-body"><?php $this->load->view('UpdatePasswordView'); ?></div>
+                    </div>
+                </div>
             </td>
         </tr>
         </tbody>

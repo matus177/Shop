@@ -20,7 +20,7 @@ class Registration extends CI_Controller
     function registerNewUser()
     {
         $this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email|is_unique[login.email]|xss_clean|max_length[30]');
-        $this->form_validation->set_rules('password', 'Password', 'trim|required|xss_clean|max_length[30]');
+        $this->form_validation->set_rules('password', 'Password', 'trim|required|xss_clean|matches[cpassword]|max_length[30]');
         $this->form_validation->set_rules('cpassword', 'Cpassword|max_length[30]');
         $this->form_validation->set_rules('fact_name', 'Fakturacne Meno', 'trim|required|max_length[30]');
         $this->form_validation->set_rules('fact_surname', 'Fakturacne Priezvisko', 'trim|required|max_length[30]');
@@ -47,6 +47,7 @@ class Registration extends CI_Controller
         $this->form_validation->set_message('valid_email', '%s musi obsahovat platny format.');
         $this->form_validation->set_message('max_length', '%s nesmie mat viac ako 30 znakov.');
         $this->form_validation->set_message('required', '%s je povinny udaj.');
+        $this->form_validation->set_message('matches', 'Hesla sa nezhoduju.');
 
         if ($this->form_validation->run()) {
             $userCredentials = array(
