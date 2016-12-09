@@ -42,7 +42,7 @@ class UserAccountSettings extends MY_Controller
     {
         $inputDatas = $this->input->post();
         $userId = $this->encryption->decrypt($this->session->id);
-        $userData = $this->session->userdata;
+        $userData = array('id', 'email', 'role', 'fact_name', 'fact_surname', 'logged_in');
 
         $this->form_validation->set_rules('oldPass', 'Stare heslo', 'required|xss_clean|max_length[30]');
         $this->form_validation->set_rules('newPass', 'Nove heslo', 'required|matches[cPass]|xss_clean|max_length[30]');
