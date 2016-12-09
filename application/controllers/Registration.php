@@ -21,7 +21,7 @@ class Registration extends CI_Controller
     {
         $this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email|is_unique[login.email]|xss_clean|max_length[30]');
         $this->form_validation->set_rules('password', 'Password', 'trim|required|xss_clean|matches[cpassword]|max_length[30]');
-        $this->form_validation->set_rules('cpassword', 'Cpassword|max_length[30]');
+        $this->form_validation->set_rules('cpassword', 'Cpassword', 'trim|max_length[30]');
         $this->form_validation->set_rules('fact_name', 'Fakturacne Meno', 'trim|required|max_length[30]');
         $this->form_validation->set_rules('fact_surname', 'Fakturacne Priezvisko', 'trim|required|max_length[30]');
         $this->form_validation->set_rules('fact_street', 'Fakturacna Ulica', 'trim|required|max_length[30]');
