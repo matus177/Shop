@@ -47,7 +47,6 @@ class UserAccountSettings extends MY_Controller
         $this->form_validation->set_rules('newPass', 'Nove heslo', 'required|matches[cPass]|xss_clean|max_length[30]');
         $this->form_validation->set_rules('cPass', 'Opakovane heslo', 'required|xss_clean|max_length[30]');
         $this->form_validation->set_message('matches', 'Hesla sa nezhoduju.');
-        $this->session->unset_userdata($userData);
 
         if ($this->form_validation->run()) {
             if (!is_null($this->UserModel->checkOldPassword($inputDatas['oldPass'], $userId))) {
