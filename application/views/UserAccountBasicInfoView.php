@@ -198,8 +198,6 @@
         });
     }
     function updatePersonalData(idOfInput) {
-
-
         $('#' + idOfInput).on("autocompletechange keyup", function () {
             var data = $('#' + idOfInput).val();
             var idOfUser = '<?php echo $data['id']; ?>';
@@ -220,18 +218,12 @@
 </script>
 <script>
     $("#fact_city").autocomplete({
-        source: window.location.origin + '/Shop/Registration/searchCity',
-        change: function (event, ui) {
-        }
+        source: window.location.origin + '/Shop/Registration/searchCity'
     });
     $("#fact_zip").autocomplete({
-        source: window.location.origin + '/Shop/Registration/searchZip',
-        change: function (event, ui) {
-        }
+        source: window.location.origin + '/Shop/Registration/searchZip'
     });
     $("#fact_street").autocomplete({
-        source: window.location.origin + '/Shop/Registration/searchStreet',
-        change: function (event, ui) {
-        }
+        source: window.location.origin + '/Shop/Registration/searchStreet'
     });
 </script>
