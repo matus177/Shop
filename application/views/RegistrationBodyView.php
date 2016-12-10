@@ -28,7 +28,7 @@
                 </div>
             </div>
             <div class="control-label">
-                <button type="button" onClick="changeIcon('facture-data', 'facture_data_button')" id="facture_data_button" class="btn btn-info col-md-12" data-toggle="collapse"
+                <button type="button" onClick="changeIcon('facture-data', this.id)" id="facture_data_button" class="btn btn-info col-md-12" data-toggle="collapse"
                         data-target="#facture-data"><span class="glyphicon glyphicon-plus"></span> Fakturačné údaje
                 </button>
                 <div id="facture-data" class="collapse">
@@ -79,7 +79,7 @@
                 </div>
             </div>
             <div class="control-label">
-                <button type="button" onClick="changeIcon('delivery-data', 'delivery_data_button')" id="delivery_data_button" class="btn btn-info col-md-12 show-delivery-data" data-toggle="collapse"
+                <button type="button" onClick="changeIcon('delivery-data', this.id)" id="delivery_data_button" class="btn btn-info col-md-12 show-delivery-data" data-toggle="collapse"
                         data-target="#delivery-data"><span class="glyphicon glyphicon-plus"></span> Dodacie údaje
                 </button>
                 <div id="delivery-data" class="collapse">
@@ -143,7 +143,7 @@
                 </div>
             </div>
             <div class="control-label">
-                <button type="button" onClick="changeIcon('company-data', 'company_data_button')" id="company_data_button" class="btn btn-info col-md-12 show-company-data" data-toggle="collapse"
+                <button type="button" onClick="changeIcon('company-data', this.id)" id="company_data_button" class="btn btn-info col-md-12 show-company-data" data-toggle="collapse"
                         data-target="#company-data"><span class="glyphicon glyphicon-plus"></span> Firemné údaje
                 </button>
                 <div id="company-data" class="collapse">
