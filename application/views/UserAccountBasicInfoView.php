@@ -87,7 +87,8 @@
         <tr>
             <td class="format_inputs_top">
                 Mesto
-                <input type="text" id="fact_city" onclick="updatePersonalData(this.id)" class="form-control"
+                <input type="text" id="fact_city" onclick="updatePersonalData(this.id)"
+                       class="form-control"
                        name="fact_city"
                        value="<?php echo $data['fact_city'] ?>">
             </td>
@@ -197,7 +198,9 @@
         });
     }
     function updatePersonalData(idOfInput) {
-        $('#' + idOfInput).change(function () {
+
+
+        $('#' + idOfInput).on("autocompletechange keyup", function () {
             var data = $('#' + idOfInput).val();
             var idOfUser = '<?php echo $data['id']; ?>';
             $.ajax({
@@ -214,4 +217,21 @@
             })
         });
     }
+</script>
+<script>
+    $("#fact_city").autocomplete({
+        source: window.location.origin + '/Shop/Registration/searchCity',
+        change: function (event, ui) {
+        }
+    });
+    $("#fact_zip").autocomplete({
+        source: window.location.origin + '/Shop/Registration/searchZip',
+        change: function (event, ui) {
+        }
+    });
+    $("#fact_street").autocomplete({
+        source: window.location.origin + '/Shop/Registration/searchStreet',
+        change: function (event, ui) {
+        }
+    });
 </script>
