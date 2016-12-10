@@ -77,7 +77,7 @@ class Registration extends CI_Controller
                 'comp_dic' => $this->input->post('comp_dic'),
                 'comp_icdph' => $this->input->post('comp_icdph'),
                 'comp_bic' => $this->input->post('comp_bic'),
-                'comp_iban' => $this->input->post('comp_iban'),
+                'comp_iban' => $this->encryption->encrypt($this->input->post('comp_iban')),
                 'comp_bank_owner' => $this->encryption->encrypt($this->input->post('comp_bank_owner'))
             );
 
