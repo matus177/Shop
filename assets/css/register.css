@@ -1,4 +1,4 @@
-.required-fields {
+.required-fields label:after {
     color: red;
     content: " *";
 }
