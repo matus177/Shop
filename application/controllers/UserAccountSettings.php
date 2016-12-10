@@ -10,7 +10,6 @@ class UserAccountSettings extends MY_Controller
 
     public function updateAccount($view)
     {
-        var_dump($this->userInfo());
         $this->load->view('HeaderView');
         $this->load->view('UpperMenuView');
         $this->load->view('UserAccountSettingsMenuView');
@@ -65,5 +64,66 @@ class UserAccountSettings extends MY_Controller
         }
 
         redirect('UserAccountSettings/updateAccount/UserAccountBasicInfoView');
+    }
+
+    public function updateCompanyData()
+    {
+        $idOfUser = $this->input->get('id');
+        $idOfInput = $this->input->get('input');
+        $data = $this->input->get('data');
+
+        switch ($idOfInput) {
+            case 'comp_ico':
+                $this->UserModel->updateCompanyData($idOfUser, $idOfInput, $data);
+                break;
+            case 'comp_dic':
+                $this->UserModel->updateCompanyData($idOfUser, $idOfInput, $data);
+                break;
+            case 'comp_icdph':
+                $this->UserModel->updateCompanyData($idOfUser, $idOfInput, $data);
+                break;
+            case 'comp_bic':
+                $this->UserModel->updateCompanyData($idOfUser, $idOfInput, $data);
+                break;
+            case 'comp_iban':
+                $data = $this->encryption->encrypt($data);
+                $this->UserModel->updateCompanyData($idOfUser, $idOfInput, $data);
+                break;
+            case 'comp_bank_owner':
+                $data = $this->encryption->encrypt($data);
+                $this->UserModel->updateCompanyData($idOfUser, $idOfInput, $data);
+                break;
+            default:
+                echo 'System error';
+        }
+    }
+
+    public function updatePersonalData()
+    {
+        $idOfUser = $this->input->get('id');
+        $idOfInput = $this->input->get('input');
+        $data = $this->input->get('data');
+
+        switch ($idOfInput) {
+            case 'fact_name':
+                $data = $this->encryption->encrypt($data);
+                $this->UserModel->updatePersonalData($idOfUser, $idOfInput, $data);
+                break;
+            case 'fact_surname':
+                $data = $this->encryption->encrypt($data);
+                $this->UserModel->updatePersonalData($idOfUser, $idOfInput, $data);
+                break;
+            case 'fact_street':
+                $this->UserModel->updatePersonalData($idOfUser, $idOfInput, $data);
+                break;
+            case 'fact_city':
+                $this->UserModel->updatePersonalData($idOfUser, $idOfInput, $data);
+                break;
+            case 'fact_zip':
+                $this->UserModel->updatePersonalData($idOfUser, $idOfInput, $data);
+                break;
+            default:
+                echo 'System error';
+        }
     }
 }

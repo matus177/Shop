@@ -45,35 +45,40 @@
         <tr>
             <td>
                 IČO
-                <input type="text" id="ico" class="form-control" name="comp_ico"
+                <input type="text" id="comp_ico" onclick="updateCompanyData(this.id)" class="form-control"
+                       name="comp_ico"
                        value="<?php echo $data['comp_ico'] ?>">
             </td>
             <td>
                 <div class="inline_inputs">
                     IČ DPH
-                    <input type="text" id="icdph" class="form-control" name="comp_icdph"
+                    <input type="text" id="comp_icdph" onclick="updateCompanyData(this.id)" class="form-control"
+                           name="comp_icdph"
                            value="<?php echo $data['comp_icdph'] ?>">
                 </div>
             </td>
             <td>
                 <div class="inline_inputs">
                     DIČ
-                    <input type="text" id="dic" class="form-control" name="comp_dic"
+                    <input type="text" id="comp_dic" onclick="updateCompanyData(this.id)" class="form-control"
+                           name="comp_dic"
                            value="<?php echo $data['comp_dic'] ?>">
                 </div>
             </td>
         </tr>
         <tr>
             <td class="format_inputs_top">
-                <div class="required-fields"><label for="email" class="control-label">Meno</label></div>
-                <input type="text" id="first_name" class="form-control" name="fact_name"
+                Meno</label>
+                <input type="text" id="fact_name" onclick="updatePersonalData(this.id)" class="form-control"
+                       name="fact_name"
                        value="<?php echo $this->encryption->decrypt($data['fact_name']) ?>">
 
             </td>
             <td class="format_inputs_top" colspan="2">
                 <div class="inline_inputs">
                     Priezvisko
-                    <input type="text" id="last_name" class="form-control" name="fact_surname"
+                    <input type="text" id="fact_surname" onclick="updatePersonalData(this.id)" class="form-control"
+                           name="fact_surname"
                            value="<?php echo $this->encryption->decrypt($data['fact_surname']) ?>">
                 </div>
             </td>
@@ -81,20 +86,23 @@
         <tr>
             <td class="format_inputs_top">
                 Mesto
-                <input type="text" id="fact_city" class="form-control" name="fact_city"
+                <input type="text" id="fact_city" onclick="updatePersonalData(this.id)" class="form-control"
+                       name="fact_city"
                        value="<?php echo $data['fact_city'] ?>">
             </td>
             <td class="format_inputs_top">
                 <div class="inline_inputs">
                     Ulica
-                    <input type="text" id="fact_street" class="form-control" name="fact_street"
+                    <input type="text" id="fact_street" onclick="updatePersonalData(this.id)" class="form-control"
+                           name="fact_street"
                            value="<?php echo $data['fact_street'] ?>">
                 </div>
             </td>
             <td class="format_inputs_top">
                 <div class="inline_inputs">
                     PSC
-                    <input type="text" id="fact_zip" class="form-control" name="fact_zip"
+                    <input type="text" id="fact_zip" onclick="updatePersonalData(this.id)" class="form-control"
+                           name="fact_zip"
                            value="<?php echo $data['fact_zip'] ?>">
                 </div>
             </td>
@@ -102,21 +110,24 @@
         <tr>
             <td class="format_inputs_top">
                 BIC (SWIFT)
-                <input type="text" id="comp_bic" class="form-control" name="comp_bic"
+                <input type="text" id="comp_bic" onclick="updateCompanyData(this.id)" class="form-control"
+                       name="comp_bic"
                        value="<?php echo $data['comp_bic'] ?>">
             </td>
             <td class="format_inputs_top">
                 <div class="inline_inputs">
                     IBAN
-                    <input type="text" id="comp_iban" class="form-control" name="comp_iban"
-                           value="<?php echo $this->encryption->decrypt($data['deliv_surname']) ?>">
+                    <input type="text" id="comp_iban" onclick="updateCompanyData(this.id)" class="form-control"
+                           name="comp_iban"
+                           value="<?php echo $this->encryption->decrypt($data['comp_iban']) ?>">
                 </div>
             </td>
             <td class="format_inputs_top">
                 <div class="inline_inputs">
                     Meno majitela uctu
-                    <input type="text" id="comp_bank_owner" class="form-control" name="comp_bank_owner"
-                           value="<?php echo $this->encryption->decrypt($data['deliv_surname']) ?>">
+                    <input type="text" id="comp_bank_owner" onclick="updateCompanyData(this.id)" class="form-control"
+                           name="comp_bank_owner"
+                           value="<?php echo $this->encryption->decrypt($data['comp_bank_owner']) ?>">
                 </div>
             </td>
         </tr>
@@ -164,4 +175,42 @@
             });
         });
     });
+</script>
+<script>
+    function updateCompanyData(idOfInput) {
+        $('#' + idOfInput).change(function () {
+            var data = $('#' + idOfInput).val();
+            var idOfUser = '<?php echo $data['id']; ?>';
+            $.ajax({
+                url: window.location.origin + '/Shop/UserAccountSettings/updateCompanyData',
+                type: 'GET',
+                data: {input: idOfInput, data: data, id: idOfUser},
+                success: function (response) {
+                    if (response == 'System error')
+                        alert('Systemova chyba, kontaktujte spravcu webu.');
+                    else {
+                        document.getElementById(idOfInput).style.borderColor = "green";
+                    }
+                }
+            })
+        });
+    }
+    function updatePersonalData(idOfInput) {
+        $('#' + idOfInput).change(function () {
+            var data = $('#' + idOfInput).val();
+            var idOfUser = '<?php echo $data['id']; ?>';
+            $.ajax({
+                url: window.location.origin + '/Shop/UserAccountSettings/updatePersonalData',
+                type: 'GET',
+                data: {input: idOfInput, data: data, id: idOfUser},
+                success: function (response) {
+                    if (response == 'System error')
+                        alert('Systemova chyba, kontaktujte spravcu webu.');
+                    else {
+                        document.getElementById(idOfInput).style.borderColor = "green";
+                    }
+                }
+            })
+        });
+    }
 </script>

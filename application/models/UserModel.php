@@ -94,4 +94,14 @@ class UserModel extends CI_Model
     {
         return $this->db->set('password', $pass)->where('id', $userId)->update('login');
     }
+
+    public function updateCompanyData($idOfUser, $row, $data)
+    {
+        return $this->db->set($row, $data)->where('id', $idOfUser)->update('company_data');
+    }
+
+    public function updatePersonalData($idOfUser, $row, $data)
+    {
+        return $this->db->set($row, $data)->where('id', $idOfUser)->update('personal_data');
+    }
 }
