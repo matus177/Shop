@@ -28,7 +28,8 @@
                 </div>
             </div>
             <div class="control-label">
-                <button type="button" onClick="changeIcon('facture-data', this.id)" id="facture_data_button" class="btn btn-info col-md-12" data-toggle="collapse"
+                <button type="button" onClick="changeIcon('facture-data', this.id)" id="facture_data_button"
+                        class="btn btn-info col-md-12" data-toggle="collapse"
                         data-target="#facture-data"><span class="glyphicon glyphicon-plus"></span> Fakturačné údaje
                 </button>
                 <div id="facture-data" class="collapse">
@@ -57,15 +58,15 @@
                         <div class="form-group">
                             <label for="fact_city" class="col-md-3 control-label">Mesto</label>
                             <div class="col-md-9">
-                                <input type="text" class="form-control city-search"
+                                <input type="text" onmouseover="zipForCity('city-search')"
+                                       class="form-control city-search"
                                        name="fact_city" placeholder="Mesto">
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="fact_zip" class="col-md-3 control-label">PSČ</label>
                             <div class="col-md-9">
-                                <input type="text" class="form-control zip-search" name="fact_zip"
-                                       value="" placeholder="PSČ">
+                                <input type="text" class="form-control zip-search" name="fact_zip" placeholder="PSČ">
                             </div>
                         </div>
                         <div class="form-group">
@@ -79,7 +80,8 @@
                 </div>
             </div>
             <div class="control-label">
-                <button type="button" onClick="changeIcon('delivery-data', this.id)" id="delivery_data_button" class="btn btn-info col-md-12 show-delivery-data" data-toggle="collapse"
+                <button type="button" onClick="changeIcon('delivery-data', this.id)" id="delivery_data_button"
+                        class="btn btn-info col-md-12 show-delivery-data" data-toggle="collapse"
                         data-target="#delivery-data"><span class="glyphicon glyphicon-plus"></span> Dodacie údaje
                 </button>
                 <div id="delivery-data" class="collapse">
@@ -111,13 +113,15 @@
                     <div class="form-group">
                         <label for="deliv_street" class="col-md-3 control-label">Ulica</label>
                         <div class="col-md-9">
-                            <input type="text" class="form-control city-search" name="deliv_street" placeholder="Ulica">
+                            <input type="text" class="form-control street-search" name="deliv_street"
+                                   placeholder="Ulica">
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="deliv_city" class="col-md-3 control-label">Mesto</label>
                         <div class="col-md-9">
-                            <input type="text" class="form-control street-search" name="deliv_city" placeholder="Mesto">
+                            <input type="text" onmouseover="zipForCity('deliv-city-search')"
+                                   class="form-control deliv-city-search" name="deliv_city" placeholder="Mesto">
                         </div>
                     </div>
                     <div class="form-group">
@@ -143,7 +147,8 @@
                 </div>
             </div>
             <div class="control-label">
-                <button type="button" onClick="changeIcon('company-data', this.id)" id="company_data_button" class="btn btn-info col-md-12 show-company-data" data-toggle="collapse"
+                <button type="button" onClick="changeIcon('company-data', this.id)" id="company_data_button"
+                        class="btn btn-info col-md-12 show-company-data" data-toggle="collapse"
                         data-target="#company-data"><span class="glyphicon glyphicon-plus"></span> Firemné údaje
                 </button>
                 <div id="company-data" class="collapse">
@@ -218,6 +223,9 @@
         $(".city-search").autocomplete({
             source: 'Registration/searchCity'
         });
+        $(".deliv-city-search").autocomplete({
+            source: 'Registration/searchCity'
+        });
         $(".zip-search").autocomplete({
             source: 'Registration/searchZip'
         });
@@ -225,4 +233,21 @@
             source: 'Registration/searchStreet'
         });
     })
+</script>
+<script>
+    function zipForCity(city) {
+        $('.' + city).on("autocompletechange", function () {
+            var searchTerm = {
+                city: $('.' + city).val()
+            };
+            $.ajax({
+                url: 'Registration/searchZipForCity',
+                type: 'GET',
+                data: searchTerm,
+                success: function (data) {
+                    $('.zip-search').val(data);
+                }
+            })
+        });
+    }
 </script>
