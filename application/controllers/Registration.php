@@ -136,10 +136,4 @@ class Registration extends CI_Controller
 
         echo json_encode(array_unique($data));
     }
-
-    public function searchZipForCity()
-    {
-        $searchTerm = $_GET['PSC'];
-        echo $this->SearchCityZipAndStreetModel->searchZipIfExist($searchTerm);
-    }
 }

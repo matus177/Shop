@@ -21,13 +21,4 @@ class SearchCityZipAndStreetModel extends CI_Model
     {
         return $this->db->like('street', $searchTerm, 'after')->get('streets');
     }
-
-    function searchZipIfExist($searchTerm)
-    {
-        if ($result = $this->db->select('zip')->where('city', $searchTerm)->get('cities')->row()) {
-            return $result->zip;
-        } else {
-            return null;
-        }
-    }
 }

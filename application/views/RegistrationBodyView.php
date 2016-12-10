@@ -226,18 +226,3 @@
         });
     })
 </script>
-<script>
-    $('.city-search').change(function () {
-        var searchTerm = {
-            PSC: $('.city-search').val()
-        };
-        $.ajax({
-            url: 'Registration/searchZipForCity',
-            type: 'GET',
-            data: searchTerm,
-            success: function (data) {
-                $('.zip-search').val(data);
-            }
-        })
-    });
-</script>
