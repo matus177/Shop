@@ -8,9 +8,10 @@
                 <p>Prihlasovací e-mail:</p>
             </td>
             <td>
-                <p class="email" style="margin-left: 15px"><?php echo $data['email'] ?> <a href="" id="updateEmail"
-                                                                                           class="glyphicon glyphicon-pencil"
-                                                                                           aria-hidden="true"></a></p>
+                <div class="update_email">
+                    <p class="email" style="margin-left: 15px"><?php echo $data['email'] ?> <a
+                                class="glyphicon glyphicon-pencil" aria-hidden="true"></a></p>
+                </div>
             </td>
         </tr>
         <tr>
@@ -18,9 +19,12 @@
                 <p>Telefón:</p>
             </td>
             <td>
-                <p class="phone" style="margin-left: 15px"><?php echo $data['fact_phone'] ?> <a href="" id="updatePhone"
-                                                                                                class="glyphicon glyphicon-pencil"></a>
-                </p>
+                <div class="update_phone">
+                    <p class="phone" style="margin-left: 15px"><?php echo $data['fact_phone'] ?> <a href=""
+                                                                                                    id="updatePhone"
+                                                                                                    class="glyphicon glyphicon-pencil"></a>
+                    </p>
+                </div>
             </td>
         </tr>
         <tr>
@@ -142,14 +146,14 @@
 
 <script>
     $(document).ready(function () {
-        $('#updateEmail').click(function (e) {
+        $('.update_email').click(function (e) {
             e.preventDefault();
             var emailValue = $('p.email').text();
             $("p.email").replaceWith('<input type="text" id="email_input" class="form-control" name="email" value="' + emailValue + '">');
             $('div.aaaa').click(function () {
-                var newEmailValue = $('#email_input').val();
+                var newEmailValue = $('#email_input').val().trim();
                 var idOfUser = '<?php echo $data['id']; ?>';
-                $("#email_input").replaceWith('<p class="email" style="margin-left: 15px">' + newEmailValue + ' <a id="updateEmail" class="glyphicon glyphicon-pencil"></a>');
+                $("#email_input").replaceWith('<p class="email" style="margin-left: 15px">' + newEmailValue + ' <a id="updateEmail" class="glyphicon glyphicon-pencil"></a></p>');
                 $.ajax({
                     url: window.location.origin + '/Shop/UserAccountSettings/updateEmail',
                     type: 'GET',
@@ -161,14 +165,15 @@
 </script>
 <script>
     $(document).ready(function () {
-        $('#updatePhone').click(function (e) {
+        $('.update_phone').click(function (e) {
             e.preventDefault();
             var phoneValue = $('p.phone').text();
             $("p.phone").replaceWith('<input type="text" class="form-control newPhone" name="phone" value="' + phoneValue + '">');
             $('div.aaaa').click(function () {
-                var newPhoneValue = $('.newPhone').val();
+                var newPhoneValue = $(".newPhone").val().trim();
+                console.log(newPhoneValue);
                 var idOfUser = '<?php echo $data['id']; ?>';
-                $("input.newPhone").replaceWith('<p class="phone" style="margin-left: 15px">' + newPhoneValue + ' <a id="updatePhone" class="glyphicon glyphicon-pencil"></a>');
+                $(".newPhone").replaceWith('<p class="phone" style="margin-left: 15px">' + newPhoneValue + ' <a id="updatePhone" class="glyphicon glyphicon-pencil"></a>');
                 $.ajax({
                     url: window.location.origin + '/Shop/UserAccountSettings/updatePhone',
                     type: 'GET',
