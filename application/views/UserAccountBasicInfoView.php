@@ -144,17 +144,26 @@
     $(document).ready(function () {
         $('.update_email').click(function (e) {
             e.preventDefault();
-            var emailValue = $('p.email').text();
-            $("p.email").replaceWith('<div class="tempEmail"><input type="text" id="email_input" class="form-control" name="email" value="' + emailValue + '"><a type="button" style="margin-bottom: 0; margin-left: 10px" class="btn-success aa">Ulozit</a></div>');
-            $('.aa').one('click', function () {
+            var emailValue = $('p.email').text().trim();
+            $("p.email").replaceWith('<input type="text" id="email_input" class="form-control" name="email" value="' + emailValue + '">');
+            $('#email_input').change(function () {
                 var newEmailValue = $('#email_input').val().trim();
                 var idOfUser = '<?php echo $data['id']; ?>';
-                $(".tempEmail").replaceWith('<p class="email" style="margin-left: 15px">' + newEmailValue + ' <a id="updateEmail" class="glyphicon glyphicon-pencil"></a></p>');
                 $.ajax({
                     url: window.location.origin + '/Shop/UserAccountSettings/updateEmail',
                     type: 'GET',
-                    data: {email: newEmailValue, id: idOfUser}
-                })
+                    data: {email: newEmailValue, id: idOfUser},
+                    success: function (response) {
+                        if (response == 'System error')
+                            alert('Systemova chyba, kontaktujte spravcu webu.');
+                        else {
+                            document.getElementById('email_input').style.borderColor = "green";
+                        }
+                    }
+                });
+                $('.inline_inputs').one('click', function () {
+                    $("#email_input").replaceWith('<p class="email" style="margin-left: 15px">' + newEmailValue + ' <a id="updateEmail" class="glyphicon glyphicon-pencil"></a></p>');
+                });
             });
         });
     });
@@ -163,17 +172,19 @@
     $(document).ready(function () {
         $('.update_phone').click(function (e) {
             e.preventDefault();
-            var phoneValue = $('p.phone').text();
+            var phoneValue = $('p.phone').text().trim();
             $("p.phone").replaceWith('<input type="text" class="form-control newPhone" name="phone" value="' + phoneValue + '">');
-            $('.update_email').one('click', function () {
+            $('.newPhone').change(function () {
                 var newPhoneValue = $(".newPhone").val().trim();
                 var idOfUser = '<?php echo $data['id']; ?>';
-                $(".newPhone").replaceWith('<p class="phone" style="margin-left: 15px">' + newPhoneValue + ' <a id="updatePhone" class="glyphicon glyphicon-pencil"></a>');
                 $.ajax({
                     url: window.location.origin + '/Shop/UserAccountSettings/updatePhone',
                     type: 'GET',
                     data: {phone: newPhoneValue, id: idOfUser}
-                })
+                });
+                $('.update_email #table_facture_info').one('click', function () {
+                    $(".newPhone").replaceWith('<p class="phone" style="margin-left: 15px">' + newPhoneValue + ' <a id="updatePhone" class="glyphicon glyphicon-pencil"></a>');
+                });
             });
         });
     });
