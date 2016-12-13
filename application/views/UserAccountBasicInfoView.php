@@ -8,9 +8,10 @@
                 <p>Prihlasovací e-mail:</p>
             </td>
             <td>
-                <div class="update_email">
+                <div class="update_email form-inline">
                     <p class="email" style="margin-left: 15px"><?php echo $data['email'] ?> <a
                                 class="glyphicon glyphicon-pencil" aria-hidden="true"></a></p>
+                    <a type="button" style="margin-bottom: 0; margin-left: 10px" class="hidden">Ulozit</a>
                 </div>
             </td>
         </tr>
@@ -20,8 +21,7 @@
             </td>
             <td>
                 <div class="update_phone">
-                    <p class="phone" style="margin-left: 15px"><?php echo $data['fact_phone'] ?> <a href=""
-                                                                                                    id="updatePhone"
+                    <p class="phone" style="margin-left: 15px"><?php echo $data['fact_phone'] ?> <a id="updatePhone"
                                                                                                     class="glyphicon glyphicon-pencil"></a>
                     </p>
                 </div>
@@ -40,9 +40,6 @@
         </tr>
         </tbody>
     </table>
-    <div class="aaaa">
-        <p>asdadad</p>
-    </div>
     <hr>
     <p><b>Fakturačné údaje</b></p>
     <table id="table_facture_info" class="table_size">
@@ -143,17 +140,16 @@
         <p><i class="glyphicon glyphicon-info-sign"></i> Zmeny sa ukladaju automaticky.</p>
     </div>
 </div>
-
 <script>
     $(document).ready(function () {
         $('.update_email').click(function (e) {
             e.preventDefault();
             var emailValue = $('p.email').text();
-            $("p.email").replaceWith('<input type="text" id="email_input" class="form-control" name="email" value="' + emailValue + '">');
-            $('div.aaaa').click(function () {
+            $("p.email").replaceWith('<div class="tempEmail"><input type="text" id="email_input" class="form-control" name="email" value="' + emailValue + '"><a type="button" style="margin-bottom: 0; margin-left: 10px" class="btn-success aa">Ulozit</a></div>');
+            $('.aa').one('click', function () {
                 var newEmailValue = $('#email_input').val().trim();
                 var idOfUser = '<?php echo $data['id']; ?>';
-                $("#email_input").replaceWith('<p class="email" style="margin-left: 15px">' + newEmailValue + ' <a id="updateEmail" class="glyphicon glyphicon-pencil"></a></p>');
+                $(".tempEmail").replaceWith('<p class="email" style="margin-left: 15px">' + newEmailValue + ' <a id="updateEmail" class="glyphicon glyphicon-pencil"></a></p>');
                 $.ajax({
                     url: window.location.origin + '/Shop/UserAccountSettings/updateEmail',
                     type: 'GET',
@@ -169,9 +165,8 @@
             e.preventDefault();
             var phoneValue = $('p.phone').text();
             $("p.phone").replaceWith('<input type="text" class="form-control newPhone" name="phone" value="' + phoneValue + '">');
-            $('div.aaaa').click(function () {
+            $('.update_email').one('click', function () {
                 var newPhoneValue = $(".newPhone").val().trim();
-                console.log(newPhoneValue);
                 var idOfUser = '<?php echo $data['id']; ?>';
                 $(".newPhone").replaceWith('<p class="phone" style="margin-left: 15px">' + newPhoneValue + ' <a id="updatePhone" class="glyphicon glyphicon-pencil"></a>');
                 $.ajax({
