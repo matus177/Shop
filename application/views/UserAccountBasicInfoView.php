@@ -152,17 +152,11 @@
                 $.ajax({
                     url: window.location.origin + '/Shop/UserAccountSettings/updateEmail',
                     type: 'GET',
-                    data: {email: newEmailValue, id: idOfUser},
-                    success: function (response) {
-                        if (response == 'System error')
-                            alert('Systemova chyba, kontaktujte spravcu webu.');
-                        else {
-                            document.getElementById('email_input').style.borderColor = "green";
-                        }
-                    }
+                    data: {email: newEmailValue, id: idOfUser}
                 });
-                $('.inline_inputs').one('click', function () {
-                    $("#email_input").replaceWith('<p class="email" style="margin-left: 15px">' + newEmailValue + ' <a id="updateEmail" class="glyphicon glyphicon-pencil"></a></p>');
+                $('.update_phone').one('click', function () {
+                    $("#email_input").replaceWith('<p id="updateEmail" class="email" style="margin-left: 15px">' + newEmailValue + ' <a class="glyphicon glyphicon-pencil"></a></p>');
+                    document.getElementById('updateEmail').style.color = "green";
                 });
             });
         });
@@ -182,8 +176,9 @@
                     type: 'GET',
                     data: {phone: newPhoneValue, id: idOfUser}
                 });
-                $('.update_email #table_facture_info').one('click', function () {
-                    $(".newPhone").replaceWith('<p class="phone" style="margin-left: 15px">' + newPhoneValue + ' <a id="updatePhone" class="glyphicon glyphicon-pencil"></a>');
+                $('.update_email').one('click', function () {
+                    $(".newPhone").replaceWith('<p id="updatePhone" class="phone" style="margin-left: 15px">' + newPhoneValue + ' <a class="glyphicon glyphicon-pencil"></a>');
+                    document.getElementById('updatePhone').style.color = "green";
                 });
             });
         });
