@@ -8,7 +8,7 @@
                 <p>Prihlasovací e-mail:</p>
             </td>
             <td>
-                <div class="update_email form-inline">
+                <div class="update_email form-inline" style="cursor: pointer">
                     <p class="email" style="margin-left: 15px"><?php echo $data['email'] ?> <a
                                 class="glyphicon glyphicon-pencil" aria-hidden="true"></a></p>
                     <a type="button" style="margin-bottom: 0; margin-left: 10px" class="hidden">Ulozit</a>
@@ -20,7 +20,7 @@
                 <p>Telefón:</p>
             </td>
             <td>
-                <div class="update_phone">
+                <div class="update_phone" style="cursor: pointer">
                     <p class="phone" style="margin-left: 15px"><?php echo $data['fact_phone'] ?> <a id="updatePhone"
                                                                                                     class="glyphicon glyphicon-pencil"></a>
                     </p>
