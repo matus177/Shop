@@ -1,5 +1,6 @@
 <div class="col-md-9">
     <?php $this->load->view('FlashMessagesView'); ?>
+    <?php $this->load->view('CheckoutView'); ?>
     <?php echo form_open('Cart/updateCart'); ?>
     <table class="table table-bordered">
         <tr>
@@ -37,5 +38,27 @@
     <p>
         <a href="<?php echo $_SERVER['HTTP_REFERER']; ?>" class="btn btn-info" type="submit">Pokracovat v nakupe</a>
         <?php echo form_submit(array('class' => 'btn btn-warning'), 'Aktualizovat kosik'); ?>
+        <a href="<?php echo base_url('ShippingAndBilling'); ?>" class="btn btn-success s">Dalej</a>
     </p>
 </div>
+
+<script>
+    $(document).ready(function () {
+
+        $(".s").click(function() {
+            var dataa = "bla bla";
+            $.ajax(
+                {
+                    url: '<?php echo base_url('ShippingAndBilling/a/') ?>' + 1,
+                    type: 'GET',
+
+                    //url: window.location.origin + '/Shop/ShippingAndBilling/a',
+                    //type: 'GET',
+                   // data: {uu: 'aaa'},
+                    success: function (result) {
+                        alert(result);
+                    }
+                })
+        });
+    });
+</script>
