@@ -10,9 +10,11 @@ class Cart extends CI_Controller
 
     public function index()
     {
+        $data['data'] = 0;
         $this->load->view('HeaderView');
         $this->load->view('UpperMenuView');
         $this->load->view('LeftMenuView');
+        $this->load->view('CheckoutView', $data);
         $this->load->view('CartView', $this->addToCart());
         $this->load->view('FooterView');
     }

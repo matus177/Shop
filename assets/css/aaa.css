@@ -1,6 +1,6 @@
 @-webkit-keyframes myanimation {
     from {
-        left: 0%;
+        left: 0;
     }
     to {
         left: 50%;
@@ -8,8 +8,8 @@
 }
 
 .checkout-wrap {
-     position: relative;
- }
+    position: relative;
+}
 
 ul.checkout-bar li {
     color: #ccc;
@@ -19,8 +19,9 @@ ul.checkout-bar li {
     padding: 14px 20px 14px 80px;
     position: relative;
 }
+
 ul.checkout-bar li:before {
-    -webkit-box-shadow: inset 2px 2px 2px 0px rgba(0, 0, 0, 0.2);
+    -webkit-box-shadow: inset 2px 2px 2px 0 rgba(0, 0, 0, 0.2);
     background: #ddd;
     border: 2px solid #FFF;
     border-radius: 50%;
@@ -37,35 +38,44 @@ ul.checkout-bar li:before {
     width: 35px;
     z-index: 999;
 }
+
 ul.checkout-bar li.active {
     color: #8bc53f;
     font-weight: bold;
 }
+
 ul.checkout-bar li.active:before {
     background: #8bc53f;
     z-index: 99999;
 }
+
 ul.checkout-bar li.visited {
     background: #ECECEC;
     color: #57aed1;
     z-index: 99999;
 }
+
 ul.checkout-bar li.visited:before {
     background: #57aed1;
     z-index: 99999;
 }
+
 ul.checkout-bar li:nth-child(1):before {
     content: "1";
 }
+
 ul.checkout-bar li:nth-child(2):before {
     content: "2";
 }
+
 ul.checkout-bar li:nth-child(3):before {
     content: "3";
 }
+
 ul.checkout-bar li:nth-child(4):before {
     content: "4";
 }
+
 ul.checkout-bar li:nth-child(5):before {
     content: "5";
 }
@@ -76,8 +86,8 @@ ul.checkout-bar li:nth-child(5):before {
         background-color: #8bc53f;
         background-image: -webkit-linear-gradient(-45deg, rgba(255, 255, 255, 0.2) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0.2) 75%, transparent 75%, transparent);
         background-image: -moz-linear-gradient(-45deg, rgba(255, 255, 255, 0.2) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0.2) 75%, transparent 75%, transparent);
-        -webkit-box-shadow: inset 2px 2px 2px 0px rgba(0, 0, 0, 0.2);
-        box-shadow: inset 2px 2px 2px 0px rgba(0, 0, 0, 0.2);
+        -webkit-box-shadow: inset 2px 2px 2px 0 rgba(0, 0, 0, 0.2);
+        box-shadow: inset 2px 2px 2px 0 rgba(0, 0, 0, 0.2);
         content: "";
         height: 15px;
         width: 100%;
@@ -92,8 +102,8 @@ ul.checkout-bar li:nth-child(5):before {
     }
 
     ul.checkout-bar {
-        -webkit-box-shadow: inset 2px 2px 2px 0px rgba(0, 0, 0, 0.2);
-        box-shadow: inset 2px 2px 2px 0px rgba(0, 0, 0, 0.2);
+        -webkit-box-shadow: inset 2px 2px 2px 0 rgba(0, 0, 0, 0.2);
+        box-shadow: inset 2px 2px 2px 0 rgba(0, 0, 0, 0.2);
         background-size: 35px 35px;
         background-color: #EcEcEc;
         background-image: -webkit-linear-gradient(-45deg, rgba(255, 255, 255, 0.4) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.4) 50%, rgba(255, 255, 255, 0.4) 75%, transparent 75%, transparent);
@@ -105,13 +115,14 @@ ul.checkout-bar li:nth-child(5):before {
         position: absolute;
         width: 100%;
     }
+
     ul.checkout-bar:before {
         background-size: 35px 35px;
         background-color: #57aed1;
         background-image: -webkit-linear-gradient(-45deg, rgba(255, 255, 255, 0.2) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0.2) 75%, transparent 75%, transparent);
         background-image: -moz-linear-gradient(-45deg, rgba(255, 255, 255, 0.2) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0.2) 75%, transparent 75%, transparent);
-        -webkit-box-shadow: inset 2px 2px 2px 0px rgba(0, 0, 0, 0.2);
-        box-shadow: inset 2px 2px 2px 0px rgba(0, 0, 0, 0.2);
+        -webkit-box-shadow: inset 2px 2px 2px 0 rgba(0, 0, 0, 0.2);
+        box-shadow: inset 2px 2px 2px 0 rgba(0, 0, 0, 0.2);
         border-radius: 15px;
         content: " ";
         height: 15px;
@@ -119,6 +130,7 @@ ul.checkout-bar li:nth-child(5):before {
         position: absolute;
         width: 10%;
     }
+
     ul.checkout-bar li {
         display: inline-block;
         margin: 50px 0 0;
@@ -126,6 +138,7 @@ ul.checkout-bar li:nth-child(5):before {
         text-align: center;
         width: 19%;
     }
+
     ul.checkout-bar li:before {
         height: 45px;
         left: 40%;
@@ -135,16 +148,18 @@ ul.checkout-bar li:nth-child(5):before {
         width: 45px;
         z-index: 99;
     }
+
     ul.checkout-bar li.visited {
         background: none;
     }
+
     ul.checkout-bar li.visited:after {
         background-size: 35px 35px;
         background-color: #57aed1;
         background-image: -webkit-linear-gradient(-45deg, rgba(255, 255, 255, 0.2) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0.2) 75%, transparent 75%, transparent);
         background-image: -moz-linear-gradient(-45deg, rgba(255, 255, 255, 0.2) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0.2) 75%, transparent 75%, transparent);
-        -webkit-box-shadow: inset 2px 2px 2px 0px rgba(0, 0, 0, 0.2);
-        box-shadow: inset 2px 2px 2px 0px rgba(0, 0, 0, 0.2);
+        -webkit-box-shadow: inset 2px 2px 2px 0 rgba(0, 0, 0, 0.2);
+        box-shadow: inset 2px 2px 2px 0 rgba(0, 0, 0, 0.2);
         content: "";
         height: 15px;
         left: 50%;

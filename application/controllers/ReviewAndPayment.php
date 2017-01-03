@@ -1,6 +1,6 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 
-class ShippingAndBilling extends CI_Controller
+class ReviewAndPayment extends CI_Controller
 {
     public function __construct()
     {
@@ -14,7 +14,7 @@ class ShippingAndBilling extends CI_Controller
         $this->load->view('UpperMenuView');
         $this->load->view('LeftMenuView');
         $this->load->view('CheckoutView', $datas);
-        $this->load->view('ShippingAndBillingView');
+        $this->load->view('ReviewAndPaymentView');
         $this->load->view('FooterView');
     }
 
