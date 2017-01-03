@@ -25,7 +25,6 @@ class UserAccountSettings extends MY_Controller
 
     public function updateEmail()
     {
-        var_dump($this->input->get());
         $email = $this->input->get('email');
         $id = $this->input->get('id');
         $this->UserModel->updateEmail($email, $id);
