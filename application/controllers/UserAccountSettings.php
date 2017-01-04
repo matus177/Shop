@@ -27,7 +27,7 @@ class UserAccountSettings extends MY_Controller
     {
         $email = $this->input->get('email');
         $id = $this->input->get('id');
-        $this->UserModel->updateEmail($email, $id);
+        echo $this->UserModel->isUserExist($email) ? 'error' : $this->UserModel->updateEmail($email, $id);
     }
 
     public function updatePhone()

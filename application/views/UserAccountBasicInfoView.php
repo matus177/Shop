@@ -9,9 +9,8 @@
             </td>
             <td>
                 <div class="update_email form-inline" style="cursor: pointer">
-                    <p class="email" style="margin-left: 15px"><?php echo $data['email'] ?> <a
+                    <p id="updateEmail" class="email" style="margin-left: 15px"><?php echo $data['email'] ?> <a
                                 class="glyphicon glyphicon-pencil" aria-hidden="true"></a></p>
-                    <a type="button" style="margin-bottom: 0; margin-left: 10px" class="hidden">Ulozit</a>
                 </div>
             </td>
         </tr>
@@ -142,19 +141,24 @@
 </div>
 <script>
     $(document).ready(function () {
-        $('.update_email').click(function (e) {
-            e.preventDefault();
-            var emailValue = $('p.email').text().trim();
-            $("p.email").replaceWith('<input type="text" id="email_input" class="form-control" name="email" value="' + emailValue + '">');
-            $('#email_input').change(function () {
-                var newEmailValue = $('#email_input').val().trim();
+        $('#updateEmail').click(function () {
+            var emailValue = $('p.email').text();
+            $("p.email").replaceWith('<input data-toggle="tooltip" title="Format emailu: nazov@domena.sk" type="email" id="email_input" class="form-control" name="email1" value="' + emailValue + '">');
+            $('[data-toggle="tooltip"]').tooltip();
+            $('#email_input').keyup(function () {
+                var newEmailValue = $('#email_input').val();
                 var idOfUser = '<?php echo $data['id']; ?>';
                 $.ajax({
                     url: window.location.origin + '/Shop/UserAccountSettings/updateEmail',
                     type: 'GET',
-                    data: {email: newEmailValue, id: idOfUser}
+                    data: {email: newEmailValue, id: idOfUser},
+                    success: function (response) {
+                        if (response == 'error')
+                            alert('Tento email sa uz pouziva, zvolte prosim iny.');
+                    }
                 });
-                $('.update_phone').one('click', function () {
+                document.getElementById('email_input').style.borderColor = "green";
+                $('.update_phone').click(function () {
                     $("#email_input").replaceWith('<p id="updateEmail" class="email" style="margin-left: 15px">' + newEmailValue + ' <a class="glyphicon glyphicon-pencil"></a></p>');
                     document.getElementById('updateEmail').style.color = "green";
                 });
@@ -164,11 +168,11 @@
 </script>
 <script>
     $(document).ready(function () {
-        $('.update_phone').click(function (e) {
-            e.preventDefault();
+        $('.update_phone').click(function () {
+            $('.update_phone').unbind('click');
             var phoneValue = $('p.phone').text().trim();
             $("p.phone").replaceWith('<input type="text" class="form-control newPhone" name="phone" value="' + phoneValue + '">');
-            $('.newPhone').change(function () {
+            $('.newPhone').keyup(function () {
                 var newPhoneValue = $(".newPhone").val().trim();
                 var idOfUser = '<?php echo $data['id']; ?>';
                 $.ajax({
@@ -176,6 +180,7 @@
                     type: 'GET',
                     data: {phone: newPhoneValue, id: idOfUser}
                 });
+                document.getElementById('email_input').style.borderColor = "green";
                 $('.update_email').one('click', function () {
                     $(".newPhone").replaceWith('<p id="updatePhone" class="phone" style="margin-left: 15px">' + newPhoneValue + ' <a class="glyphicon glyphicon-pencil"></a>');
                     document.getElementById('updatePhone').style.color = "green";
@@ -186,7 +191,7 @@
 </script>
 <script>
     function updateCompanyData(idOfInput) {
-        $('#' + idOfInput).change(function () {
+        $('#' + idOfInput).keyup(function () {
             var data = $('#' + idOfInput).val();
             var idOfUser = '<?php echo $data['id']; ?>';
             $.ajax({

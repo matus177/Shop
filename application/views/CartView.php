@@ -1,4 +1,4 @@
-<div class="col-md-9">
+<div class="col-md-9 col-sm-offset-3">
     <?php $this->load->view('FlashMessagesView'); ?>
     <?php echo form_open('Cart/updateCart'); ?>
     <table class="table table-bordered">
@@ -37,6 +37,8 @@
     <p>
         <a href="<?php echo $_SERVER['HTTP_REFERER']; ?>" class="btn btn-info" type="submit">Pokracovat v nakupe</a>
         <?php echo form_submit(array('class' => 'btn btn-warning'), 'Aktualizovat kosik'); ?>
-        <a href="<?php echo base_url('ShippingAndBilling?id=1'); ?>" class="btn btn-success">Dalej</a>
+        <a style="float: right" href="<?php echo base_url('ShippingAndBilling?id=1'); ?>" class="btn btn-success">Dalej
+            <span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span>
+        </a>
     </p>
 </div>

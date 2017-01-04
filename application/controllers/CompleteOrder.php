@@ -9,17 +9,12 @@ class CompleteOrder extends CI_Controller
 
     public function index()
     {
-        $datas['data'] = $this->a();
+        $orderData['orderStep'] = $_GET['id'];
         $this->load->view('HeaderView');
         $this->load->view('UpperMenuView');
         $this->load->view('LeftMenuView');
-        $this->load->view('CheckoutView', $datas);
+        $this->load->view('CheckoutView', $orderData);
         $this->load->view('CompleteOrderView');
         $this->load->view('FooterView');
-    }
-
-    public function a()
-    {
-        return $_GET['id'];
     }
 }
