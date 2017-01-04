@@ -4,15 +4,15 @@
         <h4><b>Zvolte dopravu</b></h4>
         <div class="panel panel-info">
             <div class="panel-body">
-                <form id="shipping_form" class="aa">
+                <form id="shipping_form">
                     <div class="checkbox">
                         <label><input type="checkbox" id="personal_collection" value="">Osobny odber
-                            <span id="a" class="a glyphicon glyphicon-question-sign hidden"></span>
+                            <span class="a glyphicon glyphicon-question-sign"></span>
                         </label>
                     </div>
                     <div class="checkbox">
                         <label><input type="checkbox" id="courier" value="1">Kurier</label>
-                        <span id="a" class="a glyphicon glyphicon-question-sign hidden"></span>
+                        <span class="a glyphicon glyphicon-question-sign"></span>
                     </div>
                     <div class="checkbox">
                         <label><input type="checkbox" id="slovak_post" value="">Slovenska posta</label>
@@ -25,7 +25,7 @@
         <h4><b>Zvolte sposob platby</b></h4>
         <div class="panel panel-info">
             <div class="panel-body">
-                <form id="payment_form">
+                <form>
                     <div class="payment_options">
                         <div class="checkbox">
                             <label><input id="dobierka" type="checkbox" value="" disabled>Dobierkou</label>
@@ -77,7 +77,7 @@
                 $('.delivery_price h4').replaceWith('<h4>' + 'Cena dopravy: Nezadane' + '</h4>');
             }
         });
-        $('#payment_form').click(function () {
+        $('.payment_options input').click(function () {
             if ($('#dobierka').is(':checked')) {
                 $('#personal_collection').is(':checked') ? $('.delivery_price h4').replaceWith('<h4>' + 'Cena dopravy: 4,50' + '&euro;' + '</h4>') :
                     $('#courier').is(':checked') ? $('.delivery_price h4').replaceWith('<h4>' + 'Cena dopravy: 9,50' + '&euro;' + '</h4>') :
@@ -97,18 +97,16 @@
                     $('#courier').is(':checked') ? $('.delivery_price h4').replaceWith('<h4>' + 'Cena dopravy: 6' + '&euro;' + '</h4>') :
                         $('#slovak_post').is(':checked') ? $('.delivery_price h4').replaceWith('<h4>' + 'Cena dopravy: 3,50' + '&euro;' + '</h4>') : '';
             } else {
-                $('#dobierka').attr('disabled', false);
-                $('#hotovost').attr('disabled', false);
-                $('#card').attr('disabled', false);
+                $('.payment_options input').attr('disabled', false);
             }
         });
     });
 </script>
 <script>
-    $('.aa').hover(function () {
-        $('.a').removeClass('hidden');
-        alert($('.aa input').val());
-    }, function () {
-        $('.a').addClass('hidden');
-    });
+    //    $('.aa').hover(function () {
+    //        $('.a').removeClass('hidden');
+    //        alert($('.aa input').val());
+    //    }, function () {
+    //        $('.a').addClass('hidden');
+    //    });
 </script>
