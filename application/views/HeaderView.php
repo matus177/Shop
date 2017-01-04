@@ -15,9 +15,6 @@
     <link href="<?php echo base_url('assets/css/style.css'); ?>" rel="stylesheet"/>
     <link href="<?php echo base_url('assets/css/left-menu.css'); ?>" rel="stylesheet"/>
     <link href="<?php echo base_url('assets/css/user-account-settings-menu.css'); ?>" rel="stylesheet"/>
-
-    <link href='http://fonts.googleapis.com/css?family=PT+Sans+Caption:400,700' rel='stylesheet' type='text/css'>
-    <link href="<?php echo base_url('assets/css/aaa.css'); ?>" rel="stylesheet"/>
-
+    <link href="<?php echo base_url('assets/css/cart-checkout-steps.css'); ?>" rel="stylesheet"/>
 </head>
 <body>
