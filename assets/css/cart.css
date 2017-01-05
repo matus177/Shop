@@ -1,0 +1,8 @@
+/* next button popover */
+.popover.left .arrow:after {
+    border-left-color: red
+}
+
+.popover.left {
+    border-color: red
+}

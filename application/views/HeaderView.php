@@ -16,5 +16,6 @@
     <link href="<?php echo base_url('assets/css/left-menu.css'); ?>" rel="stylesheet"/>
     <link href="<?php echo base_url('assets/css/user-account-settings-menu.css'); ?>" rel="stylesheet"/>
     <link href="<?php echo base_url('assets/css/cart-checkout-steps.css'); ?>" rel="stylesheet"/>
+    <link href="<?php echo base_url('assets/css/cart.css'); ?>" rel="stylesheet"/>
 </head>
 <body>

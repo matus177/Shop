@@ -58,4 +58,9 @@ class Cart extends CI_Controller
         $this->session->set_flashdata('category_success', 'Kosik bol aktualizovany.');
         redirect('Cart');
     }
+
+    public function isCartEmpty()
+    {
+        echo empty($this->cart->contents());
+    }
 }

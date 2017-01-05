@@ -37,8 +37,26 @@
     <p>
         <a href="<?php echo $_SERVER['HTTP_REFERER']; ?>" class="btn btn-info" type="submit">Pokracovat v nakupe</a>
         <?php echo form_submit(array('class' => 'btn btn-warning'), 'Aktualizovat kosik'); ?>
-        <a style="float: right" href="<?php echo base_url('ShippingAndBilling?id=1'); ?>" class="btn btn-success">Dalej
-            <span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span>
+        <a style="float: right" href="<?php echo base_url('ShippingAndBilling?id=1'); ?>" id="next_button_0"
+           class="btn btn-success">Dalej <span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span>
         </a>
     </p>
 </div>
+<script>
+    $(document).ready(function () {
+        $.ajax({
+            url: 'Cart/isCartEmpty',
+            type: 'GET',
+            success: function (response) {
+                if (response) {
+                    $('#next_button_0').attr("href", "#");
+                    $('#next_button_0').attr("data-placement", "left");
+                    $('#next_button_0').attr("data-content", "Vas nakupny kosik je prazdny.");
+                    $('#next_button_0').popover();
+                } else {
+                    $('#next_button_0').attr('class', 'btn btn-success');
+                }
+            }
+        });
+    });
+</script>
