@@ -6,16 +6,18 @@
             <div class="panel-body">
                 <form id="shipping_form">
                     <div class="checkbox">
-                        <label><input type="checkbox" id="personal_collection" value="">Osobny odber
+                        <label><input type="checkbox" id="personal_collection" class="shipping_checkbox" value="">Osobny
+                            odber
                             <span class="a glyphicon glyphicon-question-sign"></span>
                         </label>
                     </div>
                     <div class="checkbox">
-                        <label><input type="checkbox" id="courier" value="1">Kurier</label>
+                        <label><input type="checkbox" id="courier" class="shipping_checkbox" value="1">Kurier</label>
                         <span class="a glyphicon glyphicon-question-sign"></span>
                     </div>
                     <div class="checkbox">
-                        <label><input type="checkbox" id="slovak_post" value="">Slovenska posta</label>
+                        <label><input type="checkbox" id="slovak_post" class="shipping_checkbox" value="">Slovenska
+                            posta</label>
                     </div>
                 </form>
             </div>
@@ -28,13 +30,15 @@
                 <form>
                     <div class="payment_options">
                         <div class="checkbox">
-                            <label><input id="dobierka" type="checkbox" value="" disabled>Dobierkou</label>
+                            <label><input id="dobierka" class="payment_checkbox" type="checkbox" value="" disabled>Dobierkou</label>
                         </div>
                         <div class="checkbox">
-                            <label><input id="hotovost" type="checkbox" value="" disabled>V hotovosti</label>
+                            <label><input id="hotovost" class="payment_checkbox" type="checkbox" value="" disabled>V
+                                hotovosti</label>
                         </div>
                         <div class="checkbox">
-                            <label><input id="card" type="checkbox" value="" disabled>Kartou</label>
+                            <label><input id="card" class="payment_checkbox" type="checkbox" value=""
+                                          disabled>Kartou</label>
                         </div>
                     </div>
                 </form>
@@ -44,12 +48,16 @@
     <div class="delivery_price">
         <h4>Cena dopravy: Nezadane</h4>
     </div>
-    <a href="<?php echo base_url('Cart'); ?>" class="btn btn-default">
-        <span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span> Spat
-    </a>
-    <a style="float: right" href="<?php echo base_url('ShippingOptions?id=2'); ?>" class="btn btn-success">Dalej
-        <span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span>
-    </a>
+    <div class="as">
+
+        <a href="<?php echo base_url('Cart'); ?>" class="btn btn-default">
+            <span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span> Spat
+        </a>
+        <a style="float: right" href="<?php echo base_url('ShippingOptions?id=2'); ?>" id="next_button_1"
+           class="btn btn-success">Dalej
+            <span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span>
+        </a>
+    </div>
 </div>
 <script>
     $(document).ready(function () {
@@ -103,10 +111,14 @@
     });
 </script>
 <script>
-    //    $('.aa').hover(function () {
-    //        $('.a').removeClass('hidden');
-    //        alert($('.aa input').val());
-    //    }, function () {
-    //        $('.a').addClass('hidden');
-    //    });
+    $(document).ready(function () {
+        $('#next_button_1').hover(function () {
+            if (!($('.payment_checkbox').is(":checked") && $('.shipping_checkbox').is(":checked"))) {
+                $('#next_button_1').attr("href", "#").attr("data-placement", "left").attr("data-content", "Zadajte sposob dopravy a platby.");
+                $('#next_button_1').popover();
+            } else {
+                $('#next_button_1').attr("href", '<?php echo base_url('ShippingOptions?id=2'); ?>');
+            }
+        });
+    });
 </script>
