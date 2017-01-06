@@ -48,16 +48,13 @@
     <div class="delivery_price">
         <h4>Cena dopravy: Nezadane</h4>
     </div>
-    <div class="as">
-
-        <a href="<?php echo base_url('Cart'); ?>" class="btn btn-default">
-            <span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span> Spat
-        </a>
-        <a style="float: right" href="<?php echo base_url('ShippingOptions?id=2'); ?>" id="next_button_1"
-           class="btn btn-success">Dalej
-            <span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span>
-        </a>
-    </div>
+    <a href="<?php echo base_url('Cart'); ?>" class="btn btn-default">
+        <span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span> Spat
+    </a>
+    <a style="float: right" href="<?php echo base_url('ShippingOptions?id=2'); ?>" id="next_button_1"
+       class="btn btn-success">Dalej
+        <span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span>
+    </a>
 </div>
 <script>
     $(document).ready(function () {
