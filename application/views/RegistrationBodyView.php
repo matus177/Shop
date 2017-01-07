@@ -58,7 +58,7 @@
                         <div class="form-group">
                             <label for="fact_city" class="col-md-3 control-label">Mesto</label>
                             <div class="col-md-9">
-                                <input type="text" onmouseover="zipForCity('city-search')"
+                                <input type="text" onmouseover="zipForCity('city-search', 'zip-search_fact')"
                                        class="form-control city-search"
                                        name="fact_city" placeholder="Mesto">
                             </div>
@@ -66,7 +66,7 @@
                         <div class="form-group">
                             <label for="fact_zip" class="col-md-3 control-label">PSČ</label>
                             <div class="col-md-9">
-                                <input type="text" class="form-control zip-search" name="fact_zip" placeholder="PSČ">
+                                <input type="text" class="form-control zip-search_fact" name="fact_zip" placeholder="PSČ">
                             </div>
                         </div>
                         <div class="form-group">
@@ -120,14 +120,14 @@
                     <div class="form-group">
                         <label for="deliv_city" class="col-md-3 control-label">Mesto</label>
                         <div class="col-md-9">
-                            <input type="text" onmouseover="zipForCity('deliv-city-search')"
+                            <input type="text" onmouseover="zipForCity('deliv-city-search', 'zip-search_deliv')"
                                    class="form-control deliv-city-search" name="deliv_city" placeholder="Mesto">
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="deliv_zip" class="col-md-3 control-label">PSČ</label>
                         <div class="col-md-9">
-                            <input type="text" class="form-control zip-search" name="deliv_zip" placeholder="PSČ">
+                            <input type="text" class="form-control zip-search_deliv" name="deliv_zip" placeholder="PSČ">
                         </div>
                     </div>
                     <div class="form-group">
@@ -235,7 +235,7 @@
     })
 </script>
 <script>
-    function zipForCity(city) {
+    function zipForCity(city, factOrDelivZip) {
         $('.' + city).on("autocompletechange", function () {
             var searchTerm = {
                 city: $('.' + city).val()
@@ -245,7 +245,7 @@
                 type: 'GET',
                 data: searchTerm,
                 success: function (data) {
-                    $('.zip-search').val(data);
+                    $('.' + factOrDelivZip).val(data);
                 }
             })
         });
