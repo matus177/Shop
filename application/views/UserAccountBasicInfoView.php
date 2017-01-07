@@ -73,7 +73,6 @@
                 <input type="text" id="fact_name" onclick="updatePersonalData(this.id)" class="form-control"
                        name="fact_name"
                        value="<?php echo $this->encryption->decrypt($data['fact_name']) ?>">
-
             </td>
             <td class="format_inputs_top" colspan="2">
                 <div class="inline_inputs">
