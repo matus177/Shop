@@ -5,19 +5,22 @@
         <div class="panel panel-info">
             <div class="panel-body">
                 <form id="shipping_form">
-                    <div class="checkbox">
+                    <div onmouseover="shippingAndPaymentInfo('personal_price', 'personal_price_checkbox')"
+                         class="personal_price_checkbox checkbox">
                         <label><input type="checkbox" id="personal_collection" class="shipping_checkbox" value="">Osobny
-                            odber
-                            <span class="a glyphicon glyphicon-question-sign"></span>
-                        </label>
+                            odber</label>
+                        <div id="personal_price" class="hidden">Cena za dopravu 1&euro;</div>
                     </div>
-                    <div class="checkbox">
-                        <label><input type="checkbox" id="courier" class="shipping_checkbox" value="1">Kurier</label>
-                        <span class="a glyphicon glyphicon-question-sign"></span>
+                    <div onmouseover="shippingAndPaymentInfo('courier_price', 'courier_price_checkbox')"
+                         class="courier_price_checkbox checkbox">
+                        <label><input type="checkbox" id="courier" class="shipping_checkbox" value="">Kurier</label>
+                        <div id="courier_price" class="hidden">Cena za dopravu 6&euro;</div>
                     </div>
-                    <div class="checkbox">
+                    <div onmouseover="shippingAndPaymentInfo('post_price', 'post_price_checkbox')"
+                         class="post_price_checkbox checkbox">
                         <label><input type="checkbox" id="slovak_post" class="shipping_checkbox" value="">Slovenska
                             posta</label>
+                        <div id="post_price" class="hidden">Cena za dopravu 3,50&euro;</div>
                     </div>
                 </form>
             </div>
@@ -29,16 +32,22 @@
             <div class="panel-body">
                 <form>
                     <div class="payment_options">
-                        <div class="checkbox">
+                        <div onmouseover="shippingAndPaymentInfo('dobierka_price', 'dobierka_price_checkbox')"
+                             class="dobierka_price_checkbox checkbox">
                             <label><input id="dobierka" class="payment_checkbox" type="checkbox" value="" disabled>Dobierkou</label>
+                            <div id="dobierka_price" class="hidden">Cena za platbu 3,50&euro;</div>
                         </div>
-                        <div class="checkbox">
+                        <div onmouseover="shippingAndPaymentInfo('hotovost_price', 'hotovost_price_checkbox')"
+                             class="hotovost_price_checkbox checkbox">
                             <label><input id="hotovost" class="payment_checkbox" type="checkbox" value="" disabled>V
                                 hotovosti</label>
+                            <div id="hotovost_price" class="hidden">Cena za platbu 0&euro;</div>
                         </div>
-                        <div class="checkbox">
+                        <div onmouseover="shippingAndPaymentInfo('card_price', 'card_price_checkbox')"
+                             class="card_price_checkbox checkbox">
                             <label><input id="card" class="payment_checkbox" type="checkbox" value=""
                                           disabled>Kartou</label>
+                            <div id="card_price" class="hidden">Cena za platbu 0&euro;</div>
                         </div>
                     </div>
                 </form>
@@ -118,4 +127,16 @@
             }
         });
     });
+</script>
+<script>
+    function shippingAndPaymentInfo(price, row) {
+        document.getElementById(price).style.display = "inline";
+        document.getElementById(price).style.color = "green";
+        document.getElementById(price).style.marginLeft = "20px";
+
+        $('#' + price).removeClass('hidden');
+        $('.' + row).mouseleave(function () {
+            $('#' + price).addClass('hidden');
+        });
+    }
 </script>
