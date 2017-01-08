@@ -10,20 +10,20 @@
                     <label for="email" class="col-md-3 control-label">Email</label>
                     <div class="col-md-9">
                         <input type="email" class="form-control" name="email"
-                               placeholder="Email slúži ako login">
+                               placeholder="Email slúži ako login" required>
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="password" class="col-md-3 control-label">Heslo</label>
                     <div class="col-md-9">
-                        <input type="password" class="form-control" name="password" placeholder="Heslo">
+                        <input type="password" class="form-control" name="password" placeholder="Heslo" required>
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="cpassword" class="col-md-3 control-label">Potvrdenie hesla</label>
                     <div class="col-md-9">
                         <input type="password" class="form-control" name="cpassword"
-                               placeholder="Potvrdenie hesla">
+                               placeholder="Potvrdenie hesla" required>
                     </div>
                 </div>
             </div>
@@ -38,21 +38,21 @@
                             <label for="fact_name" class="col-md-3 control-label">Meno</label>
                             <div class="col-md-9">
                                 <input type="text" class="form-control" name="fact_name"
-                                       placeholder="Meno">
+                                       placeholder="Meno" required>
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="fact_surname" class="col-md-3 control-label">Priezvisko</label>
                             <div class="col-md-9">
                                 <input type="text" class="form-control" name="fact_surname"
-                                       placeholder="Priezvisko">
+                                       placeholder="Priezvisko" required>
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="fact_street" class="col-md-3 control-label">Ulica</label>
                             <div class="col-md-9">
                                 <input type="text" class="form-control street-search" name="fact_street"
-                                       placeholder="Ulica">
+                                       placeholder="Ulica" required>
                             </div>
                         </div>
                         <div class="form-group">
@@ -60,20 +60,21 @@
                             <div class="col-md-9">
                                 <input type="text" onmouseover="zipForCity('city-search', 'zip-search_fact')"
                                        class="form-control city-search"
-                                       name="fact_city" placeholder="Mesto">
+                                       name="fact_city" placeholder="Mesto" required>
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="fact_zip" class="col-md-3 control-label">PSČ</label>
                             <div class="col-md-9">
-                                <input type="text" class="form-control zip-search_fact" name="fact_zip" placeholder="PSČ">
+                                <input type="text" class="form-control zip-search_fact zip_mask" name="fact_zip"
+                                       placeholder="PSČ" required>
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="fact_phone" class="col-md-3 control-label">Telefón</label>
                             <div class="col-md-9">
-                                <input type="text" class="form-control" name="fact_phone"
-                                       placeholder="Telefón">
+                                <input type="tel" class="form-control phone_mask" name="fact_phone"
+                                       placeholder="Telefón" value="+421" required>
                             </div>
                         </div>
                     </div>
@@ -127,7 +128,8 @@
                     <div class="form-group">
                         <label for="deliv_zip" class="col-md-3 control-label">PSČ</label>
                         <div class="col-md-9">
-                            <input type="text" class="form-control zip-search_deliv" name="deliv_zip" placeholder="PSČ">
+                            <input type="text" class="form-control zip-search_deliv zip_mask" name="deliv_zip"
+                                   placeholder="PSČ">
                         </div>
                     </div>
                     <div class="form-group">
@@ -140,8 +142,8 @@
                     <div class="form-group">
                         <label for="deliv_phone" class="col-md-3 control-label">Telefón</label>
                         <div class="col-md-9">
-                            <input type="text" class="form-control" name="deliv_phone"
-                                   placeholder="Kontaktny telefon pre dopravcu">
+                            <input type="text" class="form-control phone_mask" name="deliv_phone"
+                                   placeholder="Kontaktny telefon pre dopravcu" value="+421">
                         </div>
                     </div>
                 </div>
@@ -250,4 +252,8 @@
             })
         });
     }
+</script>
+<script>
+    $(".phone_mask").mask("+000 000 000 000");
+    $(".zip_mask").mask("000 00");
 </script>

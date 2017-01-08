@@ -17,5 +17,6 @@
     <link href="<?php echo base_url('assets/css/user-account-settings-menu.css'); ?>" rel="stylesheet"/>
     <link href="<?php echo base_url('assets/css/cart-checkout-steps.css'); ?>" rel="stylesheet"/>
     <link href="<?php echo base_url('assets/css/cart.css'); ?>" rel="stylesheet"/>
+    <script src="<?php echo base_url('assets/js/jquery-mask.js'); ?>"></script>
 </head>
 <body>
