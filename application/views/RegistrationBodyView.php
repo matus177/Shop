@@ -74,7 +74,8 @@
                             <label for="fact_phone" class="col-md-3 control-label">Telefón</label>
                             <div class="col-md-9">
                                 <input type="tel" class="form-control phone_mask" name="fact_phone"
-                                       placeholder="Telefón" value="+421" required>
+                                       placeholder="Telefón" value="+421"
+                                       pattern=".{7,}" title="+421 xxx xxx xxx" required>
                             </div>
                         </div>
                     </div>

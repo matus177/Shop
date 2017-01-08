@@ -104,7 +104,7 @@
                 <div class="inline_inputs">
                     PSC
                     <input type="text" id="fact_zip" onclick="updatePersonalData(this.id)"
-                           class="form-control zip-search_fact" name="fact_zip"
+                           class="form-control zip-search_fact zip_mask" name="fact_zip"
                            value="<?php echo $data['fact_zip'] ?>">
                 </div>
             </td>
@@ -169,6 +169,7 @@
 <script>
     $(document).ready(function () {
         $('.newPhone').mask('+000 000 000 000');
+        $('.zip_mask').mask('000 00');
         $('.update_phone').click(function () {
             $('.update_phone').unbind('click');
             var phoneValue = $('p.phone').text().trim();

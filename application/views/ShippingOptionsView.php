@@ -45,14 +45,15 @@
                 <label for="email" class="col-md-3 control-label">Email</label>
                 <div class="col-md-7">
                     <input type="email" class="form-control" name="email"
-                           placeholder="Email" value="<?php echo $userData['email'] ?>">
+                           placeholder="Email" value="<?php echo $userData['email'] ?>" required>
                 </div>
             </div>
             <div class="form-group">
                 <label for="fact_name" class="col-md-3 control-label">Meno</label>
                 <div class="col-md-7">
                     <input type="text" class="form-control" name="fact_name"
-                           placeholder="Meno" value="<?php echo $this->encryption->decrypt($userData['fact_name']) ?>">
+                           placeholder="Meno" value="<?php echo $this->encryption->decrypt($userData['fact_name']) ?>"
+                           required>
                 </div>
             </div>
             <div class="form-group">
@@ -60,14 +61,14 @@
                 <div class="col-md-7">
                     <input type="text" class="form-control" name="fact_surname"
                            placeholder="Priezvisko"
-                           value="<?php echo $this->encryption->decrypt($userData['fact_surname']) ?>">
+                           value="<?php echo $this->encryption->decrypt($userData['fact_surname']) ?>" required>
                 </div>
             </div>
             <div class="form-group">
                 <label for="fact_street" class="col-md-3 control-label">Ulica</label>
                 <div class="col-md-7">
                     <input type="text" class="form-control street-search" name="fact_street"
-                           placeholder="Ulica" value="<?php echo $userData['fact_street'] ?>">
+                           placeholder="Ulica" value="<?php echo $userData['fact_street'] ?>" required>
                 </div>
             </div>
             <div class="form-group">
@@ -75,28 +76,29 @@
                 <div class="col-md-7">
                     <input type="text" onmouseover="zipForCity('city-search', 'zip-search_fact')"
                            class="form-control city-search"
-                           name="fact_city" placeholder="Mesto" value="<?php echo $userData['fact_city'] ?>">
+                           name="fact_city" placeholder="Mesto" value="<?php echo $userData['fact_city'] ?>" required>
                 </div>
             </div>
             <div class="form-group">
                 <label for="fact_zip" class="col-md-3 control-label">PSČ</label>
                 <div class="col-md-7">
-                    <input type="text" class="form-control zip-search_fact" name="fact_zip" placeholder="PSČ"
-                           value="<?php echo $userData['fact_zip'] ?>">
+                    <input type="text" class="form-control zip-search_fact zip_mask" name="fact_zip" placeholder="PSČ"
+                           value="<?php echo $userData['fact_zip'] ?>" required>
                 </div>
             </div>
             <div class="form-group">
                 <label for="fact_phone" class="col-md-3 control-label">Telefón</label>
                 <div class="col-md-7">
-                    <input type="text" class="form-control" name="fact_phone"
-                           placeholder="Telefón" value="<?php echo $userData['fact_phone'] ?>">
+                    <input type="text" class="form-control phone_mask" name="fact_phone"
+                           placeholder="Telefón" value="<?php echo $userData['fact_phone'] ?: '+421' ?>"
+                           pattern=".{7,}" title="+421 xxx xxx xxx" required>
                 </div>
             </div>
         </div>
         <div class="control-label">
             <div class="checkbox">
                 <label><input type="checkbox" class="show-delivery-data" data-toggle="collapse"
-                              data-target="#delivery-data"> Zobrazit dodacie údaje</label>
+                              data-target="#delivery-data"> Vyplnit dodacie údaje</label>
             </div>
             <div id="delivery-data" class="collapse">
                 <hr>
@@ -143,7 +145,8 @@
                 <div class="form-group">
                     <label for="deliv_zip" class="col-md-3 control-label">PSČ</label>
                     <div class="col-md-7">
-                        <input type="text" class="form-control zip-search_deliv" name="deliv_zip" placeholder="PSČ"
+                        <input type="text" class="form-control zip-search_deliv zip_mask" name="deliv_zip"
+                               placeholder="PSČ"
                                value="<?php echo $userData['deliv_zip'] ?>">
                     </div>
                 </div>
@@ -158,9 +161,9 @@
                 <div class="form-group">
                     <label for="deliv_phone" class="col-md-3 control-label">Telefón</label>
                     <div class="col-md-7">
-                        <input type="text" class="form-control" name="deliv_phone"
+                        <input type="text" class="form-control phone_mask" name="deliv_phone"
                                placeholder="Kontaktny telefon pre dopravcu"
-                               value="<?php echo $userData['deliv_phone'] ?>">
+                               value="<?php echo $userData['deliv_phone'] ?: '+421' ?>">
                     </div>
                 </div>
             </div>
@@ -168,7 +171,7 @@
         <div class="control-label">
             <div class="checkbox" style="padding-bottom: 7px">
                 <label><input type="checkbox" class="show-company-data" data-toggle="collapse"
-                              data-target="#company-data"> Zobrazit firemné údaje</label>
+                              data-target="#company-data"> Vyplnit firemné údaje</label>
             </div>
             <div id="company-data" class="collapse">
                 <hr>
@@ -281,6 +284,9 @@
         document.getElementById('change_user_data_buttun').onclick = function () {
             $('#change_user_info').removeAttr("hidden", "hidden");
             $('#logged_user_info').attr("hidden", "hidden");
-        }
+        };
+
+        $('.zip_mask').mask('000 00');
+        $('.phone_mask').mask('+000 000 000 000');
     });
 </script>
