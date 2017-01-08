@@ -87,7 +87,8 @@
             <td class="format_inputs_top">
                 Mesto
                 <input type="text" id="fact_city" onclick="updatePersonalData(this.id)"
-                       class="form-control"
+                       onmouseover="zipForCity('city-search', 'zip-search_fact')"
+                       class="form-control city-search"
                        name="fact_city"
                        value="<?php echo $data['fact_city'] ?>">
             </td>
@@ -102,8 +103,8 @@
             <td class="format_inputs_top">
                 <div class="inline_inputs">
                     PSC
-                    <input type="text" id="fact_zip" onclick="updatePersonalData(this.id)" class="form-control"
-                           name="fact_zip"
+                    <input type="text" id="fact_zip" onclick="updatePersonalData(this.id)"
+                           class="form-control zip-search_fact" name="fact_zip"
                            value="<?php echo $data['fact_zip'] ?>">
                 </div>
             </td>
@@ -167,6 +168,7 @@
 </script>
 <script>
     $(document).ready(function () {
+        $('.newPhone').mask('+000 000 000 000');
         $('.update_phone').click(function () {
             $('.update_phone').unbind('click');
             var phoneValue = $('p.phone').text().trim();
@@ -236,4 +238,21 @@
     $("#fact_street").autocomplete({
         source: window.location.origin + '/Shop/Registration/searchStreet'
     });
+</script>
+<script>
+    function zipForCity(city, factOrDelivZip) {
+        $('.' + city).on("autocompletechange", function () {
+            var searchTerm = {
+                city: $('.' + city).val()
+            };
+            $.ajax({
+                url: window.location.origin + '/Shop/Registration/searchZipForCity',
+                type: 'GET',
+                data: searchTerm,
+                success: function (data) {
+                    $('.' + factOrDelivZip).val(data);
+                }
+            })
+        });
+    }
 </script>

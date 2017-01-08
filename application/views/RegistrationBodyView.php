@@ -243,7 +243,7 @@
                 city: $('.' + city).val()
             };
             $.ajax({
-                url: 'Registration/searchZipForCity',
+                url: window.location.origin + '/Shop/Registration/searchZipForCity',
                 type: 'GET',
                 data: searchTerm,
                 success: function (data) {
