@@ -5,16 +5,19 @@ class ShippingOptions extends CI_Controller
     public function __construct()
     {
         parent::__construct();
+        $this->load->model('UserModel');
     }
 
     public function index()
     {
+        $userId = $this->encryption->decrypt($this->session->userdata('id'));
+        $userData['userData'] = $this->UserModel->getAllUserData($userId);
         $orderData['orderStep'] = $_GET['id'];
         $this->load->view('HeaderView');
         $this->load->view('UpperMenuView');
         $this->load->view('LeftMenuView');
         $this->load->view('CheckoutView', $orderData);
-        $this->load->view('ShippingOptionsView');
+        $this->load->view('ShippingOptionsView', $userData);
         $this->load->view('FooterView');
     }
 
@@ -56,5 +59,10 @@ class ShippingOptions extends CI_Controller
             $this->session->set_flashdata('category_warning', validation_errors());
             redirect('ShippingOptions?id=2');
         }
+    }
+
+    public function isUserLogged()
+    {
+        echo is_null($this->session->userdata('logged_in'));
     }
 }
