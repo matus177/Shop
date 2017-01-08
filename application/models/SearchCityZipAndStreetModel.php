@@ -9,7 +9,7 @@ class SearchCityZipAndStreetModel extends CI_Model
 
     function searchCity($searchTerm)
     {
-        return $this->db->like('city', $searchTerm, 'after')->get('cities');
+        return $this->db->like('city', ucfirst($searchTerm), 'after')->get('cities');
     }
 
     function searchZip($searchTerm)
@@ -19,7 +19,7 @@ class SearchCityZipAndStreetModel extends CI_Model
 
     function searchStreet($searchTerm)
     {
-        return $this->db->like('street', $searchTerm, 'after')->get('streets');
+        return $this->db->like('street', ucfirst($searchTerm), 'after')->get('streets');
     }
 
     function searchZipIfExist($city)
