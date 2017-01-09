@@ -50,4 +50,8 @@ class MY_Controller extends CI_Controller
         }
     }
 
+    public function isUserLogged()
+    {
+        return $this->session->userdata('logged_in');
+    }
 }
