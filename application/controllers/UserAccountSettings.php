@@ -97,6 +97,44 @@ class UserAccountSettings extends MY_Controller
         }
     }
 
+    public function updateDeliveryData()
+    {
+        $idOfUser = $this->input->get('id');
+        $idOfInput = $this->input->get('input');
+        $data = $this->input->get('data');
+
+        switch ($idOfInput) {
+            case 'deliv_name':
+                $data = $this->encryption->encrypt($data);
+                $this->UserModel->updateDeliveryData($idOfUser, $idOfInput, $data);
+                break;
+            case 'deliv_surname':
+                $data = $this->encryption->encrypt($data);
+                $this->UserModel->updateDeliveryData($idOfUser, $idOfInput, $data);
+                break;
+            case 'deliv_company':
+                $this->UserModel->updateDeliveryData($idOfUser, $idOfInput, $data);
+                break;
+            case 'deliv_street':
+                $this->UserModel->updateDeliveryData($idOfUser, $idOfInput, $data);
+                break;
+            case 'deliv_city':
+                $this->UserModel->updateDeliveryData($idOfUser, $idOfInput, $data);
+                break;
+            case 'deliv_zip':
+                $this->UserModel->updateDeliveryData($idOfUser, $idOfInput, $data);
+                break;
+            case 'deliv_info':
+                $this->UserModel->updateDeliveryData($idOfUser, $idOfInput, $data);
+                break;
+            case 'deliv_phone':
+                $this->UserModel->updateDeliveryData($idOfUser, $idOfInput, $data);
+                break;
+            default:
+                echo 'System error';
+        }
+    }
+
     public function updatePersonalData()
     {
         $idOfUser = $this->input->get('id');
@@ -104,6 +142,9 @@ class UserAccountSettings extends MY_Controller
         $data = $this->input->get('data');
 
         switch ($idOfInput) {
+            case 'email':
+                $this->UserModel->updatePersonalData($idOfUser, $idOfInput, $data);
+                break;
             case 'fact_name':
                 $data = $this->encryption->encrypt($data);
                 $this->UserModel->updatePersonalData($idOfUser, $idOfInput, $data);
@@ -119,6 +160,9 @@ class UserAccountSettings extends MY_Controller
                 $this->UserModel->updatePersonalData($idOfUser, $idOfInput, $data);
                 break;
             case 'fact_zip':
+                $this->UserModel->updatePersonalData($idOfUser, $idOfInput, $data);
+                break;
+            case 'fact_phone':
                 $this->UserModel->updatePersonalData($idOfUser, $idOfInput, $data);
                 break;
             default:

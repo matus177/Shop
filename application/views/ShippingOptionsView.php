@@ -44,14 +44,16 @@
             <div class="form-group">
                 <label for="email" class="col-md-3 control-label">Email</label>
                 <div class="col-md-7">
-                    <input type="email" class="form-control" name="email"
+                    <input type="email" class="form-control" id="email" onclick="updatePersonalData(this.id)"
+                           name="email"
                            placeholder="Email" value="<?php echo $userData['email'] ?>" required>
                 </div>
             </div>
             <div class="form-group">
                 <label for="fact_name" class="col-md-3 control-label">Meno</label>
                 <div class="col-md-7">
-                    <input type="text" class="form-control" name="fact_name"
+                    <input type="text" class="form-control" id="fact_name" onclick="updatePersonalData(this.id)"
+                           name="fact_name"
                            placeholder="Meno" value="<?php echo $this->encryption->decrypt($userData['fact_name']) ?>"
                            required>
                 </div>
@@ -59,7 +61,8 @@
             <div class="form-group">
                 <label for="fact_surname" class="col-md-3 control-label">Priezvisko</label>
                 <div class="col-md-7">
-                    <input type="text" class="form-control" name="fact_surname"
+                    <input type="text" class="form-control" id="fact_surname" onclick="updatePersonalData(this.id)"
+                           name="fact_surname"
                            placeholder="Priezvisko"
                            value="<?php echo $this->encryption->decrypt($userData['fact_surname']) ?>" required>
                 </div>
@@ -67,14 +70,16 @@
             <div class="form-group">
                 <label for="fact_street" class="col-md-3 control-label">Ulica</label>
                 <div class="col-md-7">
-                    <input type="text" class="form-control street-search" name="fact_street"
+                    <input type="text" class="form-control street-search" id="fact_street"
+                           onclick="updatePersonalData(this.id)" name="fact_street"
                            placeholder="Ulica" value="<?php echo $userData['fact_street'] ?>" required>
                 </div>
             </div>
             <div class="form-group">
                 <label for="fact_city" class="col-md-3 control-label">Mesto</label>
                 <div class="col-md-7">
-                    <input type="text" onmouseover="zipForCity('city-search', 'zip-search_fact')"
+                    <input type="text" onmouseover="zipForCity('city-search', 'zip-search_fact')" id="fact_city"
+                           onclick="updatePersonalData(this.id)"
                            class="form-control city-search"
                            name="fact_city" placeholder="Mesto" value="<?php echo $userData['fact_city'] ?>" required>
                 </div>
@@ -82,14 +87,16 @@
             <div class="form-group">
                 <label for="fact_zip" class="col-md-3 control-label">PSČ</label>
                 <div class="col-md-7">
-                    <input type="text" class="form-control zip-search_fact zip_mask" name="fact_zip" placeholder="PSČ"
+                    <input type="text" class="form-control zip-search_fact zip_mask" id="fact_zip"
+                           onclick="updatePersonalData(this.id)" name="fact_zip" placeholder="PSČ"
                            value="<?php echo $userData['fact_zip'] ?>" required>
                 </div>
             </div>
             <div class="form-group">
                 <label for="fact_phone" class="col-md-3 control-label">Telefón</label>
                 <div class="col-md-7">
-                    <input type="text" class="form-control phone_mask" name="fact_phone"
+                    <input type="text" class="form-control phone_mask" id="fact_phone"
+                           onclick="updatePersonalData(this.id)" name="fact_phone"
                            placeholder="Telefón" value="<?php echo $userData['fact_phone'] ?: '+421' ?>"
                            pattern=".{7,}" title="+421 xxx xxx xxx" required>
                 </div>
@@ -109,28 +116,32 @@
                 <div class="form-group">
                     <label for="deliv_name" class="col-md-3 control-label">Meno</label>
                     <div class="col-md-7">
-                        <input type="text" class="form-control" name="deliv_name" placeholder="Meno"
+                        <input type="text" class="form-control" id="deliv_name" onclick="updateDeliveryData(this.id)"
+                               name="deliv_name" placeholder="Meno"
                                value="<?php echo $this->encryption->decrypt($userData['deliv_name']) ?>">
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="deliv_surname" class="col-md-3 control-label">Priezvisko</label>
                     <div class="col-md-7">
-                        <input type="text" class="form-control" name="deliv_surname" placeholder="Priezvisko"
+                        <input type="text" class="form-control" id="deliv_surname" onclick="updateDeliveryData(this.id)"
+                               name="deliv_surname" placeholder="Priezvisko"
                                value="<?php echo $this->encryption->decrypt($userData['deliv_surname']) ?>">
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="deliv_company" class="col-md-3 control-label">Firma</label>
                     <div class="col-md-7">
-                        <input type="text" class="form-control" name="deliv_company" placeholder="Firma"
+                        <input type="text" class="form-control" id="deliv_company" onclick="updateDeliveryData(this.id)"
+                               name="deliv_company" placeholder="Firma"
                                value="<?php echo $userData['deliv_company'] ?>">
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="deliv_street" class="col-md-3 control-label">Ulica</label>
                     <div class="col-md-7">
-                        <input type="text" class="form-control street-search" name="deliv_street"
+                        <input type="text" class="form-control street-search" id="deliv_street"
+                               onclick="updateDeliveryData(this.id)" name="deliv_street"
                                placeholder="Ulica" value="<?php echo $userData['deliv_street'] ?>">
                     </div>
                 </div>
@@ -138,14 +149,16 @@
                     <label for="deliv_city" class="col-md-3 control-label">Mesto</label>
                     <div class="col-md-7">
                         <input type="text" onmouseover="zipForCity('deliv-city-search', 'zip-search_deliv')"
-                               class="form-control deliv-city-search" name="deliv_city" placeholder="Mesto"
+                               class="form-control deliv-city-search" id="deliv_city"
+                               onclick="updateDeliveryData(this.id)" name="deliv_city" placeholder="Mesto"
                                value="<?php echo $userData['deliv_city'] ?>">
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="deliv_zip" class="col-md-3 control-label">PSČ</label>
                     <div class="col-md-7">
-                        <input type="text" class="form-control zip-search_deliv zip_mask" name="deliv_zip"
+                        <input type="text" class="form-control zip-search_deliv zip_mask" id="deliv_zip"
+                               onclick="updateDeliveryData(this.id)" name="deliv_zip"
                                placeholder="PSČ"
                                value="<?php echo $userData['deliv_zip'] ?>">
                     </div>
@@ -153,7 +166,8 @@
                 <div class="form-group">
                     <label for="deliv_info" class="col-md-3 control-label">Informacie</label>
                     <div class="col-md-7">
-                        <input type="text" class="form-control" name="deliv_info"
+                        <input type="text" class="form-control" id="deliv_info" onclick="updateDeliveryData(this.id)"
+                               name="deliv_info"
                                placeholder="Informacie napr.: poschodie, cas..."
                                value="<?php echo $userData['deliv_info'] ?>">
                     </div>
@@ -161,7 +175,8 @@
                 <div class="form-group">
                     <label for="deliv_phone" class="col-md-3 control-label">Telefón</label>
                     <div class="col-md-7">
-                        <input type="text" class="form-control phone_mask" name="deliv_phone"
+                        <input type="text" class="form-control phone_mask" id="deliv_phone"
+                               onclick="updateDeliveryData(this.id)" name="deliv_phone"
                                placeholder="Kontaktny telefon pre dopravcu"
                                value="<?php echo $userData['deliv_phone'] ?: '+421' ?>">
                     </div>
@@ -289,4 +304,60 @@
         $('.zip_mask').mask('000 00');
         $('.phone_mask').mask('+000 000 000 000');
     });
+</script>
+<script>
+    function updateCompanyData(idOfInput) {
+        $('#' + idOfInput).keyup(function () {
+            var data = $('#' + idOfInput).val();
+            var idOfUser = '<?php echo $userData['id']; ?>';
+            $.ajax({
+                url: window.location.origin + '/Shop/UserAccountSettings/updateCompanyData',
+                type: 'GET',
+                data: {input: idOfInput, data: data, id: idOfUser},
+                success: function (response) {
+                    if (response == 'System error')
+                        alert('Systemova chyba, kontaktujte spravcu webu.');
+                    else {
+                        document.getElementById(idOfInput).style.borderColor = "green";
+                    }
+                }
+            })
+        });
+    }
+    function updatePersonalData(idOfInput) {
+        $('#' + idOfInput).on("autocompletechange keyup", function () {
+            var data = $('#' + idOfInput).val();
+            var idOfUser = '<?php echo $userData['id']; ?>';
+            $.ajax({
+                url: window.location.origin + '/Shop/UserAccountSettings/updatePersonalData',
+                type: 'GET',
+                data: {input: idOfInput, data: data, id: idOfUser},
+                success: function (response) {
+                    if (response == 'System error')
+                        alert('Systemova chyba, kontaktujte spravcu webu.');
+                    else {
+                        document.getElementById(idOfInput).style.borderColor = "green";
+                    }
+                }
+            })
+        });
+    }
+    function updateDeliveryData(idOfInput) {
+        $('#' + idOfInput).on("autocompletechange keyup", function () {
+            var data = $('#' + idOfInput).val();
+            var idOfUser = '<?php echo $userData['id']; ?>';
+            $.ajax({
+                url: window.location.origin + '/Shop/UserAccountSettings/updateDeliveryData',
+                type: 'GET',
+                data: {input: idOfInput, data: data, id: idOfUser},
+                success: function (response) {
+                    if (response == 'System error')
+                        alert('Systemova chyba, kontaktujte spravcu webu.');
+                    else {
+                        document.getElementById(idOfInput).style.borderColor = "green";
+                    }
+                }
+            })
+        });
+    }
 </script>
