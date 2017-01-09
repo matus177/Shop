@@ -51,7 +51,9 @@ class ShippingOptions extends CI_Controller
 
         if ($this->form_validation->run()) {
             foreach ($this->input->post() as $key => $value) {
-                $this->session->set_userdata($key, $value);
+                $userData = (($key == 'fact_name') || ($key == 'fact_surname') || ($key == 'deliv_name') || ($key == 'deliv_surname')) ?
+                    $this->encryption->encrypt($value) : $value;
+                $this->session->set_userdata($key, $userData);
             }
 
             redirect('ReviewAndPayment?id=3');
