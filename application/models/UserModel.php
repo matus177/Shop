@@ -102,6 +102,12 @@ class UserModel extends CI_Model
 
     public function updatePersonalData($idOfUser, $row, $data)
     {
-        return $this->db->set($row, $data)->where('id', $idOfUser)->update('personal_data');
+        return $row == 'email' ? $this->db->set($row, $data)->where('id', $idOfUser)->update('login') :
+            $this->db->set($row, $data)->where('id', $idOfUser)->update('personal_data');
+    }
+
+    public function updateDeliveryData($idOfUser, $row, $data)
+    {
+        return $this->db->set($row, $data)->where('id', $idOfUser)->update('delivery_data');
     }
 }
