@@ -248,7 +248,8 @@
                 type: 'GET',
                 data: searchTerm,
                 success: function (data) {
-                    $('.' + factOrDelivZip).val(data);
+                    $('input').click();
+                    $('.' + factOrDelivZip).val(data).change();
                 }
             })
         });

@@ -226,7 +226,7 @@
                     <label for="comp_iban" class="col-md-3 control-label">IBAN</label>
                     <div class="col-md-7">
                         <input type="text" class="form-control" name="comp_iban" placeholder="IBAN"
-                               value="<?php echo $userData['comp_iban'] ?>">
+                               value="<?php echo $this->encryption->decrypt($userData['comp_iban']) ?>">
                     </div>
                 </div>
                 <div class="form-group">
@@ -276,7 +276,8 @@
                 type: 'GET',
                 data: searchTerm,
                 success: function (data) {
-                    $('.' + factOrDelivZip).val(data);
+                    $('input').click();
+                    $('.' + factOrDelivZip).val(data).change();
                 }
             })
         });
@@ -325,7 +326,7 @@
         });
     }
     function updatePersonalData(idOfInput) {
-        $('#' + idOfInput).on("autocompletechange keyup", function () {
+        $('#' + idOfInput).on("autocompletechange change keyup", function () {
             var data = $('#' + idOfInput).val();
             var idOfUser = '<?php echo $userData['id']; ?>';
             $.ajax({

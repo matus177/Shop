@@ -28,7 +28,7 @@
         </tr>
         <tr>
             <td>
-                <a type="button" href="" class="btn btn-primary" data-toggle="modal"
+                <a type="button" href="" class="btn btn-primary as" data-toggle="modal"
                    data-target="#update_password_modal"> Zmenit heslo</a>
                 <div class="modal fade" id="update_password_modal" data-backdrop="static" data-keyboard="false">
                     <div class="modal-dialog">
@@ -211,21 +211,23 @@
         });
     }
     function updatePersonalData(idOfInput) {
-        $('#' + idOfInput).on("autocompletechange keyup", function () {
-            var data = $('#' + idOfInput).val();
-            var idOfUser = '<?php echo $data['id']; ?>';
-            $.ajax({
-                url: window.location.origin + '/Shop/UserAccountSettings/updatePersonalData',
-                type: 'GET',
-                data: {input: idOfInput, data: data, id: idOfUser},
-                success: function (response) {
-                    if (response == 'System error')
-                        alert('Systemova chyba, kontaktujte spravcu webu.');
-                    else {
-                        document.getElementById(idOfInput).style.borderColor = "green";
+        $(document).ready(function () {
+            $('#' + idOfInput).on("autocompletechange change keyup", function () {
+                var data = $('#' + idOfInput).val();
+                var idOfUser = '<?php echo $data['id']; ?>';
+                $.ajax({
+                    url: window.location.origin + '/Shop/UserAccountSettings/updatePersonalData',
+                    type: 'GET',
+                    data: {input: idOfInput, data: data, id: idOfUser},
+                    success: function (response) {
+                        if (response == 'System error')
+                            alert('Systemova chyba, kontaktujte spravcu webu.');
+                        else {
+                            document.getElementById(idOfInput).style.borderColor = "green";
+                        }
                     }
-                }
-            })
+                })
+            });
         });
     }
 </script>
@@ -251,7 +253,8 @@
                 type: 'GET',
                 data: searchTerm,
                 success: function (data) {
-                    $('.' + factOrDelivZip).val(data);
+                    $('input').click();
+                    $('.' + factOrDelivZip).val(data).change();
                 }
             })
         });
