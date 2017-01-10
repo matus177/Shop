@@ -344,7 +344,7 @@
         });
     }
     function updateDeliveryData(idOfInput) {
-        $('#' + idOfInput).on("autocompletechange keyup", function () {
+        $('#' + idOfInput).on("autocompletechange change keyup", function () {
             var data = $('#' + idOfInput).val();
             var idOfUser = '<?php echo $userData['id']; ?>';
             $.ajax({
