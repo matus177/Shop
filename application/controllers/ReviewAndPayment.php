@@ -13,11 +13,8 @@ class ReviewAndPayment extends MY_Controller
         if ($this->isUserLogged()) {
             $userId = $this->encryption->decrypt($this->session->userdata('id'));
             $userData['userData'] = $this->UserModel->getAllUserData($userId);
-            var_dump($userData);
-
         } else {
             $userData['userData'] = $this->session->userdata();
-
         }
 
         $orderData['orderStep'] = $_GET['id'];
