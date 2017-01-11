@@ -61,15 +61,15 @@ class Admin extends MY_Controller
         $request = $this->input->post();
         $productQuantity = (int)$request['product_quantity'];
         if (!empty($request)) {
-            $this->ProductModel->insertProduct($request);
+            $request['product_id'] = $this->ProductModel->insertProduct($request);
             if ($this->db->affected_rows() == 1) {
-                $request['product_id'] = $this->db->insert_id();
                 unset($request['product_quantity']);
                 unset($request['subcategory_id']);
                 unset($request['product_name']);
                 unset($request['product_price']);
                 unset($request['product_type']);
                 unset($request['product_description']);
+
                 for ($i = 1; $i <= $productQuantity; $i++)
                     $this->ProductModel->insertProductToStorage($request);
             }
