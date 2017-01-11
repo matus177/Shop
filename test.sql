@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hostiteľ: 127.0.0.1
--- Čas generovania: St 11.Jan 2017, 21:52
+-- Čas generovania: St 11.Jan 2017, 22:47
 -- Verzia serveru: 5.7.14
 -- Verzia PHP: 5.6.25
 
@@ -11,9 +11,9 @@ SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
 
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT = @@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS = @@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION = @@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8mb4 */;
 
 --
@@ -27,9 +27,13 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `category` (
-  `id` int(11) NOT NULL,
-  `category_name` varchar(255) COLLATE utf8_bin NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+  `id`            INT(11)          NOT NULL,
+  `category_name` VARCHAR(255)
+                  COLLATE utf8_bin NOT NULL
+)
+  ENGINE = InnoDB
+  DEFAULT CHARSET = utf8
+  COLLATE = utf8_bin;
 
 --
 -- Sťahujem dáta pre tabuľku `category`
@@ -45,10 +49,15 @@ INSERT INTO `category` (`id`, `category_name`) VALUES
 --
 
 CREATE TABLE `cities` (
-  `id` int(11) NOT NULL,
-  `city` varchar(255) COLLATE utf8_bin NOT NULL DEFAULT '',
-  `zip` varchar(255) COLLATE utf8_bin NOT NULL DEFAULT ''
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+  `id`   INT(11)          NOT NULL,
+  `city` VARCHAR(255)
+         COLLATE utf8_bin NOT NULL DEFAULT '',
+  `zip`  VARCHAR(255)
+         COLLATE utf8_bin NOT NULL DEFAULT ''
+)
+  ENGINE = InnoDB
+  DEFAULT CHARSET = utf8
+  COLLATE = utf8_bin;
 
 --
 -- Sťahujem dáta pre tabuľku `cities`
@@ -4273,23 +4282,38 @@ INSERT INTO `cities` (`id`, `city`, `zip`) VALUES
 --
 
 CREATE TABLE `company_data` (
-  `id` int(11) NOT NULL,
-  `comp_ico` varchar(30) COLLATE utf8_bin NOT NULL,
-  `comp_dic` varchar(30) COLLATE utf8_bin NOT NULL,
-  `comp_icdph` varchar(30) COLLATE utf8_bin NOT NULL,
-  `comp_bic` varchar(30) COLLATE utf8_bin NOT NULL,
-  `comp_iban` varchar(173) COLLATE utf8_bin NOT NULL,
-  `comp_bank_owner` varchar(173) COLLATE utf8_bin NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+  `id`              INT(11)          NOT NULL,
+  `comp_ico`        VARCHAR(30)
+                    COLLATE utf8_bin NOT NULL,
+  `comp_dic`        VARCHAR(30)
+                    COLLATE utf8_bin NOT NULL,
+  `comp_icdph`      VARCHAR(30)
+                    COLLATE utf8_bin NOT NULL,
+  `comp_bic`        VARCHAR(30)
+                    COLLATE utf8_bin NOT NULL,
+  `comp_iban`       VARCHAR(173)
+                    COLLATE utf8_bin NOT NULL,
+  `comp_bank_owner` VARCHAR(173)
+                    COLLATE utf8_bin NOT NULL
+)
+  ENGINE = InnoDB
+  DEFAULT CHARSET = utf8
+  COLLATE = utf8_bin;
 
 --
 -- Sťahujem dáta pre tabuľku `company_data`
 --
 
-INSERT INTO `company_data` (`id`, `comp_ico`, `comp_dic`, `comp_icdph`, `comp_bic`, `comp_iban`, `comp_bank_owner`) VALUES
-  (5, 'gfdf', '', '', '', '', 'ab967c893760f40caab0c0d6ba005bbc3490fb05006c914997b23b111124fe33653f09a41f657fe3a78ee475d1e053cc5a06d04b36b809d4a03afc0d2ad956f8KDZLEyVRPTZuG2f30pLkFIMNxQC+hHSkdaQRNrSXWMk='),
-  (8, '', '1', '1', '1', '2963383347c2ef829ba26ca1bc4875df92a2b074e5fe116c3b2a9d0c47cf6fc5c2307ee5327acc40130dc4403649d432069c6f3f0fa9c88a6f0099ea41bfcb0bjfWnIMjP5a9P4yhjji9Nzi8jASGWeTL5Ec4DjmeaUCs=', '320d4656b0c78c4dd3158180334abf86318febdb39cc165688f42c7b09bf92a836e31a4061c788920c4a5ddf33f86cd999afdf73bc7dc68bb8dab030dd468972ptpcyhfXzEtvWLVLAtmv6dL62Hw/KRywm5rgvde7aHk='),
-  (9, '', '', '', '', 'ac6393ea2ddd90c6de32d80ee90f8f476d766b66b077e8c156fed43cccd9b14cf344b86a8f40d4f0d39ba4f5ff339bdc9551626a22f09811aa2f38ba67ae7c049PT4u/M3JX6yxiu+s2hI9Su54FaCpIDvmnLqkyY5dFw=', '6c54997152e447eb3d4646c86666e6943d12bf6f3662a53be03245a94afb0da305fa6ac225458f3f70c068da7bbca38a29fa6ec6987c4722790b4cd02b1aeb84AWI1N2p0kTawTI+ARDjpFrjr/GSjx0ny0F8jqpYSr30=');
+INSERT INTO `company_data` (`id`, `comp_ico`, `comp_dic`, `comp_icdph`, `comp_bic`, `comp_iban`, `comp_bank_owner`)
+VALUES
+  (5, 'gfdf', '', '', '', '',
+   'ab967c893760f40caab0c0d6ba005bbc3490fb05006c914997b23b111124fe33653f09a41f657fe3a78ee475d1e053cc5a06d04b36b809d4a03afc0d2ad956f8KDZLEyVRPTZuG2f30pLkFIMNxQC+hHSkdaQRNrSXWMk='),
+  (8, '', '1', '1', '1',
+   '2963383347c2ef829ba26ca1bc4875df92a2b074e5fe116c3b2a9d0c47cf6fc5c2307ee5327acc40130dc4403649d432069c6f3f0fa9c88a6f0099ea41bfcb0bjfWnIMjP5a9P4yhjji9Nzi8jASGWeTL5Ec4DjmeaUCs=',
+   '320d4656b0c78c4dd3158180334abf86318febdb39cc165688f42c7b09bf92a836e31a4061c788920c4a5ddf33f86cd999afdf73bc7dc68bb8dab030dd468972ptpcyhfXzEtvWLVLAtmv6dL62Hw/KRywm5rgvde7aHk='),
+  (9, '', '', '', '',
+   'ac6393ea2ddd90c6de32d80ee90f8f476d766b66b077e8c156fed43cccd9b14cf344b86a8f40d4f0d39ba4f5ff339bdc9551626a22f09811aa2f38ba67ae7c049PT4u/M3JX6yxiu+s2hI9Su54FaCpIDvmnLqkyY5dFw=',
+   '6c54997152e447eb3d4646c86666e6943d12bf6f3662a53be03245a94afb0da305fa6ac225458f3f70c068da7bbca38a29fa6ec6987c4722790b4cd02b1aeb84AWI1N2p0kTawTI+ARDjpFrjr/GSjx0ny0F8jqpYSr30=');
 
 -- --------------------------------------------------------
 
@@ -4298,25 +4322,46 @@ INSERT INTO `company_data` (`id`, `comp_ico`, `comp_dic`, `comp_icdph`, `comp_bi
 --
 
 CREATE TABLE `delivery_data` (
-  `id` int(11) NOT NULL,
-  `deliv_name` varchar(173) COLLATE utf8_bin NOT NULL,
-  `deliv_surname` varchar(173) COLLATE utf8_bin NOT NULL,
-  `deliv_company` varchar(30) COLLATE utf8_bin NOT NULL,
-  `deliv_street` varchar(30) COLLATE utf8_bin NOT NULL,
-  `deliv_city` varchar(30) COLLATE utf8_bin NOT NULL,
-  `deliv_zip` varchar(8) COLLATE utf8_bin NOT NULL,
-  `deliv_info` varchar(150) COLLATE utf8_bin NOT NULL,
-  `deliv_phone` varchar(30) COLLATE utf8_bin NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+  `id`            INT(11)          NOT NULL,
+  `deliv_name`    VARCHAR(173)
+                  COLLATE utf8_bin NOT NULL,
+  `deliv_surname` VARCHAR(173)
+                  COLLATE utf8_bin NOT NULL,
+  `deliv_company` VARCHAR(30)
+                  COLLATE utf8_bin NOT NULL,
+  `deliv_street`  VARCHAR(30)
+                  COLLATE utf8_bin NOT NULL,
+  `deliv_city`    VARCHAR(30)
+                  COLLATE utf8_bin NOT NULL,
+  `deliv_zip`     VARCHAR(8)
+                  COLLATE utf8_bin NOT NULL,
+  `deliv_info`    VARCHAR(150)
+                  COLLATE utf8_bin NOT NULL,
+  `deliv_phone`   VARCHAR(30)
+                  COLLATE utf8_bin NOT NULL
+)
+  ENGINE = InnoDB
+  DEFAULT CHARSET = utf8
+  COLLATE = utf8_bin;
 
 --
 -- Sťahujem dáta pre tabuľku `delivery_data`
 --
 
-INSERT INTO `delivery_data` (`id`, `deliv_name`, `deliv_surname`, `deliv_company`, `deliv_street`, `deliv_city`, `deliv_zip`, `deliv_info`, `deliv_phone`) VALUES
-  (5, 'dfbcfd59784faff493fadf92950264d69522a7c9fabda4aa1845fa1fca1a179846217e389064288a283097f19433aa2bf7068582a4efb58d5f826b039e5b037cyJFoTGmZF2X6hD88WTdf6QNg7t7aunbZJfWguHkwz/Q=', '94cc292efdc7314f71326836887b287943476bfdc1248d17b719bfa53dfab7444f7e85026214ed3b68015d47643ea9827f735b88b02166e215c1a63b75a3e05256VfcPAgMcGDxjbmydwyXghAW3OK2cxbaEPk7vgTqEQ=', '', '', '', '', '', ''),
-  (8, '49176ed54c4395af048904a494497f8fffb395c323a3f65600beb483c42b84f0cf6eaf01c52c3e5118efe54a5ce58633530679406a1f73afd4980aeb3b9febb5wU+gdx01QNok22QU+3xHhZBt0BydE7Owd6tHN+WddTM=', '4832191ce79ba13a5def87b72a3b107b3e2f3ca01a649d49b47d909c4cb61b12578f312452ab3e264ccc6c5a26050e55a983286736a8bdb6a7d2f89e87625455dz5wp80omvym47HYfXlS7GIM31ljkF1+Uzj/HMkzd1w=', '', 'R. Dúbravca', 'Rabča', '029 44', '', ''),
-  (9, '497148bd6165a3de6cc10c256d64da3834316cbd35d14fb42d5f42cc047825a23d19604877b980cdea7acf31105b523618fe30ac841d89c5991cb4820afbc6e4TX+rtS5ogdyasQezp2Pp1gwmsV9yO05/82vU+iIBE1A=', 'b461d9c492e747d51c5132ce14bae174ae64794bd359c8630b8cca98a2435d5c11069e851059acea51edffd1e27b80fc8657ac9d177666094340a339ae6caacaff/OTpWfyUOug8pmDzcjSV78TZdmpeR2S7oFdxlPXKM=', '', '', '', '', '', '+421');
+INSERT INTO `delivery_data` (`id`, `deliv_name`, `deliv_surname`, `deliv_company`, `deliv_street`, `deliv_city`, `deliv_zip`, `deliv_info`, `deliv_phone`)
+VALUES
+  (5,
+   'dfbcfd59784faff493fadf92950264d69522a7c9fabda4aa1845fa1fca1a179846217e389064288a283097f19433aa2bf7068582a4efb58d5f826b039e5b037cyJFoTGmZF2X6hD88WTdf6QNg7t7aunbZJfWguHkwz/Q=',
+   '94cc292efdc7314f71326836887b287943476bfdc1248d17b719bfa53dfab7444f7e85026214ed3b68015d47643ea9827f735b88b02166e215c1a63b75a3e05256VfcPAgMcGDxjbmydwyXghAW3OK2cxbaEPk7vgTqEQ=',
+   '', '', '', '', '', ''),
+  (8,
+   '49176ed54c4395af048904a494497f8fffb395c323a3f65600beb483c42b84f0cf6eaf01c52c3e5118efe54a5ce58633530679406a1f73afd4980aeb3b9febb5wU+gdx01QNok22QU+3xHhZBt0BydE7Owd6tHN+WddTM=',
+   '4832191ce79ba13a5def87b72a3b107b3e2f3ca01a649d49b47d909c4cb61b12578f312452ab3e264ccc6c5a26050e55a983286736a8bdb6a7d2f89e87625455dz5wp80omvym47HYfXlS7GIM31ljkF1+Uzj/HMkzd1w=',
+   '', 'R. Dúbravca', 'Rabča', '029 44', '', ''),
+  (9,
+   '497148bd6165a3de6cc10c256d64da3834316cbd35d14fb42d5f42cc047825a23d19604877b980cdea7acf31105b523618fe30ac841d89c5991cb4820afbc6e4TX+rtS5ogdyasQezp2Pp1gwmsV9yO05/82vU+iIBE1A=',
+   'b461d9c492e747d51c5132ce14bae174ae64794bd359c8630b8cca98a2435d5c11069e851059acea51edffd1e27b80fc8657ac9d177666094340a339ae6caacaff/OTpWfyUOug8pmDzcjSV78TZdmpeR2S7oFdxlPXKM=',
+   '', '', '', '', '', '+421');
 
 -- --------------------------------------------------------
 
@@ -4325,20 +4370,32 @@ INSERT INTO `delivery_data` (`id`, `deliv_name`, `deliv_surname`, `deliv_company
 --
 
 CREATE TABLE `login` (
-  `id` int(11) NOT NULL,
-  `email` varchar(30) COLLATE utf8_bin NOT NULL,
-  `password` varchar(129) COLLATE utf8_bin NOT NULL,
-  `role` varchar(10) COLLATE utf8_bin DEFAULT 'Buser'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+  `id`       INT(11)          NOT NULL,
+  `email`    VARCHAR(30)
+             COLLATE utf8_bin NOT NULL,
+  `password` VARCHAR(129)
+             COLLATE utf8_bin NOT NULL,
+  `role`     VARCHAR(10)
+             COLLATE utf8_bin DEFAULT 'Buser'
+)
+  ENGINE = InnoDB
+  DEFAULT CHARSET = utf8
+  COLLATE = utf8_bin;
 
 --
 -- Sťahujem dáta pre tabuľku `login`
 --
 
 INSERT INTO `login` (`id`, `email`, `password`, `role`) VALUES
-  (5, 'a@aa.sk', '2c1ee68372215b1ce064426b5cdbd4ef2581ace0dd3b21fa2be27f364827242e83f68b68be03f5b3e24be5d1b4315f98a0a96d19713fb3a19dc455fb6adc3431', 'Admin'),
-  (8, 'a@a.sk', '1f40fc92da241694750979ee6cf582f2d5d7d28e18335de05abc54d0560e0f5302860c652bf08d560252aa5e74210546f369fbbbce8c12cfc7957b2652fe9a75', 'Admin'),
-  (9, 'd@d.sk', '1f40fc92da241694750979ee6cf582f2d5d7d28e18335de05abc54d0560e0f5302860c652bf08d560252aa5e74210546f369fbbbce8c12cfc7957b2652fe9a75', 'Buser');
+  (5, 'a@aa.sk',
+   '2c1ee68372215b1ce064426b5cdbd4ef2581ace0dd3b21fa2be27f364827242e83f68b68be03f5b3e24be5d1b4315f98a0a96d19713fb3a19dc455fb6adc3431',
+   'Admin'),
+  (8, 'a@a.sk',
+   '1f40fc92da241694750979ee6cf582f2d5d7d28e18335de05abc54d0560e0f5302860c652bf08d560252aa5e74210546f369fbbbce8c12cfc7957b2652fe9a75',
+   'Admin'),
+  (9, 'd@d.sk',
+   '1f40fc92da241694750979ee6cf582f2d5d7d28e18335de05abc54d0560e0f5302860c652bf08d560252aa5e74210546f369fbbbce8c12cfc7957b2652fe9a75',
+   'Buser');
 
 -- --------------------------------------------------------
 
@@ -4347,24 +4404,37 @@ INSERT INTO `login` (`id`, `email`, `password`, `role`) VALUES
 --
 
 CREATE TABLE `logs` (
-  `id` int(11) NOT NULL,
-  `status` varchar(255) COLLATE utf8_bin NOT NULL,
-  `user_id` int(11) NOT NULL,
-  `first_name` varchar(255) COLLATE utf8_bin NOT NULL,
-  `last_name` varchar(255) COLLATE utf8_bin NOT NULL,
-  `ip_address` varchar(255) COLLATE utf8_bin NOT NULL,
-  `agent` varchar(255) COLLATE utf8_bin NOT NULL,
-  `platform` varchar(255) COLLATE utf8_bin NOT NULL,
-  `date` varchar(255) COLLATE utf8_bin NOT NULL,
-  `email_input` varchar(255) COLLATE utf8_bin NOT NULL,
-  `password_input` varchar(255) COLLATE utf8_bin NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+  `id`             INT(11)          NOT NULL,
+  `status`         VARCHAR(255)
+                   COLLATE utf8_bin NOT NULL,
+  `user_id`        INT(11)          NOT NULL,
+  `first_name`     VARCHAR(255)
+                   COLLATE utf8_bin NOT NULL,
+  `last_name`      VARCHAR(255)
+                   COLLATE utf8_bin NOT NULL,
+  `ip_address`     VARCHAR(255)
+                   COLLATE utf8_bin NOT NULL,
+  `agent`          VARCHAR(255)
+                   COLLATE utf8_bin NOT NULL,
+  `platform`       VARCHAR(255)
+                   COLLATE utf8_bin NOT NULL,
+  `date`           VARCHAR(255)
+                   COLLATE utf8_bin NOT NULL,
+  `email_input`    VARCHAR(255)
+                   COLLATE utf8_bin NOT NULL,
+  `password_input` VARCHAR(255)
+                   COLLATE utf8_bin NOT NULL
+)
+  ENGINE = InnoDB
+  DEFAULT CHARSET = utf8
+  COLLATE = utf8_bin;
 
 --
 -- Sťahujem dáta pre tabuľku `logs`
 --
 
-INSERT INTO `logs` (`id`, `status`, `user_id`, `first_name`, `last_name`, `ip_address`, `agent`, `platform`, `date`, `email_input`, `password_input`) VALUES
+INSERT INTO `logs` (`id`, `status`, `user_id`, `first_name`, `last_name`, `ip_address`, `agent`, `platform`, `date`, `email_input`, `password_input`)
+VALUES
   (1, 'success', 1, 'a', 'a', '::1', 'Chrome 54.0.2840.71', 'Windows 7', '2016-10-26 11:51:47', '', ''),
   (2, 'success', 1, 'a', 'a', '::1', 'Chrome 54.0.2840.71', 'Windows 7', '2016-10-26 13:18:19', '', ''),
   (3, 'success', 1, 'a', 'a', '::1', 'Chrome 54.0.2840.71', 'Windows 7', '2016-10-26 13:23:21', '', ''),
@@ -4510,23 +4580,42 @@ INSERT INTO `logs` (`id`, `status`, `user_id`, `first_name`, `last_name`, `ip_ad
 --
 
 CREATE TABLE `personal_data` (
-  `id` int(11) NOT NULL,
-  `fact_name` varchar(173) COLLATE utf8_bin NOT NULL,
-  `fact_surname` varchar(173) COLLATE utf8_bin NOT NULL,
-  `fact_street` varchar(30) COLLATE utf8_bin NOT NULL,
-  `fact_city` varchar(30) COLLATE utf8_bin NOT NULL,
-  `fact_zip` varchar(8) COLLATE utf8_bin NOT NULL,
-  `fact_phone` varchar(20) COLLATE utf8_bin NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+  `id`           INT(11)          NOT NULL,
+  `fact_name`    VARCHAR(173)
+                 COLLATE utf8_bin NOT NULL,
+  `fact_surname` VARCHAR(173)
+                 COLLATE utf8_bin NOT NULL,
+  `fact_street`  VARCHAR(30)
+                 COLLATE utf8_bin NOT NULL,
+  `fact_city`    VARCHAR(30)
+                 COLLATE utf8_bin NOT NULL,
+  `fact_zip`     VARCHAR(8)
+                 COLLATE utf8_bin NOT NULL,
+  `fact_phone`   VARCHAR(20)
+                 COLLATE utf8_bin NOT NULL
+)
+  ENGINE = InnoDB
+  DEFAULT CHARSET = utf8
+  COLLATE = utf8_bin;
 
 --
 -- Sťahujem dáta pre tabuľku `personal_data`
 --
 
-INSERT INTO `personal_data` (`id`, `fact_name`, `fact_surname`, `fact_street`, `fact_city`, `fact_zip`, `fact_phone`) VALUES
-  (5, 'f9d8b740e57ff2b9839bf63c1073c70e3c0b4f559406e2260774775c14b3bf1d4853147b6608e4ab95ac78f246ec34fd305bea7e39e93548a71a5751caff00b4XoQQF+9WAMMb60lX5qq6Woit6uyDaJddHjMJfQL791A=', 'c0e5f6026014d438a65731b9d6c2054d897e24e7a4a248c1ca1f7a075e99130aedc1734a6c9dc7fdae0d24bbfb1a3a6a912f8c017d93e9f0689ff30a1964a250+CW2363qzK+ilmQC3VPAyAupWUBgFvouv/mDQfe4XTQ=', 'richtára Ondreja', '', '059 72', '4325yyj'),
-  (8, '7e1b24ad95a6aa2b64d0d1fd7670b27c80bfbe5f49ed7640b17c0d06edf866a45587f3973fa397b96128ef33fedae8d7385c3e2202114041b296dbd530ec70c91CZaSm0/FkqscgBupZUHO2e4NNV9i8fyZ9CrF3fyPLs=', 'c6eee301cd65cbc1e9c5d419ec352a46762b833a6034bcd9adecd69b4f43051926ccf51ca217b96bc2643b290b606a9f94c768fbc131692e4812b603ca98805bWi1o6HJJElosV2fR2ggdaylIqelsoLqGzVwxMuxP9TU=', 'Pobrežná', 'Kysak', '044 81', '+012 345 678 9'),
-  (9, '63cd1f5b0bda992e3c6b732d0453a176ce80d96d366e6a0379ae76ecc33db5ca641323ad7eeba13d6884daf0b9bfef6f002d26f7edb6641bef7534321c5641e3K5gq9LLHDJJiykz9cDHqHSNHCN+6qDMpt7+x6jebW0c=', 'a11e95fc1e6e0e7b52d81fdeb1f9c5690cdc4f59b513e068ec3ecd83e6fe9b7411045c65b38298d92f8446e19584207f6d4122d7cf0f37ec44a35be5f9f693f1Ic6znAykgGQFhFeeRGt1wSUBuWsYmcK75jqIg9EHrxk=', 'D. Ertla', 'Danišovce', '053 22', '+421 111 111 111');
+INSERT INTO `personal_data` (`id`, `fact_name`, `fact_surname`, `fact_street`, `fact_city`, `fact_zip`, `fact_phone`)
+VALUES
+  (5,
+   'f9d8b740e57ff2b9839bf63c1073c70e3c0b4f559406e2260774775c14b3bf1d4853147b6608e4ab95ac78f246ec34fd305bea7e39e93548a71a5751caff00b4XoQQF+9WAMMb60lX5qq6Woit6uyDaJddHjMJfQL791A=',
+   'c0e5f6026014d438a65731b9d6c2054d897e24e7a4a248c1ca1f7a075e99130aedc1734a6c9dc7fdae0d24bbfb1a3a6a912f8c017d93e9f0689ff30a1964a250+CW2363qzK+ilmQC3VPAyAupWUBgFvouv/mDQfe4XTQ=',
+   'richtára Ondreja', '', '059 72', '4325yyj'),
+  (8,
+   '7e1b24ad95a6aa2b64d0d1fd7670b27c80bfbe5f49ed7640b17c0d06edf866a45587f3973fa397b96128ef33fedae8d7385c3e2202114041b296dbd530ec70c91CZaSm0/FkqscgBupZUHO2e4NNV9i8fyZ9CrF3fyPLs=',
+   'c6eee301cd65cbc1e9c5d419ec352a46762b833a6034bcd9adecd69b4f43051926ccf51ca217b96bc2643b290b606a9f94c768fbc131692e4812b603ca98805bWi1o6HJJElosV2fR2ggdaylIqelsoLqGzVwxMuxP9TU=',
+   'Pobrežná', 'Kysak', '044 81', '+012 345 678 9'),
+  (9,
+   '63cd1f5b0bda992e3c6b732d0453a176ce80d96d366e6a0379ae76ecc33db5ca641323ad7eeba13d6884daf0b9bfef6f002d26f7edb6641bef7534321c5641e3K5gq9LLHDJJiykz9cDHqHSNHCN+6qDMpt7+x6jebW0c=',
+   'a11e95fc1e6e0e7b52d81fdeb1f9c5690cdc4f59b513e068ec3ecd83e6fe9b7411045c65b38298d92f8446e19584207f6d4122d7cf0f37ec44a35be5f9f693f1Ic6znAykgGQFhFeeRGt1wSUBuWsYmcK75jqIg9EHrxk=',
+   'D. Ertla', 'Danišovce', '053 22', '+421 111 111 111');
 
 -- --------------------------------------------------------
 
@@ -4535,35 +4624,32 @@ INSERT INTO `personal_data` (`id`, `fact_name`, `fact_surname`, `fact_street`, `
 --
 
 CREATE TABLE `products` (
-  `id` int(11) NOT NULL,
-  `subcategory_id` int(11) NOT NULL,
-  `product_name` varchar(255) COLLATE utf8_bin NOT NULL,
-  `product_description` varchar(255) COLLATE utf8_bin NOT NULL,
-  `product_price_dph` int(11) NOT NULL,
-  `product_price` int(11) NOT NULL,
-  `dph` int(11) NOT NULL DEFAULT '20',
-  `product_type` varchar(1) COLLATE utf8_bin NOT NULL,
-  `product_quantity` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+  `id`                  INT(11)          NOT NULL,
+  `subcategory_id`      INT(11)          NOT NULL,
+  `product_name`        VARCHAR(255)
+                        COLLATE utf8_bin NOT NULL,
+  `product_description` VARCHAR(255)
+                        COLLATE utf8_bin NOT NULL,
+  `product_price_dph`   INT(11)          NOT NULL,
+  `product_price`       FLOAT            NOT NULL,
+  `product_type`        VARCHAR(1)
+                        COLLATE utf8_bin NOT NULL,
+  `product_quantity`    INT(11)          NOT NULL
+)
+  ENGINE = InnoDB
+  DEFAULT CHARSET = utf8
+  COLLATE = utf8_bin;
 
 --
 -- Sťahujem dáta pre tabuľku `products`
 --
 
-INSERT INTO `products` (`id`, `subcategory_id`, `product_name`, `product_description`, `product_price_dph`, `product_price`, `dph`, `product_type`, `product_quantity`) VALUES
-  (88, 11, 'HP', 'Vykon', 0, 10, 20, 'G', 5);
-
---
--- Spúšťače `products`
---
-DELIMITER $$
-CREATE TRIGGER `product_tax` AFTER UPDATE ON `products` FOR EACH ROW UPDATE products
-SET product_price =
-(
-  SELECT ROUND(product_price_dph / IFNULL((SELECT dph FROM tax), 0), 2) FROM products
-)
-$$
-DELIMITER ;
+INSERT INTO `products` (`id`, `subcategory_id`, `product_name`, `product_description`, `product_price_dph`, `product_price`, `product_type`, `product_quantity`)
+VALUES
+  (96, 11, 'dd', 'dd', 0, 1.67, 'G', 2),
+  (97, 11, 'xxx', 'xxx', 0, 1.67, 'G', 1),
+  (98, 11, 'www', 'www', 0, 1.67, 'G', 0),
+  (99, 11, 'ccc', 'ccc', 0, 1, 'G', 2);
 
 -- --------------------------------------------------------
 
@@ -4572,35 +4658,43 @@ DELIMITER ;
 --
 
 CREATE TABLE `storage` (
-  `id` int(11) NOT NULL,
-  `product_id` int(11) NOT NULL,
-  `flag` varchar(1) COLLATE utf8_bin NOT NULL DEFAULT 'A'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+  `id`         INT(11)          NOT NULL,
+  `product_id` INT(11)          NOT NULL,
+  `flag`       VARCHAR(1)
+               COLLATE utf8_bin NOT NULL DEFAULT 'A'
+)
+  ENGINE = InnoDB
+  DEFAULT CHARSET = utf8
+  COLLATE = utf8_bin;
 
 --
 -- Sťahujem dáta pre tabuľku `storage`
 --
 
 INSERT INTO `storage` (`id`, `product_id`, `flag`) VALUES
-  (92, 88, 'A'),
-  (93, 88, 'A'),
-  (94, 88, 'A'),
-  (95, 88, 'A'),
-  (96, 88, 'A');
+  (105, 96, 'A'),
+  (106, 96, 'A'),
+  (107, 97, 'A'),
+  (108, 99, 'A'),
+  (109, 99, 'A');
 
 --
 -- Spúšťače `storage`
 --
 DELIMITER $$
-CREATE TRIGGER `tg_ai_table22` AFTER UPDATE ON `storage` FOR EACH ROW UPDATE products
+CREATE TRIGGER `tg_ai_table22`
+AFTER UPDATE ON `storage`
+FOR EACH ROW UPDATE products
 SET products.product_quantity =
 (
   SELECT COUNT(product_quantity)
-  FROM STORAGE, (SELECT id FROM products) as prod
+  FROM STORAGE, (SELECT id
+                 FROM products) AS prod
   WHERE prod.id = storage.product_id
-        AND storage.flag = 'A' LIMIT 1
+        AND storage.flag = 'A'
+  LIMIT 1
 )
-where id = new.product_id
+WHERE id = new.product_id
 $$
 DELIMITER ;
 
@@ -4611,9 +4705,13 @@ DELIMITER ;
 --
 
 CREATE TABLE `streets` (
-  `id` int(11) NOT NULL,
-  `street` varchar(255) COLLATE utf8_bin NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+  `id`     INT(11)          NOT NULL,
+  `street` VARCHAR(255)
+           COLLATE utf8_bin NOT NULL
+)
+  ENGINE = InnoDB
+  DEFAULT CHARSET = utf8
+  COLLATE = utf8_bin;
 
 --
 -- Sťahujem dáta pre tabuľku `streets`
@@ -10181,10 +10279,14 @@ INSERT INTO `streets` (`id`, `street`) VALUES
 --
 
 CREATE TABLE `subcategory` (
-  `id` int(11) NOT NULL,
-  `category_id` int(11) NOT NULL,
-  `subcategory_name` varchar(255) COLLATE utf8_bin NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+  `id`               INT(11)          NOT NULL,
+  `category_id`      INT(11)          NOT NULL,
+  `subcategory_name` VARCHAR(255)
+                     COLLATE utf8_bin NOT NULL
+)
+  ENGINE = InnoDB
+  DEFAULT CHARSET = utf8
+  COLLATE = utf8_bin;
 
 --
 -- Sťahujem dáta pre tabuľku `subcategory`
@@ -10200,19 +10302,53 @@ INSERT INTO `subcategory` (`id`, `category_id`, `subcategory_name`) VALUES
 --
 
 CREATE TABLE `tax_prices` (
-  `id` int(11) NOT NULL,
-  `product_id` int(11) NOT NULL,
-  `product_price` int(11) NOT NULL,
-  `product_price_dph` int(11) NOT NULL DEFAULT '0',
-  `dph` int(11) NOT NULL DEFAULT '6'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+  `id`                INT(11) NOT NULL,
+  `product_id`        INT(11) NOT NULL,
+  `product_price`     INT(11) NOT NULL,
+  `product_price_dph` INT(11) NOT NULL DEFAULT '0',
+  `dph`               INT(11) NOT NULL DEFAULT '6'
+)
+  ENGINE = InnoDB
+  DEFAULT CHARSET = utf8
+  COLLATE = utf8_bin;
 
 --
 -- Sťahujem dáta pre tabuľku `tax_prices`
 --
 
 INSERT INTO `tax_prices` (`id`, `product_id`, `product_price`, `product_price_dph`, `dph`) VALUES
-  (27, 88, 10, 0, 6);
+  (34, 96, 10, 0, 6),
+  (35, 97, 10, 0, 6),
+  (36, 98, 10, 0, 6),
+  (37, 99, 10, 0, 6);
+
+--
+-- Spúšťače `tax_prices`
+--
+DELIMITER $$
+CREATE TRIGGER `product_tax_insert`
+AFTER INSERT ON `tax_prices`
+FOR EACH ROW UPDATE products
+SET product_price =
+(
+  SELECT ROUND(product_price / IFNULL((SELECT dph), 0), 2)
+  FROM tax_prices
+  WHERE products.id = tax_prices.product_id
+)
+$$
+DELIMITER ;
+DELIMITER $$
+CREATE TRIGGER `product_tax_update`
+BEFORE UPDATE ON `tax_prices`
+FOR EACH ROW UPDATE products
+SET product_price =
+(
+  SELECT ROUND(product_price / IFNULL((SELECT dph), 0), 2)
+  FROM tax_prices
+  WHERE products.id = tax_prices.product_id
+)
+$$
+DELIMITER ;
 
 --
 -- Kľúče pre exportované tabuľky
@@ -10302,62 +10438,74 @@ ALTER TABLE `tax_prices`
 -- AUTO_INCREMENT pre tabuľku `category`
 --
 ALTER TABLE `category`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` INT(11) NOT NULL AUTO_INCREMENT,
+  AUTO_INCREMENT = 16;
 --
 -- AUTO_INCREMENT pre tabuľku `cities`
 --
 ALTER TABLE `cities`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4209;
+  MODIFY `id` INT(11) NOT NULL AUTO_INCREMENT,
+  AUTO_INCREMENT = 4209;
 --
 -- AUTO_INCREMENT pre tabuľku `company_data`
 --
 ALTER TABLE `company_data`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` INT(11) NOT NULL AUTO_INCREMENT,
+  AUTO_INCREMENT = 10;
 --
 -- AUTO_INCREMENT pre tabuľku `delivery_data`
 --
 ALTER TABLE `delivery_data`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` INT(11) NOT NULL AUTO_INCREMENT,
+  AUTO_INCREMENT = 10;
 --
 -- AUTO_INCREMENT pre tabuľku `login`
 --
 ALTER TABLE `login`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` INT(11) NOT NULL AUTO_INCREMENT,
+  AUTO_INCREMENT = 10;
 --
 -- AUTO_INCREMENT pre tabuľku `logs`
 --
 ALTER TABLE `logs`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=138;
+  MODIFY `id` INT(11) NOT NULL AUTO_INCREMENT,
+  AUTO_INCREMENT = 138;
 --
 -- AUTO_INCREMENT pre tabuľku `personal_data`
 --
 ALTER TABLE `personal_data`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` INT(11) NOT NULL AUTO_INCREMENT,
+  AUTO_INCREMENT = 10;
 --
 -- AUTO_INCREMENT pre tabuľku `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=89;
+  MODIFY `id` INT(11) NOT NULL AUTO_INCREMENT,
+  AUTO_INCREMENT = 100;
 --
 -- AUTO_INCREMENT pre tabuľku `storage`
 --
 ALTER TABLE `storage`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=97;
+  MODIFY `id` INT(11) NOT NULL AUTO_INCREMENT,
+  AUTO_INCREMENT = 110;
 --
 -- AUTO_INCREMENT pre tabuľku `streets`
 --
 ALTER TABLE `streets`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5552;
+  MODIFY `id` INT(11) NOT NULL AUTO_INCREMENT,
+  AUTO_INCREMENT = 5552;
 --
 -- AUTO_INCREMENT pre tabuľku `subcategory`
 --
 ALTER TABLE `subcategory`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` INT(11) NOT NULL AUTO_INCREMENT,
+  AUTO_INCREMENT = 12;
 --
 -- AUTO_INCREMENT pre tabuľku `tax_prices`
 --
 ALTER TABLE `tax_prices`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `id` INT(11) NOT NULL AUTO_INCREMENT,
+  AUTO_INCREMENT = 38;
 --
 -- Obmedzenie pre exportované tabuľky
 --
@@ -10386,6 +10534,6 @@ ALTER TABLE `subcategory`
 ALTER TABLE `tax_prices`
   ADD CONSTRAINT `tax_prices_ibfk_1` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`);
 
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40101 SET CHARACTER_SET_CLIENT = @OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS = @OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION = @OLD_COLLATION_CONNECTION */;
