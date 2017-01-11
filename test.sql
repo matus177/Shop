@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hostiteľ: 127.0.0.1
--- Čas generovania: Út 22.Nov 2016, 15:12
+-- Čas generovania: St 11.Jan 2017, 16:25
 -- Verzia serveru: 5.7.14
 -- Verzia PHP: 5.6.25
 
@@ -4278,7 +4278,7 @@ CREATE TABLE `company_data` (
   `comp_dic` varchar(30) COLLATE utf8_bin NOT NULL,
   `comp_icdph` varchar(30) COLLATE utf8_bin NOT NULL,
   `comp_bic` varchar(30) COLLATE utf8_bin NOT NULL,
-  `comp_iban` varchar(30) COLLATE utf8_bin NOT NULL,
+  `comp_iban` varchar(173) COLLATE utf8_bin NOT NULL,
   `comp_bank_owner` varchar(173) COLLATE utf8_bin NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
@@ -4287,8 +4287,9 @@ CREATE TABLE `company_data` (
 --
 
 INSERT INTO `company_data` (`id`, `comp_ico`, `comp_dic`, `comp_icdph`, `comp_bic`, `comp_iban`, `comp_bank_owner`) VALUES
-(1, '', '', '', '', '', 'b023e455bb1dfa0a25805787430593445734d15c1b7ce5eb30e98798a45ee389c080bed855c7933bace25a996df86128d721fdba7ac4cf257633ad81d55b2b5aBqQsPr9LH/RdSRPC6kL1OIOTaqFpH64Q8l2UisIM9qs='),
-(2, '', '', '', '', '', 'ce90ce6304ef2d14911f9b293aa2cbdc8fda3c0efa43c2d6b1488b81e4e7f5e9dff9ca53b0435a07e8cb47dec4ab2a61303016762c85aec762a1a9238b5fb08b6cnPOwRtAIoP2KQIkjXfXEozR1vHvR7HHHUEtrcss4c=');
+(5, 'gfdf', '', '', '', '', 'ab967c893760f40caab0c0d6ba005bbc3490fb05006c914997b23b111124fe33653f09a41f657fe3a78ee475d1e053cc5a06d04b36b809d4a03afc0d2ad956f8KDZLEyVRPTZuG2f30pLkFIMNxQC+hHSkdaQRNrSXWMk='),
+(8, '', '1', '1', '1', '2963383347c2ef829ba26ca1bc4875df92a2b074e5fe116c3b2a9d0c47cf6fc5c2307ee5327acc40130dc4403649d432069c6f3f0fa9c88a6f0099ea41bfcb0bjfWnIMjP5a9P4yhjji9Nzi8jASGWeTL5Ec4DjmeaUCs=', '320d4656b0c78c4dd3158180334abf86318febdb39cc165688f42c7b09bf92a836e31a4061c788920c4a5ddf33f86cd999afdf73bc7dc68bb8dab030dd468972ptpcyhfXzEtvWLVLAtmv6dL62Hw/KRywm5rgvde7aHk='),
+(9, '', '', '', '', 'ac6393ea2ddd90c6de32d80ee90f8f476d766b66b077e8c156fed43cccd9b14cf344b86a8f40d4f0d39ba4f5ff339bdc9551626a22f09811aa2f38ba67ae7c049PT4u/M3JX6yxiu+s2hI9Su54FaCpIDvmnLqkyY5dFw=', '6c54997152e447eb3d4646c86666e6943d12bf6f3662a53be03245a94afb0da305fa6ac225458f3f70c068da7bbca38a29fa6ec6987c4722790b4cd02b1aeb84AWI1N2p0kTawTI+ARDjpFrjr/GSjx0ny0F8jqpYSr30=');
 
 -- --------------------------------------------------------
 
@@ -4313,8 +4314,9 @@ CREATE TABLE `delivery_data` (
 --
 
 INSERT INTO `delivery_data` (`id`, `deliv_name`, `deliv_surname`, `deliv_company`, `deliv_street`, `deliv_city`, `deliv_zip`, `deliv_info`, `deliv_phone`) VALUES
-(1, '3387bf10c6b7a881cd78b6a0628f82e5e979dbc2cf5574caacff0308c192ed0bccff369df39da43163c1ef7f529ca1dbb1cef2518e82005a252c8de216193890zAm0QR+QdvEIGM6Joi0FvyoDUzbfI1IxUEJI2qdAaLQ=', '4c5bd9ad15e2c432b9927504cb36b7f731b1d3827ec5dad35e2b4deb88253f8da3408d82ad7946575ac7cd1aadd87a4178754ca0a9a2ee1a36a6d1ac7eaedf1fyPpRMnIkQhxvjz3n971S4SeXCl85niZyfZ3lmG8jQc8=', '', '', '', '', '', ''),
-(2, '329946c4ec7e99ad8ca0a638e9c58f855c3210bf15f4b960f34eb4b55db4e61086baac2603e388e5d1e13aaba772a98295e49e722c62d6ebca89f4e89baa0578/b9D33UH6vs5IN5Kn9fLM1iBWSAGrkOG64OPN3QioGQ=', '97b73e5ead49988f0dea91ac33ab1d768165b7bbd8f544a521ee6b19ddb59ba048456763e23a33c4e1da7cc3a30f876ed38f81cd4307be567eb3a9ef2f13e45ac8DCnccrY1SZuPYIrcusudK78HN85W8A4FOZ68UzNtI=', '', '', '', '', '', '');
+(5, 'dfbcfd59784faff493fadf92950264d69522a7c9fabda4aa1845fa1fca1a179846217e389064288a283097f19433aa2bf7068582a4efb58d5f826b039e5b037cyJFoTGmZF2X6hD88WTdf6QNg7t7aunbZJfWguHkwz/Q=', '94cc292efdc7314f71326836887b287943476bfdc1248d17b719bfa53dfab7444f7e85026214ed3b68015d47643ea9827f735b88b02166e215c1a63b75a3e05256VfcPAgMcGDxjbmydwyXghAW3OK2cxbaEPk7vgTqEQ=', '', '', '', '', '', ''),
+(8, '49176ed54c4395af048904a494497f8fffb395c323a3f65600beb483c42b84f0cf6eaf01c52c3e5118efe54a5ce58633530679406a1f73afd4980aeb3b9febb5wU+gdx01QNok22QU+3xHhZBt0BydE7Owd6tHN+WddTM=', '4832191ce79ba13a5def87b72a3b107b3e2f3ca01a649d49b47d909c4cb61b12578f312452ab3e264ccc6c5a26050e55a983286736a8bdb6a7d2f89e87625455dz5wp80omvym47HYfXlS7GIM31ljkF1+Uzj/HMkzd1w=', '', 'R. Dúbravca', 'Rabča', '029 44', '', ''),
+(9, '497148bd6165a3de6cc10c256d64da3834316cbd35d14fb42d5f42cc047825a23d19604877b980cdea7acf31105b523618fe30ac841d89c5991cb4820afbc6e4TX+rtS5ogdyasQezp2Pp1gwmsV9yO05/82vU+iIBE1A=', 'b461d9c492e747d51c5132ce14bae174ae64794bd359c8630b8cca98a2435d5c11069e851059acea51edffd1e27b80fc8657ac9d177666094340a339ae6caacaff/OTpWfyUOug8pmDzcjSV78TZdmpeR2S7oFdxlPXKM=', '', '', '', '', '', '+421');
 
 -- --------------------------------------------------------
 
@@ -4334,8 +4336,9 @@ CREATE TABLE `login` (
 --
 
 INSERT INTO `login` (`id`, `email`, `password`, `role`) VALUES
-(1, 'a@a.sk', '1f40fc92da241694750979ee6cf582f2d5d7d28e18335de05abc54d0560e0f5302860c652bf08d560252aa5e74210546f369fbbbce8c12cfc7957b2652fe9a75', 'Admin'),
-(2, 'aa@a.sk', '1f40fc92da241694750979ee6cf582f2d5d7d28e18335de05abc54d0560e0f5302860c652bf08d560252aa5e74210546f369fbbbce8c12cfc7957b2652fe9a75', 'Buser');
+(5, 'a@aa.sk', '2c1ee68372215b1ce064426b5cdbd4ef2581ace0dd3b21fa2be27f364827242e83f68b68be03f5b3e24be5d1b4315f98a0a96d19713fb3a19dc455fb6adc3431', 'Admin'),
+(8, 'a@a.sk', '1f40fc92da241694750979ee6cf582f2d5d7d28e18335de05abc54d0560e0f5302860c652bf08d560252aa5e74210546f369fbbbce8c12cfc7957b2652fe9a75', 'Admin'),
+(9, 'd@d.sk', '1f40fc92da241694750979ee6cf582f2d5d7d28e18335de05abc54d0560e0f5302860c652bf08d560252aa5e74210546f369fbbbce8c12cfc7957b2652fe9a75', 'Buser');
 
 -- --------------------------------------------------------
 
@@ -4395,7 +4398,109 @@ INSERT INTO `logs` (`id`, `status`, `user_id`, `first_name`, `last_name`, `ip_ad
 (31, 'success', 1, 'a', 'a', '::1', 'Chrome 54.0.2840.99', 'Windows 7', '2016-11-21 10:17:19', '', ''),
 (32, 'success', 1, 'a', 'a', '::1', 'Chrome 54.0.2840.99', 'Windows 7', '2016-11-21 10:37:11', '', ''),
 (33, 'success', 1, 'a', 'a', '::1', 'Chrome 54.0.2840.99', 'Windows 7', '2016-11-21 11:21:50', '', ''),
-(34, 'success', 1, 'a', 'a', '::1', 'Chrome 54.0.2840.99', 'Windows 7', '2016-11-22 09:18:46', '', '');
+(34, 'success', 1, 'a', 'a', '::1', 'Chrome 54.0.2840.99', 'Windows 7', '2016-11-22 09:18:46', '', ''),
+(35, 'success', 1, 'a', 'a', '::1', 'Chrome 54.0.2840.99', 'Windows 7', '2016-11-29 15:18:45', '', ''),
+(36, 'success', 1, 'a', 'a', '::1', 'Chrome 54.0.2840.99', 'Windows 7', '2016-11-29 16:21:31', '', ''),
+(37, 'failed', 0, '', '', '::1', 'Chrome 54.0.2840.99', 'Windows 7', '2016-12-02 12:01:35', 'soldier1994@azet.sk', 'a'),
+(38, 'success', 1, 'a', 'a', '::1', 'Chrome 54.0.2840.99', 'Windows 7', '2016-12-05 14:05:13', '', ''),
+(39, 'success', 4, 'a', 'a', '::1', 'Chrome 54.0.2840.99', 'Windows 7', '2016-12-06 08:19:35', '', ''),
+(40, 'success', 1, 'a', 'a', '::1', 'Chrome 54.0.2840.99', 'Windows 7', '2016-12-06 08:20:03', '', ''),
+(41, 'success', 1, 'a', 'a', '::1', 'Chrome 54.0.2840.99', 'Windows 7', '2016-12-06 10:33:29', '', ''),
+(42, 'success', 1, 'a', 'a', '::1', 'Chrome 54.0.2840.99', 'Windows 7', '2016-12-06 10:39:22', '', ''),
+(43, 'success', 4, 'a', 'a', '::1', 'Chrome 54.0.2840.99', 'Windows 7', '2016-12-06 10:53:53', '', ''),
+(44, 'success', 1, 'a', 'a', '::1', 'Chrome 54.0.2840.99', 'Windows 7', '2016-12-06 11:07:34', '', ''),
+(45, 'success', 4, 'a', 'a', '::1', 'Chrome 54.0.2840.99', 'Windows 7', '2016-12-06 11:12:30', '', ''),
+(46, 'success', 1, 'a', 'a', '::1', 'Chrome 54.0.2840.99', 'Windows 7', '2016-12-06 12:46:59', '', ''),
+(47, 'success', 1, 'a', 'a', '::1', 'Chrome 54.0.2840.99', 'Windows 7', '2016-12-06 15:13:05', '', ''),
+(48, 'failed', 0, '', '', '::1', 'Chrome 54.0.2840.99', 'Windows 7', '2016-12-08 10:11:35', 'a@a.sk', 'a'),
+(49, 'success', 4, 'a', 'a', '::1', 'Chrome 54.0.2840.99', 'Windows 7', '2016-12-08 10:11:49', '', ''),
+(50, 'failed', 0, '', '', '::1', 'Chrome 54.0.2840.99', 'Windows 7', '2016-12-08 10:13:06', 'a@a.sk', 'a'),
+(51, 'failed', 0, '', '', '::1', 'Chrome 54.0.2840.99', 'Windows 7', '2016-12-08 10:13:12', 'a@a.sk', 'aa'),
+(52, 'failed', 0, '', '', '::1', 'Chrome 54.0.2840.99', 'Windows 7', '2016-12-08 10:13:32', 'a@a.sk', 'a'),
+(53, 'failed', 0, '', '', '::1', 'Chrome 54.0.2840.99', 'Windows 7', '2016-12-08 10:13:58', 'soldier1994@azet.sk4', 'a'),
+(54, 'success', 4, 'a', 'a', '::1', 'Chrome 54.0.2840.99', 'Windows 7', '2016-12-08 10:14:18', '', ''),
+(55, 'failed', 0, '', '', '::1', 'Chrome 54.0.2840.99', 'Windows 7', '2016-12-08 10:14:27', 'a@a.sk', 'aa'),
+(56, 'failed', 0, '', '', '::1', 'Chrome 54.0.2840.99', 'Windows 7', '2016-12-08 10:14:30', 'a@a.sk', 'ww'),
+(57, 'failed', 0, '', '', '::1', 'Chrome 54.0.2840.99', 'Windows 7', '2016-12-08 10:14:34', 'a@a.sk', 'a'),
+(58, 'failed', 0, '', '', '::1', 'Chrome 54.0.2840.99', 'Windows 7', '2016-12-08 10:15:21', 'a@a.sk', 'aa'),
+(59, 'failed', 0, '', '', '::1', 'Chrome 54.0.2840.99', 'Windows 7', '2016-12-08 10:16:07', 'soldier1994@azet.sk', 'a'),
+(60, 'success', 4, 'a', 'a', '::1', 'Chrome 54.0.2840.99', 'Windows 7', '2016-12-08 10:16:25', '', ''),
+(61, 'success', 4, 'a', 'a', '::1', 'Chrome 54.0.2840.99', 'Windows 7', '2016-12-08 10:32:08', '', ''),
+(62, 'success', 4, 'a', 'a', '::1', 'Chrome 54.0.2840.99', 'Windows 7', '2016-12-08 10:33:22', '', ''),
+(63, 'failed', 0, '', '', '::1', 'Chrome 54.0.2840.99', 'Windows 7', '2016-12-08 10:35:43', 'a@a.sk', 'a'),
+(64, 'success', 4, 'a', 'a', '::1', 'Chrome 54.0.2840.99', 'Windows 7', '2016-12-08 10:35:47', '', ''),
+(65, 'success', 4, 'a', 'a', '::1', 'Chrome 54.0.2840.99', 'Windows 7', '2016-12-08 10:38:36', '', ''),
+(66, 'success', 4, 'a', 'a', '::1', 'Chrome 54.0.2840.99', 'Windows 7', '2016-12-08 10:41:30', '', ''),
+(67, 'success', 4, 'a', 'a', '::1', 'Chrome 54.0.2840.99', 'Windows 7', '2016-12-08 10:45:53', '', ''),
+(68, 'success', 4, 'a', 'a', '::1', 'Chrome 54.0.2840.99', 'Windows 7', '2016-12-08 10:53:53', '', ''),
+(69, 'success', 4, 'a', 'a', '::1', 'Chrome 54.0.2840.99', 'Windows 7', '2016-12-08 11:09:04', '', ''),
+(70, 'success', 4, 'a', 'a', '::1', 'Chrome 54.0.2840.99', 'Windows 7', '2016-12-08 14:57:42', '', ''),
+(71, 'failed', 0, '', '', '::1', 'Chrome 54.0.2840.99', 'Windows 7', '2016-12-08 14:59:18', 'soldier1994@azet.sk', 'a'),
+(72, 'success', 4, 'a', 'a', '::1', 'Chrome 54.0.2840.99', 'Windows 7', '2016-12-08 14:59:23', '', ''),
+(73, 'success', 4, 'a', 'a', '::1', 'Chrome 54.0.2840.99', 'Windows 7', '2016-12-08 15:02:34', '', ''),
+(74, 'success', 4, 'a', 'a', '::1', 'Chrome 54.0.2840.99', 'Windows 7', '2016-12-08 15:18:43', '', ''),
+(75, 'failed', 0, '', '', '::1', 'Chrome 54.0.2840.99', 'Windows 7', '2016-12-09 11:04:25', 'soldier1994@azet.sk', 'a'),
+(76, 'failed', 0, '', '', '::1', 'Chrome 54.0.2840.99', 'Windows 7', '2016-12-09 11:04:30', 'soldier1994@azet.sk', 'w'),
+(77, 'failed', 0, '', '', '::1', 'Chrome 54.0.2840.99', 'Windows 7', '2016-12-09 11:04:34', 'soldier1994@azet.sk', 'as'),
+(78, 'failed', 0, '', '', '::1', 'Chrome 54.0.2840.99', 'Windows 7', '2016-12-09 11:04:38', 'soldier1994@azet.sk', 'ss'),
+(79, 'failed', 0, '', '', '::1', 'Chrome 54.0.2840.99', 'Windows 7', '2016-12-09 11:04:42', 'soldier1994@azet.sk', 'w'),
+(80, 'failed', 0, '', '', '::1', 'Chrome 54.0.2840.99', 'Windows 7', '2016-12-09 11:04:45', 'soldier1994@azet.sk', 'q'),
+(81, 'failed', 0, '', '', '::1', 'Chrome 54.0.2840.99', 'Windows 7', '2016-12-09 11:05:13', 'soldier1994@azet.sk', 'a'),
+(82, 'success', 5, 'Matus', 'Andrejcak', '::1', 'Chrome 54.0.2840.99', 'Windows 7', '2016-12-09 12:37:00', '', ''),
+(83, 'success', 5, 'Matus', 'Andrejcak', '::1', 'Chrome 54.0.2840.99', 'Windows 7', '2016-12-09 12:37:27', '', ''),
+(84, 'failed', 0, '', '', '::1', 'Chrome 54.0.2840.99', 'Windows 7', '2016-12-09 12:39:33', 'soldier1994@azet.sk', 'a'),
+(85, 'success', 5, 'Matus', 'Andrejcak', '::1', 'Chrome 54.0.2840.99', 'Windows 7', '2016-12-09 12:39:37', '', ''),
+(86, 'success', 5, 'Matus', 'Andrejcak', '::1', 'Chrome 54.0.2840.99', 'Windows 7', '2016-12-09 12:40:07', '', ''),
+(87, 'success', 5, 'Matus', 'Andrejcak', '::1', 'Chrome 54.0.2840.99', 'Windows 7', '2016-12-09 12:43:33', '', ''),
+(88, 'failed', 0, '', '', '::1', 'Chrome 54.0.2840.99', 'Windows 7', '2016-12-09 12:45:01', 'soldier1994@azet.sk', 'a'),
+(89, 'success', 5, 'Matus', 'Andrejcak', '::1', 'Chrome 54.0.2840.99', 'Windows 7', '2016-12-09 12:45:10', '', ''),
+(90, 'failed', 0, '', '', '::1', 'Chrome 54.0.2840.99', 'Windows 7', '2016-12-09 14:57:00', 'soldier1994@azet.sk', 'a'),
+(91, 'success', 5, 'Matus', 'Andrejcak', '::1', 'Chrome 54.0.2840.99', 'Windows 7', '2016-12-09 14:57:04', '', ''),
+(92, 'success', 5, 'Matus', 'Andrejcak', '::1', 'Chrome 54.0.2840.99', 'Windows 7', '2016-12-09 15:35:25', '', ''),
+(93, 'success', 7, 'a', 'Andrejcak', '::1', 'Chrome 54.0.2840.99', 'Windows 7', '2016-12-09 15:39:23', '', ''),
+(94, 'success', 8, 'a', 'aa', '::1', 'Chrome 54.0.2840.99', 'Windows 7', '2016-12-09 15:41:42', '', ''),
+(95, 'failed', 0, '', '', '::1', 'Chrome 54.0.2840.99', 'Windows 7', '2016-12-09 15:42:30', 'soldier1994@azet.sk', 'a'),
+(96, 'success', 5, 'Matus', 'Andrejcak', '::1', 'Chrome 54.0.2840.99', 'Windows 7', '2016-12-09 15:42:33', '', ''),
+(97, 'success', 5, 'Matus', 'Andrejcak', '::1', 'Chrome 54.0.2840.99', 'Windows 7', '2016-12-09 15:57:43', '', ''),
+(98, 'success', 8, 'a', 'aa', '::1', 'Chrome 54.0.2840.99', 'Windows 7', '2016-12-12 12:58:30', '', ''),
+(99, 'success', 8, 'a', 'aa', '::1', 'Chrome 54.0.2840.99', 'Windows 7', '2016-12-12 12:59:25', '', ''),
+(100, 'failed', 0, '', '', '::1', 'Chrome 54.0.2840.99', 'Windows 7', '2016-12-12 15:26:08', 'a@a.sk', 'a'),
+(101, 'failed', 0, '', '', '::1', 'Chrome 54.0.2840.99', 'Windows 7', '2016-12-12 15:26:12', 'soldier1994@azet.sk', 'a'),
+(102, 'success', 5, 'Matus', 'Andrejcak', '::1', 'Chrome 54.0.2840.99', 'Windows 7', '2016-12-12 15:26:17', '', ''),
+(103, 'failed', 0, '', '', '::1', 'Chrome 54.0.2840.99', 'Windows 7', '2016-12-13 12:59:15', 'soldier1994@azet.sk', 'a'),
+(104, 'failed', 0, '', '', '::1', 'Chrome 54.0.2840.99', 'Windows 7', '2016-12-13 12:59:20', 'soldier1994@azet.sk', 's'),
+(105, 'failed', 0, '', '', '::1', 'Chrome 54.0.2840.99', 'Windows 7', '2016-12-13 13:00:03', 'a@a.sk', 'a'),
+(106, 'success', 5, 'Matus', 'Andrejcak', '::1', 'Chrome 54.0.2840.99', 'Windows 7', '2016-12-13 13:00:08', '', ''),
+(107, 'failed', 0, '', '', '::1', 'Chrome 54.0.2840.99', 'Windows 7', '2016-12-13 16:55:38', 'a@a.sk', 'a'),
+(108, 'failed', 0, '', '', '::1', 'Chrome 54.0.2840.99', 'Windows 7', '2016-12-13 16:55:41', 'a@a.sk', 's'),
+(109, 'failed', 0, '', '', '::1', 'Chrome 54.0.2840.99', 'Windows 7', '2016-12-13 16:55:49', 'soldier1994@azet.sk', 'a'),
+(110, 'failed', 0, '', '', '::1', 'Chrome 54.0.2840.99', 'Windows 7', '2016-12-13 16:55:52', 'soldier1994@azet.sk', 's'),
+(111, 'success', 5, 'Matus', 'Andrejcak', '::1', 'Chrome 54.0.2840.99', 'Windows 7', '2016-12-13 16:56:17', '', ''),
+(112, 'failed', 0, '', '', '::1', 'Chrome 54.0.2840.99', 'Windows 7', '2016-12-15 10:07:02', 'a@a.sk', 'a'),
+(113, 'failed', 0, '', '', '::1', 'Chrome 54.0.2840.99', 'Windows 7', '2016-12-15 10:07:10', 'a@a.sk', 's'),
+(114, 'failed', 0, '', '', '::1', 'Chrome 54.0.2840.99', 'Windows 7', '2016-12-15 10:08:00', 'a@a.sk', 'a'),
+(115, 'success', 5, 'Matus', 'Andrejcak', '::1', 'Chrome 54.0.2840.99', 'Windows 7', '2016-12-15 10:08:04', '', ''),
+(116, 'failed', 0, '', '', '::1', 'Chrome 54.0.2840.99', 'Windows 7', '2016-12-15 10:30:28', 'tt', 'tt'),
+(117, 'failed', 0, '', '', '::1', 'Chrome 54.0.2840.99', 'Windows 7', '2016-12-15 10:31:10', 'a@a.sk', 's'),
+(118, 'success', 5, 'Matus', 'Andrejcak', '::1', 'Chrome 54.0.2840.99', 'Windows 7', '2016-12-15 10:31:28', '', ''),
+(119, 'failed', 0, '', '', '127.0.0.1', 'Internet Explorer 11.0', 'Windows 7', '2016-12-15 13:11:58', 'a@a.sk', 'a'),
+(120, 'failed', 0, '', '', '127.0.0.1', 'Internet Explorer 11.0', 'Windows 7', '2016-12-15 13:12:04', 'a@a.sk', 's'),
+(121, 'success', 5, 'Matus', 'Andrejcak', '127.0.0.1', 'Internet Explorer 11.0', 'Windows 7', '2016-12-15 13:12:33', '', ''),
+(122, 'success', 8, '1', '1', '::1', 'Chrome 55.0.2883.87', 'Windows 7', '2017-01-03 09:58:42', '', ''),
+(123, 'success', 8, '1', '1', '::1', 'Chrome 55.0.2883.87', 'Windows 7', '2017-01-04 10:03:01', '', ''),
+(124, 'failed', 0, '', '', '::1', 'Chrome 55.0.2883.87', 'Windows 7', '2017-01-09 15:02:30', 'aa@a.sk', 'a'),
+(125, 'failed', 0, '', '', '::1', 'Chrome 55.0.2883.87', 'Windows 7', '2017-01-09 15:02:44', 'a@aa.sk', 'a'),
+(126, 'failed', 0, '', '', '::1', 'Chrome 55.0.2883.87', 'Windows 7', '2017-01-09 15:02:53', 'aa@a.sk', 'a'),
+(127, 'failed', 0, '', '', '::1', 'Chrome 55.0.2883.87', 'Windows 7', '2017-01-09 15:03:31', 'a@a.sk', 'a'),
+(128, 'success', 8, '1', '1', '::1', 'Chrome 55.0.2883.87', 'Windows 7', '2017-01-09 15:03:49', '', ''),
+(129, 'success', 8, '1', '1', '::1', 'Chrome 55.0.2883.87', 'Windows 7', '2017-01-09 15:52:18', '', ''),
+(130, 'success', 8, '1', '1', '::1', 'Chrome 55.0.2883.87', 'Windows 7', '2017-01-09 15:57:50', '', ''),
+(131, 'success', 8, '1', '1', '::1', 'Chrome 55.0.2883.87', 'Windows 7', '2017-01-09 16:00:56', '', ''),
+(132, 'failed', 0, '', '', '::1', 'Chrome 55.0.2883.87', 'Windows 7', '2017-01-10 09:26:04', 'a@aa.sk', 'a'),
+(133, 'success', 8, '1', '1', '::1', 'Chrome 55.0.2883.87', 'Windows 7', '2017-01-10 09:26:11', '', ''),
+(134, 'success', 8, '1', '1', '::1', 'Chrome 55.0.2883.87', 'Windows 7', '2017-01-10 14:25:27', '', ''),
+(135, 'success', 8, '1', '1', '::1', 'Chrome 55.0.2883.87', 'Windows 7', '2017-01-10 14:47:51', '', ''),
+(136, 'success', 8, '1', '1', '::1', 'Chrome 55.0.2883.87', 'Windows 7', '2017-01-11 10:16:53', '', '');
 
 -- --------------------------------------------------------
 
@@ -4418,8 +4523,9 @@ CREATE TABLE `personal_data` (
 --
 
 INSERT INTO `personal_data` (`id`, `fact_name`, `fact_surname`, `fact_street`, `fact_city`, `fact_zip`, `fact_phone`) VALUES
-(1, '6e2d3d809013b25168033f386bcd68e544352fea52718ce4df71d60a6e0a845a2f896d6dd9492609c99fc62b0e20164f9bf852c5aed05e5c8c0cc03d76c50a08D95mi5GVT1L7YyS4i2sjv307gJ6uvz54vEOe1MUbAf0=', 'cba4cb748c18bcae0064aad9a0fb54c8695c54fe1e23bc57c8feaed7ebe70d37dd6cfafd46cd19823cfe34f94364f4cd2547476c0c6cb37ddcdf4061ba0ffafe15jr79/pcfTfx1Qanh+32mry3rT+melNUe7PSXUgQEw=', 'a', 'a', 'a', 'a'),
-(2, 'f0c3012e2e5871153729a0259b5bd5b0fa74429009cdfcec004b83e9e05006a8c82f32af4f94878cab383d8db31b2c789357aaccd7c91d5869dd421578a499b0Dj/zc1V0xr0FpmdgzgKGyXMKxSAd2DXN+OmlLXwQ06Y=', '4b1c3f78f49bebc0a3f2bfa540ae5a07798c1cfb5a8071c2c3e1d0c7e713a805994127456c975782f0c898a9843d6285be4b510d5061c2a4a369f03b06f325b4JTAhF2SKTRGaNL9/M7oZD+g+ufR0TetO1jWbKRLQKCc=', 'a', 'a', 'a', 'a');
+(5, 'f9d8b740e57ff2b9839bf63c1073c70e3c0b4f559406e2260774775c14b3bf1d4853147b6608e4ab95ac78f246ec34fd305bea7e39e93548a71a5751caff00b4XoQQF+9WAMMb60lX5qq6Woit6uyDaJddHjMJfQL791A=', 'c0e5f6026014d438a65731b9d6c2054d897e24e7a4a248c1ca1f7a075e99130aedc1734a6c9dc7fdae0d24bbfb1a3a6a912f8c017d93e9f0689ff30a1964a250+CW2363qzK+ilmQC3VPAyAupWUBgFvouv/mDQfe4XTQ=', 'richtára Ondreja', '', '059 72', '4325yyj'),
+(8, '7e1b24ad95a6aa2b64d0d1fd7670b27c80bfbe5f49ed7640b17c0d06edf866a45587f3973fa397b96128ef33fedae8d7385c3e2202114041b296dbd530ec70c91CZaSm0/FkqscgBupZUHO2e4NNV9i8fyZ9CrF3fyPLs=', 'c6eee301cd65cbc1e9c5d419ec352a46762b833a6034bcd9adecd69b4f43051926ccf51ca217b96bc2643b290b606a9f94c768fbc131692e4812b603ca98805bWi1o6HJJElosV2fR2ggdaylIqelsoLqGzVwxMuxP9TU=', 'Pobrežná', 'Kysak', '044 81', '+012 345 678 9'),
+(9, '63cd1f5b0bda992e3c6b732d0453a176ce80d96d366e6a0379ae76ecc33db5ca641323ad7eeba13d6884daf0b9bfef6f002d26f7edb6641bef7534321c5641e3K5gq9LLHDJJiykz9cDHqHSNHCN+6qDMpt7+x6jebW0c=', 'a11e95fc1e6e0e7b52d81fdeb1f9c5690cdc4f59b513e068ec3ecd83e6fe9b7411045c65b38298d92f8446e19584207f6d4122d7cf0f37ec44a35be5f9f693f1Ic6znAykgGQFhFeeRGt1wSUBuWsYmcK75jqIg9EHrxk=', 'D. Ertla', 'Danišovce', '053 22', '+421 111 111 111');
 
 -- --------------------------------------------------------
 
@@ -4432,7 +4538,9 @@ CREATE TABLE `products` (
   `subcategory_id` int(11) NOT NULL,
   `product_name` varchar(255) COLLATE utf8_bin NOT NULL,
   `product_description` varchar(255) COLLATE utf8_bin NOT NULL,
+  `product_price_dph` int(11) NOT NULL,
   `product_price` int(11) NOT NULL,
+  `dph` int(11) NOT NULL DEFAULT '20',
   `product_type` varchar(1) COLLATE utf8_bin NOT NULL,
   `product_quantity` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
@@ -4441,9 +4549,21 @@ CREATE TABLE `products` (
 -- Sťahujem dáta pre tabuľku `products`
 --
 
-INSERT INTO `products` (`id`, `subcategory_id`, `product_name`, `product_description`, `product_price`, `product_type`, `product_quantity`) VALUES
-(45, 11, 'Test', 'test', 1111, 'G', 15),
-(46, 11, 'aaaaaa', 'aaaaaa', 12, 'G', 15);
+INSERT INTO `products` (`id`, `subcategory_id`, `product_name`, `product_description`, `product_price_dph`, `product_price`, `dph`, `product_type`, `product_quantity`) VALUES
+(45, 11, 'Test', 'test', 1111, 0, 6, 'G', 2),
+(46, 11, 'aaaaaa', 'aaaaaa', 12, 0, 6, 'G', 1);
+
+--
+-- Spúšťače `products`
+--
+DELIMITER $$
+CREATE TRIGGER `product_tax` AFTER UPDATE ON `products` FOR EACH ROW UPDATE products
+SET product_price =
+    (
+        SELECT ROUND(product_price_dph / IFNULL((SELECT dph FROM tax), 0), 2) FROM products
+    )
+$$
+DELIMITER ;
 
 -- --------------------------------------------------------
 
@@ -4462,30 +4582,35 @@ CREATE TABLE `storage` (
 --
 
 INSERT INTO `storage` (`id`, `product_id`, `flag`) VALUES
-(46, 45, 'A'),
-(47, 45, 'A'),
-(48, 45, 'A'),
-(49, 45, 'A'),
-(50, 45, 'A'),
-(51, 45, 'A'),
-(52, 45, 'A'),
-(53, 45, 'A'),
-(54, 45, 'A'),
-(55, 45, 'A'),
-(56, 46, 'A'),
+(46, 45, 'C'),
+(47, 45, 'C'),
+(48, 45, 'C'),
+(49, 45, 'C'),
+(50, 45, 'C'),
+(51, 45, 'C'),
+(52, 45, 'C'),
+(53, 45, 'C'),
+(54, 45, 'C'),
+(55, 45, 'C'),
+(56, 46, 'C'),
 (57, 46, 'A'),
-(58, 46, 'A'),
-(59, 46, 'A'),
-(60, 46, 'A');
+(58, 46, 'C'),
+(59, 46, 'C'),
+(60, 46, 'C');
 
 --
 -- Spúšťače `storage`
 --
 DELIMITER $$
 CREATE TRIGGER `tg_ai_table22` AFTER UPDATE ON `storage` FOR EACH ROW UPDATE products
-   SET products.product_quantity = (SELECT COUNT(product_quantity)
-FROM STORAGE, (SELECT id FROM products) as prod
-WHERE prod.id = storage.product_id AND storage.flag = 'A' LIMIT 1)
+SET products.product_quantity =
+    (
+        SELECT COUNT(product_quantity)
+        FROM STORAGE, (SELECT id FROM products) as prod
+        WHERE prod.id = storage.product_id
+        AND storage.flag = 'A' LIMIT 1
+    )
+where id = new.product_id
 $$
 DELIMITER ;
 
@@ -10078,6 +10203,24 @@ CREATE TABLE `subcategory` (
 INSERT INTO `subcategory` (`id`, `category_id`, `subcategory_name`) VALUES
 (11, 12, 'Notebooky');
 
+-- --------------------------------------------------------
+
+--
+-- Štruktúra tabuľky pre tabuľku `tax`
+--
+
+CREATE TABLE `tax` (
+  `id` int(11) NOT NULL,
+  `dph` int(11) NOT NULL DEFAULT '6'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+--
+-- Sťahujem dáta pre tabuľku `tax`
+--
+
+INSERT INTO `tax` (`id`, `dph`) VALUES
+(1, 6);
+
 --
 -- Kľúče pre exportované tabuľky
 --
@@ -10152,6 +10295,12 @@ ALTER TABLE `subcategory`
   ADD KEY `category_id` (`category_id`);
 
 --
+-- Indexy pre tabuľku `tax`
+--
+ALTER TABLE `tax`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT pre exportované tabuľky
 --
 
@@ -10159,7 +10308,7 @@ ALTER TABLE `subcategory`
 -- AUTO_INCREMENT pre tabuľku `category`
 --
 ALTER TABLE `category`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 --
 -- AUTO_INCREMENT pre tabuľku `cities`
 --
@@ -10169,27 +10318,27 @@ ALTER TABLE `cities`
 -- AUTO_INCREMENT pre tabuľku `company_data`
 --
 ALTER TABLE `company_data`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 --
 -- AUTO_INCREMENT pre tabuľku `delivery_data`
 --
 ALTER TABLE `delivery_data`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 --
 -- AUTO_INCREMENT pre tabuľku `login`
 --
 ALTER TABLE `login`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 --
 -- AUTO_INCREMENT pre tabuľku `logs`
 --
 ALTER TABLE `logs`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=137;
 --
 -- AUTO_INCREMENT pre tabuľku `personal_data`
 --
 ALTER TABLE `personal_data`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 --
 -- AUTO_INCREMENT pre tabuľku `products`
 --
@@ -10210,6 +10359,11 @@ ALTER TABLE `streets`
 --
 ALTER TABLE `subcategory`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+--
+-- AUTO_INCREMENT pre tabuľku `tax`
+--
+ALTER TABLE `tax`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- Obmedzenie pre exportované tabuľky
 --
