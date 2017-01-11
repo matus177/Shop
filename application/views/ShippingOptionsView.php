@@ -2,36 +2,28 @@
     <?php $this->load->view('FlashMessagesView'); ?>
     <div id="logged_user_info" hidden>
         <hr>
-        <p><b>Fakturačné údaje</b></p>
-        <table id="table_basic_info">
-            <tbody>
-            <tr>
-                <td>
-                    <p><?php echo $this->encryption->decrypt($userData['fact_name']) . ' ' . $this->encryption->decrypt($userData['fact_surname']); ?></p>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <p><?php echo $userData['fact_street'] . ', ' . $userData['fact_zip'] . ' ' . $userData['fact_city']; ?></p>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <p><?php echo $userData['fact_phone']; ?></p>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <p>
-                        <button class="btn btn-default" id="change_user_data_buttun" type="button">Zmenit</button>
-                    </p>
-                </td>
-            </tr>
-            </tbody>
-        </table>
+        <div class="review_order">
+            <div class="col-sm-6">
+                <p><b>Fakturačné údaje</b></p>
+                <p><?php echo $this->encryption->decrypt($userData['fact_name']) . ' ' . $this->encryption->decrypt($userData['fact_surname']) ?></p>
+                <p><?php echo $userData['fact_street'] ?></p>
+                <p><?php echo $userData['fact_zip'] . ' ' . $userData['fact_city'] ?></p>
+            </div>
+            <div class="col-sm-6">
+                <p><b>Dodacie údaje</b></p>
+                <p><?php if (strlen($this->encryption->decrypt($userData['deliv_name']) . ' ' . $this->encryption->decrypt($userData['deliv_surname'])) > 1)
+                        echo $this->encryption->decrypt($userData['deliv_name']) . ' ' . $this->encryption->decrypt($userData['deliv_surname']);
+                    else echo $this->encryption->decrypt($userData['fact_name']) . ' ' . $this->encryption->decrypt($userData['fact_surname']); ?></p>
+                <p><?php if (strlen($userData['deliv_street']) > 0) echo $userData['deliv_street']; else echo $userData['fact_street']; ?></p>
+                <p><?php if (strlen($userData['deliv_zip'] . ' ' . $userData['deliv_city']) > 1)
+                        echo $userData['deliv_zip'] . ' ' . $userData['deliv_city'];
+                    else echo $userData['fact_zip'] . ' ' . $userData['fact_city']; ?></p>
+            </div>
+        </div>
         <a href="<?php echo base_url('ShippingAndBilling?id=1'); ?>" class="btn btn-default">
             <span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span> Spat
         </a>
+        <button class="btn btn-primary" id="change_user_data_buttun" type="button">Zmenit</button>
         <a style="float: right" href="<?php echo base_url('ReviewAndPayment?id=3'); ?>" class="btn btn-success">Dalej
             <span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span>
         </a>
