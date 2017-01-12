@@ -48,4 +48,9 @@ class ProductModel extends CI_Model
     {
         $this->db->insert('storage', $data);
     }
+
+    public function selectShippingPrices()
+    {
+        return $this->db->limit(1)->get('tax_prices')->row();
+    }
 }
