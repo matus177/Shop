@@ -25,7 +25,7 @@ class ShippingAndBilling extends CI_Controller
     }
 
     public function a()
-    {v
+    {
         var_dump($this->input->post());
         die();
         foreach ($this->input->post() as $key => $value) {
