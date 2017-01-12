@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hostiteľ: 127.0.0.1
--- Čas generovania: St 11.Jan 2017, 22:47
+-- Čas generovania: Št 12.Jan 2017, 21:11
 -- Verzia serveru: 5.7.14
 -- Verzia PHP: 5.6.25
 
@@ -4571,7 +4571,8 @@ VALUES
   (134, 'success', 8, '1', '1', '::1', 'Chrome 55.0.2883.87', 'Windows 7', '2017-01-10 14:25:27', '', ''),
   (135, 'success', 8, '1', '1', '::1', 'Chrome 55.0.2883.87', 'Windows 7', '2017-01-10 14:47:51', '', ''),
   (136, 'success', 8, '1', '1', '::1', 'Chrome 55.0.2883.87', 'Windows 7', '2017-01-11 10:16:53', '', ''),
-  (137, 'success', 8, '1', '1', '::1', 'Chrome 55.0.2883.87', 'Windows 10', '2017-01-11 20:12:44', '', '');
+  (137, 'success', 8, '1', '1', '::1', 'Chrome 55.0.2883.87', 'Windows 10', '2017-01-11 20:12:44', '', ''),
+  (138, 'success', 8, '1', '1', '::1', 'Chrome 55.0.2883.87', 'Windows 10', '2017-01-12 22:01:49', '', '');
 
 -- --------------------------------------------------------
 
@@ -4630,7 +4631,7 @@ CREATE TABLE `products` (
                         COLLATE utf8_bin NOT NULL,
   `product_description` VARCHAR(255)
                         COLLATE utf8_bin NOT NULL,
-  `product_price_dph`   INT(11)          NOT NULL,
+  `product_price_dph`   FLOAT            NOT NULL,
   `product_price`       FLOAT            NOT NULL,
   `product_type`        VARCHAR(1)
                         COLLATE utf8_bin NOT NULL,
@@ -4639,17 +4640,6 @@ CREATE TABLE `products` (
   ENGINE = InnoDB
   DEFAULT CHARSET = utf8
   COLLATE = utf8_bin;
-
---
--- Sťahujem dáta pre tabuľku `products`
---
-
-INSERT INTO `products` (`id`, `subcategory_id`, `product_name`, `product_description`, `product_price_dph`, `product_price`, `product_type`, `product_quantity`)
-VALUES
-  (96, 11, 'dd', 'dd', 0, 1.67, 'G', 2),
-  (97, 11, 'xxx', 'xxx', 0, 1.67, 'G', 1),
-  (98, 11, 'www', 'www', 0, 1.67, 'G', 0),
-  (99, 11, 'ccc', 'ccc', 0, 1, 'G', 2);
 
 -- --------------------------------------------------------
 
@@ -4666,17 +4656,6 @@ CREATE TABLE `storage` (
   ENGINE = InnoDB
   DEFAULT CHARSET = utf8
   COLLATE = utf8_bin;
-
---
--- Sťahujem dáta pre tabuľku `storage`
---
-
-INSERT INTO `storage` (`id`, `product_id`, `flag`) VALUES
-  (105, 96, 'A'),
-  (106, 96, 'A'),
-  (107, 97, 'A'),
-  (108, 99, 'A'),
-  (109, 99, 'A');
 
 --
 -- Spúšťače `storage`
@@ -10313,23 +10292,37 @@ CREATE TABLE `tax_prices` (
   COLLATE = utf8_bin;
 
 --
--- Sťahujem dáta pre tabuľku `tax_prices`
---
-
-INSERT INTO `tax_prices` (`id`, `product_id`, `product_price`, `product_price_dph`, `dph`) VALUES
-  (34, 96, 10, 0, 6),
-  (35, 97, 10, 0, 6),
-  (36, 98, 10, 0, 6),
-  (37, 99, 10, 0, 6);
-
---
 -- Spúšťače `tax_prices`
 --
+DELIMITER $$
+CREATE TRIGGER `product_price_insert`
+AFTER INSERT ON `tax_prices`
+FOR EACH ROW UPDATE products
+SET product_price =
+(
+  SELECT product_price
+  FROM tax_prices
+  WHERE products.id = tax_prices.product_id
+)
+$$
+DELIMITER ;
+DELIMITER $$
+CREATE TRIGGER `product_price_update`
+AFTER UPDATE ON `tax_prices`
+FOR EACH ROW UPDATE products
+SET product_price =
+(
+  SELECT product_price
+  FROM tax_prices
+  WHERE products.id = tax_prices.product_id
+)
+$$
+DELIMITER ;
 DELIMITER $$
 CREATE TRIGGER `product_tax_insert`
 AFTER INSERT ON `tax_prices`
 FOR EACH ROW UPDATE products
-SET product_price =
+SET product_price_dph =
 (
   SELECT ROUND(product_price / IFNULL((SELECT dph), 0), 2)
   FROM tax_prices
@@ -10339,9 +10332,9 @@ $$
 DELIMITER ;
 DELIMITER $$
 CREATE TRIGGER `product_tax_update`
-BEFORE UPDATE ON `tax_prices`
+AFTER UPDATE ON `tax_prices`
 FOR EACH ROW UPDATE products
-SET product_price =
+SET product_price_dph =
 (
   SELECT ROUND(product_price / IFNULL((SELECT dph), 0), 2)
   FROM tax_prices
@@ -10439,7 +10432,7 @@ ALTER TABLE `tax_prices`
 --
 ALTER TABLE `category`
   MODIFY `id` INT(11) NOT NULL AUTO_INCREMENT,
-  AUTO_INCREMENT = 16;
+  AUTO_INCREMENT = 13;
 --
 -- AUTO_INCREMENT pre tabuľku `cities`
 --
@@ -10469,7 +10462,7 @@ ALTER TABLE `login`
 --
 ALTER TABLE `logs`
   MODIFY `id` INT(11) NOT NULL AUTO_INCREMENT,
-  AUTO_INCREMENT = 138;
+  AUTO_INCREMENT = 139;
 --
 -- AUTO_INCREMENT pre tabuľku `personal_data`
 --
@@ -10481,13 +10474,13 @@ ALTER TABLE `personal_data`
 --
 ALTER TABLE `products`
   MODIFY `id` INT(11) NOT NULL AUTO_INCREMENT,
-  AUTO_INCREMENT = 100;
+  AUTO_INCREMENT = 102;
 --
 -- AUTO_INCREMENT pre tabuľku `storage`
 --
 ALTER TABLE `storage`
   MODIFY `id` INT(11) NOT NULL AUTO_INCREMENT,
-  AUTO_INCREMENT = 110;
+  AUTO_INCREMENT = 113;
 --
 -- AUTO_INCREMENT pre tabuľku `streets`
 --
@@ -10505,7 +10498,7 @@ ALTER TABLE `subcategory`
 --
 ALTER TABLE `tax_prices`
   MODIFY `id` INT(11) NOT NULL AUTO_INCREMENT,
-  AUTO_INCREMENT = 38;
+  AUTO_INCREMENT = 40;
 --
 -- Obmedzenie pre exportované tabuľky
 --
