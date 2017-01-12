@@ -268,7 +268,7 @@
                 type: 'GET',
                 data: searchTerm,
                 success: function (data) {
-                    $('input').click();
+                    $('.form-group input').click();
                     $('.' + factOrDelivZip).val(data).change();
                 }
             })
