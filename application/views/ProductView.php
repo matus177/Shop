@@ -21,9 +21,9 @@
                         <?php } ?>
                         <h3><a type="button" href="<?php echo base_url('Cart') ?>" id="<?php echo $value->id ?>"
                                class="btn btn-success">Kupit</a>
-                            <span class="pull-right"><?php echo $value->product_price_dph; ?> &euro;</span></h3>
+                            <span class="pull-right"><?php echo $value->product_price; ?> &euro;</span></h3>
                         <p style="text-align: center">Cena bez
-                            DPH <?php echo $value->product_price_dph - $value->product_price; ?> &euro;</p>
+                            DPH <?php echo $value->product_price - $value->product_price_dph; ?> &euro;</p>
                     </div>
                 </div>
             </li>

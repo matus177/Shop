@@ -27,15 +27,12 @@ class ProductModel extends CI_Model
     public function insertProduct($data)
     {
         $this->db->trans_start();
-        $productPrice = $data['product_price'];
-        unset($data['product_price']);
         $this->db->insert($this->table, $data);
         $lastId = $this->db->insert_id();
         $this->db->trans_complete();
         $idForStorage = null;
         if ($this->db->trans_status()) {
             $data['product_id'] = $lastId;
-            $data['product_price'] = $productPrice;
             foreach ($data as $key => $value) {
                 if ($key != 'product_price' && $key != 'product_id') {
                     unset($data[$key]);
