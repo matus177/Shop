@@ -3,8 +3,8 @@
     <div class="col-sm-6" style="padding-left: 0">
         <h4><b>Zvolte dopravu</b></h4>
         <div class="panel panel-info">
-            <div class="panel-body">
-                <?php echo form_open('ShippingAndBilling/a', ['id' => 'shipping_form', 'class' => 'form-horizontal', 'role' => 'form']); ?>
+            <div class="panel-body form-horizontal">
+                <?php echo form_open('ShippingAndBilling/a', ['id' => 'shipping_form']); ?>
                 <div onmouseover="shippingAndPaymentInfo('personal_price', 'personal_price_checkbox')"
                      class="personal_price_checkbox checkbox">
                     <label><input type="checkbox" name="osobny_odber" id="personal_collection" class="shipping_checkbox"
@@ -30,10 +30,10 @@
             </div>
         </div>
     </div>
-    <div class="col-sm-6" style="padding-right: 0">
+    <div class="col-sm-6">
         <h4><b>Zvolte sposob platby</b></h4>
         <div class="panel panel-info">
-            <div class="panel-body">
+            <div class="panel-body form-horizontal">
                 <?php echo form_open('ShippingAndBilling/a'); ?>
                 <div class="payment_options">
                     <div onmouseover="shippingAndPaymentInfo('dobierka_price', 'dobierka_price_checkbox')"
@@ -46,15 +46,13 @@
                     <div onmouseover="shippingAndPaymentInfo('hotovost_price', 'hotovost_price_checkbox')"
                          class="hotovost_price_checkbox checkbox">
                         <label><input id="hotovost" name="hotovost" class="payment_checkbox" type="checkbox" value="0"
-                                      disabled>V
-                            hotovosti</label>
+                                      disabled>V hotovosti</label>
                         <div id="hotovost_price" class="hidden">Cena za
                             platbu <?php echo $shippingData->cash; ?>&euro;</div>
                     </div>
                     <div onmouseover="shippingAndPaymentInfo('card_price', 'card_price_checkbox')"
                          class="card_price_checkbox checkbox">
-                        <label><input id="card" name="card" class="payment_checkbox" type="checkbox" value="0"
-                                      disabled>Kartou</label>
+                        <label><input id="card" name="card" class="payment_checkbox" type="checkbox" value="0" disabled>Kartou</label>
                         <div id="card_price" class="hidden">Cena za
                             platbu <?php echo $shippingData->card; ?>&euro;</div>
                     </div>
