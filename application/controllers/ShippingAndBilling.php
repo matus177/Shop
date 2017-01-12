@@ -15,7 +15,7 @@ class ShippingAndBilling extends CI_Controller
         $this->load->view('UpperMenuView');
         $this->load->view('LeftMenuView');
         $this->load->view('CheckoutView', $orderData);
-        $this->load->view('ShippingAndBillingView', array('shippingData' => $this->getShippingPrices(), 'helpVar' => 's'));
+        $this->load->view('ShippingAndBillingView', array('shippingData' => $this->getShippingPrices(), 'shippingPrice' => ''));
         $this->load->view('FooterView');
     }
 
@@ -24,12 +24,30 @@ class ShippingAndBilling extends CI_Controller
         return $this->ProductModel->selectShippingPrices();
     }
 
-    public function a()
+    public function checkShippingAndBilling()
     {
-        var_dump($this->input->post());
-        die();
         foreach ($this->input->post() as $key => $value) {
             $shippingAndBillingData[$key] = $value;
+            switch ($key) {
+                case 'osobny_odber':
+                    $shippingAndBillingData['shipping_options'] = 'osobny odber';
+                    break;
+                case 'courier':
+                    $shippingAndBillingData['shipping_options'] = 'kurierom';
+                    break;
+                case 'slovak_post':
+                    $shippingAndBillingData['shipping_options'] = 'postou';
+                    break;
+                case 'dobierka':
+                    $shippingAndBillingData['payment_options'] = 'dobierkou';
+                    break;
+                case 'hotovost':
+                    $shippingAndBillingData['payment_options'] = 'v hotovosti';
+                    break;
+                case 'card':
+                    $shippingAndBillingData['payment_options'] = 'kartou';
+                    break;
+            }
         }
         $this->session->set_userdata($shippingAndBillingData);
         redirect('ShippingOptions?id=2');

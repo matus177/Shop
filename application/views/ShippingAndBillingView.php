@@ -4,7 +4,7 @@
         <h4><b>Zvolte dopravu</b></h4>
         <div class="panel panel-info">
             <div class="panel-body form-horizontal">
-                <?php echo form_open('ShippingAndBilling/a', ['id' => 'shipping_form']); ?>
+                <?php echo form_open('ShippingAndBilling/checkShippingAndBilling', ['id' => 'shipping_form']); ?>
                 <div onmouseover="shippingAndPaymentInfo('personal_price', 'personal_price_checkbox')"
                      class="personal_price_checkbox checkbox">
                     <label><input type="checkbox" name="osobny_odber" id="personal_collection" class="shipping_checkbox"
@@ -34,7 +34,7 @@
         <h4><b>Zvolte sposob platby</b></h4>
         <div class="panel panel-info">
             <div class="panel-body form-horizontal">
-                <?php echo form_open('ShippingAndBilling/a'); ?>
+                <?php echo form_open('ShippingAndBilling/checkShippingAndBilling'); ?>
                 <div class="payment_options">
                     <div onmouseover="shippingAndPaymentInfo('dobierka_price', 'dobierka_price_checkbox')"
                          class="dobierka_price_checkbox checkbox">
@@ -62,7 +62,7 @@
     </div>
     <div class="delivery_price">
         <h4>Cena dopravy: Nezadane </h4>
-        <input type="text" name="delivery_price" value="<?php echo $helpVar ?>" hidden>
+        <input type="text" name="delivery_price" value="<?php echo $shippingPrice ?>" hidden>
     </div>
     <a href="<?php echo base_url('Cart'); ?>" class="btn btn-default">
         <span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span> Spat
@@ -104,48 +104,48 @@
         $('.payment_options input').click(function () {
             if ($('#dobierka').is(':checked')) {
                 if ($('#personal_collection').is(':checked')) {
-                    $('.delivery_price h4').replaceWith('<h4>Cena dopravy: <?php echo $helpVar = $shippingData->dobierka + $shippingData->personal_price; ?>&euro;</h4>');
-                    $('.delivery_price input').attr("value", <?php echo $helpVar ?>);
+                    $('.delivery_price h4').replaceWith('<h4>Cena dopravy: <?php echo $shippingPrice = $shippingData->dobierka + $shippingData->personal_price; ?>&euro;</h4>');
+                    $('.delivery_price input').attr("value", <?php echo $shippingPrice ?>);
                 }
                 else if ($('#courier').is(':checked')) {
-                    $('.delivery_price h4').replaceWith('<h4>Cena dopravy: <?php echo $helpVar = $shippingData->dobierka + $shippingData->courier; ?>&euro;</h4>');
-                    $('.delivery_price input').attr("value", <?php echo $helpVar ?>);
+                    $('.delivery_price h4').replaceWith('<h4>Cena dopravy: <?php echo $shippingPrice = $shippingData->dobierka + $shippingData->courier; ?>&euro;</h4>');
+                    $('.delivery_price input').attr("value", <?php echo $shippingPrice ?>);
                 }
                 else if ($('#slovak_post').is(':checked')) {
-                    $('.delivery_price h4').replaceWith('<h4>Cena dopravy: <?php echo $helpVar = $shippingData->dobierka + $shippingData->slovak_post; ?>&euro;</h4>');
-                    $('.delivery_price input').attr("value", <?php echo $helpVar ?>);
+                    $('.delivery_price h4').replaceWith('<h4>Cena dopravy: <?php echo $shippingPrice = $shippingData->dobierka + $shippingData->slovak_post; ?>&euro;</h4>');
+                    $('.delivery_price input').attr("value", <?php echo $shippingPrice ?>);
                 }
                 $('#hotovost').attr('disabled', true);
                 $('#card').attr('disabled', true);
             } else if ($('#hotovost').is(':checked')) {
                 $('#dobierka').attr('disabled', true);
                 if ($('#personal_collection').is(':checked')) {
-                    $('.delivery_price h4').replaceWith('<h4>Cena dopravy: <?php echo $helpVar = $shippingData->cash + $shippingData->personal_price; ?>&euro;</h4>');
-                    $('.delivery_price input').attr("value", <?php echo $helpVar ?>);
+                    $('.delivery_price h4').replaceWith('<h4>Cena dopravy: <?php echo $shippingPrice = $shippingData->cash + $shippingData->personal_price; ?>&euro;</h4>');
+                    $('.delivery_price input').attr("value", <?php echo $shippingPrice ?>);
                 }
                 else if ($('#courier').is(':checked')) {
-                    $('.delivery_price h4').replaceWith('<h4>Cena dopravy: <?php echo $helpVar = $shippingData->cash + $shippingData->courier; ?>&euro;</h4>');
-                    $('.delivery_price input').attr("value", <?php echo $helpVar ?>);
+                    $('.delivery_price h4').replaceWith('<h4>Cena dopravy: <?php echo $shippingPrice = $shippingData->cash + $shippingData->courier; ?>&euro;</h4>');
+                    $('.delivery_price input').attr("value", <?php echo $shippingPrice ?>);
                 }
                 else if ($('#slovak_post').is(':checked')) {
-                    $('.delivery_price h4').replaceWith('<h4>Cena dopravy: <?php echo $helpVar = $shippingData->cash + $shippingData->slovak_post; ?>&euro;</h4>');
-                    $('.delivery_price input').attr("value", <?php echo $helpVar ?>);
+                    $('.delivery_price h4').replaceWith('<h4>Cena dopravy: <?php echo $shippingPrice = $shippingData->cash + $shippingData->slovak_post; ?>&euro;</h4>');
+                    $('.delivery_price input').attr("value", <?php echo $shippingPrice ?>);
                 }
                 $('#card').attr('disabled', true);
             } else if ($('#card').is(':checked')) {
                 $('#dobierka').attr('disabled', true);
                 $('#hotovost').attr('disabled', true);
                 if ($('#personal_collection').is(':checked')) {
-                    $('.delivery_price h4').replaceWith('<h4>Cena dopravy: <?php echo $helpVar = $shippingData->card + $shippingData->personal_price; ?>&euro;</h4>');
-                    $('.delivery_price input').attr("value", <?php echo $helpVar ?>);
+                    $('.delivery_price h4').replaceWith('<h4>Cena dopravy: <?php echo $shippingPrice = $shippingData->card + $shippingData->personal_price; ?>&euro;</h4>');
+                    $('.delivery_price input').attr("value", <?php echo $shippingPrice ?>);
                 }
                 else if ($('#courier').is(':checked')) {
-                    $('.delivery_price h4').replaceWith('<h4>Cena dopravy: <?php echo $helpVar = $shippingData->card + $shippingData->courier; ?>&euro;</h4>');
-                    $('.delivery_price input').attr("value", <?php echo $helpVar ?>);
+                    $('.delivery_price h4').replaceWith('<h4>Cena dopravy: <?php echo $shippingPrice = $shippingData->card + $shippingData->courier; ?>&euro;</h4>');
+                    $('.delivery_price input').attr("value", <?php echo $shippingPrice ?>);
                 }
                 else if ($('#slovak_post').is(':checked')) {
-                    $('.delivery_price h4').replaceWith('<h4>Cena dopravy: <?php echo $helpVar = $shippingData->card + $shippingData->slovak_post; ?>&euro;</h4>');
-                    $('.delivery_price input').attr("value", <?php echo $helpVar ?>);
+                    $('.delivery_price h4').replaceWith('<h4>Cena dopravy: <?php echo $shippingPrice = $shippingData->card + $shippingData->slovak_post; ?>&euro;</h4>');
+                    $('.delivery_price input').attr("value", <?php echo $shippingPrice ?>);
                 }
             } else {
                 $('.payment_options input').attr('disabled', false);
