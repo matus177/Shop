@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hostiteľ: 127.0.0.1
--- Čas generovania: Št 12.Jan 2017, 21:11
+-- Čas generovania: Pi 13.Jan 2017, 07:25
 -- Verzia serveru: 5.7.14
 -- Verzia PHP: 5.6.25
 
@@ -4572,7 +4572,8 @@ VALUES
   (135, 'success', 8, '1', '1', '::1', 'Chrome 55.0.2883.87', 'Windows 7', '2017-01-10 14:47:51', '', ''),
   (136, 'success', 8, '1', '1', '::1', 'Chrome 55.0.2883.87', 'Windows 7', '2017-01-11 10:16:53', '', ''),
   (137, 'success', 8, '1', '1', '::1', 'Chrome 55.0.2883.87', 'Windows 10', '2017-01-11 20:12:44', '', ''),
-  (138, 'success', 8, '1', '1', '::1', 'Chrome 55.0.2883.87', 'Windows 10', '2017-01-12 22:01:49', '', '');
+  (138, 'success', 8, '1', '1', '::1', 'Chrome 55.0.2883.87', 'Windows 10', '2017-01-12 22:01:49', '', ''),
+  (139, 'success', 8, '1', '1', '::1', 'Chrome 55.0.2883.87', 'Windows 7', '2017-01-13 08:21:55', '', '');
 
 -- --------------------------------------------------------
 
@@ -4641,6 +4642,14 @@ CREATE TABLE `products` (
   DEFAULT CHARSET = utf8
   COLLATE = utf8_bin;
 
+--
+-- Sťahujem dáta pre tabuľku `products`
+--
+
+INSERT INTO `products` (`id`, `subcategory_id`, `product_name`, `product_description`, `product_price_dph`, `product_price`, `product_type`, `product_quantity`)
+VALUES
+  (102, 11, 'QQ', 'QQ', 1.67, 10, 'G', 1);
+
 -- --------------------------------------------------------
 
 --
@@ -4656,6 +4665,14 @@ CREATE TABLE `storage` (
   ENGINE = InnoDB
   DEFAULT CHARSET = utf8
   COLLATE = utf8_bin;
+
+--
+-- Sťahujem dáta pre tabuľku `storage`
+--
+
+INSERT INTO `storage` (`id`, `product_id`, `flag`) VALUES
+  (113, 102, 'C'),
+  (114, 102, 'A');
 
 --
 -- Spúšťače `storage`
@@ -10283,13 +10300,27 @@ INSERT INTO `subcategory` (`id`, `category_id`, `subcategory_name`) VALUES
 CREATE TABLE `tax_prices` (
   `id`                INT(11) NOT NULL,
   `product_id`        INT(11) NOT NULL,
-  `product_price`     INT(11) NOT NULL,
-  `product_price_dph` INT(11) NOT NULL DEFAULT '0',
-  `dph`               INT(11) NOT NULL DEFAULT '6'
+  `product_price`     FLOAT   NOT NULL,
+  `product_price_dph` FLOAT   NOT NULL DEFAULT '0',
+  `dph`               INT(11) NOT NULL DEFAULT '6',
+  `personal_price`    FLOAT   NOT NULL DEFAULT '1',
+  `courier`           FLOAT   NOT NULL DEFAULT '6',
+  `slovak_post`       FLOAT   NOT NULL DEFAULT '3.5',
+  `dobierka`          FLOAT   NOT NULL DEFAULT '3.5',
+  `cash`              FLOAT   NOT NULL DEFAULT '0',
+  `card`              FLOAT   NOT NULL DEFAULT '0'
 )
   ENGINE = InnoDB
   DEFAULT CHARSET = utf8
   COLLATE = utf8_bin;
+
+--
+-- Sťahujem dáta pre tabuľku `tax_prices`
+--
+
+INSERT INTO `tax_prices` (`id`, `product_id`, `product_price`, `product_price_dph`, `dph`, `personal_price`, `courier`, `slovak_post`, `dobierka`, `cash`, `card`)
+VALUES
+  (40, 102, 10, 0, 6, 1, 6, 3.5, 3.5, 0, 0);
 
 --
 -- Spúšťače `tax_prices`
@@ -10462,7 +10493,7 @@ ALTER TABLE `login`
 --
 ALTER TABLE `logs`
   MODIFY `id` INT(11) NOT NULL AUTO_INCREMENT,
-  AUTO_INCREMENT = 139;
+  AUTO_INCREMENT = 140;
 --
 -- AUTO_INCREMENT pre tabuľku `personal_data`
 --
@@ -10474,13 +10505,13 @@ ALTER TABLE `personal_data`
 --
 ALTER TABLE `products`
   MODIFY `id` INT(11) NOT NULL AUTO_INCREMENT,
-  AUTO_INCREMENT = 102;
+  AUTO_INCREMENT = 103;
 --
 -- AUTO_INCREMENT pre tabuľku `storage`
 --
 ALTER TABLE `storage`
   MODIFY `id` INT(11) NOT NULL AUTO_INCREMENT,
-  AUTO_INCREMENT = 113;
+  AUTO_INCREMENT = 115;
 --
 -- AUTO_INCREMENT pre tabuľku `streets`
 --
@@ -10498,7 +10529,7 @@ ALTER TABLE `subcategory`
 --
 ALTER TABLE `tax_prices`
   MODIFY `id` INT(11) NOT NULL AUTO_INCREMENT,
-  AUTO_INCREMENT = 40;
+  AUTO_INCREMENT = 41;
 --
 -- Obmedzenie pre exportované tabuľky
 --
