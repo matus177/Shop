@@ -12,9 +12,9 @@ class ReviewAndPayment extends MY_Controller
     {
         if ($this->isUserLogged()) {
             $userId = $this->encryption->decrypt($this->session->userdata('id'));
-            $userData['userData'] = $this->UserModel->getAllUserData($userId);
+            $userData = $this->UserModel->getAllUserData($userId);
         } else {
-            $userData['userData'] = $this->session->userdata();
+            $userData = $this->session->userdata();
         }
 
         $orderData['orderStep'] = $_GET['id'];
@@ -22,7 +22,7 @@ class ReviewAndPayment extends MY_Controller
         $this->load->view('UpperMenuView');
         $this->load->view('LeftMenuView');
         $this->load->view('CheckoutView', $orderData);
-        $this->load->view('ReviewAndPaymentView', $userData);
+        $this->load->view('ReviewAndPaymentView', array('userData' => $userData, 'shippingPrice' => $this->getShippingPrices()));
         $this->load->view('FooterView');
     }
 }

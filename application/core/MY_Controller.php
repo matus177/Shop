@@ -15,8 +15,8 @@ class MY_Controller extends CI_Controller
     public function __construct()
     {
         parent::__construct();
-
         $this->login_check();
+        $this->load->model('ProductModel');
     }
 
     public function login_check()
@@ -53,5 +53,10 @@ class MY_Controller extends CI_Controller
     public function isUserLogged()
     {
         return $this->session->userdata('logged_in');
+    }
+
+    public function getShippingPrices()
+    {
+        return $this->ProductModel->selectShippingPrices();
     }
 }

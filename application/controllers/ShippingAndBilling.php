@@ -1,11 +1,10 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 
-class ShippingAndBilling extends CI_Controller
+class ShippingAndBilling extends MY_Controller
 {
     public function __construct()
     {
         parent::__construct();
-        $this->load->model('ProductModel');
     }
 
     public function index()
@@ -17,11 +16,6 @@ class ShippingAndBilling extends CI_Controller
         $this->load->view('CheckoutView', $orderData);
         $this->load->view('ShippingAndBillingView', array('shippingData' => $this->getShippingPrices(), 'shippingPrice' => ''));
         $this->load->view('FooterView');
-    }
-
-    public function getShippingPrices()
-    {
-        return $this->ProductModel->selectShippingPrices();
     }
 
     public function checkShippingAndBilling()
