@@ -60,7 +60,7 @@
             <div class="panel-title">Vytvorenie noveho produktu</div>
         </div>
         <div class="panel-body">
-            <?php echo form_open('Admin/createNewProduct',
+            <?php echo form_open_multipart('Admin/createNewProduct',
                 ['id' => 'form_product', 'class' => 'form-horizontal', 'role' => 'form']); ?>
             <div class="form-group">
                 <label for="subcategory_id" class="control-label col-sm-4">Vyberte podkategoriu</label>
@@ -104,6 +104,12 @@
                 <div class="col-sm-8">
                     <input type="text" class="form-control" name="product_quantity" id="product_quantity"
                            placeholder="Pocet kusov" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="product_image" class="control-label col-sm-4">Foto</label>
+                <div class="col-sm-8">
+                    <input type="file" class="btn" name="product_image">
                 </div>
             </div>
             <div class="form-group">

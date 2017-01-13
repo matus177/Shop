@@ -60,6 +60,7 @@ class Admin extends MY_Controller
     {
         $request = $this->input->post();
         $productQuantity = (int)$request['product_quantity'];
+
         if (!empty($request)) {
             $request['product_id'] = $this->ProductModel->insertProduct($request);
             if ($this->db->affected_rows() == 1) {
@@ -69,10 +70,22 @@ class Admin extends MY_Controller
                 unset($request['product_price']);
                 unset($request['product_type']);
                 unset($request['product_description']);
+                unset($request['product_image']);
 
                 for ($i = 1; $i <= $productQuantity; $i++)
                     $this->ProductModel->insertProductToStorage($request);
             }
+
+            $config['upload_path'] = './assets/img/';
+            $config['allowed_types'] = 'gif|jpg|png';
+            $config['max_size'] = 100;
+            $config['max_width'] = 1024;
+            $config['max_height'] = 768;
+
+            $this->load->library('upload', $config);
+            $this->upload->initialize($config);
+            $this->upload->do_upload('product_image');
+
             redirect(base_url('Admin'));
         } else return null;
     }
