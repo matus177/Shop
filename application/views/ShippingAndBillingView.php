@@ -30,7 +30,7 @@
             </div>
         </div>
     </div>
-    <div class="col-sm-6">
+    <div class="col-sm-6" style="padding-right: 0">
         <h4><b>Zvolte sposob platby</b></h4>
         <div class="panel panel-info">
             <div class="panel-body form-horizontal">
@@ -73,7 +73,6 @@
     </button>
     <?php echo form_close(); ?>
     <?php echo form_close(); ?>
-
 </div>
 <script>
     $(document).ready(function () {
