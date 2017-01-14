@@ -53,4 +53,9 @@ class ProductModel extends CI_Model
     {
         return $this->db->limit(1)->get('tax_prices')->row();
     }
+
+    public function selectAllProductsImage($id)
+    {
+        return $this->db->get_where($this->table, array('id' => $id))->row();
+    }
 }

@@ -4,7 +4,8 @@
         <?php foreach ($product as $value): ?>
             <li class="span3 col-md-3">
                 <div class="thumbnail">
-                    <a href="product_details.html"><img src="<?php echo base_url('assets/img/12.jpg'); ?>"/></a>
+                    <a href="product_details.html"><img
+                                src="<?php echo base_url('assets/img/') . $value->product_image; ?>"/></a>
                     <div class="caption" style="height: 300px; overflow: hidden">
                         <h5><?php echo $value->product_name; ?></h5>
                         <p><?php echo $value->product_description; ?></p>

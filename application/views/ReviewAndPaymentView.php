@@ -43,9 +43,12 @@
         <?php $i = 1; ?>
         <?php foreach ($this->cart->contents() as $items): ?>
             <?php echo form_hidden($i . '[rowid]', $items['rowid']); ?>
-            <div class="col-sm-4" onmouseover="showBigImg()" onmouseout="hideBigImg()">
-                <p><img class="small" src="<?php echo base_url('assets/img/12.jpg'); ?>" width="20" height="18"
-                        alt="Computer Hope"/> <?php echo $items['name']; ?></p>
+            <div class="col-sm-4 <?php echo $productData[$i]->product_image; ?>" onmouseover="showBigImg()"
+                 onmouseout="hideBigImg()">
+                <p class="<?php echo $productData[$i]->product_image; ?>"><img
+                            class="<?php echo $productData[$i]->product_image; ?>"
+                            src="<?php echo base_url('assets/img/') . $productData[$i]->product_image; ?>"
+                            width="20" height="18"/> <?php echo $items['name']; ?></p>
             </div>
             <div class="col-sm-3">
                 <p><?php echo (int)$this->cart->format_number($items['qty']); ?></p>
@@ -109,8 +112,11 @@
 </div>
 <script>
     function showBigImg() {
-        $('.img_show').attr('hidden', false);
-        $('.img_show p').replaceWith('<p><img class="small" src="<?php echo base_url('assets/img/12.jpg'); ?>" width="160" height="160" alt="Computer Hope"/></p>');
+        var url = window.location.origin + '/Shop/assets/img/' + event.target.classList[0];
+        if (event.target.classList[0] != 'col-sm-4') {
+            $('.img_show').attr('hidden', false);
+            $('.img_show p').replaceWith('<p><img src="' + url + '" width="160" height="160"/></p>');
+        }
     }
 
     function hideBigImg() {

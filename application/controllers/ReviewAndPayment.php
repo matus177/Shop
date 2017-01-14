@@ -6,10 +6,17 @@ class ReviewAndPayment extends MY_Controller
     {
         parent::__construct();
         $this->load->model('UserModel');
+        $this->load->model('ProductModel');
     }
 
     public function index()
     {
+        $i = 1;
+        foreach ($this->cart->contents() as $items) {
+            $productData[$i] = $this->ProductModel->selectAllProductsImage($items['id']);
+            $i++;
+        }
+
         if ($this->isUserLogged()) {
             $userId = $this->encryption->decrypt($this->session->userdata('id'));
             $userData = $this->UserModel->getAllUserData($userId);
@@ -22,7 +29,7 @@ class ReviewAndPayment extends MY_Controller
         $this->load->view('UpperMenuView');
         $this->load->view('LeftMenuView');
         $this->load->view('CheckoutView', $orderData);
-        $this->load->view('ReviewAndPaymentView', array('userData' => $userData, 'shippingPrice' => $this->getShippingPrices()));
+        $this->load->view('ReviewAndPaymentView', array('userData' => $userData, 'shippingPrice' => $this->getShippingPrices(), 'productData' => $productData));
         $this->load->view('FooterView');
     }
 }

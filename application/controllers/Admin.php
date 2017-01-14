@@ -59,9 +59,22 @@ class Admin extends MY_Controller
     public function createNewProduct()
     {
         $request = $this->input->post();
-        $productQuantity = (int)$request['product_quantity'];
 
         if (!empty($request)) {
+            $config['file_name'] = str_replace(" ", "_", $_FILES["userfiles"]['product_image']);
+            $config['upload_path'] = './assets/img/';
+            $config['allowed_types'] = 'gif|jpg|png';
+            $config['max_size'] = 100;
+            $config['max_width'] = 1024;
+            $config['max_height'] = 768;
+            $config['remove_spaces'] = true;
+            $this->load->library('upload', $config);
+            $this->upload->initialize($config);
+            $this->upload->do_upload('product_image');
+            if ($this->upload->data('file_name') != '')
+                $request['product_image'] = $this->upload->data('file_name');
+
+            $productQuantity = (int)$request['product_quantity'];
             $request['product_id'] = $this->ProductModel->insertProduct($request);
             if ($this->db->affected_rows() == 1) {
                 unset($request['product_quantity']);
@@ -75,16 +88,6 @@ class Admin extends MY_Controller
                 for ($i = 1; $i <= $productQuantity; $i++)
                     $this->ProductModel->insertProductToStorage($request);
             }
-
-            $config['upload_path'] = './assets/img/';
-            $config['allowed_types'] = 'gif|jpg|png';
-            $config['max_size'] = 100;
-            $config['max_width'] = 1024;
-            $config['max_height'] = 768;
-
-            $this->load->library('upload', $config);
-            $this->upload->initialize($config);
-            $this->upload->do_upload('product_image');
 
             redirect(base_url('Admin'));
         } else return null;

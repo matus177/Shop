@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hostiteľ: 127.0.0.1
--- Čas generovania: Pi 13.Jan 2017, 07:25
+-- Čas generovania: So 14.Jan 2017, 01:26
 -- Verzia serveru: 5.7.14
 -- Verzia PHP: 5.6.25
 
@@ -4573,7 +4573,9 @@ VALUES
   (136, 'success', 8, '1', '1', '::1', 'Chrome 55.0.2883.87', 'Windows 7', '2017-01-11 10:16:53', '', ''),
   (137, 'success', 8, '1', '1', '::1', 'Chrome 55.0.2883.87', 'Windows 10', '2017-01-11 20:12:44', '', ''),
   (138, 'success', 8, '1', '1', '::1', 'Chrome 55.0.2883.87', 'Windows 10', '2017-01-12 22:01:49', '', ''),
-  (139, 'success', 8, '1', '1', '::1', 'Chrome 55.0.2883.87', 'Windows 7', '2017-01-13 08:21:55', '', '');
+  (139, 'success', 8, '1', '1', '::1', 'Chrome 55.0.2883.87', 'Windows 7', '2017-01-13 08:21:55', '', ''),
+  (140, 'success', 8, '1', '1', '::1', 'Chrome 55.0.2883.87', 'Windows 10', '2017-01-13 22:27:58', '', ''),
+  (141, 'success', 8, '1', '1', '::1', 'Chrome 55.0.2883.87', 'Windows 10', '2017-01-14 00:43:17', '', '');
 
 -- --------------------------------------------------------
 
@@ -4636,7 +4638,9 @@ CREATE TABLE `products` (
   `product_price`       FLOAT            NOT NULL,
   `product_type`        VARCHAR(1)
                         COLLATE utf8_bin NOT NULL,
-  `product_quantity`    INT(11)          NOT NULL
+  `product_quantity`    INT(11)          NOT NULL,
+  `product_image`       VARCHAR(30)
+                        COLLATE utf8_bin NOT NULL DEFAULT 'no_photo.jpg'
 )
   ENGINE = InnoDB
   DEFAULT CHARSET = utf8
@@ -4646,9 +4650,11 @@ CREATE TABLE `products` (
 -- Sťahujem dáta pre tabuľku `products`
 --
 
-INSERT INTO `products` (`id`, `subcategory_id`, `product_name`, `product_description`, `product_price_dph`, `product_price`, `product_type`, `product_quantity`)
+INSERT INTO `products` (`id`, `subcategory_id`, `product_name`, `product_description`, `product_price_dph`, `product_price`, `product_type`, `product_quantity`, `product_image`)
 VALUES
-  (102, 11, 'QQ', 'QQ', 1.67, 10, 'G', 1);
+  (119, 11, 'vykon ', 'hp', 3.83, 23, 'G', 4, 'pc.jpg'),
+  (120, 11, 'printr', 'rr', 5.5, 33, 'G', 5, 'prin_ter.jpg'),
+  (122, 11, 'ff', 'ff', 9.33, 56, 'G', 6, 'no_photo.jpg');
 
 -- --------------------------------------------------------
 
@@ -4671,8 +4677,12 @@ CREATE TABLE `storage` (
 --
 
 INSERT INTO `storage` (`id`, `product_id`, `flag`) VALUES
-  (113, 102, 'C'),
-  (114, 102, 'A');
+  (136, 119, 'A'),
+  (137, 119, 'A'),
+  (138, 120, 'A'),
+  (139, 120, 'A'),
+  (142, 122, 'A'),
+  (143, 122, 'A');
 
 --
 -- Spúšťače `storage`
@@ -10298,17 +10308,16 @@ INSERT INTO `subcategory` (`id`, `category_id`, `subcategory_name`) VALUES
 --
 
 CREATE TABLE `tax_prices` (
-  `id`                INT(11) NOT NULL,
-  `product_id`        INT(11) NOT NULL,
-  `product_price`     FLOAT   NOT NULL,
-  `product_price_dph` FLOAT   NOT NULL DEFAULT '0',
-  `dph`               INT(11) NOT NULL DEFAULT '6',
-  `personal_price`    FLOAT   NOT NULL DEFAULT '1',
-  `courier`           FLOAT   NOT NULL DEFAULT '6',
-  `slovak_post`       FLOAT   NOT NULL DEFAULT '3.5',
-  `dobierka`          FLOAT   NOT NULL DEFAULT '3.5',
-  `cash`              FLOAT   NOT NULL DEFAULT '0',
-  `card`              FLOAT   NOT NULL DEFAULT '0'
+  `id`             INT(11) NOT NULL,
+  `product_id`     INT(11) NOT NULL,
+  `product_price`  FLOAT   NOT NULL,
+  `dph`            INT(11) NOT NULL DEFAULT '6',
+  `personal_price` FLOAT   NOT NULL DEFAULT '1',
+  `courier`        FLOAT   NOT NULL DEFAULT '6',
+  `slovak_post`    FLOAT   NOT NULL DEFAULT '3.5',
+  `dobierka`       FLOAT   NOT NULL DEFAULT '3.5',
+  `cash`           FLOAT   NOT NULL DEFAULT '0',
+  `card`           FLOAT   NOT NULL DEFAULT '0'
 )
   ENGINE = InnoDB
   DEFAULT CHARSET = utf8
@@ -10318,9 +10327,11 @@ CREATE TABLE `tax_prices` (
 -- Sťahujem dáta pre tabuľku `tax_prices`
 --
 
-INSERT INTO `tax_prices` (`id`, `product_id`, `product_price`, `product_price_dph`, `dph`, `personal_price`, `courier`, `slovak_post`, `dobierka`, `cash`, `card`)
+INSERT INTO `tax_prices` (`id`, `product_id`, `product_price`, `dph`, `personal_price`, `courier`, `slovak_post`, `dobierka`, `cash`, `card`)
 VALUES
-  (40, 102, 10, 0, 6, 1, 6, 3.5, 3.5, 0, 0);
+  (57, 119, 23, 6, 1, 6, 3.5, 3.5, 0, 0),
+  (58, 120, 33, 6, 1, 6, 3.5, 3.5, 0, 0),
+  (60, 122, 56, 6, 1, 6, 3.5, 3.5, 0, 0);
 
 --
 -- Spúšťače `tax_prices`
@@ -10493,7 +10504,7 @@ ALTER TABLE `login`
 --
 ALTER TABLE `logs`
   MODIFY `id` INT(11) NOT NULL AUTO_INCREMENT,
-  AUTO_INCREMENT = 140;
+  AUTO_INCREMENT = 142;
 --
 -- AUTO_INCREMENT pre tabuľku `personal_data`
 --
@@ -10505,13 +10516,13 @@ ALTER TABLE `personal_data`
 --
 ALTER TABLE `products`
   MODIFY `id` INT(11) NOT NULL AUTO_INCREMENT,
-  AUTO_INCREMENT = 103;
+  AUTO_INCREMENT = 123;
 --
 -- AUTO_INCREMENT pre tabuľku `storage`
 --
 ALTER TABLE `storage`
   MODIFY `id` INT(11) NOT NULL AUTO_INCREMENT,
-  AUTO_INCREMENT = 115;
+  AUTO_INCREMENT = 144;
 --
 -- AUTO_INCREMENT pre tabuľku `streets`
 --
@@ -10529,7 +10540,7 @@ ALTER TABLE `subcategory`
 --
 ALTER TABLE `tax_prices`
   MODIFY `id` INT(11) NOT NULL AUTO_INCREMENT,
-  AUTO_INCREMENT = 41;
+  AUTO_INCREMENT = 61;
 --
 -- Obmedzenie pre exportované tabuľky
 --
