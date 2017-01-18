@@ -41,6 +41,11 @@ class ReviewAndPayment extends MY_Controller {
 
     public function createAndSendFacture()
     {
+        $factureDir = dirname(dirname(__DIR__)) . '/assets/facture';
+        if ( ! file_exists($factureDir) && ! is_dir($factureDir))
+        {
+            mkdir($factureDir);
+        }
         $this->load->file(dirname(__DIR__) . '/core/FPDF.php');
         $pdf = new FPDF();
         $pdf->AddPage();
