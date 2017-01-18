@@ -5,7 +5,8 @@
             <div class="panel-title">Zmena hesla</div>
         </div>
         <div class="panel-body">
-            <?php echo form_open('UserAccountSettings/updateOldPassword', ['id' => 'form_update_password', 'class' => 'form-horizontal', 'role' => 'form']); ?>
+            <?php echo form_open('UserAccountSettings/updateOldPassword',
+                ['id' => 'form_update_password', 'class' => 'form-horizontal', 'role' => 'form']); ?>
             <div class="input-group">
                 <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
                 <input id="old_pass" type="password" class="form-control" name="oldPass"

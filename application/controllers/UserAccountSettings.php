@@ -1,7 +1,6 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 
-class UserAccountSettings extends MY_Controller
-{
+class UserAccountSettings extends MY_Controller {
     public function __construct()
     {
         parent::__construct();
@@ -48,17 +47,21 @@ class UserAccountSettings extends MY_Controller
         $this->form_validation->set_rules('cPass', 'Opakovane heslo', 'required|xss_clean|max_length[30]');
         $this->form_validation->set_message('matches', 'Hesla sa nezhoduju.');
 
-        if ($this->form_validation->run()) {
-            if (!is_null($this->UserModel->checkOldPassword($inputDatas['oldPass'], $userId))) {
+        if ($this->form_validation->run())
+        {
+            if ( ! is_null($this->UserModel->checkOldPassword($inputDatas['oldPass'], $userId)))
+            {
                 $newPass = hash('sha512', $inputDatas['newPass']);
                 $this->UserModel->updateOldPassword($newPass, $userId);
                 $this->session->unset_userdata($userData);
                 $this->session->set_flashdata('category_success', 'Heslo bolo zmenene. Boli ste odhlaseny.');
                 redirect('Home');
-            } else {
+            } else
+            {
                 $this->session->set_flashdata('category_danger', 'Chybne zadane stare heslo.');
             }
-        } else {
+        } else
+        {
             $this->session->set_flashdata('category_warning', validation_errors());
         }
 
@@ -71,7 +74,8 @@ class UserAccountSettings extends MY_Controller
         $idOfInput = $this->input->get('input');
         $data = $this->input->get('data');
 
-        switch ($idOfInput) {
+        switch ($idOfInput)
+        {
             case 'comp_ico':
                 $this->UserModel->updateCompanyData($idOfUser, $idOfInput, $data);
                 break;
@@ -103,7 +107,8 @@ class UserAccountSettings extends MY_Controller
         $idOfInput = $this->input->get('input');
         $data = $this->input->get('data');
 
-        switch ($idOfInput) {
+        switch ($idOfInput)
+        {
             case 'deliv_name':
                 $data = $this->encryption->encrypt($data);
                 $this->UserModel->updateDeliveryData($idOfUser, $idOfInput, $data);
@@ -141,7 +146,8 @@ class UserAccountSettings extends MY_Controller
         $idOfInput = $this->input->get('input');
         $data = $this->input->get('data');
 
-        switch ($idOfInput) {
+        switch ($idOfInput)
+        {
             case 'email':
                 $this->UserModel->updatePersonalData($idOfUser, $idOfInput, $data);
                 break;

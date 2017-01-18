@@ -11,9 +11,11 @@
                         <p><?php echo $value->product_description; ?></p>
                     </div>
                     <div class="product_footer caption">
-                        <?php if ($value->product_quantity == 0) { ?>
+                        <?php if ($value->product_quantity == 0)
+                        { ?>
                             <p style="text-align: center"><span style="color:orange"><b>Na objednavku.</b></span></p>
-                        <?php } else { ?>
+                        <?php } else
+                        { ?>
                             <p style="text-align: center">
                                 <span style="color:green">
                                     <b>Na sklade <?php echo $value->product_quantity ?> ks.</b>

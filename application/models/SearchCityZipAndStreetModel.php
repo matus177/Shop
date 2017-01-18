@@ -1,7 +1,6 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 
-class SearchCityZipAndStreetModel extends CI_Model
-{
+class SearchCityZipAndStreetModel extends CI_Model {
     public function __construct()
     {
         parent::__construct();
@@ -24,10 +23,12 @@ class SearchCityZipAndStreetModel extends CI_Model
 
     function searchZipIfExist($city)
     {
-        if ($result = $this->db->select('zip')->where('city', $city)->get('cities')->row()) {
+        if ($result = $this->db->select('zip')->where('city', $city)->get('cities')->row())
+        {
             return $result->zip;
-        } else {
-            return null;
+        } else
+        {
+            return NULL;
         }
     }
 }

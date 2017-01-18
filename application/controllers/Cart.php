@@ -1,7 +1,6 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Cart extends CI_Controller
-{
+class Cart extends CI_Controller {
     public function __construct()
     {
         parent::__construct();
@@ -24,7 +23,8 @@ class Cart extends CI_Controller
         $id = $this->uri->segment(3);
         $arrayOfProducts = $this->ProductModel->selectProductToCart($id);
         $cartData = array();
-        foreach ($arrayOfProducts as $product) {
+        foreach ($arrayOfProducts as $product)
+        {
             $cartData = array(
                 'id' => $product->id,
                 'qty' => 1,
@@ -33,23 +33,37 @@ class Cart extends CI_Controller
             );
         }
         if ($this->cart->insert($cartData))
+        {
             $this->ProductModel->updateProduct($id);
+        }
     }
 
     public function updateCart()
     {
         $updatedCartData = $this->input->post();
 
-        for ($i = 1; $i <= sizeof($this->cart->contents()); $i++) {
-            if ($this->cart->contents()[$updatedCartData[$i]['rowid']]['rowid'] == $updatedCartData[$i]['rowid']) {
-                if ($this->cart->contents()[$updatedCartData[$i]['rowid']]['qty'] > $updatedCartData[$i]['qty']) {
+        for ($i = 1; $i <= sizeof($this->cart->contents()); $i++)
+        {
+            if ($this->cart->contents()[$updatedCartData[$i]['rowid']]['rowid'] == $updatedCartData[$i]['rowid'])
+            {
+                if ($this->cart->contents()[$updatedCartData[$i]['rowid']]['qty'] > $updatedCartData[$i]['qty'])
+                {
                     $result = $this->cart->contents()[$updatedCartData[$i]['rowid']]['qty'] - $updatedCartData[$i]['qty'];
                     for ($j = 1; $j <= $result; $j++)
-                        $this->db->limit(1)->set('flag', 'A')->where('product_id', $this->cart->contents()[$updatedCartData[$i]['rowid']]['id'])->where('flag', 'C')->update('storage');
-                } else {
+                    {
+                        $this->db->limit(1)->set('flag', 'A')->where('product_id',
+                            $this->cart->contents()[$updatedCartData[$i]['rowid']]['id'])->where('flag',
+                            'C')->update('storage');
+                    }
+                } else
+                {
                     $result = $updatedCartData[$i]['qty'] - $this->cart->contents()[$updatedCartData[$i]['rowid']]['qty'];
                     for ($j = 1; $j <= $result; $j++)
-                        $this->db->limit(1)->set('flag', 'C')->where('product_id', $this->cart->contents()[$updatedCartData[$i]['rowid']]['id'])->where('flag', 'A')->update('storage');
+                    {
+                        $this->db->limit(1)->set('flag', 'C')->where('product_id',
+                            $this->cart->contents()[$updatedCartData[$i]['rowid']]['id'])->where('flag',
+                            'A')->update('storage');
+                    }
                 }
             }
         }

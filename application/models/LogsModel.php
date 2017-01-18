@@ -1,7 +1,6 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 
-class LogsModel extends CI_Model
-{
+class LogsModel extends CI_Model {
     function __construct()
     {
         parent::__construct();

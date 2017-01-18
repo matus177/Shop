@@ -13,12 +13,26 @@
         <div class="col-sm-4">
             <p><b>Dodacie údaje</b></p>
             <p><?php if (strlen($this->encryption->decrypt($userData['deliv_name']) . ' ' . $this->encryption->decrypt($userData['deliv_surname'])) > 1)
+                {
                     echo $this->encryption->decrypt($userData['deliv_name']) . ' ' . $this->encryption->decrypt($userData['deliv_surname']);
-                else echo $this->encryption->decrypt($userData['fact_name']) . ' ' . $this->encryption->decrypt($userData['fact_surname']); ?></p>
-            <p><?php if (strlen($userData['deliv_street']) > 0) echo $userData['deliv_street']; else echo $userData['fact_street']; ?></p>
+                } else
+                {
+                    echo $this->encryption->decrypt($userData['fact_name']) . ' ' . $this->encryption->decrypt($userData['fact_surname']);
+                } ?></p>
+            <p><?php if (strlen($userData['deliv_street']) > 0)
+                {
+                    echo $userData['deliv_street'];
+                } else
+                {
+                    echo $userData['fact_street'];
+                } ?></p>
             <p><?php if (strlen($userData['deliv_zip'] . ' ' . $userData['deliv_city']) > 1)
+                {
                     echo $userData['deliv_zip'] . ' ' . $userData['deliv_city'];
-                else echo $userData['fact_zip'] . ' ' . $userData['fact_city']; ?></p>
+                } else
+                {
+                    echo $userData['fact_zip'] . ' ' . $userData['fact_city'];
+                } ?></p>
         </div>
         <div class="col-sm-4">
             <p><b>Email:</b></p>
@@ -84,13 +98,15 @@
             <p>Celkom bez DPH</p>
         </div>
         <div class="col-sm-2">
-            <p><?php echo round(($this->session->userdata('delivery_price') + $this->cart->total()) - (($this->session->userdata('delivery_price') + $this->cart->total()) / $shippingPrice->dph), 2); ?></p>
+            <p><?php echo round(($this->session->userdata('delivery_price') + $this->cart->total()) - (($this->session->userdata('delivery_price') + $this->cart->total()) / $shippingPrice->dph),
+                    2); ?></p>
         </div>
         <div class="col-sm-3 col-sm-offset-7">
             <p>DPH (20%)</p>
         </div>
         <div class="col-sm-2">
-            <p><?php echo round(($this->session->userdata('delivery_price') + $this->cart->total()) / $shippingPrice->dph, 2); ?></p>
+            <p><?php echo round(($this->session->userdata('delivery_price') + $this->cart->total()) / $shippingPrice->dph,
+                    2); ?></p>
         </div>
         <div class="col-sm-3 col-sm-offset-7">
             <p><b>K úhrade</b></p>

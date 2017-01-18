@@ -1,7 +1,6 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 
-class CategoryModel extends CI_Model
-{
+class CategoryModel extends CI_Model {
     private $table = 'category';
 
     public function __construct()
@@ -17,7 +16,8 @@ class CategoryModel extends CI_Model
     function selectCategorySubCategory()
     {
         $table2 = 'subcategory';
-        return $query = $this->db->join($table2, $table2 . '.category_id = ' . $this->table . '.id', 'right')->get($this->table)->result();
+        return $query = $this->db->join($table2, $table2 . '.category_id = ' . $this->table . '.id',
+            'right')->get($this->table)->result();
     }
 
     function insertCategory($data)

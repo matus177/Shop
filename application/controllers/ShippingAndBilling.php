@@ -1,7 +1,6 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 
-class ShippingAndBilling extends MY_Controller
-{
+class ShippingAndBilling extends MY_Controller {
     public function __construct()
     {
         parent::__construct();
@@ -14,15 +13,18 @@ class ShippingAndBilling extends MY_Controller
         $this->load->view('UpperMenuView');
         $this->load->view('LeftMenuView');
         $this->load->view('CheckoutView', $orderData);
-        $this->load->view('ShippingAndBillingView', array('shippingData' => $this->getShippingPrices(), 'shippingPrice' => ''));
+        $this->load->view('ShippingAndBillingView',
+            array('shippingData' => $this->getShippingPrices(), 'shippingPrice' => ''));
         $this->load->view('FooterView');
     }
 
     public function checkShippingAndBilling()
     {
-        foreach ($this->input->post() as $key => $value) {
+        foreach ($this->input->post() as $key => $value)
+        {
             $shippingAndBillingData[$key] = $value;
-            switch ($key) {
+            switch ($key)
+            {
                 case 'osobny_odber':
                     $shippingAndBillingData['shipping_options'] = 'osobny odber';
                     break;

@@ -4,8 +4,7 @@
  * This controller can be accessed
  * for Admin group only
  */
-class Admin extends MY_Controller
-{
+class Admin extends MY_Controller {
     protected $access = 'Admin';
 
     public function __construct()
@@ -28,11 +27,13 @@ class Admin extends MY_Controller
     {
         $request = $this->input->post();
 
-        if (!empty($request)) {
+        if ( ! empty($request))
+        {
             $this->CategoryModel->insertCategory($request);
             //set flash message
-        } else {
-            return null;
+        } else
+        {
+            return NULL;
         }
         redirect(base_url('Admin'));
     }
@@ -41,10 +42,12 @@ class Admin extends MY_Controller
     {
         $request = $this->input->post();
 
-        if (!empty($request)) {
+        if ( ! empty($request))
+        {
             $this->CategoryModel->insertSubCategory($request);
-        } else {
-            return null;
+        } else
+        {
+            return NULL;
         }
         redirect(base_url('Admin'));
     }
@@ -60,23 +63,27 @@ class Admin extends MY_Controller
     {
         $request = $this->input->post();
 
-        if (!empty($request)) {
+        if ( ! empty($request))
+        {
             $config['file_name'] = str_replace(" ", "_", $_FILES["userfiles"]['product_image']);
             $config['upload_path'] = './assets/img/';
             $config['allowed_types'] = 'gif|jpg|png';
             $config['max_size'] = 100;
             $config['max_width'] = 1024;
             $config['max_height'] = 768;
-            $config['remove_spaces'] = true;
+            $config['remove_spaces'] = TRUE;
             $this->load->library('upload', $config);
             $this->upload->initialize($config);
             $this->upload->do_upload('product_image');
             if ($this->upload->data('file_name') != '')
+            {
                 $request['product_image'] = $this->upload->data('file_name');
+            }
 
             $productQuantity = (int)$request['product_quantity'];
             $request['product_id'] = $this->ProductModel->insertProduct($request);
-            if ($this->db->affected_rows() == 1) {
+            if ($this->db->affected_rows() == 1)
+            {
                 unset($request['product_quantity']);
                 unset($request['subcategory_id']);
                 unset($request['product_name']);
@@ -86,11 +93,16 @@ class Admin extends MY_Controller
                 unset($request['product_image']);
 
                 for ($i = 1; $i <= $productQuantity; $i++)
+                {
                     $this->ProductModel->insertProductToStorage($request);
+                }
             }
 
             redirect(base_url('Admin'));
-        } else return null;
+        } else
+        {
+            return NULL;
+        }
     }
 
     public function getSubCategoryDropdown()

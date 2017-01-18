@@ -1,7 +1,6 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Login extends CI_Controller
-{
+class Login extends CI_Controller {
     public function __construct()
     {
         parent::__construct();
@@ -15,15 +14,19 @@ class Login extends CI_Controller
         $this->form_validation->set_rules('password', 'Heslo', 'required|xss_clean|max_length[30]');
         $this->form_validation->set_message('valid_email', '%s musi obsahovat platny format.');
 
-        if ($this->form_validation->run()) {
-            if (!is_null($this->UserModel->validateUser($_POST))) {
+        if ($this->form_validation->run())
+        {
+            if ( ! is_null($this->UserModel->validateUser($_POST)))
+            {
                 $this->session->set_userdata($this->UserModel->getData());
-                $this->session->set_userdata('logged_in', true);
+                $this->session->set_userdata('logged_in', TRUE);
                 $this->session->set_flashdata('category_success', 'Uzivatel bol uspesne prihlaseny.');
-            } else {
+            } else
+            {
                 $this->session->set_flashdata('category_danger', 'Chybne meno alebo heslo.');
             }
-        } else {
+        } else
+        {
             $this->session->set_flashdata('category_warning', validation_errors());
         }
         $this->createLog();
@@ -32,13 +35,17 @@ class Login extends CI_Controller
 
     public function createLog()
     {
-        if ($this->userAgent->is_browser()) {
+        if ($this->userAgent->is_browser())
+        {
             $agent = $this->userAgent->browser() . ' ' . $this->userAgent->version();
-        } elseif ($this->userAgent->is_robot()) {
+        } elseif ($this->userAgent->is_robot())
+        {
             $agent = $this->userAgent->robot();
-        } elseif ($this->userAgent->is_mobile()) {
+        } elseif ($this->userAgent->is_mobile())
+        {
             $agent = $this->userAgent->mobile();
-        } else {
+        } else
+        {
             $agent = 'Unidentified User Agent';
         }
 
@@ -53,13 +60,17 @@ class Login extends CI_Controller
             'date' => date('Y-m-d H:i:s', strtotime('1 hour'))
         );
 
-        if ($this->session->userdata('logged_in')) {
+        if ($this->session->userdata('logged_in'))
+        {
             $logMsg = implode(', ', $logData) . PHP_EOL;
             $this->LogsModel->insertLogs($logData);
 
-            if (!write_file('application/logs/log.txt', $logMsg, 'a'))
+            if ( ! write_file('application/logs/log.txt', $logMsg, 'a'))
+            {
                 $this->session->set_flashdata('category_danger', 'Chyba zapisu logu.');
-        } else {
+            }
+        } else
+        {
             unset($logData['user_id'], $logData['first_name'], $logData['last_name']);
             $logData['email_input'] = $_POST['email'];
             $logData['password_input'] = $_POST['password'];
@@ -67,8 +78,10 @@ class Login extends CI_Controller
             $logMsg = implode(', ', $logData) . PHP_EOL;
             $this->LogsModel->insertLogs($logData);
 
-            if (!write_file('application/logs/log.txt', $logMsg, 'a'))
+            if ( ! write_file('application/logs/log.txt', $logMsg, 'a'))
+            {
                 $this->session->set_flashdata('category_danger', 'Chyba zapisu logu.');
+            }
         }
     }
 

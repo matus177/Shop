@@ -1,7 +1,6 @@
 <?php
 
-class Registration extends CI_Controller
-{
+class Registration extends CI_Controller {
     public function __construct()
     {
         parent::__construct();
@@ -19,8 +18,10 @@ class Registration extends CI_Controller
 
     function registerNewUser()
     {
-        $this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email|is_unique[login.email]|xss_clean|max_length[30]');
-        $this->form_validation->set_rules('password', 'Password', 'trim|required|xss_clean|matches[cpassword]|max_length[30]');
+        $this->form_validation->set_rules('email', 'Email',
+            'trim|required|valid_email|is_unique[login.email]|xss_clean|max_length[30]');
+        $this->form_validation->set_rules('password', 'Password',
+            'trim|required|xss_clean|matches[cpassword]|max_length[30]');
         $this->form_validation->set_rules('cpassword', 'Cpassword', 'trim|max_length[30]');
         $this->form_validation->set_rules('fact_name', 'Fakturacne Meno', 'trim|required|max_length[30]');
         $this->form_validation->set_rules('fact_surname', 'Fakturacne Priezvisko', 'trim|required|max_length[30]');
@@ -49,7 +50,8 @@ class Registration extends CI_Controller
         $this->form_validation->set_message('required', '%s je povinny udaj.');
         $this->form_validation->set_message('matches', 'Hesla sa nezhoduju.');
 
-        if ($this->form_validation->run()) {
+        if ($this->form_validation->run())
+        {
             $userCredentials = array(
                 'email' => $this->input->post('email'),
                 'password' => hash('sha512', $this->input->post('password'))
@@ -81,21 +83,26 @@ class Registration extends CI_Controller
                 'comp_bank_owner' => $this->encryption->encrypt($this->input->post('comp_bank_owner'))
             );
 
-            if ($this->UserModel->insertNewUser($userCredentials)) {
+            if ($this->UserModel->insertNewUser($userCredentials))
+            {
                 $id = $this->db->insert_id();
                 $userFactureData['id'] = $id;
                 $userDeliveryData['id'] = $id;
                 $userCompanyData['id'] = $id;
-                if ($this->UserModel->insertAllUserData($userFactureData, $userDeliveryData, $userCompanyData)) {
+                if ($this->UserModel->insertAllUserData($userFactureData, $userDeliveryData, $userCompanyData))
+                {
                     $this->session->set_flashdata('category_success', 'Registracia prebehla uspesne.');
                     redirect('home');
-                } else {
+                } else
+                {
                     $this->session->set_flashdata('category_danger', 'Registracia zlyhala');
                 }
-            } else {
+            } else
+            {
                 $this->session->set_flashdata('category_danger', 'Registracia zlyhala');
             }
-        } else {
+        } else
+        {
             $this->session->set_flashdata('category_warning', validation_errors());
         }
         redirect('registration');
@@ -106,7 +113,8 @@ class Registration extends CI_Controller
         $searchTerm = $_GET['term'];
         $query = $this->SearchCityZipAndStreetModel->searchCity($searchTerm);
 
-        foreach ($query->result() as $row) {
+        foreach ($query->result() as $row)
+        {
             $data[] = $row->city;
         }
 
@@ -118,7 +126,8 @@ class Registration extends CI_Controller
         $searchTerm = $_GET['term'];
         $query = $this->SearchCityZipAndStreetModel->searchZip($searchTerm);
 
-        foreach ($query->result() as $row) {
+        foreach ($query->result() as $row)
+        {
             $data[] = $row->zip;
         }
 
@@ -130,7 +139,8 @@ class Registration extends CI_Controller
         $searchTerm = $_GET['term'];
         $query = $this->SearchCityZipAndStreetModel->searchStreet($searchTerm);
 
-        foreach ($query->result() as $row) {
+        foreach ($query->result() as $row)
+        {
             $data[] = $row->street;
         }
 

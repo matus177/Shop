@@ -4,7 +4,7 @@
  * This controller can be accessed
  * for Employee and Admin group only
  */
-class Employee extends MY_Controller  {
+class Employee extends MY_Controller {
 
     protected $access = array("Admin", "Emplo");
 

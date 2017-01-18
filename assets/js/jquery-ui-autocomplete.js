@@ -330,7 +330,7 @@
                     element.ownerDocument :
 
                     // Element is window or document
-                element.document || element);
+                    element.document || element);
                 this.window = $(this.document[0].defaultView || this.document[0].parentWindow);
             }
 
@@ -676,7 +676,7 @@
             event = $.Event(event);
             event.type = ( type === this.widgetEventPrefix ?
                 type :
-            this.widgetEventPrefix + type ).toLowerCase();
+                this.widgetEventPrefix + type ).toLowerCase();
 
             // The original event may come from any element
             // so we need to reset the target on the new event
@@ -710,7 +710,7 @@
                 method :
                 options === true || typeof options === "number" ?
                     defaultEffect :
-                options.effect || defaultEffect;
+                    options.effect || defaultEffect;
 
             options = options || {};
             if (typeof options === "number") {
@@ -2889,7 +2889,7 @@
             },
             Elastic: function (p) {
                 return p === 0 || p === 1 ? p :
-                -Math.pow(2, 8 * ( p - 1 )) * Math.sin(( ( p - 1 ) * 80 - 7.5 ) * Math.PI / 15);
+                    -Math.pow(2, 8 * ( p - 1 )) * Math.sin(( ( p - 1 ) * 80 - 7.5 ) * Math.PI / 15);
             },
             Back: function (p) {
                 return p * p * ( 3 * p - 2 );
@@ -2911,8 +2911,8 @@
             };
             $.easing["easeInOut" + name] = function (p) {
                 return p < 0.5 ?
-                easeIn(p * 2) / 2 :
-                1 - easeIn(p * -2 + 2) / 2;
+                    easeIn(p * 2) / 2 :
+                    1 - easeIn(p * -2 + 2) / 2;
             };
         });
 
@@ -7379,7 +7379,7 @@
                         title: buttonText
                     }) :
                     $("<button type='button'></button>").addClass(this._triggerClass).html(!buttonImage ? buttonText : $("<img/>").attr(
-                        {src: buttonImage, alt: buttonText, title: buttonText})));
+                            {src: buttonImage, alt: buttonText, title: buttonText})));
                 input[isRTL ? "before" : "after"](inst.trigger);
                 inst.trigger.on("click", function () {
                     if ($.datepicker._datepickerShowing && $.datepicker._lastInput === input[0]) {
@@ -7629,7 +7629,7 @@
             if (arguments.length === 2 && typeof name === "string") {
                 return ( name === "defaults" ? $.extend({}, $.datepicker._defaults) :
                     ( inst ? ( name === "all" ? $.extend({}, inst.settings) :
-                        this._get(inst, name) ) : null ) );
+                            this._get(inst, name) ) : null ) );
             }
 
             settings = name || {};
@@ -8274,7 +8274,7 @@
                 iValue = 0,
                 shortYearCutoffTemp = ( settings ? settings.shortYearCutoff : null ) || this._defaults.shortYearCutoff,
                 shortYearCutoff = ( typeof shortYearCutoffTemp !== "string" ? shortYearCutoffTemp :
-                new Date().getFullYear() % 100 + parseInt(shortYearCutoffTemp, 10) ),
+                    new Date().getFullYear() % 100 + parseInt(shortYearCutoffTemp, 10) ),
                 dayNamesShort = ( settings ? settings.dayNamesShort : null ) || this._defaults.dayNamesShort,
                 dayNames = ( settings ? settings.dayNames : null ) || this._defaults.dayNames,
                 monthNamesShort = ( settings ? settings.monthNamesShort : null ) || this._defaults.monthNamesShort,
@@ -8299,7 +8299,7 @@
                 getNumber = function (match) {
                     var isDoubled = lookAhead(match),
                         size = ( match === "@" ? 14 : ( match === "!" ? 20 :
-                            ( match === "y" && isDoubled ? 4 : ( match === "o" ? 3 : 2 ) ) ) ),
+                                ( match === "y" && isDoubled ? 4 : ( match === "o" ? 3 : 2 ) ) ) ),
                         minSize = ( match === "y" ? size : 1 ),
                         digits = new RegExp("^\\d{" + minSize + "," + size + "}"),
                         num = value.substring(iValue).match(digits);
@@ -8539,7 +8539,7 @@
                                 break;
                             case "y":
                                 output += ( lookAhead("y") ? date.getFullYear() :
-                                ( date.getFullYear() % 100 < 10 ? "0" : "" ) + date.getFullYear() % 100 );
+                                    ( date.getFullYear() % 100 < 10 ? "0" : "" ) + date.getFullYear() % 100 );
                                 break;
                             case "@":
                                 output += date.getTime();
@@ -8700,7 +8700,7 @@
                     return new Date(year, month, day);
                 },
                 newDate = ( date == null || date === "" ? defaultDate : ( typeof date === "string" ? offsetString(date) :
-                    ( typeof date === "number" ? ( isNaN(date) ? defaultDate : offsetNumeric(date) ) : new Date(date.getTime()) ) ) );
+                        ( typeof date === "number" ? ( isNaN(date) ? defaultDate : offsetNumeric(date) ) : new Date(date.getTime()) ) ) );
 
             newDate = ( newDate && newDate.toString() === "Invalid Date" ? defaultDate : newDate );
             if (newDate) {
@@ -8838,22 +8838,22 @@
 
             prevText = this._get(inst, "prevText");
             prevText = ( !navigationAsDateFormat ? prevText : this.formatDate(prevText,
-                this._daylightSavingAdjust(new Date(drawYear, drawMonth - stepMonths, 1)),
-                this._getFormatConfig(inst)) );
+                    this._daylightSavingAdjust(new Date(drawYear, drawMonth - stepMonths, 1)),
+                    this._getFormatConfig(inst)) );
 
             prev = ( this._canAdjustMonth(inst, -1, drawYear, drawMonth) ?
-            "<a class='ui-datepicker-prev ui-corner-all' data-handler='prev' data-event='click'" +
-            " title='" + prevText + "'><span class='ui-icon ui-icon-circle-triangle-" + ( isRTL ? "e" : "w" ) + "'>" + prevText + "</span></a>" :
+                "<a class='ui-datepicker-prev ui-corner-all' data-handler='prev' data-event='click'" +
+                " title='" + prevText + "'><span class='ui-icon ui-icon-circle-triangle-" + ( isRTL ? "e" : "w" ) + "'>" + prevText + "</span></a>" :
                 ( hideIfNoPrevNext ? "" : "<a class='ui-datepicker-prev ui-corner-all ui-state-disabled' title='" + prevText + "'><span class='ui-icon ui-icon-circle-triangle-" + ( isRTL ? "e" : "w" ) + "'>" + prevText + "</span></a>" ) );
 
             nextText = this._get(inst, "nextText");
             nextText = ( !navigationAsDateFormat ? nextText : this.formatDate(nextText,
-                this._daylightSavingAdjust(new Date(drawYear, drawMonth + stepMonths, 1)),
-                this._getFormatConfig(inst)) );
+                    this._daylightSavingAdjust(new Date(drawYear, drawMonth + stepMonths, 1)),
+                    this._getFormatConfig(inst)) );
 
             next = ( this._canAdjustMonth(inst, +1, drawYear, drawMonth) ?
-            "<a class='ui-datepicker-next ui-corner-all' data-handler='next' data-event='click'" +
-            " title='" + nextText + "'><span class='ui-icon ui-icon-circle-triangle-" + ( isRTL ? "w" : "e" ) + "'>" + nextText + "</span></a>" :
+                "<a class='ui-datepicker-next ui-corner-all' data-handler='next' data-event='click'" +
+                " title='" + nextText + "'><span class='ui-icon ui-icon-circle-triangle-" + ( isRTL ? "w" : "e" ) + "'>" + nextText + "</span></a>" :
                 ( hideIfNoPrevNext ? "" : "<a class='ui-datepicker-next ui-corner-all ui-state-disabled' title='" + nextText + "'><span class='ui-icon ui-icon-circle-triangle-" + ( isRTL ? "w" : "e" ) + "'>" + nextText + "</span></a>" ) );
 
             currentText = this._get(inst, "currentText");
@@ -8862,11 +8862,11 @@
                 this.formatDate(currentText, gotoDate, this._getFormatConfig(inst)) );
 
             controls = ( !inst.inline ? "<button type='button' class='ui-datepicker-close ui-state-default ui-priority-primary ui-corner-all' data-handler='hide' data-event='click'>" +
-            this._get(inst, "closeText") + "</button>" : "" );
+                this._get(inst, "closeText") + "</button>" : "" );
 
             buttonPanel = ( showButtonPanel ) ? "<div class='ui-datepicker-buttonpane ui-widget-content'>" + ( isRTL ? controls : "" ) +
-            ( this._isInRange(inst, gotoDate) ? "<button type='button' class='ui-datepicker-current ui-state-default ui-priority-secondary ui-corner-all' data-handler='today' data-event='click'" +
-            ">" + currentText + "</button>" : "" ) + ( isRTL ? "" : controls ) + "</div>" : "";
+                ( this._isInRange(inst, gotoDate) ? "<button type='button' class='ui-datepicker-current ui-state-default ui-priority-secondary ui-corner-all' data-handler='today' data-event='click'" +
+                    ">" + currentText + "</button>" : "" ) + ( isRTL ? "" : controls ) + "</div>" : "";
 
             firstDay = parseInt(this._get(inst, "firstDay"), 10);
             firstDay = ( isNaN(firstDay) ? 0 : firstDay );
@@ -8935,7 +8935,7 @@
                     for (dRow = 0; dRow < numRows; dRow++) { // create date picker rows
                         calender += "<tr>";
                         tbody = ( !showWeek ? "" : "<td class='ui-datepicker-week-col'>" +
-                        this._get(inst, "calculateWeek")(printDate) + "</td>" );
+                            this._get(inst, "calculateWeek")(printDate) + "</td>" );
                         for (dow = 0; dow < 7; dow++) { // create date picker days
                             daySettings = ( beforeShowDay ?
                                 beforeShowDay.apply(( inst.input ? inst.input[0] : null ), [printDate]) : [true, ""] );
@@ -8949,19 +8949,19 @@
                                 ( defaultDate.getTime() === printDate.getTime() && defaultDate.getTime() === selectedDate.getTime() ) ?
 
                                     // or defaultDate is current printedDate and defaultDate is selectedDate
-                                " " + this._dayOverClass : "" ) + // highlight selected day
+                                    " " + this._dayOverClass : "" ) + // highlight selected day
                                 ( unselectable ? " " + this._unselectableClass + " ui-state-disabled" : "" ) +  // highlight unselectable days
                                 ( otherMonth && !showOtherMonths ? "" : " " + daySettings[1] + // highlight custom dates
-                                ( printDate.getTime() === currentDate.getTime() ? " " + this._currentClass : "" ) + // highlight selected day
-                                ( printDate.getTime() === today.getTime() ? " ui-datepicker-today" : "" ) ) + "'" + // highlight today (if different)
+                                    ( printDate.getTime() === currentDate.getTime() ? " " + this._currentClass : "" ) + // highlight selected day
+                                    ( printDate.getTime() === today.getTime() ? " ui-datepicker-today" : "" ) ) + "'" + // highlight today (if different)
                                 ( ( !otherMonth || showOtherMonths ) && daySettings[2] ? " title='" + daySettings[2].replace(/'/g, "&#39;") + "'" : "" ) + // cell title
                                 ( unselectable ? "" : " data-handler='selectDay' data-event='click' data-month='" + printDate.getMonth() + "' data-year='" + printDate.getFullYear() + "'" ) + ">" + // actions
                                 ( otherMonth && !showOtherMonths ? "&#xa0;" : // display for other months
                                     ( unselectable ? "<span class='ui-state-default'>" + printDate.getDate() + "</span>" : "<a class='ui-state-default" +
-                                    ( printDate.getTime() === today.getTime() ? " ui-state-highlight" : "" ) +
-                                    ( printDate.getTime() === currentDate.getTime() ? " ui-state-active" : "" ) + // highlight selected day
-                                    ( otherMonth ? " ui-priority-secondary" : "" ) + // distinguish dates from other months
-                                    "' href='#'>" + printDate.getDate() + "</a>" ) ) + "</td>"; // display selectable date
+                                        ( printDate.getTime() === today.getTime() ? " ui-state-highlight" : "" ) +
+                                        ( printDate.getTime() === currentDate.getTime() ? " ui-state-active" : "" ) + // highlight selected day
+                                        ( otherMonth ? " ui-priority-secondary" : "" ) + // distinguish dates from other months
+                                        "' href='#'>" + printDate.getDate() + "</a>" ) ) + "</td>"; // display selectable date
                             printDate.setDate(printDate.getDate() + 1);
                             printDate = this._daylightSavingAdjust(printDate);
                         }
@@ -8973,7 +8973,7 @@
                         drawYear++;
                     }
                     calender += "</tbody></table>" + ( isMultiMonth ? "</div>" +
-                        ( ( numMonths[0] > 0 && col === numMonths[1] - 1 ) ? "<div class='ui-datepicker-row-break'></div>" : "" ) : "" );
+                            ( ( numMonths[0] > 0 && col === numMonths[1] - 1 ) ? "<div class='ui-datepicker-row-break'></div>" : "" ) : "" );
                     group += calender;
                 }
                 html += group;
@@ -9152,7 +9152,7 @@
         _getFormatConfig: function (inst) {
             var shortYearCutoff = this._get(inst, "shortYearCutoff");
             shortYearCutoff = ( typeof shortYearCutoff !== "string" ? shortYearCutoff :
-            new Date().getFullYear() % 100 + parseInt(shortYearCutoff, 10) );
+                new Date().getFullYear() % 100 + parseInt(shortYearCutoff, 10) );
             return {
                 shortYearCutoff: shortYearCutoff,
                 dayNamesShort: this._get(inst, "dayNamesShort"), dayNames: this._get(inst, "dayNames"),
@@ -9168,7 +9168,7 @@
                 inst.currentYear = inst.selectedYear;
             }
             var date = ( day ? ( typeof day === "object" ? day :
-                this._daylightSavingAdjust(new Date(year, month, day)) ) :
+                    this._daylightSavingAdjust(new Date(year, month, day)) ) :
                 this._daylightSavingAdjust(new Date(inst.currentYear, inst.currentMonth, inst.currentDay)) );
             return this.formatDate(this._get(inst, "dateFormat"), date, this._getFormatConfig(inst));
         }
@@ -10164,21 +10164,21 @@
                     //Check for grid elements set to 0 to prevent divide by 0 error causing invalid
                     // argument errors in IE (see ticket #6950)
                     top = o.grid[1] ? this.originalPageY + Math.round(( pageY -
-                        this.originalPageY ) / o.grid[1]) * o.grid[1] : this.originalPageY;
+                            this.originalPageY ) / o.grid[1]) * o.grid[1] : this.originalPageY;
                     pageY = containment ? ( ( top - this.offset.click.top >= containment[1] ||
-                    top - this.offset.click.top > containment[3] ) ?
-                        top :
-                        ( ( top - this.offset.click.top >= containment[1] ) ?
-                        top - o.grid[1] : top + o.grid[1] ) ) : top;
+                        top - this.offset.click.top > containment[3] ) ?
+                            top :
+                            ( ( top - this.offset.click.top >= containment[1] ) ?
+                                top - o.grid[1] : top + o.grid[1] ) ) : top;
 
                     left = o.grid[0] ? this.originalPageX +
-                    Math.round(( pageX - this.originalPageX ) / o.grid[0]) * o.grid[0] :
+                        Math.round(( pageX - this.originalPageX ) / o.grid[0]) * o.grid[0] :
                         this.originalPageX;
                     pageX = containment ? ( ( left - this.offset.click.left >= containment[0] ||
-                    left - this.offset.click.left > containment[2] ) ?
-                        left :
-                        ( ( left - this.offset.click.left >= containment[0] ) ?
-                        left - o.grid[0] : left + o.grid[0] ) ) : left;
+                        left - this.offset.click.left > containment[2] ) ?
+                            left :
+                            ( ( left - this.offset.click.left >= containment[0] ) ?
+                                left - o.grid[0] : left + o.grid[0] ) ) : left;
                 }
 
                 if (o.axis === "y") {
@@ -10969,15 +10969,15 @@
             this.handles = o.handles ||
                 ( !$(".ui-resizable-handle", this.element).length ?
                     "e,s,se" : {
-                    n: ".ui-resizable-n",
-                    e: ".ui-resizable-e",
-                    s: ".ui-resizable-s",
-                    w: ".ui-resizable-w",
-                    se: ".ui-resizable-se",
-                    sw: ".ui-resizable-sw",
-                    ne: ".ui-resizable-ne",
-                    nw: ".ui-resizable-nw"
-                } );
+                        n: ".ui-resizable-n",
+                        e: ".ui-resizable-e",
+                        s: ".ui-resizable-s",
+                        w: ".ui-resizable-w",
+                        se: ".ui-resizable-se",
+                        sw: ".ui-resizable-sw",
+                        ne: ".ui-resizable-ne",
+                        nw: ".ui-resizable-nw"
+                    } );
 
             this._handles = $();
             if (this.handles.constructor === String) {
@@ -11104,20 +11104,20 @@
             this.position = {left: curleft, top: curtop};
 
             this.size = this._helper ? {
-                width: this.helper.width(),
-                height: this.helper.height()
-            } : {
-                width: el.width(),
-                height: el.height()
-            };
+                    width: this.helper.width(),
+                    height: this.helper.height()
+                } : {
+                    width: el.width(),
+                    height: el.height()
+                };
 
             this.originalSize = this._helper ? {
-                width: el.outerWidth(),
-                height: el.outerHeight()
-            } : {
-                width: el.width(),
-                height: el.height()
-            };
+                    width: el.outerWidth(),
+                    height: el.outerHeight()
+                } : {
+                    width: el.width(),
+                    height: el.height()
+                };
 
             this.sizeDiff = {
                 width: el.outerWidth() - el.width(),
@@ -11693,12 +11693,12 @@
 
             woset = Math.abs(that.sizeDiff.width +
                 ( that._helper ?
-                that.offset.left - cop.left :
+                    that.offset.left - cop.left :
                     ( that.offset.left - co.left ) ));
 
             hoset = Math.abs(that.sizeDiff.height +
                 ( that._helper ?
-                that.offset.top - cop.top :
+                    that.offset.top - cop.top :
                     ( that.offset.top - co.top ) ));
 
             if (woset + that.size.width >= that.parentData.width) {
@@ -12397,7 +12397,7 @@
             $.each(buttons, function (name, props) {
                 var click, buttonOptions;
                 props = $.isFunction(props) ?
-                {click: props, text: name} :
+                    {click: props, text: name} :
                     props;
 
                 // Default to a non-submitting button
@@ -12889,8 +12889,8 @@
             this.isout = true;
 
             this.accept = $.isFunction(accept) ? accept : function (d) {
-                return d.is(accept);
-            };
+                    return d.is(accept);
+                };
 
             this.proportions = function (/* valueToWrite */) {
                 if (arguments.length) {
@@ -12941,8 +12941,8 @@
 
             if (key === "accept") {
                 this.accept = $.isFunction(value) ? value : function (d) {
-                    return d.is(value);
-                };
+                        return d.is(value);
+                    };
             } else if (key === "scope") {
                 var drop = $.ui.ddmanager.droppables[this.options.scope];
 
@@ -13445,7 +13445,7 @@
         _percentage: function () {
             return this.indeterminate ?
                 100 :
-            100 * ( this.options.value - this.min ) / ( this.options.max - this.min );
+                100 * ( this.options.value - this.min ) / ( this.options.max - this.min );
         },
 
         _refreshValue: function () {
@@ -14660,13 +14660,13 @@
             offset = closestHandle.offset();
             mouseOverHandle = !$(event.target).parents().addBack().is(".ui-slider-handle");
             this._clickOffset = mouseOverHandle ? {left: 0, top: 0} : {
-                left: event.pageX - offset.left - ( closestHandle.width() / 2 ),
-                top: event.pageY - offset.top -
-                ( closestHandle.height() / 2 ) -
-                ( parseInt(closestHandle.css("borderTopWidth"), 10) || 0 ) -
-                ( parseInt(closestHandle.css("borderBottomWidth"), 10) || 0 ) +
-                ( parseInt(closestHandle.css("marginTop"), 10) || 0 )
-            };
+                    left: event.pageX - offset.left - ( closestHandle.width() / 2 ),
+                    top: event.pageY - offset.top -
+                    ( closestHandle.height() / 2 ) -
+                    ( parseInt(closestHandle.css("borderTopWidth"), 10) || 0 ) -
+                    ( parseInt(closestHandle.css("borderBottomWidth"), 10) || 0 ) +
+                    ( parseInt(closestHandle.css("marginTop"), 10) || 0 )
+                };
 
             if (!this.handles.hasClass("ui-state-hover")) {
                 this._slide(event, index, normValue);
@@ -15080,7 +15080,7 @@
                 valueMin = this._valueMin();
                 valueMax = this._valueMax();
                 valPercent = ( valueMax !== valueMin ) ?
-                ( value - valueMin ) / ( valueMax - valueMin ) * 100 :
+                    ( value - valueMin ) / ( valueMax - valueMin ) * 100 :
                     0;
                 _set[this.orientation === "horizontal" ? "left" : "bottom"] = valPercent + "%";
                 this.handle.stop(1, 1)[animate ? "animate" : "css"](_set, o.animate);
@@ -15990,7 +15990,7 @@
 
             // Determine whether items are being displayed horizontally
             this.floating = this.items.length ?
-            this.options.axis === "x" || this._isFloating(this.items[0].item) :
+                this.options.axis === "x" || this._isFloating(this.items[0].item) :
                 false;
 
             //This has to be redone because due to the item being moved out/into the offsetParent,
@@ -16369,10 +16369,10 @@
                     0 - this.offset.relative.top - this.offset.parent.top,
                     o.containment === "document" ?
                         this.document.width() :
-                    this.window.width() - this.helperProportions.width - this.margins.left,
+                        this.window.width() - this.helperProportions.width - this.margins.left,
                     ( o.containment === "document" ?
                             ( this.document.height() || document.body.parentNode.scrollHeight ) :
-                        this.window.height() || this.document[0].body.parentNode.scrollHeight
+                            this.window.height() || this.document[0].body.parentNode.scrollHeight
                     ) - this.helperProportions.height - this.margins.top
                 ];
             }
@@ -16439,7 +16439,7 @@
                     this.offset.parent.left * mod -
                     ( ( this.cssPosition === "fixed" ?
                         -this.scrollParent.scrollLeft() : scrollIsRootNode ? 0 :
-                        scroll.scrollLeft() ) * mod )
+                            scroll.scrollLeft() ) * mod )
                 )
             };
 
@@ -16496,7 +16496,7 @@
                         top - this.offset.click.top <= this.containment[3] ) ?
                             top :
                             ( ( top - this.offset.click.top >= this.containment[1] ) ?
-                            top - o.grid[1] : top + o.grid[1] ) ) :
+                                top - o.grid[1] : top + o.grid[1] ) ) :
                         top;
 
                     left = this.originalPageX + Math.round(( pageX - this.originalPageX ) /
@@ -16506,7 +16506,7 @@
                         left - this.offset.click.left <= this.containment[2] ) ?
                             left :
                             ( ( left - this.offset.click.left >= this.containment[0] ) ?
-                            left - o.grid[0] : left + o.grid[0] ) ) :
+                                left - o.grid[0] : left + o.grid[0] ) ) :
                         left;
                 }
 

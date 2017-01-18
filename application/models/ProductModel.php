@@ -1,7 +1,6 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 
-class ProductModel extends CI_Model
-{
+class ProductModel extends CI_Model {
     private $table = 'products';
 
     public function __construct()
@@ -30,16 +29,19 @@ class ProductModel extends CI_Model
         $this->db->insert($this->table, $data);
         $lastId = $this->db->insert_id();
         $this->db->trans_complete();
-        $idForStorage = null;
-        if ($this->db->trans_status()) {
+        $idForStorage = NULL;
+        if ($this->db->trans_status())
+        {
             $data['product_id'] = $lastId;
-            foreach ($data as $key => $value) {
-                if ($key != 'product_price' && $key != 'product_id') {
+            foreach ($data as $key => $value)
+            {
+                if ($key != 'product_price' && $key != 'product_id')
+                {
                     unset($data[$key]);
                 }
             }
 
-            $idForStorage = $this->db->insert('tax_prices', $data) ? $lastId : null;
+            $idForStorage = $this->db->insert('tax_prices', $data) ? $lastId : NULL;
         }
         return $idForStorage;
     }

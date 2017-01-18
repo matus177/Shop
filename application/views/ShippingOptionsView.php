@@ -12,12 +12,26 @@
             <div class="col-sm-6">
                 <p><b>Dodacie údaje</b></p>
                 <p><?php if (strlen($this->encryption->decrypt($userData['deliv_name']) . ' ' . $this->encryption->decrypt($userData['deliv_surname'])) > 1)
+                    {
                         echo $this->encryption->decrypt($userData['deliv_name']) . ' ' . $this->encryption->decrypt($userData['deliv_surname']);
-                    else echo $this->encryption->decrypt($userData['fact_name']) . ' ' . $this->encryption->decrypt($userData['fact_surname']); ?></p>
-                <p><?php if (strlen($userData['deliv_street']) > 0) echo $userData['deliv_street']; else echo $userData['fact_street']; ?></p>
+                    } else
+                    {
+                        echo $this->encryption->decrypt($userData['fact_name']) . ' ' . $this->encryption->decrypt($userData['fact_surname']);
+                    } ?></p>
+                <p><?php if (strlen($userData['deliv_street']) > 0)
+                    {
+                        echo $userData['deliv_street'];
+                    } else
+                    {
+                        echo $userData['fact_street'];
+                    } ?></p>
                 <p><?php if (strlen($userData['deliv_zip'] . ' ' . $userData['deliv_city']) > 1)
+                    {
                         echo $userData['deliv_zip'] . ' ' . $userData['deliv_city'];
-                    else echo $userData['fact_zip'] . ' ' . $userData['fact_city']; ?></p>
+                    } else
+                    {
+                        echo $userData['fact_zip'] . ' ' . $userData['fact_city'];
+                    } ?></p>
             </div>
         </div>
         <a href="<?php echo base_url('ShippingAndBilling?id=1'); ?>" class="btn btn-default">
@@ -31,7 +45,8 @@
     <div class="panel-body" id="change_user_info" hidden>
         <hr>
         <p><b>Fakturačné údaje</b></p>
-        <?php echo form_open('ShippingOptions/checkShippingOptions', ['id' => 'form_shipping_options', 'class' => 'form-horizontal', 'role' => 'form']); ?>
+        <?php echo form_open('ShippingOptions/checkShippingOptions',
+            ['id' => 'form_shipping_options', 'class' => 'form-horizontal', 'role' => 'form']); ?>
         <div class="required-fields">
             <div class="form-group">
                 <label for="email" class="col-md-3 control-label">Email</label>

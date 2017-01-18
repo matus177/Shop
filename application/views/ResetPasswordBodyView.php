@@ -5,9 +5,11 @@
                 <div class="panel-title">Zmena hesla</div>
             </div>
             <div class="panel-body">
-                <?php echo form_open('ResetPassword/resetPassword', ['id' => 'form_update', 'class' => 'form-horizontal', 'role' => 'form']); ?>
+                <?php echo form_open('ResetPassword/resetPassword',
+                    ['id' => 'form_update', 'class' => 'form-horizontal', 'role' => 'form']); ?>
                 <div class="input-group">
-                    <?php if (isset($emailHash, $emailCode)) { ?>
+                    <?php if (isset($emailHash, $emailCode))
+                    { ?>
                         <input type="hidden" value="<?php echo $emailHash ?>" name="emailHash">
                         <input type="hidden" value="<?php echo $emailCode ?>" name="emailCode">
                     <?php } ?>

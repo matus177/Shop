@@ -6,7 +6,8 @@
                 <div class="panel-title">Prihlasenie</div>
             </div>
             <div class="panel-body">
-                <?php echo form_open('Login/login', ['id' => 'form_login', 'class' => 'form-horizontal', 'role' => 'form']); ?>
+                <?php echo form_open('Login/login',
+                    ['id' => 'form_login', 'class' => 'form-horizontal', 'role' => 'form']); ?>
                 <div class="input-group">
                     <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
                     <input id="login-username" type="email" class="form-control" name="email" placeholder="Email"
@@ -24,7 +25,8 @@
                     </div>
                 </div>
                 <?php echo form_close(); ?>
-                <?php echo form_open('ResetPassword/resetPasswordByEmail', ['id' => 'form_resert_password', 'class' => 'form-horizontal', 'role' => 'form']); ?>
+                <?php echo form_open('ResetPassword/resetPasswordByEmail',
+                    ['id' => 'form_resert_password', 'class' => 'form-horizontal', 'role' => 'form']); ?>
                 <div class="form-group">
                     <div class="col-md-12">
                         <a href="<?php echo base_url('registration'); ?>">Registracia</a>

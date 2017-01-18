@@ -4,7 +4,8 @@
             <div class="panel-title">Registracia</div>
         </div>
         <div class="panel-body">
-            <?php echo form_open('Registration/registerNewUser', ['id' => 'form-register', 'class' => 'form-horizontal', 'role' => 'form']); ?>
+            <?php echo form_open('Registration/registerNewUser',
+                ['id' => 'form-register', 'class' => 'form-horizontal', 'role' => 'form']); ?>
             <div class="required-fields">
                 <div class="form-group">
                     <label for="email" class="col-md-3 control-label">Email</label>

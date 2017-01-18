@@ -1,4 +1,7 @@
-<?php if (!$this->session->userdata("logged_in")) die('Chyba pri nastaveni Vasho konta.'); ?>
+<?php if ( ! $this->session->userdata("logged_in"))
+{
+    die('Chyba pri nastaveni Vasho konta.');
+} ?>
 <div class="col-md-9">
     <?php $this->load->view('FlashMessagesView'); ?>
     <table id="table_basic_info">
