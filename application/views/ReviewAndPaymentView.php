@@ -3,6 +3,7 @@
     <div class="review_order">
         <hr>
         <h4>Súhrn objednávky</h4><br>
+        <?php echo form_open('ReviewAndPayment/createAndSendFacture', ['id' => 'reviewAndPayment_form']); ?>
         <div class="col-sm-4">
             <p><b>Fakturačné údaje</b></p>
             <p><?php echo $this->encryption->decrypt($userData['fact_name']) . ' ' . $this->encryption->decrypt($userData['fact_surname']) ?></p>
@@ -100,15 +101,17 @@
         </div>
     </div>
     <div class="col-sm-5 col-sm-offset-7">
-        <h6>Stlačením „Dokončiť objednávku“ súhlasíte s <a href="#">obchodnými podmienkami</a>.</h6>
+        <h6>Stlačením „Objednať“ súhlasíte s <a href="#">obchodnými podmienkami</a>.</h6>
     </div>
     <a href="<?php echo base_url('ShippingOptions?id=2'); ?>" class="btn btn-default">
         <span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span> Spat
     </a>
-    <a style="float: right" href="<?php echo base_url('CompleteOrder?id=4'); ?>" class="btn btn-success">Dokoncit
-        objednavku
-        <span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span>
-    </a>
+    <button style="float: right" type="submit" class="btn btn-success">Objednať <span
+                class="glyphicon glyphicon-arrow-right"
+                aria-hidden="true"></span>
+    </button>
+    <?php echo form_close(); ?>
+
 </div>
 <script>
     function showBigImg() {

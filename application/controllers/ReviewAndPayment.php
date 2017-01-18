@@ -32,4 +32,16 @@ class ReviewAndPayment extends MY_Controller
         $this->load->view('ReviewAndPaymentView', array('userData' => $userData, 'shippingPrice' => $this->getShippingPrices(), 'productData' => $productData));
         $this->load->view('FooterView');
     }
+
+    public function createAndSendFacture()
+    {
+        $this->load->file(dirname(__DIR__) . '/core/FPDF.php');
+        $pdf = new FPDF();
+        $pdf->AddPage();
+        $pdf->SetFont('Arial', 'B', 16);
+        $pdf->Cell(40, 10, 'Hello World!');
+        $pdf->Output();
+
+        redirect('CompleteOrder?id=4');
+    }
 }
