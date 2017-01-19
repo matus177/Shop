@@ -1352,15 +1352,13 @@ class FPDF {
             $name = $tmp;
         }
 
-        $factNum = mt_rand(100000, 999999);
-
         if ($dest == '')
         {
             $dest = 'I';
         }
         if ($name == '')
         {
-            $name = 'faktura_' . $factNum . '.pdf';
+            $name = 'nazov.pdf';
         }
         switch (strtoupper($dest))
         {
