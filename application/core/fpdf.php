@@ -742,6 +742,7 @@ class FPDF {
         }
         if ($txt !== '')
         {
+            $txt = iconv("UTF-8", "ISO-8859-1//TRANSLIT", $txt);
             if ( ! isset($this->CurrentFont))
             {
                 $this->Error('No font has been set');
