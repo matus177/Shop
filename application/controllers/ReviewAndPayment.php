@@ -6,6 +6,7 @@ class ReviewAndPayment extends MY_Controller {
         parent::__construct();
         $this->load->model('UserModel');
         $this->load->model('ProductModel');
+        $this->load->library('email');
     }
 
     public function index()
@@ -121,10 +122,14 @@ class ReviewAndPayment extends MY_Controller {
         $pdf->Cell(190, 0, '', 1);
         $pdf->Ln(5);
         $pdf->Cell(135);
-        $pdf->Cell(40, 10, 'Celkom bez DPH: ' . round(($this->session->userdata('delivery_price') + $this->cart->total()) - (($this->session->userdata('delivery_price') + $this->cart->total()) / $this->getShippingPrices()->dph), 2) . ' Eur');
+        $pdf->Cell(40, 10,
+            'Celkom bez DPH: ' . round(($this->session->userdata('delivery_price') + $this->cart->total()) - (($this->session->userdata('delivery_price') + $this->cart->total()) / $this->getShippingPrices()->dph),
+                2) . ' Eur');
         $pdf->Ln(5);
         $pdf->Cell(135);
-        $pdf->Cell(40, 10, 'DPH (20%): ' . round(($this->session->userdata('delivery_price') + $this->cart->total()) / $this->getShippingPrices()->dph, 2) . ' Eur');
+        $pdf->Cell(40, 10,
+            'DPH (20%): ' . round(($this->session->userdata('delivery_price') + $this->cart->total()) / $this->getShippingPrices()->dph,
+                2) . ' Eur');
         $pdf->Ln(5);
         $pdf->Cell(135);
         $pdf->SetFont('Arial', 'B', 13);
@@ -134,6 +139,18 @@ class ReviewAndPayment extends MY_Controller {
         $pdf->Cell(5);
         $pdf->Cell(40, 10, 'Dna: ' . date("d. m. Y  H:i:s"));
         $pdf->Output('f', $factureName);
+
+        $this->email->set_mailtype('html');
+        $this->email->from('shop-support@seznam.cz', 'Shop support');
+        $this->email->to('andrejmat12@gmail.com');
+        $this->email->attach(dirname(dirname(__DIR__)) . '/assets/facture/' . $factureName);
+        $this->email->subject('Prosim zmente svoje heslo v Shope');
+        $message = '<!DOCTYPE html><html><meta content="text/html" charset="UTF-8" /></head><body>';
+        $message .= '<p>Mili zakaznik,</p>';
+        $message .= '<p>dakujeme za Vas nakup. V prilohe Vam posielame fakturu.</p>';
+        $message .= '<p>S pozdravom team Shop.sk</p>';
+        $message .= '</body></html>';
+        $this->email->message($message);
 
         redirect('CompleteOrder?id=4');
     }
