@@ -141,6 +141,7 @@
     <div class="format_inputs_top">
         <p><i class="glyphicon glyphicon-info-sign"></i> Zmeny sa ukladaju automaticky.</p>
     </div>
+    <a class="btn btn-default" href='<?php echo base_url('Home'); ?>'><i class="glyphicon glyphicon-home"></i> Domov</a>
 </div>
 <script>
     $(document).ready(function () {

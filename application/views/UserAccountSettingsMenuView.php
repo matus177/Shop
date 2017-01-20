@@ -19,12 +19,6 @@
                     <li>
                         <a href='<?php echo base_url('UserAccountSettings/updateAccount/UserAccountDeliveryAddressView'); ?>'>Dorucovacie
                             adresy</a></li>
-                    <li class="nav-divider"></li>
-                    <li><a href="#">Menu Item 4</a></li>
-                    <li class="nav-divider"></li>
-                    <li><a href="#">Menu Item 5</a></li>
-                    <li class="nav-divider"></li>
-                    <li><a href="#">Menu Item 6</a></li>
                 </ul>
             </div>
         </div>
