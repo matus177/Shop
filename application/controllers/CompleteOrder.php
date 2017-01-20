@@ -1,6 +1,6 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 
-class CompleteOrder extends CI_Controller {
+class CompleteOrder extends MY_Controller {
     public function __construct()
     {
         parent::__construct();
@@ -13,7 +13,7 @@ class CompleteOrder extends CI_Controller {
         $this->load->view('UpperMenuView');
         $this->load->view('LeftMenuView');
         $this->load->view('CheckoutView', $orderData);
-        $this->load->view('CompleteOrderView');
+        $this->load->view('CompleteOrderView', array('userEmail' => $this->databaseOrSessionUserData()['email']));
         $this->load->view('FooterView');
     }
 }

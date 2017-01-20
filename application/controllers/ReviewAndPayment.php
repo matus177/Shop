@@ -30,18 +30,6 @@ class ReviewAndPayment extends MY_Controller {
         $this->load->view('FooterView');
     }
 
-    public function databaseOrSessionUserData()
-    {
-        if ($this->isUserLogged())
-        {
-            $userId = $this->encryption->decrypt($this->session->userdata('id'));
-            return $this->UserModel->getAllUserData($userId);
-        } else
-        {
-            return $this->session->userdata();
-        }
-    }
-
     public function createAndSendFacture()
     {
         $shippingAndPaymentData = $this->session->userdata();

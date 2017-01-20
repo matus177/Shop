@@ -16,6 +16,7 @@ class MY_Controller extends CI_Controller {
         parent::__construct();
         $this->login_check();
         $this->load->model('ProductModel');
+        $this->load->model('UserModel');
     }
 
     public function login_check()
@@ -55,13 +56,25 @@ class MY_Controller extends CI_Controller {
         }
     }
 
-    public function isUserLogged()
-    {
-        return $this->session->userdata('logged_in');
-    }
-
     public function getShippingPrices()
     {
         return $this->ProductModel->selectShippingPrices();
+    }
+
+    public function databaseOrSessionUserData()
+    {
+        if ($this->isUserLogged())
+        {
+            $userId = $this->encryption->decrypt($this->session->userdata('id'));
+            return $this->UserModel->getAllUserData($userId);
+        } else
+        {
+            return $this->session->userdata();
+        }
+    }
+
+    public function isUserLogged()
+    {
+        return $this->session->userdata('logged_in');
     }
 }
