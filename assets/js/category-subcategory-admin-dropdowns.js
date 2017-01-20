@@ -1,6 +1,6 @@
 $(document).ready(function () {
     $.ajax({
-        url: 'Admin/getCategoryDropdown',
+        url: window.location.origin + '/Shop/Admin/getCategoryDropdown',
         type: 'GET',
         success: function (response) {
             $.each(JSON.parse(response), function (i, category) {
@@ -11,7 +11,7 @@ $(document).ready(function () {
 });
 $(document).ready(function () {
     $.ajax({
-        url: 'Admin/getSubCategoryDropdown',
+        url: window.location.origin + '/Shop/Admin/getSubCategoryDropdown',
         type: 'GET',
         success: function (response) {
             $.each(JSON.parse(response), function (i, subcategory) {

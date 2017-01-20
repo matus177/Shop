@@ -1,6 +1,6 @@
 $(document).ready(function () {
     $.ajax({
-        url: 'Cart/isCartEmpty',
+        url: window.location.origin + '/Shop/Cart/isCartEmpty',
         type: 'GET',
         success: function (response) {
             if (response) {

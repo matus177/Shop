@@ -89,16 +89,16 @@
         <tr>
             <td class="format_inputs_top">
                 Mesto
-                <input type="text" id="fact_city" onclick="updatePersonalData(this.id)"
-                       onmouseover="zipForCity('city-search', 'zip-search_fact')"
-                       class="form-control city-search"
+                <input type="text" onclick="updatePersonalData(this.id)"
+                       onmouseover="zipForCity('fact_city_search', 'fact_zip_search')"
+                       class="form-control fact_city_search"
                        name="fact_city"
                        value="<?php echo $data['fact_city'] ?>">
             </td>
             <td class="format_inputs_top">
                 <div class="inline_inputs">
                     Ulica
-                    <input type="text" id="fact_street" onclick="updatePersonalData(this.id)" class="form-control"
+                    <input type="text" onclick="updatePersonalData(this.id)" class="form-control fact_street_search"
                            name="fact_street"
                            value="<?php echo $data['fact_street'] ?>">
                 </div>
@@ -106,8 +106,8 @@
             <td class="format_inputs_top">
                 <div class="inline_inputs">
                     PSC
-                    <input type="text" id="fact_zip" onclick="updatePersonalData(this.id)"
-                           class="form-control zip-search_fact zip_mask" name="fact_zip"
+                    <input type="text" onclick="updatePersonalData(this.id)"
+                           class="form-control fact_zip_search zip_mask" name="fact_zip"
                            value="<?php echo $data['fact_zip'] ?>">
                 </div>
             </td>
@@ -172,8 +172,6 @@
 </script>
 <script>
     $(document).ready(function () {
-        $('.newPhone').mask('+000 000 000 000');
-        $('.zip_mask').mask('000 00');
         $('.update_phone').click(function () {
             $('.update_phone').unbind('click');
             var phoneValue = $('p.phone').text().trim();
@@ -236,31 +234,6 @@
     }
 </script>
 <script>
-    $("#fact_city").autocomplete({
-        source: window.location.origin + '/Shop/Registration/searchCity'
-    });
-    $("#fact_zip").autocomplete({
-        source: window.location.origin + '/Shop/Registration/searchZip'
-    });
-    $("#fact_street").autocomplete({
-        source: window.location.origin + '/Shop/Registration/searchStreet'
-    });
-</script>
-<script>
-    function zipForCity(city, factOrDelivZip) {
-        $('.' + city).on("autocompletechange", function () {
-            var searchTerm = {
-                city: $('.' + city).val()
-            };
-            $.ajax({
-                url: window.location.origin + '/Shop/Registration/searchZipForCity',
-                type: 'GET',
-                data: searchTerm,
-                success: function (data) {
-                    $('input').click();
-                    $('.' + factOrDelivZip).val(data).change();
-                }
-            })
-        });
-    }
+    autocompleteCityStreetZip();
+    zipForCity(city, factOrDelivZip);
 </script>

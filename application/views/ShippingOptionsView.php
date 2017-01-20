@@ -37,7 +37,7 @@
         <a href="<?php echo base_url('ShippingAndBilling?id=1'); ?>" class="btn btn-default">
             <span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span> Spat
         </a>
-        <button class="btn btn-primary" id="change_user_data_buttun" type="button">Zmenit</button>
+        <button class="btn btn-primary" id="change_user_data_button" type="button">Zmenit</button>
         <a style="float: right" href="<?php echo base_url('ReviewAndPayment?id=3'); ?>" class="btn btn-success">Dalej
             <span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span>
         </a>
@@ -77,7 +77,7 @@
             <div class="form-group">
                 <label for="fact_street" class="col-md-3 control-label">Ulica</label>
                 <div class="col-md-7">
-                    <input type="text" class="form-control street-search" id="fact_street"
+                    <input type="text" class="form-control fact_street_search"
                            onclick="updatePersonalData(this.id)" name="fact_street"
                            placeholder="Ulica" value="<?php echo $userData['fact_street'] ?>" required>
                 </div>
@@ -85,16 +85,16 @@
             <div class="form-group">
                 <label for="fact_city" class="col-md-3 control-label">Mesto</label>
                 <div class="col-md-7">
-                    <input type="text" onmouseover="zipForCity('city-search', 'zip-search_fact')" id="fact_city"
+                    <input type="text" onmouseover="zipForCity('fact_city_search', 'fact_zip_search')"
                            onclick="updatePersonalData(this.id)"
-                           class="form-control city-search"
+                           class="form-control fact_city_search"
                            name="fact_city" placeholder="Mesto" value="<?php echo $userData['fact_city'] ?>" required>
                 </div>
             </div>
             <div class="form-group">
                 <label for="fact_zip" class="col-md-3 control-label">PSČ</label>
                 <div class="col-md-7">
-                    <input type="text" class="form-control zip-search_fact zip_mask" id="fact_zip"
+                    <input type="text" class="form-control fact_zip_search zip_mask"
                            onclick="updatePersonalData(this.id)" name="fact_zip" placeholder="PSČ"
                            value="<?php echo $userData['fact_zip'] ?>" required>
                 </div>
@@ -147,7 +147,7 @@
                 <div class="form-group">
                     <label for="deliv_street" class="col-md-3 control-label">Ulica</label>
                     <div class="col-md-7">
-                        <input type="text" class="form-control street-search" id="deliv_street"
+                        <input type="text" class="form-control deliv_street_search"
                                onclick="updateDeliveryData(this.id)" name="deliv_street"
                                placeholder="Ulica" value="<?php echo $userData['deliv_street'] ?>">
                     </div>
@@ -155,8 +155,8 @@
                 <div class="form-group">
                     <label for="deliv_city" class="col-md-3 control-label">Mesto</label>
                     <div class="col-md-7">
-                        <input type="text" onmouseover="zipForCity('deliv-city-search', 'zip-search_deliv')"
-                               class="form-control deliv-city-search" id="deliv_city"
+                        <input type="text" onmouseover="zipForCity('deliv_city_search', 'deliv_zip_search')"
+                               class="form-control deliv_city_search"
                                onclick="updateDeliveryData(this.id)" name="deliv_city" placeholder="Mesto"
                                value="<?php echo $userData['deliv_city'] ?>">
                     </div>
@@ -164,7 +164,7 @@
                 <div class="form-group">
                     <label for="deliv_zip" class="col-md-3 control-label">PSČ</label>
                     <div class="col-md-7">
-                        <input type="text" class="form-control zip-search_deliv zip_mask" id="deliv_zip"
+                        <input type="text" class="form-control deliv_zip_search zip_mask"
                                onclick="updateDeliveryData(this.id)" name="deliv_zip"
                                placeholder="PSČ"
                                value="<?php echo $userData['deliv_zip'] ?>">
@@ -257,38 +257,8 @@
     </div>
 </div>
 <script>
-    $(function () {
-        $(".city-search").autocomplete({
-            source: 'Registration/searchCity'
-        });
-        $(".deliv-city-search").autocomplete({
-            source: 'Registration/searchCity'
-        });
-        $(".zip-search").autocomplete({
-            source: 'Registration/searchZip'
-        });
-        $(".street-search").autocomplete({
-            source: 'Registration/searchStreet'
-        });
-    })
-</script>
-<script>
-    function zipForCity(city, factOrDelivZip) {
-        $('.' + city).on("autocompletechange", function () {
-            var searchTerm = {
-                city: $('.' + city).val()
-            };
-            $.ajax({
-                url: 'Registration/searchZipForCity',
-                type: 'GET',
-                data: searchTerm,
-                success: function (data) {
-                    $('.form-group input').click();
-                    $('.' + factOrDelivZip).val(data).change();
-                }
-            })
-        });
-    }
+    autocompleteCityStreetZip();
+    zipForCity(city, factOrDelivZip);
 </script>
 <script>
     $(document).ready(function () {
@@ -304,13 +274,10 @@
             }
         });
 
-        document.getElementById('change_user_data_buttun').onclick = function () {
+        document.getElementById('change_user_data_button').onclick = function () {
             $('#change_user_info').removeAttr("hidden", "hidden");
             $('#logged_user_info').attr("hidden", "hidden");
         };
-
-        $('.zip_mask').mask('000 00');
-        $('.phone_mask').mask('+000 000 000 000');
     });
 </script>
 <script>

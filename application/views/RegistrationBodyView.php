@@ -52,22 +52,22 @@
                         <div class="form-group">
                             <label for="fact_street" class="col-md-3 control-label">Ulica</label>
                             <div class="col-md-9">
-                                <input type="text" class="form-control street-search" name="fact_street"
+                                <input type="text" class="form-control fact_street_search" name="fact_street"
                                        placeholder="Ulica" required>
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="fact_city" class="col-md-3 control-label">Mesto</label>
                             <div class="col-md-9">
-                                <input type="text" onmouseover="zipForCity('city-search', 'zip-search_fact')"
-                                       class="form-control city-search"
+                                <input type="text" onmouseover="zipForCity('fact_city_search', 'fact_zip_search')"
+                                       class="form-control fact_city_search"
                                        name="fact_city" placeholder="Mesto" required>
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="fact_zip" class="col-md-3 control-label">PSČ</label>
                             <div class="col-md-9">
-                                <input type="text" class="form-control zip-search_fact zip_mask" name="fact_zip"
+                                <input type="text" class="form-control fact_zip_search zip_mask" name="fact_zip"
                                        placeholder="PSČ" required>
                             </div>
                         </div>
@@ -116,21 +116,21 @@
                     <div class="form-group">
                         <label for="deliv_street" class="col-md-3 control-label">Ulica</label>
                         <div class="col-md-9">
-                            <input type="text" class="form-control street-search" name="deliv_street"
+                            <input type="text" class="form-control deliv_street_search" name="deliv_street"
                                    placeholder="Ulica">
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="deliv_city" class="col-md-3 control-label">Mesto</label>
                         <div class="col-md-9">
-                            <input type="text" onmouseover="zipForCity('deliv-city-search', 'zip-search_deliv')"
-                                   class="form-control deliv-city-search" name="deliv_city" placeholder="Mesto">
+                            <input type="text" onmouseover="zipForCity('deliv_city_search', 'deliv_zip_search')"
+                                   class="form-control deliv_city_search" name="deliv_city" placeholder="Mesto">
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="deliv_zip" class="col-md-3 control-label">PSČ</label>
                         <div class="col-md-9">
-                            <input type="text" class="form-control zip-search_deliv zip_mask" name="deliv_zip"
+                            <input type="text" class="form-control deliv_zip_search zip_mask" name="deliv_zip"
                                    placeholder="PSČ">
                         </div>
                     </div>
@@ -213,43 +213,7 @@
     </div>
 </div>
 <script>
-    changeIcon(divId, buttonId)
-</script>
-<script>
-    $(function () {
-        $(".city-search").autocomplete({
-            source: 'Registration/searchCity'
-        });
-        $(".deliv-city-search").autocomplete({
-            source: 'Registration/searchCity'
-        });
-        $(".zip-search").autocomplete({
-            source: 'Registration/searchZip'
-        });
-        $(".street-search").autocomplete({
-            source: 'Registration/searchStreet'
-        });
-    })
-</script>
-<script>
-    function zipForCity(city, factOrDelivZip) {
-        $('.' + city).on("autocompletechange", function () {
-            var searchTerm = {
-                city: $('.' + city).val()
-            };
-            $.ajax({
-                url: window.location.origin + '/Shop/Registration/searchZipForCity',
-                type: 'GET',
-                data: searchTerm,
-                success: function (data) {
-                    $('input').click();
-                    $('.' + factOrDelivZip).val(data).change();
-                }
-            })
-        });
-    }
-</script>
-<script>
-    $(".phone_mask").mask("+000 000 000 000");
-    $(".zip_mask").mask("000 00");
+    autocompleteCityStreetZip();
+    changeIcon(divId, buttonId);
+    zipForCity(city, factOrDelivZip);
 </script>

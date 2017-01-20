@@ -1,6 +1,6 @@
 $(document).ready(function () {
     $.ajax({
-        url: 'Home/getCategoryMenu',
+        url: window.location.origin + '/Shop/Home/getCategoryMenu',
         type: 'GET',
         success: function (response) {
             $.each(JSON.parse(response), function (i, category) {

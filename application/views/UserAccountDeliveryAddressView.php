@@ -34,16 +34,16 @@
         <tr>
             <td class="format_inputs_top">
                 Mesto
-                <input type="text" id="deliv_city" onclick="updateDeliveryData(this.id)"
-                       onmouseover="zipForCity('city-search', 'zip-search_fact')"
-                       class="form-control city-search"
+                <input type="text" onclick="updateDeliveryData(this.id)"
+                       onmouseover="zipForCity('deliv_city_search', 'deliv_zip_search')"
+                       class="form-control deliv_city_search"
                        name="deliv_city"
                        value="<?php echo $data['deliv_city'] ?>">
             </td>
             <td class="format_inputs_top">
                 <div class="inline_inputs">
                     Ulica
-                    <input type="text" id="deliv_street" onclick="updateDeliveryData(this.id)" class="form-control"
+                    <input type="text" onclick="updateDeliveryData(this.id)" class="form-control deliv_street_search"
                            name="deliv_street"
                            value="<?php echo $data['deliv_street'] ?>">
                 </div>
@@ -51,8 +51,8 @@
             <td class="format_inputs_top">
                 <div class="inline_inputs">
                     PSC
-                    <input type="text" id="deliv_zip" onclick="updateDeliveryData(this.id)"
-                           class="form-control zip-search_fact zip_mask" name="deliv_zip"
+                    <input type="text" onclick="updateDeliveryData(this.id)"
+                           class="form-control deliv_zip_search zip_mask" name="deliv_zip"
                            value="<?php echo $data['deliv_zip'] ?>">
                 </div>
             </td>
@@ -102,36 +102,9 @@
                 })
             });
         });
-        $('.zip_mask').mask('000 00');
-        $('.phone_mask').mask('+000 000 000 000');
     }
 </script>
 <script>
-    $("#fact_city, #deliv_city").autocomplete({
-        source: window.location.origin + '/Shop/Registration/searchCity'
-    });
-    $("#fact_zip, #deliv_zip").autocomplete({
-        source: window.location.origin + '/Shop/Registration/searchZip'
-    });
-    $("#fact_street, #deliv_street").autocomplete({
-        source: window.location.origin + '/Shop/Registration/searchStreet'
-    });
-</script>
-<script>
-    function zipForCity(city, factOrDelivZip) {
-        $('.' + city).on("autocompletechange", function () {
-            var searchTerm = {
-                city: $('.' + city).val()
-            };
-            $.ajax({
-                url: window.location.origin + '/Shop/Registration/searchZipForCity',
-                type: 'GET',
-                data: searchTerm,
-                success: function (data) {
-                    $('input').click();
-                    $('.' + factOrDelivZip).val(data).change();
-                }
-            })
-        });
-    }
+    autocompleteCityStreetZip();
+    zipForCity();
 </script>
