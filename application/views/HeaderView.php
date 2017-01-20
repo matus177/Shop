@@ -21,5 +21,6 @@
     <script src="<?php echo base_url('assets/js/checkout-steps.js'); ?>"></script>
     <script src="<?php echo base_url('assets/js/category-subcategory-admin-dropdowns.js'); ?>"></script>
     <script src="<?php echo base_url('assets/js/left-home-menu.js'); ?>"></script>
+    <script src="<?php echo base_url('assets/js/empty-cart.js'); ?>"></script>
 </head>
 <body>
