@@ -33,14 +33,3 @@
         <?php endforeach; ?>
     </ul>
 </div>
-<script>
-    $(document).ready(function () {
-        $('.product_footer a').click(function (e) {
-            var idOfButton = e.target.id;
-            $.ajax({
-                url: '<?php echo base_url('Cart/addToCart/') ?>' + idOfButton,
-                type: 'GET'
-            });
-        });
-    });
-</script>
