@@ -258,7 +258,6 @@
 </div>
 <script>
     autocompleteCityStreetZip();
-    zipForCity(city, factOrDelivZip);
 </script>
 <script>
     $(document).ready(function () {

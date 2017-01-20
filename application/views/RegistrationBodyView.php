@@ -214,6 +214,4 @@
 </div>
 <script>
     autocompleteCityStreetZip();
-    changeIcon(divId, buttonId);
-    zipForCity(city, factOrDelivZip);
 </script>

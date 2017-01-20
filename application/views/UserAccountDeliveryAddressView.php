@@ -106,5 +106,4 @@
 </script>
 <script>
     autocompleteCityStreetZip();
-    zipForCity();
 </script>

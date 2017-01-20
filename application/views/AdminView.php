@@ -123,3 +123,6 @@
         </div>
     </div>
 </div>
+<script>
+    getCategoryAndSubCategoryDropdowns(<?php echo $isAdmin; ?>);
+</script>

@@ -235,5 +235,4 @@
 </script>
 <script>
     autocompleteCityStreetZip();
-    zipForCity(city, factOrDelivZip);
 </script>
