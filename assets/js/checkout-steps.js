@@ -37,4 +37,4 @@ function checkoutStep(step) {
                 $('#complete_order').removeClass().addClass('active');
         }
     });
-}
+}.
