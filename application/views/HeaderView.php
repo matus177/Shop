@@ -23,5 +23,6 @@
     <script src="<?php echo base_url('assets/js/left-home-menu.js'); ?>"></script>
     <script src="<?php echo base_url('assets/js/empty-cart.js'); ?>"></script>
     <script src="<?php echo base_url('assets/js/add-to-cart.js'); ?>"></script>
+    <script src="<?php echo base_url('assets/js/registration.js'); ?>"></script>
 </head>
 <body>
