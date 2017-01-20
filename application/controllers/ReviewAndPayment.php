@@ -151,6 +151,7 @@ class ReviewAndPayment extends MY_Controller {
         $message .= '<p>S pozdravom team Shop.sk</p>';
         $message .= '</body></html>';
         $this->email->message($message);
+        $this->email->send();
 
         redirect('CompleteOrder?id=4');
     }
