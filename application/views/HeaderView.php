@@ -20,5 +20,6 @@
     <script src="<?php echo base_url('assets/js/jquery-mask.js'); ?>"></script>
     <script src="<?php echo base_url('assets/js/checkout-steps.js'); ?>"></script>
     <script src="<?php echo base_url('assets/js/category-subcategory-admin-dropdowns.js'); ?>"></script>
+    <script src="<?php echo base_url('assets/js/left-home-menu.js'); ?>"></script>
 </head>
 <body>
