@@ -19,7 +19,8 @@ class Admin extends MY_Controller {
         $this->load->view('HeaderView');
         $this->load->view('UpperMenuView');
         $this->load->view('LeftMenuView');
-        $this->load->view('AdminView', array('isAdmin' => ($this->encryption->decrypt($this->session->role) == 'Admin')));
+        $this->load->view('AdminView',
+            array('isAdmin' => ($this->encryption->decrypt($this->session->role) == 'Admin')));
         $this->load->view('FooterView');
     }
 
