@@ -27,5 +27,7 @@
     <script src="<?php echo base_url('assets/js/user-data-autocomplete.js'); ?>"></script>
     <script src="<?php echo base_url('assets/js/image-zoom.js'); ?>"></script>
     <script src="<?php echo base_url('assets/js/shipping-and-billing.js'); ?>"></script>
+    <script src="<?php echo base_url('assets/js/shipping-options.js'); ?>"></script>
+    <script src="<?php echo base_url('assets/js/update-fact-deliv-comp-data.js'); ?>"></script>
 </head>
 <body>
