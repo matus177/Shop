@@ -26,5 +26,6 @@
     <script src="<?php echo base_url('assets/js/registration.js'); ?>"></script>
     <script src="<?php echo base_url('assets/js/user-data-autocomplete.js'); ?>"></script>
     <script src="<?php echo base_url('assets/js/image-zoom.js'); ?>"></script>
+    <script src="<?php echo base_url('assets/js/shipping-and-billing.js'); ?>"></script>
 </head>
 <body>
