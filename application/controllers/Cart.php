@@ -22,9 +22,14 @@ class Cart extends CI_Controller {
     {
         $id = $this->uri->segment(3);
         $arrayOfProducts = $this->ProductModel->selectProductToCart($id);
+
         $cartData = array();
         foreach ($arrayOfProducts as $product)
         {
+            $updatedQuantity = array(
+                'product_quantity' => $product->product_quantity - 1
+            );
+
             $cartData = array(
                 'id' => $product->id,
                 'qty' => 1,
@@ -32,9 +37,13 @@ class Cart extends CI_Controller {
                 'name' => $product->product_name
             );
         }
+
         if ($this->cart->insert($cartData))
         {
-            $this->ProductModel->updateProduct($id);
+            $this->ProductModel->updateProduct($id, $updatedQuantity['product_quantity']);
+        } else
+        {
+            echo 'error';
         }
     }
 
