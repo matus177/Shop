@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hostiteľ: 127.0.0.1
--- Čas generovania: Ne 29.Jan 2017, 11:08
+-- Čas generovania: Ne 29.Jan 2017, 17:18
 -- Verzia serveru: 5.7.14
 -- Verzia PHP: 5.6.25
 
@@ -4557,7 +4557,8 @@ VALUES
   (139, 'success', 8, '1', '1', '::1', 'Chrome 55.0.2883.87', 'Windows 7', '2017-01-13 08:21:55', '', ''),
   (140, 'success', 8, '1', '1', '::1', 'Chrome 55.0.2883.87', 'Windows 10', '2017-01-13 22:27:58', '', ''),
   (141, 'success', 8, '1', '1', '::1', 'Chrome 55.0.2883.87', 'Windows 10', '2017-01-14 00:43:17', '', ''),
-  (142, 'success', 8, '1', '1', '::1', 'Chrome 55.0.2883.87', 'Windows 10', '2017-01-29 12:07:13', '', '');
+  (142, 'success', 8, '1', '1', '::1', 'Chrome 55.0.2883.87', 'Windows 10', '2017-01-29 12:07:13', '', ''),
+  (143, 'success', 8, '1', '1', '::1', 'Chrome 55.0.2883.87', 'Windows 10', '2017-01-29 16:41:19', '', '');
 
 -- --------------------------------------------------------
 
@@ -4612,7 +4613,7 @@ CREATE TABLE `products` (
   `product_price`       FLOAT            NOT NULL,
   `product_type`        VARCHAR(1)
                         COLLATE utf8_bin NOT NULL,
-  `product_quantity`    INT(11)          NOT NULL,
+  `product_quantity`    INT(11) UNSIGNED NOT NULL,
   `product_image`       VARCHAR(30)
                         COLLATE utf8_bin NOT NULL DEFAULT 'no_photo.jpg'
 )
@@ -4626,9 +4627,10 @@ CREATE TABLE `products` (
 
 INSERT INTO `products` (`id`, `subcategory_id`, `product_name`, `product_description`, `product_price_dph`, `product_price`, `product_type`, `product_quantity`, `product_image`)
 VALUES
-  (119, 11, 'vykon ', 'hp', 3.83, 23, 'G', -13, 'pc.jpg'),
-  (120, 11, 'printr', 'rr', 5.5, 33, 'G', -6, 'prin_ter.jpg'),
-  (122, 11, 'ff', 'ff', 9.33, 56, 'G', -11, 'no_photo.jpg');
+  (119, 11, 'vykon ', 'hp', 3.83, 23, 'G', 0, 'pc.jpg'),
+  (120, 11, 'printr', 'rr', 5.5, 33, 'G', 2, 'prin_ter.jpg'),
+  (122, 11, 'ff', 'ff', 9.33, 56, 'G', 1, 'no_photo.jpg'),
+  (123, 11, 'AAAAA', 'AAAAAAA', 20.5, 123, 'G', 10, 'no_photo.jpg');
 
 -- --------------------------------------------------------
 
@@ -4655,8 +4657,18 @@ INSERT INTO `storage` (`id`, `product_id`, `flag`) VALUES
   (137, 119, 'A'),
   (138, 120, 'A'),
   (139, 120, 'A'),
-  (142, 122, 'A'),
-  (143, 122, 'A');
+  (142, 122, 'C'),
+  (143, 122, 'C'),
+  (144, 123, 'A'),
+  (145, 123, 'A'),
+  (146, 123, 'A'),
+  (147, 123, 'A'),
+  (148, 123, 'A'),
+  (149, 123, 'A'),
+  (150, 123, 'A'),
+  (151, 123, 'A'),
+  (152, 123, 'A'),
+  (153, 123, 'A');
 
 -- --------------------------------------------------------
 
@@ -10285,7 +10297,8 @@ INSERT INTO `tax_prices` (`id`, `product_id`, `product_price`, `dph`, `personal_
 VALUES
   (57, 119, 23, 6, 1, 6, 3.5, 3.5, 0, 0),
   (58, 120, 33, 6, 1, 6, 3.5, 3.5, 0, 0),
-  (60, 122, 56, 6, 1, 6, 3.5, 3.5, 0, 0);
+  (60, 122, 56, 6, 1, 6, 3.5, 3.5, 0, 0),
+  (61, 123, 123, 6, 1, 6, 3.5, 3.5, 0, 0);
 
 --
 -- Spúšťače `tax_prices`
@@ -10458,7 +10471,7 @@ ALTER TABLE `login`
 --
 ALTER TABLE `logs`
   MODIFY `id` INT(11) NOT NULL AUTO_INCREMENT,
-  AUTO_INCREMENT = 143;
+  AUTO_INCREMENT = 144;
 --
 -- AUTO_INCREMENT pre tabuľku `personal_data`
 --
@@ -10470,13 +10483,13 @@ ALTER TABLE `personal_data`
 --
 ALTER TABLE `products`
   MODIFY `id` INT(11) NOT NULL AUTO_INCREMENT,
-  AUTO_INCREMENT = 123;
+  AUTO_INCREMENT = 124;
 --
 -- AUTO_INCREMENT pre tabuľku `storage`
 --
 ALTER TABLE `storage`
   MODIFY `id` INT(11) NOT NULL AUTO_INCREMENT,
-  AUTO_INCREMENT = 144;
+  AUTO_INCREMENT = 154;
 --
 -- AUTO_INCREMENT pre tabuľku `streets`
 --
@@ -10494,7 +10507,7 @@ ALTER TABLE `subcategory`
 --
 ALTER TABLE `tax_prices`
   MODIFY `id` INT(11) NOT NULL AUTO_INCREMENT,
-  AUTO_INCREMENT = 61;
+  AUTO_INCREMENT = 62;
 --
 -- Obmedzenie pre exportované tabuľky
 --

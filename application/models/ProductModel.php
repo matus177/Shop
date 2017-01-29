@@ -13,12 +13,19 @@ class ProductModel extends CI_Model {
         return $this->db->get_where($this->table, array('subcategory_id' => $id))->result();
     }
 
-    function updateProduct($id, $productQuantity)
+    public function updateStorage($id, $data, $condition)
     {
-        $this->db->limit(1)->set('flag', 'C')->where('product_id',
-            $id)->where('flag', 'A')->update('storage');
-        $this->db->set('product_quantity', $productQuantity)->where('id',
-            $id)->update($this->table);
+        $this->db->limit(1)->set('flag', $data)->where('product_id',
+            $id)->where('flag', $condition)->update('storage');
+    }
+
+    function updateProduct($id, $data)
+    {
+        foreach ($data as $key => $value)
+        {
+            $this->db->set($key, $value)->where('id',
+                $id)->update($this->table);
+        }
     }
 
     function selectProductToCart($id)

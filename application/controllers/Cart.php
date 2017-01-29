@@ -40,7 +40,9 @@ class Cart extends CI_Controller {
 
         if ($this->cart->insert($cartData))
         {
-            $this->ProductModel->updateProduct($id, $updatedQuantity['product_quantity']);
+            $this->ProductModel->updateProduct($id, $updatedQuantity);
+            $this->ProductModel->updateStorage($id, 'C', 'A');
+
         } else
         {
             echo 'error';
@@ -55,23 +57,35 @@ class Cart extends CI_Controller {
         {
             if ($this->cart->contents()[$updatedCartData[$i]['rowid']]['rowid'] == $updatedCartData[$i]['rowid'])
             {
+                $productQunatity = $this->ProductModel->selectProductToCart($this->cart->contents()[$updatedCartData[$i]['rowid']]['id'])[0]->product_quantity;
+
                 if ($this->cart->contents()[$updatedCartData[$i]['rowid']]['qty'] > $updatedCartData[$i]['qty'])
                 {
                     $result = $this->cart->contents()[$updatedCartData[$i]['rowid']]['qty'] - $updatedCartData[$i]['qty'];
                     for ($j = 1; $j <= $result; $j++)
                     {
-                        $this->db->limit(1)->set('flag', 'A')->where('product_id',
-                            $this->cart->contents()[$updatedCartData[$i]['rowid']]['id'])->where('flag',
-                            'C')->update('storage');
+                        $this->ProductModel->updateStorage($this->cart->contents()[$updatedCartData[$i]['rowid']]['id'], 'A', 'C');
                     }
+
+                    $resultQuantity = $productQunatity + ($this->cart->contents()[$updatedCartData[$i]['rowid']]['qty'] - $updatedCartData[$i]['qty']);
+                    $this->ProductModel->updateProduct($this->cart->contents()[$updatedCartData[$i]['rowid']]['id'], array('product_quantity' => $resultQuantity));
                 } else
                 {
                     $result = $updatedCartData[$i]['qty'] - $this->cart->contents()[$updatedCartData[$i]['rowid']]['qty'];
-                    for ($j = 1; $j <= $result; $j++)
+                    for ($j = 2; $j <= $result; $j++)
                     {
-                        $this->db->limit(1)->set('flag', 'C')->where('product_id',
-                            $this->cart->contents()[$updatedCartData[$i]['rowid']]['id'])->where('flag',
-                            'A')->update('storage');
+                        $this->ProductModel->updateStorage($this->cart->contents()[$updatedCartData[$i]['rowid']]['id'], 'C', 'A');
+                    }
+
+                    $resultQuantity = $productQunatity - ($updatedCartData[$i]['qty'] - $this->cart->contents()[$updatedCartData[$i]['rowid']]['qty']);
+                    if ($resultQuantity >= 0)
+                    {
+                        $this->ProductModel->updateProduct($this->cart->contents()[$updatedCartData[$i]['rowid']]['id'], array('product_quantity' => $resultQuantity));
+                        $this->ProductModel->updateStorage($this->cart->contents()[$updatedCartData[$i]['rowid']]['id'], 'C', 'A');
+                    } else
+                    {
+                        $this->session->set_flashdata('category_warning', 'Na skalde je len ' . $productQunatity . ' ks.');
+                        redirect('Cart');
                     }
                 }
             }
