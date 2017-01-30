@@ -4,7 +4,6 @@ class ReviewAndPayment extends MY_Controller {
     public function __construct()
     {
         parent::__construct();
-        $this->load->model('UserModel');
         $this->load->model('ProductModel');
         $this->load->library('email');
     }
@@ -141,6 +140,14 @@ class ReviewAndPayment extends MY_Controller {
         $this->email->message($message);
         $this->email->send();
 
+        foreach ($this->cart->contents() as $data)
+        {
+            for ($i = 1; $i <= $data['qty']; $i++)
+            {
+                $this->ProductModel->updateStorage($data['id'], 'S', 'C');
+            }
+        }
+        $this->cart->destroy();
         redirect('CompleteOrder?id=4');
     }
 }
