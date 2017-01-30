@@ -5,11 +5,8 @@ $(document).ready(function () {
             url: window.location.origin + '/Shop/Cart/addToCart/' + idOfButton,
             type: 'GET',
 
-            success: function (response) {
-                if (response == 'error')
-                    alert('Vyskytla sa chyba.');
-                else
-                    window.location = window.location.origin + '/Shop/Cart';
+            success: function () {
+                window.location = window.location.origin + '/Shop/Cart';
             }
         });
     });

@@ -132,7 +132,7 @@ class ReviewAndPayment extends MY_Controller {
         $this->email->from('shop-support@seznam.cz', 'Shop support');
         $this->email->to('andrejmat12@gmail.com');
         $this->email->attach(dirname(dirname(__DIR__)) . '/assets/facture/' . $factureName);
-        $this->email->subject('Prosim zmente svoje heslo v Shope');
+        $this->email->subject('Objednavka Shop.sk');
         $message = '<!DOCTYPE html><html><meta content="text/html" charset="UTF-8" /></head><body>';
         $message .= '<p>Mili zakaznik,</p>';
         $message .= '<p>dakujeme za Vas nakup. V prilohe Vam posielame fakturu.</p>';
