@@ -4,11 +4,11 @@ class UserOrders extends MY_Controller {
     public function __construct()
     {
         parent::__construct();
+        $this->load->model('OrderModel');
     }
 
     public function index()
     {
-        var_dump($this->a());
         $this->load->view('HeaderView');
         $this->load->view('UpperMenuView');
         $this->load->view('LeftMenuView');
@@ -16,8 +16,9 @@ class UserOrders extends MY_Controller {
         $this->load->view('FooterView');
     }
 
-    public function a()
+    public function fillUserOrdersTable()
     {
-        $this->output->set_content_type('application/json')->set_output(json_encode(array('name' => 'name')));
+        $userId = $this->encryption->decrypt($this->session->userdata('id'));
+        $this->output->set_content_type('application/json')->set_output(json_encode($this->OrderModel->selectLogInOrder($userId)));
     }
 }

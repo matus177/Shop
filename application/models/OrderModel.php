@@ -18,4 +18,9 @@ class OrderModel extends CI_Model {
     {
         $this->db->insert($this->tableLogOut, $data);
     }
+
+    public function selectLogInOrder($id)
+    {
+        return $this->db->get_where($this->tableLogIn, array('user_id' => $id))->result();
+    }
 }
