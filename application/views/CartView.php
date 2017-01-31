@@ -29,15 +29,15 @@
                         </p>
                     <?php endif; ?>
                 </td>
-                <td style="text-align:right"><?php echo $this->cart->format_number($items['price']); ?></td>
-                <td style="text-align:right">$<?php echo $this->cart->format_number($items['subtotal']); ?></td>
+                <td style="text-align:right"><?php echo $this->cart->format_number($items['price']); ?> &euro;</td>
+                <td style="text-align:right"><?php echo $this->cart->format_number($items['subtotal']); ?> &euro;</td>
             </tr>
             <?php $i++; ?>
         <?php endforeach; ?>
         <tr>
             <td colspan="2"></td>
             <td class="right"><strong>Spolu</strong></td>
-            <td class="right">$<?php echo $this->cart->format_number($this->cart->total()); ?></td>
+            <td class="right"><?php echo $this->cart->format_number($this->cart->total()); ?> &euro;</td>
         </tr>
     </table>
     <p>
