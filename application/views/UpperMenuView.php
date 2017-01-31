@@ -14,6 +14,12 @@
                 <li>
                     <a href="<?php echo base_url('UserAccountSettings/updateAccount/UserAccountBasicInfoView'); ?>"><span
                                 class="glyphicon glyphicon-cog"></span> Nastavenie uctu</a>
+
+                </li>
+                <li>
+                    <a href="<?php echo base_url('UserOrders'); ?>"><span
+                                class="glyphicon glyphicon-search"></span> Moje objednavky</a>
+
                 </li>
             <?php } ?>
         </ul>

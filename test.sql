@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hostiteľ: 127.0.0.1
--- Čas generovania: Ne 29.Jan 2017, 17:18
+-- Čas generovania: Út 31.Jan 2017, 11:29
 -- Verzia serveru: 5.7.14
 -- Verzia PHP: 5.6.25
 
@@ -4558,7 +4558,11 @@ VALUES
   (140, 'success', 8, '1', '1', '::1', 'Chrome 55.0.2883.87', 'Windows 10', '2017-01-13 22:27:58', '', ''),
   (141, 'success', 8, '1', '1', '::1', 'Chrome 55.0.2883.87', 'Windows 10', '2017-01-14 00:43:17', '', ''),
   (142, 'success', 8, '1', '1', '::1', 'Chrome 55.0.2883.87', 'Windows 10', '2017-01-29 12:07:13', '', ''),
-  (143, 'success', 8, '1', '1', '::1', 'Chrome 55.0.2883.87', 'Windows 10', '2017-01-29 16:41:19', '', '');
+  (143, 'success', 8, '1', '1', '::1', 'Chrome 55.0.2883.87', 'Windows 10', '2017-01-29 16:41:19', '', ''),
+  (144, 'success', 8, '1', '1', '::1', 'Chrome 56.0.2924.76', 'Windows 7', '2017-01-31 09:09:44', '', ''),
+  (145, 'success', 8, '1', '1', '::1', 'Chrome 56.0.2924.76', 'Windows 7', '2017-01-31 09:48:28', '', ''),
+  (146, 'success', 8, '1', '1', '::1', 'Chrome 56.0.2924.76', 'Windows 7', '2017-01-31 10:47:30', '', ''),
+  (147, 'success', 8, '1', '1', '::1', 'Chrome 56.0.2924.76', 'Windows 7', '2017-01-31 12:23:48', '', '');
 
 -- --------------------------------------------------------
 
@@ -4628,9 +4632,9 @@ CREATE TABLE `products` (
 INSERT INTO `products` (`id`, `subcategory_id`, `product_name`, `product_description`, `product_price_dph`, `product_price`, `product_type`, `product_quantity`, `product_image`)
 VALUES
   (119, 11, 'vykon ', 'hp', 3.83, 23, 'G', 0, 'pc.jpg'),
-  (120, 11, 'printr', 'rr', 5.5, 33, 'G', 2, 'prin_ter.jpg'),
+  (120, 11, 'printr', 'rr', 5.5, 33, 'G', 1, 'prin_ter.jpg'),
   (122, 11, 'ff', 'ff', 9.33, 56, 'G', 1, 'no_photo.jpg'),
-  (123, 11, 'AAAAA', 'AAAAAAA', 20.5, 123, 'G', 10, 'no_photo.jpg');
+  (123, 11, 'AAAAA', 'AAAAAAA', 20.5, 123, 'G', 2, 'no_photo.jpg');
 
 -- --------------------------------------------------------
 
@@ -4653,20 +4657,20 @@ CREATE TABLE `storage` (
 --
 
 INSERT INTO `storage` (`id`, `product_id`, `flag`) VALUES
-  (136, 119, 'A'),
-  (137, 119, 'A'),
-  (138, 120, 'A'),
-  (139, 120, 'A'),
-  (142, 122, 'C'),
-  (143, 122, 'C'),
-  (144, 123, 'A'),
-  (145, 123, 'A'),
-  (146, 123, 'A'),
-  (147, 123, 'A'),
-  (148, 123, 'A'),
-  (149, 123, 'A'),
-  (150, 123, 'A'),
-  (151, 123, 'A'),
+  (136, 119, 'S'),
+  (137, 119, 'S'),
+  (138, 120, 'S'),
+  (139, 120, 'C'),
+  (142, 122, 'S'),
+  (143, 122, 'A'),
+  (144, 123, 'S'),
+  (145, 123, 'S'),
+  (146, 123, 'S'),
+  (147, 123, 'S'),
+  (148, 123, 'S'),
+  (149, 123, 'S'),
+  (150, 123, 'S'),
+  (151, 123, 'S'),
   (152, 123, 'A'),
   (153, 123, 'A');
 
@@ -10352,6 +10356,128 @@ SET product_price_dph =
 $$
 DELIMITER ;
 
+-- --------------------------------------------------------
+
+--
+-- Štruktúra tabuľky pre tabuľku `user_orders_login`
+--
+
+CREATE TABLE `user_orders_login` (
+  `id`               INT(11)          NOT NULL,
+  `user_id`          INT(11)          NOT NULL,
+  `product_id`       INT(11)          NOT NULL,
+  `subtotal`         FLOAT            NOT NULL,
+  `qty`              INT(11)          NOT NULL,
+  `price`            FLOAT            NOT NULL,
+  `name`             VARCHAR(255)
+                     COLLATE utf8_bin NOT NULL,
+  `shipping_options` VARCHAR(30)
+                     COLLATE utf8_bin NOT NULL,
+  `payment_options`  VARCHAR(30)
+                     COLLATE utf8_bin NOT NULL,
+  `delivery_price`   FLOAT            NOT NULL,
+  `date`             TIMESTAMP        NOT NULL DEFAULT CURRENT_TIMESTAMP
+)
+  ENGINE = InnoDB
+  DEFAULT CHARSET = utf8
+  COLLATE = utf8_bin;
+
+--
+-- Sťahujem dáta pre tabuľku `user_orders_login`
+--
+
+INSERT INTO `user_orders_login` (`id`, `user_id`, `product_id`, `subtotal`, `qty`, `price`, `name`, `shipping_options`, `payment_options`, `delivery_price`, `date`)
+VALUES
+  (159, 8, 123, 246, 2, 123, 'AAAAA', 'osobny odber', 'kartou', 1, '2017-01-31 10:14:44'),
+  (160, 8, 119, 23, 1, 23, 'vykon ', 'osobny odber', 'kartou', 1, '2017-01-31 10:14:44');
+
+-- --------------------------------------------------------
+
+--
+-- Štruktúra tabuľky pre tabuľku `user_orders_logout`
+--
+
+CREATE TABLE `user_orders_logout` (
+  `id`               INT(11)          NOT NULL,
+  `product_id`       INT(11)          NOT NULL,
+  `name`             VARCHAR(255)
+                     COLLATE utf8_bin NOT NULL,
+  `qty`              INT(11)          NOT NULL,
+  `price`            INT(11)          NOT NULL,
+  `subtotal`         INT(11)          NOT NULL,
+  `shipping_options` VARCHAR(255)
+                     COLLATE utf8_bin NOT NULL,
+  `payment_options`  VARCHAR(255)
+                     COLLATE utf8_bin NOT NULL,
+  `delivery_price`   FLOAT            NOT NULL,
+  `fact_name`        VARCHAR(255)
+                     COLLATE utf8_bin NOT NULL,
+  `fact_surname`     VARCHAR(255)
+                     COLLATE utf8_bin NOT NULL,
+  `fact_street`      VARCHAR(255)
+                     COLLATE utf8_bin NOT NULL,
+  `fact_city`        VARCHAR(255)
+                     COLLATE utf8_bin NOT NULL,
+  `fact_zip`         VARCHAR(255)
+                     COLLATE utf8_bin NOT NULL,
+  `fact_phone`       VARCHAR(255)
+                     COLLATE utf8_bin NOT NULL,
+  `deliv_name`       VARCHAR(255)
+                     COLLATE utf8_bin NOT NULL,
+  `deliv_surname`    VARCHAR(255)
+                     COLLATE utf8_bin NOT NULL,
+  `deliv_company`    VARCHAR(255)
+                     COLLATE utf8_bin NOT NULL,
+  `deliv_street`     VARCHAR(255)
+                     COLLATE utf8_bin NOT NULL,
+  `deliv_city`       VARCHAR(255)
+                     COLLATE utf8_bin NOT NULL,
+  `deliv_zip`        VARCHAR(255)
+                     COLLATE utf8_bin NOT NULL,
+  `deliv_info`       VARCHAR(255)
+                     COLLATE utf8_bin NOT NULL,
+  `deliv_phone`      VARCHAR(255)
+                     COLLATE utf8_bin NOT NULL,
+  `comp_ico`         VARCHAR(255)
+                     COLLATE utf8_bin NOT NULL,
+  `comp_dic`         VARCHAR(255)
+                     COLLATE utf8_bin NOT NULL,
+  `comp_icdph`       VARCHAR(255)
+                     COLLATE utf8_bin NOT NULL,
+  `comp_bic`         VARCHAR(255)
+                     COLLATE utf8_bin NOT NULL,
+  `comp_iban`        VARCHAR(255)
+                     COLLATE utf8_bin NOT NULL,
+  `comp_bank_owner`  VARCHAR(255)
+                     COLLATE utf8_bin NOT NULL,
+  `email`            VARCHAR(255)
+                     COLLATE utf8_bin NOT NULL
+)
+  ENGINE = InnoDB
+  DEFAULT CHARSET = utf8
+  COLLATE = utf8_bin;
+
+--
+-- Sťahujem dáta pre tabuľku `user_orders_logout`
+--
+
+INSERT INTO `user_orders_logout` (`id`, `product_id`, `name`, `qty`, `price`, `subtotal`, `shipping_options`, `payment_options`, `delivery_price`, `fact_name`, `fact_surname`, `fact_street`, `fact_city`, `fact_zip`, `fact_phone`, `deliv_name`, `deliv_surname`, `deliv_company`, `deliv_street`, `deliv_city`, `deliv_zip`, `deliv_info`, `deliv_phone`, `comp_ico`, `comp_dic`, `comp_icdph`, `comp_bic`, `comp_iban`, `comp_bank_owner`, `email`)
+VALUES
+  (1, 123, 'AAAAA', 1, 123, 123, 'kurierom', 'dobierkou', 9.5,
+      'b7c5d42f079eff91f9740cd1ef27f2fa75b8282bd43d1e1eae8af08ba7f3aeae678e5fc85dce82faa9881904e9b20b82b07aa23e73a6c0ca223c38aebb277ec0QVsuolgLdEs17kK+7E1tYx34ntftzXkC161hog8zRQ8=',
+      'adae3a29b6ec482ced3ab09f7b99d0866b5bae2e3015c73ad9677a488c6e8ed2f2010d810f701623442a70e8ba01245fd53050c15841ed669d5ba3528f621758ii6AgU/Jn/h9QYMttehtfxSFqh9mVwgXjCl3AIgFlhg=',
+    'A. Dvořáka', 'Abrahámovce', '059 72', '+421 222 222 222',
+    '1ffba56a9ae07d4324c2d7a78bab700f8359dc56bdcd8934263bc691ad630d4925492ef3610c99dc56e45f8f969aa54b8b8a0ba13f33861168dad914b4b83746jhms6u/gkzSVflC8c09gMgZ8Pui2lNJTNBiWXZy/LOM=',
+    '92b0a7224ff3ae610e020f1e5a73e24a0021a5ac597d3fca5f0ef2804d9e9ab649e7c39f8d8e83fdf01077d661f29310f544515f0db044c4e5b6e9b14d62762bg+gjiqtTw4Y0/Yt4dXWiTEIkZaQ9yZpLCh2xsqHyuN8=',
+    '', '', '', '', '', '+421', '', '', '', '', '', '', 'soldier1994@azet.sk'),
+  (2, 119, 'vykon ', 1, 23, 23, 'kurierom', 'dobierkou', 9.5,
+      'b7c5d42f079eff91f9740cd1ef27f2fa75b8282bd43d1e1eae8af08ba7f3aeae678e5fc85dce82faa9881904e9b20b82b07aa23e73a6c0ca223c38aebb277ec0QVsuolgLdEs17kK+7E1tYx34ntftzXkC161hog8zRQ8=',
+      'adae3a29b6ec482ced3ab09f7b99d0866b5bae2e3015c73ad9677a488c6e8ed2f2010d810f701623442a70e8ba01245fd53050c15841ed669d5ba3528f621758ii6AgU/Jn/h9QYMttehtfxSFqh9mVwgXjCl3AIgFlhg=',
+    'A. Dvořáka', 'Abrahámovce', '059 72', '+421 222 222 222',
+    '1ffba56a9ae07d4324c2d7a78bab700f8359dc56bdcd8934263bc691ad630d4925492ef3610c99dc56e45f8f969aa54b8b8a0ba13f33861168dad914b4b83746jhms6u/gkzSVflC8c09gMgZ8Pui2lNJTNBiWXZy/LOM=',
+    '92b0a7224ff3ae610e020f1e5a73e24a0021a5ac597d3fca5f0ef2804d9e9ab649e7c39f8d8e83fdf01077d661f29310f544515f0db044c4e5b6e9b14d62762bg+gjiqtTw4Y0/Yt4dXWiTEIkZaQ9yZpLCh2xsqHyuN8=',
+    '', '', '', '', '', '+421', '', '', '', '', '', '', 'soldier1994@azet.sk');
+
 --
 -- Kľúče pre exportované tabuľky
 --
@@ -10433,6 +10559,19 @@ ALTER TABLE `tax_prices`
   ADD KEY `product_id` (`product_id`);
 
 --
+-- Indexy pre tabuľku `user_orders_login`
+--
+ALTER TABLE `user_orders_login`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `user_id` (`user_id`);
+
+--
+-- Indexy pre tabuľku `user_orders_logout`
+--
+ALTER TABLE `user_orders_logout`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT pre exportované tabuľky
 --
 
@@ -10453,31 +10592,31 @@ ALTER TABLE `cities`
 --
 ALTER TABLE `company_data`
   MODIFY `id` INT(11) NOT NULL AUTO_INCREMENT,
-  AUTO_INCREMENT = 10;
+  AUTO_INCREMENT = 9;
 --
 -- AUTO_INCREMENT pre tabuľku `delivery_data`
 --
 ALTER TABLE `delivery_data`
   MODIFY `id` INT(11) NOT NULL AUTO_INCREMENT,
-  AUTO_INCREMENT = 10;
+  AUTO_INCREMENT = 9;
 --
 -- AUTO_INCREMENT pre tabuľku `login`
 --
 ALTER TABLE `login`
   MODIFY `id` INT(11) NOT NULL AUTO_INCREMENT,
-  AUTO_INCREMENT = 10;
+  AUTO_INCREMENT = 9;
 --
 -- AUTO_INCREMENT pre tabuľku `logs`
 --
 ALTER TABLE `logs`
   MODIFY `id` INT(11) NOT NULL AUTO_INCREMENT,
-  AUTO_INCREMENT = 144;
+  AUTO_INCREMENT = 148;
 --
 -- AUTO_INCREMENT pre tabuľku `personal_data`
 --
 ALTER TABLE `personal_data`
   MODIFY `id` INT(11) NOT NULL AUTO_INCREMENT,
-  AUTO_INCREMENT = 10;
+  AUTO_INCREMENT = 9;
 --
 -- AUTO_INCREMENT pre tabuľku `products`
 --
@@ -10509,6 +10648,18 @@ ALTER TABLE `tax_prices`
   MODIFY `id` INT(11) NOT NULL AUTO_INCREMENT,
   AUTO_INCREMENT = 62;
 --
+-- AUTO_INCREMENT pre tabuľku `user_orders_login`
+--
+ALTER TABLE `user_orders_login`
+  MODIFY `id` INT(11) NOT NULL AUTO_INCREMENT,
+  AUTO_INCREMENT = 161;
+--
+-- AUTO_INCREMENT pre tabuľku `user_orders_logout`
+--
+ALTER TABLE `user_orders_logout`
+  MODIFY `id` INT(11) NOT NULL AUTO_INCREMENT,
+  AUTO_INCREMENT = 3;
+--
 -- Obmedzenie pre exportované tabuľky
 --
 
@@ -10535,6 +10686,12 @@ ALTER TABLE `subcategory`
 --
 ALTER TABLE `tax_prices`
   ADD CONSTRAINT `tax_prices_ibfk_1` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`);
+
+--
+-- Obmedzenie pre tabuľku `user_orders_login`
+--
+ALTER TABLE `user_orders_login`
+  ADD CONSTRAINT `user_orders_login_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `personal_data` (`id`);
 
 /*!40101 SET CHARACTER_SET_CLIENT = @OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS = @OLD_CHARACTER_SET_RESULTS */;

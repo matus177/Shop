@@ -5,6 +5,7 @@ class ReviewAndPayment extends MY_Controller {
     {
         parent::__construct();
         $this->load->model('ProductModel');
+        $this->load->model('OrderModel');
         $this->load->library('email');
     }
 
@@ -16,6 +17,7 @@ class ReviewAndPayment extends MY_Controller {
             $productData[$i] = $this->ProductModel->selectAllProductsImage($items['id']);
             $i++;
         }
+
         $orderData['orderStep'] = $_GET['id'];
         $this->load->view('HeaderView');
         $this->load->view('UpperMenuView');
@@ -127,6 +129,16 @@ class ReviewAndPayment extends MY_Controller {
         $pdf->Cell(40, 10, 'Dna: ' . date("d. m. Y  H:i:s"));
         $pdf->Output('f', $factureName);
 
+        $this->sendEmailWithFacture($factureName);
+        $this->updateProductFlag();
+        $this->insertUserOrder();
+
+        $this->cart->destroy();
+        redirect('CompleteOrder?id=4');
+    }
+
+    private function sendEmailWithFacture($factureName)
+    {
         $this->email->set_mailtype('html');
         $this->email->from('shop-support@seznam.cz', 'Shop support');
         $this->email->to('andrejmat12@gmail.com');
@@ -139,7 +151,10 @@ class ReviewAndPayment extends MY_Controller {
         $message .= '</body></html>';
         $this->email->message($message);
         $this->email->send();
+    }
 
+    private function updateProductFlag()
+    {
         foreach ($this->cart->contents() as $data)
         {
             for ($i = 1; $i <= $data['qty']; $i++)
@@ -147,7 +162,41 @@ class ReviewAndPayment extends MY_Controller {
                 $this->ProductModel->updateStorage($data['id'], 'S', 'C');
             }
         }
-        $this->cart->destroy();
-        redirect('CompleteOrder?id=4');
+    }
+
+    private function insertUserOrder()
+    {
+        if ($this->isUserLogged())
+        {
+            foreach ($this->cart->contents() as $data)
+            {
+                $data['product_id'] = $data['id'];
+                unset($data['id']);
+                unset($data['rowid']);
+                $data['user_id'] = $this->databaseOrSessionUserData()['id'];
+                $data['shipping_options'] = $this->session->userdata('shipping_options');
+                $data['payment_options'] = $this->session->userdata('payment_options');
+                $data['delivery_price'] = $this->session->userdata('delivery_price');
+                $this->OrderModel->insertLogInOrder($data);
+            }
+        } else
+        {
+            $sessionOrderData = $this->databaseOrSessionUserData();
+            foreach ($sessionOrderData as $key => $value)
+            {
+                if ($key == 'cart_contents' || $key == '__ci_last_regenerate' || $key == 'courier' || $key == 'hotovost' || $key == 'card' || $key == 'dobierka' || $key == 'osobny_odber' || $key == 'slovak_post')
+                {
+                    unset($sessionOrderData[$key]);
+                }
+            }
+            foreach ($this->cart->contents() as $keyCart => $valueCart)
+            {
+                $valueCart['product_id'] = $valueCart['id'];
+                unset($valueCart['id']);
+                unset($valueCart['rowid']);
+                $insertSessionOrderData = array_merge($sessionOrderData, $valueCart);
+                $this->OrderModel->insertLogOutOrder($insertSessionOrderData);
+            }
+        }
     }
 }
