@@ -6,20 +6,27 @@
         <ul class="nav navbar-nav">
             <?php if ($this->encryption->decrypt($this->session->role) == 'Admin')
             { ?>
-                <li><a href="<?php echo base_url("Admin"); ?>"><span class="glyphicon glyphicon-eye-open"></span> Admin</a>
-                </li>
+            <li>
+                <div class="dropdown admin_button_dropdown">
+                    <a class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"><span class="glyphicon glyphicon-eye-open"></span> Admin <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="<?php echo base_url("Admin/index/AdminAddProductView"); ?>">Pridanie produktu</a></li>
+                        <li class="divider"></li>
+                        <li><a href="<?php echo base_url("Admin/index/AdminShowLoggedOutOrdersView"); ?>">Zobrazit objednavky neregistrovanych uzivatelov</a></li>
+                        <li><a href="#">Zobrazit vsetky objednavky</a></li>
+                    </ul>
+                </div>
+            </li>
             <?php } ?>
             <?php if ($this->session->userdata("logged_in"))
             { ?>
                 <li>
                     <a href="<?php echo base_url('UserAccountSettings/updateAccount/UserAccountBasicInfoView'); ?>"><span
                                 class="glyphicon glyphicon-cog"></span> Nastavenie uctu</a>
-
                 </li>
                 <li>
                     <a href="<?php echo base_url('UserOrders'); ?>"><span
                                 class="glyphicon glyphicon-search"></span> Moje objednavky</a>
-
                 </li>
             <?php } ?>
         </ul>

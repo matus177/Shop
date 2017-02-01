@@ -23,4 +23,9 @@ class OrderModel extends CI_Model {
     {
         return $this->db->get_where($this->tableLogIn, array('user_id' => $id))->result();
     }
+
+    public function selectLogOutOrder()
+    {
+        return $this->db->get($this->tableLogOut)->result();
+    }
 }

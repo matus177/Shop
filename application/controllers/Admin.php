@@ -12,14 +12,15 @@ class Admin extends MY_Controller {
         parent::__construct();
         $this->load->model('CategoryModel');
         $this->load->model('ProductModel');
+        $this->load->model('OrderModel');
     }
 
-    public function index()
+    public function index($view)
     {
         $this->load->view('HeaderView');
         $this->load->view('UpperMenuView');
         $this->load->view('LeftMenuView');
-        $this->load->view('AdminView',
+        $this->load->view($view,
             array('isAdmin' => ($this->encryption->decrypt($this->session->role) == 'Admin')));
         $this->load->view('FooterView');
     }
@@ -36,7 +37,7 @@ class Admin extends MY_Controller {
         {
             return NULL;
         }
-        redirect(base_url('Admin'));
+        redirect(base_url('Admin/index/AdminAddProductView'));
     }
 
     public function createNewSubCategory()
@@ -50,7 +51,7 @@ class Admin extends MY_Controller {
         {
             return NULL;
         }
-        redirect(base_url('Admin'));
+        redirect(base_url('Admin/index/AdminAddProductView'));
     }
 
     public function getCategoryDropdown()
@@ -99,7 +100,7 @@ class Admin extends MY_Controller {
                 }
             }
 
-            redirect(base_url('Admin'));
+            redirect(base_url('Admin/index/AdminAddProductView'));
         } else
         {
             return NULL;
@@ -111,5 +112,18 @@ class Admin extends MY_Controller {
         $result = $this->CategoryModel->selectCategorySubCategory();
 
         echo json_encode($result);
+    }
+
+    public function fillUserLoggedOutOrdersTable()
+    {
+        $logOutOrders = $this->OrderModel->selectLogOutOrder();
+        for ($i = 0; $i < sizeof($logOutOrders); $i++)
+        {
+            $logOutOrders[$i]->fact_name = $this->encryption->decrypt($logOutOrders[$i]->fact_name);
+            $logOutOrders[$i]->fact_surname = $this->encryption->decrypt($logOutOrders[$i]->fact_surname);
+            $logOutOrders[$i]->deliv_name = $this->encryption->decrypt($logOutOrders[$i]->deliv_name);
+            $logOutOrders[$i]->deliv_surname = $this->encryption->decrypt($logOutOrders[$i]->deliv_surname);
+        }
+        $this->output->set_content_type('application/json')->set_output(json_encode($logOutOrders));
     }
 }
