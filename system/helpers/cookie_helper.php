@@ -76,7 +76,8 @@ if ( ! function_exists('set_cookie'))
         $prefix = '',
         $secure = FALSE,
         $httponly = FALSE
-    ) {
+    )
+    {
         // Set the config file options
         get_instance()->input->set_cookie($name, $value, $expire, $domain, $path, $prefix, $secure, $httponly);
     }

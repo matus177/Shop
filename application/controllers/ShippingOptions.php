@@ -52,7 +52,7 @@ class ShippingOptions extends CI_Controller {
         {
             foreach ($this->input->post() as $key => $value)
             {
-                $userData = (($key == 'fact_name') || ($key == 'fact_surname') || ($key == 'deliv_name') || ($key == 'deliv_surname')) ?
+                $userData = (($key == 'fact_name') || ($key == 'fact_surname') || ($key == 'deliv_name') || ($key == 'deliv_surname') || ($key == 'comp_iban') || ($key == 'comp_bank_owner')) ?
                     $this->encryption->encrypt($value) : $value;
                 $this->session->set_userdata($key, $userData);
             }

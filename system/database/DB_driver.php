@@ -1439,7 +1439,8 @@ abstract class CI_DB_driver {
         $prefix_single = FALSE,
         $protect_identifiers = NULL,
         $field_exists = TRUE
-    ) {
+    )
+    {
         if ( ! is_bool($protect_identifiers))
         {
             $protect_identifiers = $this->_protect_identifiers;

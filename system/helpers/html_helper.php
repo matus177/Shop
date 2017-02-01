@@ -279,7 +279,8 @@ if ( ! function_exists('link_tag'))
         $title = '',
         $media = '',
         $index_page = FALSE
-    ) {
+    )
+    {
         $CI =& get_instance();
         $link = '<link ';
 

@@ -511,7 +511,8 @@ class CI_Input {
         $prefix = '',
         $secure = FALSE,
         $httponly = FALSE
-    ) {
+    )
+    {
         if (is_array($name))
         {
             // always leave 'name' in last place, as the loop will break otherwise, due to $$item

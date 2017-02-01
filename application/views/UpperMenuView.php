@@ -6,17 +6,21 @@
         <ul class="nav navbar-nav">
             <?php if ($this->encryption->decrypt($this->session->role) == 'Admin')
             { ?>
-            <li>
-                <div class="dropdown admin_button_dropdown">
-                    <a class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"><span class="glyphicon glyphicon-eye-open"></span> Admin <span class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="<?php echo base_url("Admin/index/AdminAddProductView"); ?>">Pridanie produktu</a></li>
-                        <li class="divider"></li>
-                        <li><a href="<?php echo base_url("Admin/index/AdminShowLoggedOutOrdersView"); ?>">Zobrazit objednavky neregistrovanych uzivatelov</a></li>
-                        <li><a href="#">Zobrazit vsetky objednavky</a></li>
-                    </ul>
-                </div>
-            </li>
+                <li>
+                    <div class="dropdown admin_button_dropdown">
+                        <a class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"><span
+                                    class="glyphicon glyphicon-eye-open"></span> Admin <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="<?php echo base_url("Admin/index/AdminAddProductView"); ?>">Pridanie
+                                    produktu</a></li>
+                            <li class="divider"></li>
+                            <li><a href="<?php echo base_url("Admin/index/AdminShowLoggedOutOrdersView"); ?>">Zobrazit
+                                    objednavky neregistrovanych uzivatelov</a></li>
+                            <li><a href="<?php echo base_url("Admin/index/AdminShowAllOrdersView"); ?>">Zobrazit vsetky
+                                    objednavky</a></li>
+                        </ul>
+                    </div>
+                </li>
             <?php } ?>
             <?php if ($this->session->userdata("logged_in"))
             { ?>

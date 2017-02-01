@@ -28,4 +28,12 @@ class OrderModel extends CI_Model {
     {
         return $this->db->get($this->tableLogOut)->result();
     }
+
+    public function selectAllOrder()
+    {
+        return $this->db->select()->join('personal_data', 'personal_data.id = ' . $this->tableLogIn . '.user_id')
+            ->join('delivery_data', 'delivery_data.id = ' . $this->tableLogIn . '.user_id')
+            ->join('company_data', 'company_data.id = ' . $this->tableLogIn . '.user_id')
+            ->get($this->tableLogIn)->result();
+    }
 }

@@ -1,4 +1,5 @@
 <div class="col-md-9">
+    <h3>Objednavky neregistrovanych uzivatelov</h3>
     <table id="table" data-toggle="table"
            data-toolbar="#toolbar"
            data-search="true"
