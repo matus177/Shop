@@ -13,6 +13,11 @@ class ProductModel extends CI_Model {
         return $this->db->get_where($this->table, array('subcategory_id' => $id))->result();
     }
 
+    function selectProducta($id)
+    {
+        return $this->db->get_where($this->table, array('id' => $id))->row_object();
+    }
+
     public function updateStorage($id, $data, $condition)
     {
         $this->db->limit(1)->set('flag', $data)->where('product_id',

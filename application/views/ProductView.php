@@ -24,7 +24,15 @@
                         <?php } ?>
                         <h3><a type="button" id="<?php echo $value->id ?>"
                                class="btn btn-success">Kupit</a>
+                            <button href="" type="button" id="<?php echo $value->id ?>" class="btn btn-warning"
+                                    data-toggle="modal" data-target="#myModal">Upravit
+                            </button>
                             <span class="pull-right"><?php echo $value->product_price; ?> &euro;</span></h3>
+                        <div class="modal fade" id="myModal" data-backdrop="static" data-keyboard="false">
+                            <div class="modal-dialog">
+                                <div class="modal-body"><?php $this->load->view('AdminProductUpdateView', array('product' => $product, 'id' => $value->id)); ?></div>
+                            </div>
+                        </div>
                         <p style="text-align: center">Cena bez
                             DPH <?php echo $value->product_price - $value->product_price_dph; ?> &euro;</p>
                     </div>

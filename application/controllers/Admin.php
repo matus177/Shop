@@ -141,4 +141,40 @@ class Admin extends MY_Controller {
         }
         $this->output->set_content_type('application/json')->set_output(json_encode($allUserOrder));
     }
+
+    public function updateProduct($productId)
+    {
+        $config['file_name'] = str_replace(" ", "_", $_FILES["userfiles"]['product_image']);
+        $config['upload_path'] = './assets/img/';
+        $config['allowed_types'] = 'gif|jpg|png';
+        $config['max_size'] = 100;
+        $config['max_width'] = 1024;
+        $config['max_height'] = 768;
+        $config['remove_spaces'] = TRUE;
+        $this->load->library('upload', $config);
+        $this->upload->initialize($config);
+        $this->upload->do_upload('product_image');
+        if ($this->upload->data('file_name') != '')
+        {
+            $_POST['product_image'] = $this->upload->data('file_name');
+        }
+        $productQuantitya = $_POST['product_quantity'] - $this->ProductModel->selectProducta($productId)->product_quantity;
+
+        $this->db->trans_start();
+        $this->ProductModel->updateProduct($productId, $_POST);
+        $this->db->trans_complete();
+
+        if ($this->db->trans_status())
+        {
+            for ($i = 1; $i <= $productQuantitya; $i++)
+            {
+                $this->ProductModel->insertProductToStorage(array('product_id' => $productId));
+            }
+            $this->session->set_flashdata('category_success', 'Produkt bol aktualizovany.');
+        } else
+        {
+            $this->session->set_flashdata('category_warning', 'Produkt nebol aktualizovany.');
+        }
+        redirect($_SERVER['HTTP_REFERER']);
+    }
 }

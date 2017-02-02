@@ -78,8 +78,8 @@
             <div class="form-group">
                 <label for="product_description" class="control-label col-sm-4">Popis</label>
                 <div class="col-sm-8">
-                    <input type="text" class="form-control" name="product_description" id="product_description"
-                           placeholder="Popis produktu" required>
+                    <textarea class="form-control" rows="6" name="product_description" id="product_description"
+                              placeholder="Popis produktu" required></textarea>
                 </div>
             </div>
             <div class="form-group">

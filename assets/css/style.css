@@ -11,3 +11,7 @@
 .admin_button_dropdown {
     margin-top: 6px;
 }
+
+#admin_product_update {
+    position: absolute;
+}
