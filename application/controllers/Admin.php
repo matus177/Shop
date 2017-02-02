@@ -158,7 +158,7 @@ class Admin extends MY_Controller {
         {
             $_POST['product_image'] = $this->upload->data('file_name');
         }
-        $productQuantitya = $_POST['product_quantity'] - $this->ProductModel->selectProducta($productId)->product_quantity;
+        $productQuantity = $_POST['product_quantity'] - $this->ProductModel->selectProducta($productId)->product_quantity;
 
         $this->db->trans_start();
         $this->ProductModel->updateProduct($productId, $_POST);
@@ -166,9 +166,18 @@ class Admin extends MY_Controller {
 
         if ($this->db->trans_status())
         {
-            for ($i = 1; $i <= $productQuantitya; $i++)
+            if ($productQuantity > 0)
             {
-                $this->ProductModel->insertProductToStorage(array('product_id' => $productId));
+                for ($i = 1; $i <= $productQuantity; $i++)
+                {
+                    $this->ProductModel->insertProductToStorage(array('product_id' => $productId));
+                }
+            } else
+            {
+                for ($i = 1; $i <= abs($productQuantity); $i++)
+                {
+                    $this->ProductModel->deleteProductFromStorage(array('product_id' => $productId, 'flag' => 'A'));
+                }
             }
             $this->session->set_flashdata('category_success', 'Produkt bol aktualizovany.');
         } else

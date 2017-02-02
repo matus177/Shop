@@ -1,6 +1,5 @@
 <div class="container">
     <div id="admin_product_update" class="mainbox col-md-9">
-        <?php var_dump($id) ?>
         <?php for ($i = 0; $i < sizeof($product); $i++)
         {
             if ($product[$i]->id == $id)
@@ -18,7 +17,8 @@
                                 <label for="product_name" class="control-label col-sm-4">Nazov</label>
                                 <div class="col-sm-8">
                                     <input type="text" class="form-control" name="product_name" id="product_name"
-                                           placeholder="Nazov produktu" value="<?php $product[$i]->product_name; ?>"
+                                           placeholder="Nazov produktu"
+                                           value="<?php echo $product[$i]->product_name; ?>"
                                            required>
                                 </div>
                             </div>

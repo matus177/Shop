@@ -1,6 +1,7 @@
 <div class="col-md-9">
     <?php $this->load->view('FlashMessagesView'); ?>
     <ul class="list-unstyled" id="products" data-role="list">
+        <?php $i = 0; ?>
         <?php foreach ($product as $value): ?>
             <li class="span3 col-md-3">
                 <div class="thumbnail">
@@ -25,10 +26,11 @@
                         <h3><a type="button" id="<?php echo $value->id ?>"
                                class="btn btn-success">Kupit</a>
                             <button href="" type="button" id="<?php echo $value->id ?>" class="btn btn-warning"
-                                    data-toggle="modal" data-target="#myModal">Upravit
+                                    data-toggle="modal" data-target="#modal_<?php echo $i; ?>">Upravit
                             </button>
                             <span class="pull-right"><?php echo $value->product_price; ?> &euro;</span></h3>
-                        <div class="modal fade" id="myModal" data-backdrop="static" data-keyboard="false">
+                        <div class="modal fade" id="modal_<?php echo $i ?>" data-backdrop="static"
+                             data-keyboard="false">
                             <div class="modal-dialog">
                                 <div class="modal-body"><?php $this->load->view('AdminProductUpdateView', array('product' => $product, 'id' => $value->id)); ?></div>
                             </div>
@@ -38,6 +40,7 @@
                     </div>
                 </div>
             </li>
+            <?php $i++; ?>
         <?php endforeach; ?>
     </ul>
 </div>
