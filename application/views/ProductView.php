@@ -23,8 +23,7 @@
                                 </span>
                             </p>
                         <?php } ?>
-                        <h3><a type="button" id="<?php echo $value->id ?>"
-                               class="btn btn-success">Kupit</a>
+                        <h3><a type="button" id="<?php echo $value->id ?>" class="btn btn-success buy_button">Kupit</a>
                             <button href="" type="button" id="<?php echo $value->id ?>" class="btn btn-warning"
                                     data-toggle="modal" data-target="#modal_<?php echo $i; ?>">Upravit
                             </button>
