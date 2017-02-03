@@ -32,10 +32,10 @@ class Admin extends MY_Controller {
         if ( ! empty($request))
         {
             $this->CategoryModel->insertCategory($request);
-            //set flash message
+            $this->session->set_flashdata('category_success', 'Kategoria bola vytvorena.');
         } else
         {
-            return NULL;
+            $this->session->set_flashdata('category_danger', 'Kategoria nebola vytvorena.');
         }
         redirect(base_url('Admin/index/AdminAddProductView'));
     }
@@ -47,9 +47,10 @@ class Admin extends MY_Controller {
         if ( ! empty($request))
         {
             $this->CategoryModel->insertSubCategory($request);
+            $this->session->set_flashdata('category_success', 'Podkategoria bola vytvorena.');
         } else
         {
-            return NULL;
+            $this->session->set_flashdata('category_danger', 'Podkategoria nebola vytvorena.');
         }
         redirect(base_url('Admin/index/AdminAddProductView'));
     }
@@ -98,13 +99,13 @@ class Admin extends MY_Controller {
                 {
                     $this->ProductModel->insertProductToStorage($request);
                 }
+                $this->session->set_flashdata('category_success', 'Produkt bol vytvoreny.');
             }
-
-            redirect(base_url('Admin/index/AdminAddProductView'));
         } else
         {
-            return NULL;
+            $this->session->set_flashdata('category_danger', 'Produkt nebol vytvoreny.');
         }
+        redirect(base_url('Admin/index/AdminAddProductView'));
     }
 
     public function getSubCategoryDropdown()
@@ -159,9 +160,9 @@ class Admin extends MY_Controller {
             $_POST['product_image'] = $this->upload->data('file_name');
         }
 
-        $productQuantity = $_POST['product_quantity'] - $this->ProductModel->selectProduct(array('id' => $productId))[0]->product_quantity;
+        $productQuantity = $this->input->post('product_quantity') - $this->ProductModel->selectProduct(array('id' => $productId))[0]->product_quantity;
         $this->db->trans_start();
-        $this->ProductModel->updateProduct($productId, $_POST);
+        $this->ProductModel->updateProduct($productId, $this->input->post());
         $this->db->trans_complete();
 
         if ($this->db->trans_status())
@@ -182,8 +183,40 @@ class Admin extends MY_Controller {
             $this->session->set_flashdata('category_success', 'Produkt bol aktualizovany.');
         } else
         {
-            $this->session->set_flashdata('category_warning', 'Produkt nebol aktualizovany.');
+            $this->session->set_flashdata('category_danger', 'Produkt nebol aktualizovany.');
         }
         redirect($_SERVER['HTTP_REFERER']);
+    }
+
+    public function updateSubCategory()
+    {
+        $this->db->trans_start();
+        array_key_exists('subcategory_name', $this->input->post()) ?
+            $this->CategoryModel->updateSubCategory(array('subcategory_name' => $this->input->post('subcategory_name')), array('id' => $this->input->post('subcategory_id'))) :
+            $this->CategoryModel->updateSubCategory(array('category_id' => $this->input->post('category_id')), array('id' => $this->input->post('subcategory_id')));
+        $this->db->trans_complete();
+        if ($this->db->trans_status())
+        {
+            $this->session->set_flashdata('category_success', 'Podkategoria bola aktualizovana.');
+        } else
+        {
+            $this->session->set_flashdata('category_danger', 'Podkategoria nebola aktualizovana.');
+        }
+        redirect(base_url('Admin/index/AdminUpdateCategoryAndSubCategoryView'));
+    }
+
+    public function updateCategory()
+    {
+        $this->db->trans_start();
+        $this->CategoryModel->updateCategory(array('category_name' => $this->input->post('category_name')), array('id' => $this->input->post('category_id')));
+        $this->db->trans_complete();
+        if ($this->db->trans_status())
+        {
+            $this->session->set_flashdata('category_success', 'Kategoria bola aktualizovana.');
+        } else
+        {
+            $this->session->set_flashdata('category_danger', 'Kategoria nebola aktualizovana.');
+        }
+        redirect(base_url('Admin/index/AdminUpdateCategoryAndSubCategoryView'));
     }
 }

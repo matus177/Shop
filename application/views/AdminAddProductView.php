@@ -1,3 +1,6 @@
+<div class="col-md-9">
+    <?php $this->load->view('FlashMessagesView'); ?>
+</div>
 <div class="col-sm-4">
     <div class="panel panel-info">
         <div class="panel-heading">
@@ -31,9 +34,11 @@
             <?php echo form_open('Admin/createNewSubCategory',
                 ['id' => 'form_subcategory', 'class' => 'form-horizontal', 'role' => 'form']); ?>
             <div class="form-group">
-                <label for="category_id" class="control-label col-sm-4">Vyberte kategoriu</label>
+                <label for="category_id" class="control-label col-sm-4">Kategoria</label>
                 <div class="col-sm-8">
-                    <select class="form-control" name="category_id" id="category_id" required></select>
+                    <select class="form-control" name="category_id" id="category_id" required>
+                        <option selected disabled>Vyberte kategoriu</option>
+                    </select>
                 </div>
             </div>
             <div class="form-group">
@@ -63,9 +68,11 @@
             <?php echo form_open_multipart('Admin/createNewProduct',
                 ['id' => 'form_product', 'class' => 'form-horizontal', 'role' => 'form']); ?>
             <div class="form-group">
-                <label for="subcategory_id" class="control-label col-sm-4">Vyberte podkategoriu</label>
+                <label for="subcategory_id" class="control-label col-sm-4">Podkategoria</label>
                 <div class="col-sm-8">
-                    <select class="form-control" name="subcategory_id" id="subcategory_id" required></select>
+                    <select class="form-control" name="subcategory_id" id="subcategory_id" required>
+                        <option selected disabled>Vyberte podkategoriu</option>
+                    </select>
                 </div>
             </div>
             <div class="form-group">

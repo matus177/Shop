@@ -11,8 +11,10 @@
                         <a class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"><span
                                     class="glyphicon glyphicon-eye-open"></span> Admin <span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li><a href="<?php echo base_url("Admin/index/AdminAddProductView"); ?>">Pridanie
-                                    produktu</a></li>
+                            <li><a href="<?php echo base_url("Admin/index/AdminAddProductView"); ?>">Vytvorenie
+                                    kategorie, podkategorie a produktu</a></li>
+                            <li><a href="<?php echo base_url("Admin/index/AdminUpdateCategoryAndSubCategoryView"); ?>">Uprava/presun
+                                    kategorie a podkategorie</a></li>
                             <li class="divider"></li>
                             <li><a href="<?php echo base_url("Admin/index/AdminShowLoggedOutOrdersView"); ?>">Zobrazit
                                     objednavky neregistrovanych uzivatelov</a></li>

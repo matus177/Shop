@@ -2,6 +2,7 @@
 
 class CategoryModel extends CI_Model {
     private $table = 'category';
+    private $subCategoryTable = 'subcategory';
 
     public function __construct()
     {
@@ -15,8 +16,7 @@ class CategoryModel extends CI_Model {
 
     function selectCategorySubCategory()
     {
-        $table2 = 'subcategory';
-        return $query = $this->db->join($table2, $table2 . '.category_id = ' . $this->table . '.id',
+        return $query = $this->db->join($this->subCategoryTable, $this->subCategoryTable . '.category_id = ' . $this->table . '.id',
             'right')->get($this->table)->result();
     }
 
@@ -28,5 +28,15 @@ class CategoryModel extends CI_Model {
     function insertSubCategory($data)
     {
         $this->db->insert('subcategory', $data);
+    }
+
+    function updateSubCategory($data, $condition)
+    {
+        $this->db->set($data)->where($condition)->update($this->subCategoryTable);
+    }
+
+    function updateCategory($data, $condition)
+    {
+        $this->db->set($data)->where($condition)->update($this->table);
     }
 }
