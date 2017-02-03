@@ -82,17 +82,17 @@ class Admin extends MY_Controller {
                 $request['product_image'] = $this->upload->data('file_name');
             }
 
-            $productQuantity = (int)$request['product_quantity'];
+            $productQuantity = $request['product_quantity'];
             $request['product_id'] = $this->ProductModel->insertProduct($request);
             if ($this->db->affected_rows() == 1)
             {
-                unset($request['product_quantity']);
-                unset($request['subcategory_id']);
-                unset($request['product_name']);
-                unset($request['product_price']);
-                unset($request['product_type']);
-                unset($request['product_description']);
-                unset($request['product_image']);
+                foreach ($request as $key => $value)
+                {
+                    if ($key != 'product_id')
+                    {
+                        unset($request[$key]);
+                    }
+                }
 
                 for ($i = 1; $i <= $productQuantity; $i++)
                 {
@@ -158,8 +158,8 @@ class Admin extends MY_Controller {
         {
             $_POST['product_image'] = $this->upload->data('file_name');
         }
-        $productQuantity = $_POST['product_quantity'] - $this->ProductModel->selectProducta($productId)->product_quantity;
 
+        $productQuantity = $_POST['product_quantity'] - $this->ProductModel->selectProduct(array('id' => $productId))[0]->product_quantity;
         $this->db->trans_start();
         $this->ProductModel->updateProduct($productId, $_POST);
         $this->db->trans_complete();

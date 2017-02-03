@@ -33,5 +33,6 @@
     <script src="<?php echo base_url('assets/js/shipping-and-billing.js'); ?>"></script>
     <script src="<?php echo base_url('assets/js/shipping-options.js'); ?>"></script>
     <script src="<?php echo base_url('assets/js/update-fact-deliv-comp-data.js'); ?>"></script>
+    <script src="<?php echo base_url('assets/js/admin-product-subcategory-update.js'); ?>"></script>
 </head>
 <body>

@@ -90,16 +90,6 @@
                 </div>
             </div>
             <div class="form-group">
-                <label for="product_type" class="control-label col-sm-4">Typ</label>
-                <div class="col-sm-8">
-                    <select class="form-control" name="product_type" id="product_type" required>
-                        <option value="G">Hracsky</option>
-                        <option value="H">Domaci</option>
-                        <option value="O">Kancelarsky</option>
-                    </select>
-                </div>
-            </div>
-            <div class="form-group">
                 <label for="product_quantity" class="control-label col-sm-4">Kusy</label>
                 <div class="col-sm-8">
                     <input type="text" class="form-control" name="product_quantity" id="product_quantity"

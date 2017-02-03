@@ -14,6 +14,15 @@
                             <?php echo form_open_multipart('Admin/updateProduct/' . $product[$i]->id,
                                 ['id' => 'form_product_update', 'class' => 'form-horizontal', 'role' => 'form']); ?>
                             <div class="form-group">
+                                <label for="subcategory_id" class="control-label col-sm-4">Zmenit podkategoriu</label>
+                                <div class="col-sm-8">
+                                    <select class="form-control" name="subcategory_id"
+                                            id="subcategory_id_<?php echo $i; ?>" required>
+                                        <option selected disabled>Vyberte podkategoriu</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
                                 <label for="product_name" class="control-label col-sm-4">Nazov</label>
                                 <div class="col-sm-8">
                                     <input type="text" class="form-control" name="product_name" id="product_name"

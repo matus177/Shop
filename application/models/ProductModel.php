@@ -8,14 +8,9 @@ class ProductModel extends CI_Model {
         parent::__construct();
     }
 
-    function selectProduct($id)
+    function selectProduct($data)
     {
-        return $this->db->get_where($this->table, array('subcategory_id' => $id))->result();
-    }
-
-    function selectProducta($id)
-    {
-        return $this->db->get_where($this->table, array('id' => $id))->row_object();
+        return $this->db->get_where($this->table, $data)->result();
     }
 
     public function updateStorage($id, $data, $condition)
@@ -31,6 +26,15 @@ class ProductModel extends CI_Model {
             $this->db->set($key, $value)->where('id',
                 $id)->update($this->table);
         }
+        foreach ($data as $key => $value)
+        {
+            if ($key != 'product_price')
+            {
+                unset($data[$key]);
+            }
+        }
+
+        $this->db->set('product_price', $data['product_price'])->where('product_id', $id)->update('tax_prices');
     }
 
     function selectProductToCart($id)

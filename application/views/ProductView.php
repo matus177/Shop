@@ -24,14 +24,19 @@
                             </p>
                         <?php } ?>
                         <h3><a type="button" id="<?php echo $value->id ?>" class="btn btn-success buy_button">Kupit</a>
-                            <button href="" type="button" id="<?php echo $value->id ?>" class="btn btn-warning"
-                                    data-toggle="modal" data-target="#modal_<?php echo $i; ?>">Upravit
-                            </button>
+                            <?php if ($this->encryption->decrypt($this->session->role) == 'Admin')
+                            { ?>
+                                <button href="" type="button" id="<?php echo $value->id ?>" class="btn btn-warning"
+                                        data-toggle="modal" data-target="#modal_<?php echo $i; ?>">Upravit
+                                </button>
+                            <?php } ?>
                             <span class="pull-right"><?php echo $value->product_price; ?> &euro;</span></h3>
                         <div class="modal fade" id="modal_<?php echo $i ?>" data-backdrop="static"
                              data-keyboard="false">
                             <div class="modal-dialog">
-                                <div class="modal-body"><?php $this->load->view('AdminProductUpdateView', array('product' => $product, 'id' => $value->id)); ?></div>
+                                <div class="modal-body"><?php $this->load->view('AdminProductUpdateView', array('product' => $product,
+                                        'id' => $value->id)) ?>
+                                </div>
                             </div>
                         </div>
                         <p style="text-align: center">Cena bez
@@ -43,3 +48,6 @@
         <?php endforeach; ?>
     </ul>
 </div>
+<script>
+    getSubcategoryForAdminUpdate(<?php echo $isAdmin; ?>, <?php echo sizeof($product); ?>);
+</script>
