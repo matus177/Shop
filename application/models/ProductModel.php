@@ -26,15 +26,18 @@ class ProductModel extends CI_Model {
             $this->db->set($key, $value)->where('id',
                 $id)->update($this->table);
         }
-        foreach ($data as $key => $value)
+        if (array_key_exists('product_price', $data))
         {
-            if ($key != 'product_price')
+            foreach ($data as $key => $value)
             {
-                unset($data[$key]);
+                if ($key != 'product_price')
+                {
+                    unset($data[$key]);
+                }
             }
-        }
 
-        $this->db->set('product_price', $data['product_price'])->where('product_id', $id)->update('tax_prices');
+            $this->db->set('product_price', $data['product_price'])->where('product_id', $id)->update('tax_prices');
+        }
     }
 
     function selectProductToCart($id)
