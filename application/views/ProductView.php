@@ -3,6 +3,8 @@
     <div class="radio">
         <label><input type="radio" name="price_sort" onclick="sortProductByLowestPrice()"> Najnizsia cena</label><br>
         <label><input type="radio" name="price_sort" onclick="sortProductByHighestPrice()"> Najvyssia cena</label>
+        <label><input type="checkbox" id="stock_sort" name="stock_only" onclick="sortProductByStock()"> Len
+            skladom</label>
     </div>
     <ul class="list-unstyled" id="products" data-role="list">
         <?php $i = 0; ?>
