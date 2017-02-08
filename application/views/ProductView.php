@@ -1,9 +1,13 @@
 <div class="col-md-9">
     <?php $this->load->view('FlashMessagesView'); ?>
+    <div class="radio">
+        <label><input type="radio" name="price_sort" onclick="sortProductByLowestPrice()"> Najnizsia cena</label><br>
+        <label><input type="radio" name="price_sort" onclick="sortProductByHighestPrice()"> Najvyssia cena</label>
+    </div>
     <ul class="list-unstyled" id="products" data-role="list">
         <?php $i = 0; ?>
         <?php foreach ($product as $value): ?>
-            <li class="span3 col-md-3">
+            <li data-sort="<?php echo $value->product_price ?>" class="col-md-3">
                 <div class="thumbnail">
                     <a href="product_details.html"><img
                                 src="<?php echo base_url('assets/img/') . $value->product_image; ?>"/></a>
