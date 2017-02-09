@@ -1,14 +1,37 @@
 <div class="col-md-9">
     <?php $this->load->view('FlashMessagesView'); ?>
-    <div class="radio">
-        <label><input type="radio" name="price_sort" onclick="sortProductByLowestPrice()"> Najnizsia cena</label><br>
-        <label><input type="radio" name="price_sort" onclick="sortProductByHighestPrice()"> Najvyssia cena</label>
-        <label><input type="checkbox" id="stock_sort" name="stock_only" onclick="sortProductByStock()"> Len
-            skladom</label>
+    <div class="col-md-12 form-group">
+        <?php if ($searchTerm)
+        { ?>
+            <h3>Vysledky hladania pre: <i><?php echo $searchTerm; ?></i> <a
+                        href="<?php echo base_url('Product/index/') . $subCategoryId; ?>"
+                        style="cursor: pointer; color: red" class="glyphicon glyphicon-remove" aria-hidden="true"></a>
+            </h3>
+        <?php } ?>
+        <div class="col-md-3" style="float: right">
+            <?php echo form_open('Product/index/' . $subCategoryId,
+                ['id' => 'form_search', 'class' => 'form-horizontal', 'role' => 'form']); ?>
+            <div class="input-group">
+                <input type="hidden" name="subcategory_id"
+                       value="<?php echo $subCategoryId ?>"/>
+                <input type="text" class="form-control" name="product_description"
+                       placeholder="Hladat velkost RAM, CPU...">
+                <span class="input-group-btn"><button class="btn btn-default" type="submit"><span
+                                class="glyphicon glyphicon-search"></span></button></span>
+                <?php echo form_close(); ?>
+            </div>
+        </div>
+        Cena: <span class="glyphicon glyphicon-arrow-down" style="cursor: pointer"
+                    onclick="sortProductByLowestPrice()"></span><span class="glyphicon glyphicon-arrow-up"
+                                                                      style="cursor: pointer"
+                                                                      onclick="sortProductByHighestPrice()"></span><br>
+        Len skladom <input type="checkbox" id="stock_sort" name="stock_only" onclick="sortProductByStock()">
     </div>
     <ul class="list-unstyled" id="products" data-role="list">
-        <?php $i = 0; ?>
-        <?php foreach ($product as $value): ?>
+        <?php if ($product)
+        { ?>
+            <?php $i = 0; ?>
+            <?php foreach ($product as $value): ?>
             <li data-sort="<?php echo $value->product_price ?>" class="col-md-3">
                 <div class="thumbnail">
                     <a href="product_details.html"><img
@@ -52,6 +75,10 @@
             </li>
             <?php $i++; ?>
         <?php endforeach; ?>
+        <?php } else
+        { ?>
+            <h3>Nenasli sa ziadne produkty.</h3>
+        <?php } ?>
     </ul>
 </div>
 <script>
