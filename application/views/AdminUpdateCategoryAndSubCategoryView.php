@@ -99,5 +99,5 @@
     </div>
 </div>
 <script>
-    getSubcategoryForAdminUpdate(<?php echo $isAdmin; ?>, 3);
+    getSubcategoryForAdminUpdate(<?php echo $isAdmin ? 1 : 0; ?>, 3);
 </script>

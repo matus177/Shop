@@ -15,7 +15,7 @@
                             <label for="subcategory_id" class="control-label col-sm-4">Zmenit podkategoriu</label>
                             <div class="col-sm-8">
                                 <select class="form-control" name="subcategory_id"
-                                        id="subcategory_id_<?php echo $i; ?>" required>
+                                        id="subcategory_id_<?php echo $productCount; ?>" required>
                                     <option selected disabled>Vyberte podkategoriu</option>
                                 </select>
                             </div>

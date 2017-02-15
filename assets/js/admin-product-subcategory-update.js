@@ -1,5 +1,5 @@
 function getSubcategoryForAdminUpdate(isAdmin, numberOfProducts) {
-    if (isAdmin) {
+    if (isAdmin == 1) {
         $(document).ready(function () {
             $.ajax({
                 url: window.location.origin + '/Shop/Admin/getSubCategoryDropdown',
@@ -24,7 +24,5 @@ function getSubcategoryForAdminUpdate(isAdmin, numberOfProducts) {
                 }
             });
         });
-    } else {
-        alert('Vyskytla sa chyba.');
     }
 }

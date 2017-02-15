@@ -11,10 +11,10 @@ function leftMenu(baseUrl) {
                     var subcategoryName = category.subcategory_name;
 
                     if ($("#collapse" + categoryId).length) {
-                        $("#collapse" + categoryId).append('<div class="panel-body"><a href="' + baseUrl + 'Product/index/' + subcategoryId + '">' + subcategoryName + '</a></div>');
+                        $("#collapse" + categoryId).append('<div class="panel-body"><a href="' + baseUrl + 'Product/index/' + subcategoryId + '?page=1' + '">' + subcategoryName + '</a></div>');
                     } else {
                         $("#accordion").append('<div class="panel panel-default"><div class="panel-heading"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse' + categoryId + '">' + categoryName + '</a>' +
-                            '</h4></div><div id="collapse' + categoryId + '" class="panel-collapse collapse"><div class="panel-body"><a href="' + baseUrl + 'Product/index/' + subcategoryId + '">' + subcategoryName + '</a></div></div></div>');
+                            '</h4></div><div id="collapse' + categoryId + '" class="panel-collapse collapse"><div class="panel-body"><a href="' + baseUrl + 'Product/index/' + subcategoryId + '?page=1' + '">' + subcategoryName + '</a></div></div></div>');
                     }
                 });
             }

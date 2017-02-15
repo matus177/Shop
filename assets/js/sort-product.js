@@ -31,3 +31,20 @@ function sortProductByStock() {
         }
     }
 }
+
+function productsPaggination(numberOfProducts) {
+    var currentPage = parseInt(window.location.href.split('=').pop());
+    if (isNaN(currentPage)) {
+        currentPage = 1;
+    }
+    $('#' + currentPage).addClass('active');
+    var newPage = window.location.href.substring(0, window.location.href.indexOf('='));
+    if (currentPage < 2) {
+        $('#previous_page').attr('hidden', 'hidden');
+    }
+    if (currentPage == numberOfProducts || numberOfProducts == 0) {
+        $('#next_page').attr('hidden', 'hidden');
+    }
+    $('#previous_page').attr('href', newPage + '=' + (currentPage - 1));
+    $('#next_page').attr('href', newPage + '=' + (currentPage + 1));
+}

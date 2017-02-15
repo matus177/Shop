@@ -47,68 +47,80 @@
     $pageFirstResult = ($page - 1) * $resultPerPage;
     $sql = "SELECT * FROM products WHERE subcategory_id = " . $subCategoryId . " LIMIT " . $pageFirstResult . "," . $resultPerPage;
     $result = mysqli_query($con, $sql);
-    $i = 0;
+    $productCount = 0;
     ?>
-    <ul class="list-unstyled" id="products" data-role="list">
-        <?php
-        while ($product = mysqli_fetch_array($result))
-        {
-            ?>
-            <li data-sort="<?php echo $product['product_price'] ?>" class="col-md-3">
-                <div class="thumbnail">
-                    <a href="product_details.html"><img
-                                src="<?php echo base_url('assets/img/') . $product['product_image']; ?>"/></a>
-                    <div class="caption" style="height: 300px; overflow: hidden">
-                        <h5><?php echo $product['product_name']; ?></h5>
-                        <p><?php echo $product['product_description']; ?></p>
-                    </div>
-                    <div class="product_footer caption">
-                        <?php if ($product['product_quantity'] == 0)
-                        { ?>
-                            <p style="text-align: center"><span style="color:orange"><b>Na objednavku.</b></span></p>
-                        <?php } else
-                        { ?>
-                            <p style="text-align: center">
+    <div class="col-md-12">
+        <ul class="list-unstyled" id="products" data-role="list">
+            <?php
+            while ($product = mysqli_fetch_array($result))
+            {
+                ?>
+                <li data-sort="<?php echo $product['product_price'] ?>" class="col-md-3">
+                    <div class="thumbnail">
+                        <a href="product_details.html"><img
+                                    src="<?php echo base_url('assets/img/') . $product['product_image']; ?>"/></a>
+                        <div class="caption" style="height: 300px; overflow: hidden">
+                            <h5><?php echo $product['product_name']; ?></h5>
+                            <p><?php echo $product['product_description']; ?></p>
+                        </div>
+                        <div class="product_footer caption">
+                            <?php if ($product['product_quantity'] == 0)
+                            { ?>
+                                <p style="text-align: center"><span style="color:orange"><b>Na objednavku.</b></span>
+                                </p>
+                            <?php } else
+                            { ?>
+                                <p style="text-align: center">
                                 <span style="color:green">
                                     <b>Na sklade <?php echo $product['product_quantity'] ?> ks.</b>
                                 </span>
-                            </p>
-                        <?php } ?>
-                        <h3><a type="button" id="<?php echo $product['id'] ?>"
-                               class="btn btn-success buy_button">Kupit</a>
-                            <?php if ($this->encryption->decrypt($this->session->role) == 'Admin')
-                            { ?>
-                                <button href="" type="button" id="<?php echo $product['id'] ?>" class="btn btn-warning"
-                                        data-toggle="modal" data-target="#modal_<?php echo $i; ?>">Upravit
-                                </button>
+                                </p>
                             <?php } ?>
-                            <span class="pull-right"><?php echo $product['product_price']; ?> &euro;</span></h3>
-                        <div class="modal fade" id="modal_<?php echo $i ?>" data-backdrop="static"
-                             data-keyboard="false">
-                            <div class="modal-dialog">
-                                <div class="modal-body"><?php $this->load->view('AdminProductUpdateView', array('product' => $product,
-                                        'id' => $product['id'])) ?>
+                            <h3><a type="button" id="<?php echo $product['id'] ?>"
+                                   class="btn btn-success buy_button">Kupit</a>
+                                <?php if ($this->encryption->decrypt($this->session->role) == 'Admin')
+                                { ?>
+                                    <button href="" type="button" id="<?php echo $product['id'] ?>"
+                                            class="btn btn-warning"
+                                            data-toggle="modal" data-target="#modal_<?php echo $productCount; ?>">
+                                        Upravit
+                                    </button>
+                                <?php } ?>
+                                <span class="pull-right"><?php echo $product['product_price']; ?> &euro;</span></h3>
+                            <div class="modal fade" id="modal_<?php echo $productCount ?>" data-backdrop="static"
+                                 data-keyboard="false">
+                                <div class="modal-dialog">
+                                    <div class="modal-body"><?php $this->load->view('AdminProductUpdateView', array('product' => $product, 'productCount' => $productCount,
+                                            'id' => $product['id'])) ?>
+                                    </div>
                                 </div>
                             </div>
+                            <p style="text-align: center">Cena bez
+                                DPH <?php echo $product['product_price'] - $product['product_price_dph']; ?> &euro;</p>
                         </div>
-                        <p style="text-align: center">Cena bez
-                            DPH <?php echo $product['product_price'] - $product['product_price_dph']; ?> &euro;</p>
                     </div>
-                </div>
-            </li>
-            <?php $i++; ?>
+                </li>
+                <?php $productCount++; ?>
+                <?php
+            }
+            ?>
+        </ul>
+    </div>
+    <div class="products_pagination">
+        <a id="previous_page">&slarr;</a>
+        <?php
+        for ($i = 1; $i <= $numberOfPages; $i++)
+        {
+            ?>
+            <a id="<?php echo $i; ?>"
+               href="<?php echo base_url('Product/index/') . $subCategoryId . '?page=' . $i; ?>"><?php echo $i . ' '; ?></a>
             <?php
         }
         ?>
-    </ul>
-    <?php
-    for ($i = 1; $i <= $numberOfPages; $i++)
-    {
-        ?><a
-        href="<?php echo base_url('Product/index/') . $subCategoryId . '?page=' . $i; ?>"><?php echo $i . ' '; ?></a><?php
-    }
-    ?>
+        <a id="next_page">&rarr;</a>
+    </div>
 </div>
 <script>
-    getSubcategoryForAdminUpdate(<?php echo $isAdmin; ?>, <?php echo $numberOfProducts; ?>);
+    productsPaggination(<?php echo $numberOfPages; ?>);
+    getSubcategoryForAdminUpdate(<?php echo $isAdmin ? 1 : 0; ?>, <?php echo $numberOfProducts; ?>);
 </script>
