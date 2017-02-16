@@ -30,12 +30,10 @@
     <?php
     $con = mysqli_connect('localhost', 'root', '');
     mysqli_select_db($con, 'test');
-    $resultPerPage = 3;
     $sql = "SELECT * FROM products WHERE subcategory_id = " . $subCategoryId;
     $result = mysqli_query($con, $sql);
     $numberOfProducts = mysqli_num_rows($result);
     $numberOfPages = ceil($numberOfProducts / $resultPerPage);
-
     if ( ! isset($_GET['page']))
     {
         $page = 1;
@@ -106,6 +104,18 @@
             ?>
         </ul>
     </div>
+    <p>Produkty na stranku: </p>
+    <div class="col-md-1">
+        <select class="form-control" onchange="productPerPage(<?php echo $subCategoryId; ?>, this.value)">
+            <option selected="selected" hidden><?php echo $resultPerPage; ?></option>
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>10</option>
+            <option>20</option>
+            <option>50</option>
+        </select>
+    </div>
     <div class="products_pagination">
         <a id="previous_page">&slarr;</a>
         <?php
@@ -113,7 +123,7 @@
         {
             ?>
             <a id="<?php echo $i; ?>"
-               href="<?php echo base_url('Product/index/') . $subCategoryId . '?page=' . $i; ?>"><?php echo $i . ' '; ?></a>
+               href="<?php echo base_url('Product/index/') . $subCategoryId . '/' . $resultPerPage . '?page=' . $i; ?>"><?php echo $i . ' '; ?></a>
             <?php
         }
         ?>

@@ -48,3 +48,7 @@ function productsPaggination(numberOfProducts) {
     $('#previous_page').attr('href', newPage + '=' + (currentPage - 1));
     $('#next_page').attr('href', newPage + '=' + (currentPage + 1));
 }
+
+function productPerPage(subCategoryId, valueSelected) {
+    window.location.href = window.location.origin + '/Shop/Product/index/' + subCategoryId + '/' + valueSelected + '?page=1';
+}
