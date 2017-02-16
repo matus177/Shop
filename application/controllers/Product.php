@@ -8,21 +8,25 @@ class Product extends MY_Controller {
 
     public function index($subCategoryId, $resultPerPage = 10)
     {
-        $match = FALSE;
+        $searchTerm = FALSE;
         if ($this->input->post('product_description'))
         {
-            $match = $this->input->post('product_description');
-            $arrayMatch = explode(' ', $match);
-            foreach ($arrayMatch as $key => $value)
+            $searchTerms = explode(' ', $this->input->post('product_description'));
+            $searchTerm = array();
+            foreach ($searchTerms as $term)
             {
-                $arrayProduct[] = $this->ProductModel->selectProduct(array('subcategory_id' => $subCategoryId), $value);
+                $term = trim($term);
+                if ( ! empty($term))
+                {
+                    $searchTerm[] = "product_description LIKE '%$term%'";
+                }
             }
-            $resultProduct = call_user_func_array('array_merge', $arrayProduct);
         }
+
         $this->load->view('HeaderView');
         $this->load->view('UpperMenuView');
         $this->load->view('LeftMenuView');
-        $this->load->view('ProductView', array('product' => $match ? $resultProduct : $this->ProductModel->selectProduct(array('subcategory_id' => $subCategoryId), $match), 'isAdmin' => ($this->encryption->decrypt($this->session->role) == 'Admin'), 'searchTerm' => $this->input->post('product_description'), 'subCategoryId' => $subCategoryId, 'resultPerPage' => $resultPerPage));
+        $this->load->view('ProductView', array('isAdmin' => ($this->encryption->decrypt($this->session->role) == 'Admin'), 'searchTerm' => $searchTerm, 'subCategoryId' => $subCategoryId, 'resultPerPage' => $resultPerPage));
         $this->load->view('FooterView');
     }
 }
