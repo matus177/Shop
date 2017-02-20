@@ -34,7 +34,6 @@
 <script>
     function detailFormatter(index, row) {
         var html = [];
-        console.debug(row);
         html.push('<div style="float: left">');
         html.push('<p><b>Dodacie meno:</b> ' + row.deliv_name + ', ' + row.deliv_surname + '</p>');
         html.push('<p><b>Dodacie mesto:</b> ' + row.deliv_city + '</p>');

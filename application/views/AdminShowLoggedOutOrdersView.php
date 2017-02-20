@@ -34,9 +34,17 @@
 <script>
     function detailFormatter(index, row) {
         var html = [];
-        $.each(row, function (key, value) {
-            html.push('<p><b>' + key + ':</b> ' + value + '</p>');
-        });
+        html.push('<div style="float: left">');
+        html.push('<p><b>Dodacie meno:</b> ' + row.deliv_name + ', ' + row.deliv_surname + '</p>');
+        html.push('<p><b>Dodacie mesto:</b> ' + row.deliv_city + '</p>');
+        html.push('<p><b>Dodacia ulica:</b> ' + row.deliv_street + '</p>');
+        html.push('<p><b>Dodacie info:</b> ' + row.deliv_info + '</p>');
+        html.push('</div>');
+        html.push('<div style="float: left; text-indent: 15em">');
+        html.push('<p><b>Sposob dopravy:</b> ' + row.shipping_options + '</p>');
+        html.push('<p><b>Sposob platby:</b> ' + row.payment_options + '</p>');
+        html.push('<p><b>Cena dopravy:</b> ' + row.delivery_price + '&euro;</p>');
+        html.push('</div>');
         return html.join('');
     }
 </script>
