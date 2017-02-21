@@ -31,9 +31,20 @@ class OrderModel extends CI_Model {
 
     public function selectAllOrder()
     {
-        return $this->db->select()->join('personal_data', 'personal_data.id = ' . $this->tableLogIn . '.user_id')
+        return $this->db->select($this->tableLogIn . '.*, ' . 'personal_data.*, delivery_data.*, company_data.*,' . $this->tableLogIn . '.id AS order_id')
+            ->join('personal_data', 'personal_data.id = ' . $this->tableLogIn . '.user_id')
             ->join('delivery_data', 'delivery_data.id = ' . $this->tableLogIn . '.user_id')
             ->join('company_data', 'company_data.id = ' . $this->tableLogIn . '.user_id')
             ->get($this->tableLogIn)->result();
+    }
+
+    public function updateLogInOrderTable($data)
+    {
+        return $this->db->set('status', $data['status'])->where('id', $data['id'])->update($this->tableLogIn);
+    }
+
+    public function updateLogOutOrderTable($data)
+    {
+        return $this->db->set('status', $data['status'])->where('id', $data['id'])->update($this->tableLogOut);
     }
 }

@@ -115,34 +115,6 @@ class Admin extends MY_Controller {
         echo json_encode($result);
     }
 
-    public function fillUserLoggedOutOrdersTable()
-    {
-        $logOutOrders = $this->OrderModel->selectLogOutOrder();
-        for ($i = 0; $i < sizeof($logOutOrders); $i++)
-        {
-            $logOutOrders[$i]->fact_name = $this->encryption->decrypt($logOutOrders[$i]->fact_name);
-            $logOutOrders[$i]->fact_surname = $this->encryption->decrypt($logOutOrders[$i]->fact_surname);
-            $logOutOrders[$i]->deliv_name = $this->encryption->decrypt($logOutOrders[$i]->deliv_name);
-            $logOutOrders[$i]->deliv_surname = $this->encryption->decrypt($logOutOrders[$i]->deliv_surname);
-        }
-        $this->output->set_content_type('application/json')->set_output(json_encode($logOutOrders));
-    }
-
-    public function fillUserAllOrdersTable()
-    {
-        $allUserOrder = array_merge($this->OrderModel->selectAllOrder(), $this->OrderModel->selectLogOutOrder());
-        for ($i = 0; $i < sizeof($allUserOrder); $i++)
-        {
-            $allUserOrder[$i]->fact_name = $this->encryption->decrypt($allUserOrder[$i]->fact_name);
-            $allUserOrder[$i]->fact_surname = $this->encryption->decrypt($allUserOrder[$i]->fact_surname);
-            $allUserOrder[$i]->deliv_name = $this->encryption->decrypt($allUserOrder[$i]->deliv_name);
-            $allUserOrder[$i]->deliv_surname = $this->encryption->decrypt($allUserOrder[$i]->deliv_surname);
-            $allUserOrder[$i]->comp_iban = $this->encryption->decrypt($allUserOrder[$i]->comp_iban);
-            $allUserOrder[$i]->comp_bank_owner = $this->encryption->decrypt($allUserOrder[$i]->comp_bank_owner);
-        }
-        $this->output->set_content_type('application/json')->set_output(json_encode($allUserOrder));
-    }
-
     public function updateProduct($productId)
     {
         $config['file_name'] = str_replace(" ", "_", $_FILES["userfiles"]['product_image']);

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hostiteľ: 127.0.0.1
--- Čas generovania: Pi 03.Feb 2017, 13:28
+-- Čas generovania: Út 21.Feb 2017, 14:17
 -- Verzia serveru: 5.7.14
 -- Verzia PHP: 5.6.25
 
@@ -4596,7 +4596,32 @@ VALUES
   (167, 'success', 8, '1', '1', '::1', 'Chrome 56.0.2924.76', 'Windows 7', '2017-02-02 14:48:32', '', ''),
   (168, 'success', 8, '1', '1', '::1', 'Chrome 56.0.2924.87', 'Windows 7', '2017-02-03 09:19:57', '', ''),
   (169, 'success', 8, '1', '1', '::1', 'Chrome 56.0.2924.87', 'Windows 7', '2017-02-03 09:35:54', '', ''),
-  (170, 'success', 8, '1', '1', '::1', 'Chrome 56.0.2924.87', 'Windows 7', '2017-02-03 11:19:42', '', '');
+  (170, 'success', 8, '1', '1', '::1', 'Chrome 56.0.2924.87', 'Windows 7', '2017-02-03 11:19:42', '', ''),
+  (171, 'success', 8, '1', '1', '::1', 'Chrome 56.0.2924.87', 'Windows 7', '2017-02-06 14:14:57', '', ''),
+  (172, 'success', 8, '1', '1', '::1', 'Chrome 56.0.2924.87', 'Windows 7', '2017-02-07 11:20:42', '', ''),
+  (173, 'success', 8, '22', '33', '::1', 'Chrome 56.0.2924.87', 'Windows 7', '2017-02-08 09:14:57', '', ''),
+  (174, 'success', 8, '22', '33', '::1', 'Chrome 56.0.2924.87', 'Windows 7', '2017-02-08 10:03:01', '', ''),
+  (175, 'success', 8, '22', '33', '::1', 'Chrome 56.0.2924.87', 'Windows 7', '2017-02-08 15:25:58', '', ''),
+  (176, 'success', 8, '22', '33', '::1', 'Chrome 56.0.2924.87', 'Windows 7', '2017-02-09 08:28:19', '', ''),
+  (177, 'success', 8, '22', '33', '::1', 'Chrome 56.0.2924.87', 'Windows 7', '2017-02-09 10:05:19', '', ''),
+  (178, 'success', 8, '22', '33', '::1', 'Chrome 56.0.2924.87', 'Windows 7', '2017-02-13 14:10:49', '', ''),
+  (179, 'success', 8, '22', '33', '::1', 'Chrome 56.0.2924.87', 'Windows 7', '2017-02-14 15:41:26', '', ''),
+  (180, 'success', 8, '22', '33', '::1', 'Chrome 56.0.2924.87', 'Windows 7', '2017-02-15 10:29:12', '', ''),
+  (181, 'success', 8, '22', '33', '::1', 'Chrome 56.0.2924.87', 'Windows 7', '2017-02-15 13:07:55', '', ''),
+  (182, 'success', 8, '22', '33', '::1', 'Chrome 56.0.2924.87', 'Windows 7', '2017-02-15 13:44:57', '', ''),
+  (183, 'success', 8, '22', '33', '::1', 'Chrome 56.0.2924.87', 'Windows 7', '2017-02-15 15:07:04', '', ''),
+  (184, 'success', 8, '22', '33', '::1', 'Chrome 56.0.2924.87', 'Windows 7', '2017-02-15 15:07:41', '', ''),
+  (185, 'success', 8, '22', '33', '::1', 'Chrome 56.0.2924.87', 'Windows 7', '2017-02-15 15:19:01', '', ''),
+  (186, 'success', 8, '22', '33', '::1', 'Chrome 56.0.2924.87', 'Windows 7', '2017-02-15 15:21:09', '', ''),
+  (187, 'success', 8, '22', '33', '::1', 'Chrome 56.0.2924.87', 'Windows 7', '2017-02-15 15:27:39', '', ''),
+  (188, 'success', 8, '22', '33', '::1', 'Chrome 56.0.2924.87', 'Windows 7', '2017-02-15 15:42:35', '', ''),
+  (189, 'success', 8, '22', '33', '::1', 'Chrome 56.0.2924.87', 'Windows 7', '2017-02-15 16:33:32', '', ''),
+  (190, 'success', 8, '22', '33', '::1', 'Chrome 56.0.2924.87', 'Windows 7', '2017-02-16 09:23:44', '', ''),
+  (191, 'success', 8, '22', '33', '::1', 'Chrome 56.0.2924.87', 'Windows 7', '2017-02-20 10:36:25', '', ''),
+  (192, 'success', 8, '22', '33', '::1', 'Chrome 56.0.2924.87', 'Windows 7', '2017-02-20 10:52:45', '', ''),
+  (193, 'success', 8, '22', '33', '::1', 'Chrome 56.0.2924.87', 'Windows 7', '2017-02-21 09:48:42', '', ''),
+  (194, 'success', 8, '22', '33', '::1', 'Chrome 56.0.2924.87', 'Windows 7', '2017-02-21 14:52:46', '', ''),
+  (195, 'success', 8, '22', '33', '::1', 'Chrome 56.0.2924.87', 'Windows 7', '2017-02-21 15:00:15', '', '');
 
 -- --------------------------------------------------------
 
@@ -4630,8 +4655,8 @@ CREATE TABLE `personal_data` (
 INSERT INTO `personal_data` (`id`, `fact_name`, `fact_surname`, `fact_street`, `fact_city`, `fact_zip`, `fact_phone`)
 VALUES
   (8,
-   '7e1b24ad95a6aa2b64d0d1fd7670b27c80bfbe5f49ed7640b17c0d06edf866a45587f3973fa397b96128ef33fedae8d7385c3e2202114041b296dbd530ec70c91CZaSm0/FkqscgBupZUHO2e4NNV9i8fyZ9CrF3fyPLs=',
-   'c6eee301cd65cbc1e9c5d419ec352a46762b833a6034bcd9adecd69b4f43051926ccf51ca217b96bc2643b290b606a9f94c768fbc131692e4812b603ca98805bWi1o6HJJElosV2fR2ggdaylIqelsoLqGzVwxMuxP9TU=',
+   '1fc4cc882c9a9264121d0bce753faafe2c3edfbcd2d0211f25671982745df28b713be49e02c7f2083382ef153abc157103626c96b910d4fae65706cb836c1bb396yKWiuUq89PgF4gxLOH9yX66Y4LShFUHayCaGzB5yk=',
+   'bd2ec78b1cd41d89ca38ca92daa1b96c222261267707870abc4395a563e1354180799bb195f0c5cbf8318e37ccbf54752ef25df7a0db9af7b5e089039dbf207dnmn7782ACRmb9tJ6WffIi7OpVRPMQEr4mFlK1Si1B/4=',
    'Pobrežná', 'Kysak', '044 81', '+012 345 678 9'),
   (9,
    'c7efaac75aa14dbb753ce8586ae41cb9987770d5131462e0cfdd62b030a8fe03a896a22d25ce87ce19915fcdaf252a2a17f9e6ee467c3777d1ab2060b6d6b5f6CydRu9tgC+A3csMNnnk804+2lgeu1/wS+0lYa8Vljgc=',
@@ -4667,8 +4692,12 @@ CREATE TABLE `products` (
 
 INSERT INTO `products` (`id`, `subcategory_id`, `product_name`, `product_description`, `product_price_dph`, `product_price`, `product_quantity`, `product_image`)
 VALUES
-  (140, 15, 'Lenovo', 'Herny', 2.67, 16, 5, 'pc.jpg'),
-  (141, 16, 'HP', 'Laser', 1.67, 10, 2, 'prin_ter.jpg');
+  (140, 16, 'Lenovo', 'Herny', 2.67, 16, 4, 'pc.jpg'),
+  (141, 16, 'HP', 'Laser', 1.67, 10, 2, 'prin_ter.jpg'),
+  (142, 16, 'aa', 'aa', 20.5, 123, 0, 'no_photo.jpg'),
+  (144, 16, 'f', 'f', 0.17, 1, 1, 'no_photo.jpg'),
+  (146, 16, 'ui', 'u', 83.33, 500, 1, 'no_photo.jpg'),
+  (147, 16, 'p', 'u', 0.33, 2, 1, 'no_photo.jpg');
 
 -- --------------------------------------------------------
 
@@ -4691,13 +4720,17 @@ CREATE TABLE `storage` (
 --
 
 INSERT INTO `storage` (`id`, `product_id`, `flag`) VALUES
-  (194, 140, 'A'),
+  (194, 140, 'S'),
   (195, 140, 'A'),
   (196, 140, 'A'),
   (197, 140, 'A'),
   (198, 140, 'A'),
   (200, 141, 'A'),
-  (201, 141, 'A');
+  (201, 141, 'A'),
+  (202, 142, 'C'),
+  (203, 144, 'A'),
+  (204, 146, 'A'),
+  (205, 147, 'A');
 
 -- --------------------------------------------------------
 
@@ -10326,7 +10359,11 @@ CREATE TABLE `tax_prices` (
 INSERT INTO `tax_prices` (`id`, `product_id`, `product_price`, `dph`, `personal_price`, `courier`, `slovak_post`, `dobierka`, `cash`, `card`)
 VALUES
   (80, 140, 16, 6, 1, 6, 3.5, 3.5, 0, 0),
-  (81, 141, 10, 6, 1, 6, 3.5, 3.5, 0, 0);
+  (81, 141, 10, 6, 1, 6, 3.5, 3.5, 0, 0),
+  (82, 142, 123, 6, 1, 6, 3.5, 3.5, 0, 0),
+  (83, 144, 1, 6, 1, 6, 3.5, 3.5, 0, 0),
+  (84, 146, 500, 6, 1, 6, 3.5, 3.5, 0, 0),
+  (85, 147, 2, 6, 1, 6, 3.5, 3.5, 0, 0);
 
 --
 -- Spúšťače `tax_prices`
@@ -10400,7 +10437,9 @@ CREATE TABLE `user_orders_login` (
   `payment_options`  VARCHAR(30)
                      COLLATE utf8_bin NOT NULL,
   `delivery_price`   FLOAT            NOT NULL,
-  `date`             TIMESTAMP        NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `date`             TIMESTAMP        NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `status`           VARCHAR(255)
+                     COLLATE utf8_bin NOT NULL DEFAULT 'prijate'
 )
   ENGINE = InnoDB
   DEFAULT CHARSET = utf8
@@ -10410,10 +10449,11 @@ CREATE TABLE `user_orders_login` (
 -- Sťahujem dáta pre tabuľku `user_orders_login`
 --
 
-INSERT INTO `user_orders_login` (`id`, `user_id`, `product_id`, `subtotal`, `qty`, `price`, `name`, `shipping_options`, `payment_options`, `delivery_price`, `date`)
+INSERT INTO `user_orders_login` (`id`, `user_id`, `product_id`, `subtotal`, `qty`, `price`, `name`, `shipping_options`, `payment_options`, `delivery_price`, `date`, `status`)
 VALUES
-  (159, 8, 123, 246, 2, 123, 'AAAAA', 'osobny odber', 'kartou', 1, '2017-01-31 10:14:44'),
-  (160, 8, 119, 23, 1, 23, 'vykon ', 'osobny odber', 'kartou', 1, '2017-01-31 10:14:44');
+  (159, 8, 123, 246, 2, 123, 'AAAAA', 'osobny odber', 'kartou', 1, '2017-01-31 10:14:44', 'odosielanie'),
+  (160, 8, 119, 23, 1, 23, 'vykon ', 'osobny odber', 'kartou', 1, '2017-01-31 10:14:44', 'hotovo'),
+  (161, 8, 140, 16, 1, 16, 'Lenovo', 'osobny odber', 'dobierkou', 0, '2017-02-20 13:55:07', 'prijate');
 
 -- --------------------------------------------------------
 
@@ -10476,7 +10516,9 @@ CREATE TABLE `user_orders_logout` (
                      COLLATE utf8_bin NOT NULL,
   `email`            VARCHAR(255)
                      COLLATE utf8_bin NOT NULL,
-  `date`             TIMESTAMP        NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `date`             TIMESTAMP        NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `status`           VARCHAR(255)
+                     COLLATE utf8_bin NOT NULL DEFAULT 'prijate'
 )
   ENGINE = InnoDB
   DEFAULT CHARSET = utf8
@@ -10486,7 +10528,7 @@ CREATE TABLE `user_orders_logout` (
 -- Sťahujem dáta pre tabuľku `user_orders_logout`
 --
 
-INSERT INTO `user_orders_logout` (`id`, `product_id`, `name`, `qty`, `price`, `subtotal`, `shipping_options`, `payment_options`, `delivery_price`, `fact_name`, `fact_surname`, `fact_street`, `fact_city`, `fact_zip`, `fact_phone`, `deliv_name`, `deliv_surname`, `deliv_company`, `deliv_street`, `deliv_city`, `deliv_zip`, `deliv_info`, `deliv_phone`, `comp_ico`, `comp_dic`, `comp_icdph`, `comp_bic`, `comp_iban`, `comp_bank_owner`, `email`, `date`)
+INSERT INTO `user_orders_logout` (`id`, `product_id`, `name`, `qty`, `price`, `subtotal`, `shipping_options`, `payment_options`, `delivery_price`, `fact_name`, `fact_surname`, `fact_street`, `fact_city`, `fact_zip`, `fact_phone`, `deliv_name`, `deliv_surname`, `deliv_company`, `deliv_street`, `deliv_city`, `deliv_zip`, `deliv_info`, `deliv_phone`, `comp_ico`, `comp_dic`, `comp_icdph`, `comp_bic`, `comp_iban`, `comp_bank_owner`, `email`, `date`, `status`)
 VALUES
   (1, 123, 'AAAAA', 1, 123, 123, 'kurierom', 'dobierkou', 9.5,
       'b7c5d42f079eff91f9740cd1ef27f2fa75b8282bd43d1e1eae8af08ba7f3aeae678e5fc85dce82faa9881904e9b20b82b07aa23e73a6c0ca223c38aebb277ec0QVsuolgLdEs17kK+7E1tYx34ntftzXkC161hog8zRQ8=',
@@ -10494,21 +10536,22 @@ VALUES
     'A. Dvořáka', 'Abrahámovce', '059 72', '+421 222 222 222',
     '1ffba56a9ae07d4324c2d7a78bab700f8359dc56bdcd8934263bc691ad630d4925492ef3610c99dc56e45f8f969aa54b8b8a0ba13f33861168dad914b4b83746jhms6u/gkzSVflC8c09gMgZ8Pui2lNJTNBiWXZy/LOM=',
     '92b0a7224ff3ae610e020f1e5a73e24a0021a5ac597d3fca5f0ef2804d9e9ab649e7c39f8d8e83fdf01077d661f29310f544515f0db044c4e5b6e9b14d62762bg+gjiqtTw4Y0/Yt4dXWiTEIkZaQ9yZpLCh2xsqHyuN8=',
-    '', '', '', '', '', '+421', '', '', '', '', '', '', 'soldier1994@azet.sk', '2017-02-01 13:12:32'),
+    '', '', '', '', '', '+421', '', '', '', '', '', '', 'soldier1994@azet.sk', '2017-02-01 13:12:32', 'odosielanie'),
   (2, 119, 'vykon ', 1, 23, 23, 'kurierom', 'dobierkou', 9.5,
       'b7c5d42f079eff91f9740cd1ef27f2fa75b8282bd43d1e1eae8af08ba7f3aeae678e5fc85dce82faa9881904e9b20b82b07aa23e73a6c0ca223c38aebb277ec0QVsuolgLdEs17kK+7E1tYx34ntftzXkC161hog8zRQ8=',
       'adae3a29b6ec482ced3ab09f7b99d0866b5bae2e3015c73ad9677a488c6e8ed2f2010d810f701623442a70e8ba01245fd53050c15841ed669d5ba3528f621758ii6AgU/Jn/h9QYMttehtfxSFqh9mVwgXjCl3AIgFlhg=',
     'A. Dvořáka', 'Abrahámovce', '059 72', '+421 222 222 222',
     '1ffba56a9ae07d4324c2d7a78bab700f8359dc56bdcd8934263bc691ad630d4925492ef3610c99dc56e45f8f969aa54b8b8a0ba13f33861168dad914b4b83746jhms6u/gkzSVflC8c09gMgZ8Pui2lNJTNBiWXZy/LOM=',
     '92b0a7224ff3ae610e020f1e5a73e24a0021a5ac597d3fca5f0ef2804d9e9ab649e7c39f8d8e83fdf01077d661f29310f544515f0db044c4e5b6e9b14d62762bg+gjiqtTw4Y0/Yt4dXWiTEIkZaQ9yZpLCh2xsqHyuN8=',
-    '', '', '', '', '', '+421', '', '', '', '', '', '', 'soldier1994@azet.sk', '2017-02-01 13:12:32'),
+    '', '', '', '', '', '+421', '', '', '', '', '', '', 'soldier1994@azet.sk', '2017-02-01 13:12:32', 'prijate'),
   (3, 127, 'a', 1, 0, 0, 'postou', 'kartou', 3.5,
       '5e918aad9798c5d6c4b3518bc1868b76ff5b203e57fd80746f1973eca5256b1b18473d59b0787de367a5e70b3a46bba09f58f5efd15cef7e5e1e46ee2997fecfMneSdYwZ0igfRrDa894DK31Ekogp2zfX1+fSrF+Kv2o=',
       'ffb17136c503a5c67400e58c38a882913d18cb38b9ea2187849c152fe86f83c83b67ddde1f04c7262b646074d62f074a79c6bc0a94e84ec2313b42725ea700abfD1833R5PCm3RlMv+XFHA9Ssyz+WCN9VTCHWtF5xN8w=',
     'a', 'Abovce', '980 44', '+421 333 333 333',
     'b4cb16774eab08889c10288a743c3aef5458fe2f34275a5f331d06e9666e1410ac0402cca9127aa535d5e9895106208ceebf94585da97b839f59ee3919680a86yXSsl0mNrnl64HtZgyYEwVI88HbhYKv3V0rD2kysRVQ=',
     '91a72d5187ad3f9be909122b5c610aa395c5ceb517ecc9dc24585aef60e40e208b8d3ac1e592ede39bc1e6d4beed10a9a6edc8993e0262f1a8d965b07bf8674ctenfiCaHQGvFJv7fOa7+3nZbiZ8iwdVeqnbgwl0gpWk=',
-    '', '', '', '', '', '+421', '', '', '', '', 'dd', 'dd', 'soldier1994@azet.sk', '2017-02-01 14:36:03'),
+    '', '', '', '', '', '+421', '', '', '', '', 'dd', 'dd', 'soldier1994@azet.sk', '2017-02-01 14:36:03',
+   'odosielanie'),
   (4, 127, 'a', 1, 0, 0, 'kurierom', 'dobierkou', 9.5,
       'fdd3eccb608e3d3184f1be4a5c0f0e901ef37dd9f45d57fe7745c878aadf7b054fbe3a21a274fa1fa62d3bccccce0605b7c13ed251b256eb354e4febc726b952W1EjX/MMkEg3Sej8iLfs0RIGSJ/TagX7kAbfWRYt7UA=',
       '8ba71ec3b525c5f2d90434e589459f4468299dd60d55275af3708bb6ae31103a618d77b0d159540c7c95108784c120fb1743050b9f6cb4e746b166074e690af7mmTAQNVdoioJNVyOXrvOlgALM5bHpH5ZzlLqyRRgmlQ=',
@@ -10518,7 +10561,7 @@ VALUES
     '', '', '', '', '', '+421', '', '', '', '',
                     'c938211106ddb4cea45cb4acb2d2b4d1a9261a977b1d5b8e176f712248871ebed92454d0fc3a1ea1765b898148930611d60d234e3e9db180a03da7bd2f4a9fe0VdNZSMymFVBMa/65j3udLCgVBMRezXacdRJuhaxtu4k=',
                     '4dba1ec8d3c07709bf23f42bd2c3bbde39f9c38f1744d0e68424d3343587071db613d8bb629b71bd362e27252081cff5e341110ad8480c2115e88278455163f9xNX0Myuo7+5cNYUSPfR1a4p4KHCGbMLvXT0X6Aq3mqY=',
-                    'd@d.sk', '2017-02-01 14:39:45');
+                    'd@d.sk', '2017-02-01 14:39:45', 'prijate');
 
 --
 -- Kľúče pre exportované tabuľky
@@ -10652,7 +10695,7 @@ ALTER TABLE `login`
 --
 ALTER TABLE `logs`
   MODIFY `id` INT(11) NOT NULL AUTO_INCREMENT,
-  AUTO_INCREMENT = 171;
+  AUTO_INCREMENT = 196;
 --
 -- AUTO_INCREMENT pre tabuľku `personal_data`
 --
@@ -10664,13 +10707,13 @@ ALTER TABLE `personal_data`
 --
 ALTER TABLE `products`
   MODIFY `id` INT(11) NOT NULL AUTO_INCREMENT,
-  AUTO_INCREMENT = 142;
+  AUTO_INCREMENT = 148;
 --
 -- AUTO_INCREMENT pre tabuľku `storage`
 --
 ALTER TABLE `storage`
   MODIFY `id` INT(11) NOT NULL AUTO_INCREMENT,
-  AUTO_INCREMENT = 202;
+  AUTO_INCREMENT = 206;
 --
 -- AUTO_INCREMENT pre tabuľku `streets`
 --
@@ -10688,13 +10731,13 @@ ALTER TABLE `subcategory`
 --
 ALTER TABLE `tax_prices`
   MODIFY `id` INT(11) NOT NULL AUTO_INCREMENT,
-  AUTO_INCREMENT = 82;
+  AUTO_INCREMENT = 86;
 --
 -- AUTO_INCREMENT pre tabuľku `user_orders_login`
 --
 ALTER TABLE `user_orders_login`
   MODIFY `id` INT(11) NOT NULL AUTO_INCREMENT,
-  AUTO_INCREMENT = 161;
+  AUTO_INCREMENT = 162;
 --
 -- AUTO_INCREMENT pre tabuľku `user_orders_logout`
 --
