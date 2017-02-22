@@ -47,4 +47,14 @@ class OrderModel extends CI_Model {
     {
         return $this->db->set('status', $data['status'])->where('id', $data['id'])->update($this->tableLogOut);
     }
+
+    public function selectNumberOfUnclosedLogInOrders($data)
+    {
+        return $this->db->where(array('status !=' => $data))->get($this->tableLogIn)->num_rows();
+    }
+
+    public function selectNumberOfUnclosedLogOutOrders($data)
+    {
+        return $this->db->where(array('status !=' => $data))->get($this->tableLogOut)->num_rows();
+    }
 }

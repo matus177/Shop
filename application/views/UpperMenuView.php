@@ -16,10 +16,16 @@
                             <li><a href="<?php echo base_url("Admin/index/AdminUpdateCategoryAndSubCategoryView"); ?>">Uprava/presun
                                     kategorie a podkategorie</a></li>
                             <li class="divider"></li>
-                            <li><a href="<?php echo base_url("Admin/index/OrdersLoggedOutTableView"); ?>">Objednavky
-                                    neregistrovanych uzivatelov</a></li>
-                            <li><a href="<?php echo base_url("Admin/index/OrdersLoggedInTableView"); ?>">Objednavky
-                                    registrovanych uzivatelov</a></li>
+                            <li><a class="logout_orders"
+                                   href="<?php echo base_url("Admin/index/OrdersLoggedOutTableView"); ?>">
+                                    Objednavky neregistrovanych uzivatelov
+                                </a>
+                            </li>
+                            <li><a class="login_orders"
+                                   href="<?php echo base_url("Admin/index/OrdersLoggedInTableView"); ?>">
+                                    Objednavky registrovanych uzivatelov
+                                </a>
+                            </li>
                         </ul>
                     </div>
                 </li>
@@ -60,3 +66,6 @@
 </nav>
 <div class="container-fluid">
     <div class="row">
+        <script>
+            numberOfOrdersIcon();
+        </script>

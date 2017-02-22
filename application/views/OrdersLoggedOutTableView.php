@@ -29,6 +29,7 @@
             <th data-field="qty" data-sortable="true">Kusy</th>
             <th data-field="subtotal" data-sortable="true">Cena za kusy &euro;</th>
             <th data-field="date" data-sortable="true">Datum</th>
+            <th data-field="status" data-sortable="true">Stav</th>
         </tr>
         </thead>
     </table>

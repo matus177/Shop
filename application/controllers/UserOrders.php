@@ -65,4 +65,14 @@ class UserOrders extends MY_Controller {
             $this->session->set_flashdata('category_danger', 'Objednavka nebola aktualizovana.');
         redirect('Admin/index/OrdersLoggedOutTableView');
     }
+
+    public function getNumberOfUnclosedLogInOrders()
+    {
+        echo $this->OrderModel->selectNumberOfUnclosedLogInOrders('hotovo');
+    }
+
+    public function getNumberOfUnclosedLogOutOrders()
+    {
+        echo $this->OrderModel->selectNumberOfUnclosedLogOutOrders('hotovo');
+    }
 }

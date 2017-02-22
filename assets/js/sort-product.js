@@ -52,3 +52,32 @@ function productsPaggination(numberOfProducts) {
 function productPerPage(subCategoryId, valueSelected) {
     window.location.href = window.location.origin + '/Shop/Product/index/' + subCategoryId + '/' + valueSelected + '?page=1';
 }
+
+function numberOfOrdersIcon() {
+    $(document).ready(function () {
+        $.ajax({
+            url: window.location.origin + '/Shop/UserOrders/getNumberOfUnclosedLogInOrders',
+            type: 'GET',
+            success: function (response) {
+                if (response == 0) {
+                    $(".login_orders").append(' <button type="button" class="btn btn-success btn-xs"><span class="badge">' + response + '</span></button>');
+                } else {
+                    $(".login_orders").append(' <button type="button" class="btn btn-danger btn-xs"><span class="badge">' + response + '</span></button>');
+                }
+            }
+        });
+    });
+    $(document).ready(function () {
+        $.ajax({
+            url: window.location.origin + '/Shop/UserOrders/getNumberOfUnclosedLogOutOrders',
+            type: 'GET',
+            success: function (response) {
+                if (response == 0) {
+                    $(".logout_orders").append(' <button type="button" class="btn btn-default btn-xs"><span class="badge">' + response + '</span></button>');
+                } else {
+                    $(".logout_orders").append(' <button type="button" class="btn btn-danger btn-xs"><span class="badge">' + response + '</span></button>');
+                }
+            }
+        });
+    });
+}

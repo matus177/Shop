@@ -1,6 +1,6 @@
 <div class="col-md-9">
     <?php $this->load->view('FlashMessagesView'); ?>
-    <h3>Vsetky objednavky</h3>
+    <h3>Objednavky registrovanych uzivatelov</h3>
     <table id="table" data-toggle="table"
            data-toolbar="#toolbar"
            data-search="true"
@@ -31,6 +31,7 @@
             <th data-field="qty" data-sortable="true">Kusy</th>
             <th data-field="subtotal" data-sortable="true">Cena za kusy &euro;</th>
             <th data-field="date" data-sortable="true">Datum</th>
+            <th data-field="status" data-sortable="true">Stav</th>
         </tr>
         </thead>
     </table>
