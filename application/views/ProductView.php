@@ -1,6 +1,6 @@
 <div class="col-md-9">
     <?php $this->load->view('FlashMessagesView'); ?>
-    <div class="col-md-12 form-group">
+    <div class="col-md-12">
         <?php if ($searchTerm)
         { ?>
             <h3>Vysledky hladania:
@@ -8,6 +8,7 @@
                    class="glyphicon glyphicon-remove" aria-hidden="true"></a>
             </h3>
         <?php } ?>
+        Len skladom <input type="checkbox" id="stock_sort" name="stock_only" onclick="sortProductByStock()">
         <div class="col-md-3" style="float: right">
             <?php echo form_open('Product/index/' . $subCategoryId,
                 ['id' => 'form_search', 'class' => 'form-horizontal', 'role' => 'form']); ?>
@@ -21,12 +22,16 @@
                 <?php echo form_close(); ?>
             </div>
         </div>
-        Cena: <span class="glyphicon glyphicon-arrow-down" style="cursor: pointer"
-                    onclick="sortProductByLowestPrice()"></span><span class="glyphicon glyphicon-arrow-up"
-                                                                      style="cursor: pointer"
-                                                                      onclick="sortProductByHighestPrice()"></span><br>
-        Len skladom <input type="checkbox" id="stock_sort" name="stock_only" onclick="sortProductByStock()">
     </div>
+    <ul class="nav nav-tabs">
+        <li class="default_sort"><a data-toggle="tab" href="#home">Home</a></li>
+        <li class="lowest_price" onclick="sortProductByLowestPrice();"><a data-toggle="tab" href="#">Najlacnejsie</a>
+        </li>
+        <li class="highest_price" onclick="sortProductByHighestPrice();"><a data-toggle="tab" href="#">Najdrahsie</a>
+        </li>
+        <li><a data-toggle="tab" href="#">Menu 3</a></li>
+    </ul>
+    <br>
     <?php
     $con = mysqli_connect('localhost', 'root', '');
     mysqli_select_db($con, 'test');
@@ -148,4 +153,5 @@
 <script>
     productsPaggination(<?php echo $numberOfPages; ?>);
     getSubcategoryForAdminUpdate(<?php echo $isAdmin ? 1 : 0; ?>, <?php echo $numberOfProducts; ?>);
+    loadSortOptions();
 </script>

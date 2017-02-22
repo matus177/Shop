@@ -5,6 +5,7 @@ function sortProductByLowestPrice() {
     });
     list.find('li').remove();
     list.append(listItems);
+    saveSortOption('lowest_price');
 }
 
 function sortProductByHighestPrice() {
@@ -14,6 +15,7 @@ function sortProductByHighestPrice() {
     });
     list.find('li').remove();
     list.append(listItems);
+    saveSortOption('highest_price');
 }
 
 function sortProductByStock() {
@@ -76,6 +78,39 @@ function numberOfOrdersIcon() {
                     $(".logout_orders").append(' <button type="button" class="btn btn-default btn-xs"><span class="badge">' + response + '</span></button>');
                 } else {
                     $(".logout_orders").append(' <button type="button" class="btn btn-danger btn-xs"><span class="badge">' + response + '</span></button>');
+                }
+            }
+        });
+    });
+}
+
+function saveSortOption(sortOption) {
+    $.ajax({
+        url: window.location.origin + '/Shop/Product/saveSortProduct',
+        type: 'GET',
+        data: {sort_options: sortOption},
+        success: function () {
+
+        }
+    });
+}
+
+function loadSortOptions() {
+    $(document).ready(function () {
+        $.ajax({
+            url: window.location.origin + '/Shop/Product/loadSortProduct',
+            type: 'GET',
+            success: function (response) {
+                switch (response) {
+                    case 'default_sort':
+                        $('.default_sort').trigger('click').addClass('active');
+                        break;
+                    case 'lowest_price':
+                        $('.lowest_price').trigger('click').addClass('active');
+                        break;
+                    case 'highest_price':
+                        $('.highest_price').trigger('click').addClass('active');
+                        break;
                 }
             }
         });

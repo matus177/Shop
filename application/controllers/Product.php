@@ -29,4 +29,20 @@ class Product extends MY_Controller {
         $this->load->view('ProductView', array('isAdmin' => ($this->encryption->decrypt($this->session->role) == 'Admin'), 'searchTerm' => $searchTerm, 'subCategoryId' => $subCategoryId, 'resultPerPage' => $resultPerPage));
         $this->load->view('FooterView');
     }
+
+    public function loadSortProduct()
+    {
+        if (array_key_exists('sort_options', $this->session->get_userdata()))
+        {
+            echo $this->session->get_userdata()['sort_options'];
+        } else
+        {
+            echo 'default_sort';
+        }
+    }
+
+    public function saveSortProduct()
+    {
+        $this->session->set_userdata($this->input->get());
+    }
 }
