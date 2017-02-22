@@ -77,35 +77,38 @@ class Admin extends MY_Controller {
             $config['remove_spaces'] = TRUE;
             $this->load->library('upload', $config);
             $this->upload->initialize($config);
-            $this->upload->do_upload('product_image');
-            if ($this->upload->data('file_name') != '')
+            if ($this->upload->do_upload('product_image'))
             {
-                $request['product_image'] = $this->upload->data('file_name');
-            }
-
-            $productQuantity = $request['product_quantity'];
-            $request['product_id'] = $this->ProductModel->insertProduct($request);
-            if ($this->db->affected_rows() == 1)
-            {
-                foreach ($request as $key => $value)
+                if ($this->upload->data('file_name') != '')
                 {
-                    if ($key != 'product_id')
+                    $request['product_image'] = $this->upload->data('file_name');
+                }
+
+                $productQuantity = $request['product_quantity'];
+                $request['product_id'] = $this->ProductModel->insertProduct($request);
+                if ($this->db->affected_rows() == 1)
+                {
+                    foreach ($request as $key => $value)
                     {
-                        unset($request[$key]);
+                        if ($key != 'product_id')
+                        {
+                            unset($request[$key]);
+                        }
                     }
-                }
 
-                for ($i = 1; $i <= $productQuantity; $i++)
-                {
-                    $this->ProductModel->insertProductToStorage($request);
+                    for ($i = 1; $i <= $productQuantity; $i++)
+                    {
+                        $this->ProductModel->insertProductToStorage($request);
+                    }
+                    $this->session->set_flashdata('category_success', 'Produkt bol vytvoreny.');
                 }
-                $this->session->set_flashdata('category_success', 'Produkt bol vytvoreny.');
+            } else
+            {
+                $this->session->set_flashdata('category_danger', 'Produkt nebol vytvoreny.');
+                $this->session->set_flashdata('category_danger', $this->upload->display_errors());
             }
-        } else
-        {
-            $this->session->set_flashdata('category_danger', 'Produkt nebol vytvoreny.');
+            redirect(base_url('Admin/index/AdminAddProductView'));
         }
-        redirect(base_url('Admin/index/AdminAddProductView'));
     }
 
     public function getSubCategoryDropdown()
@@ -126,36 +129,41 @@ class Admin extends MY_Controller {
         $config['remove_spaces'] = TRUE;
         $this->load->library('upload', $config);
         $this->upload->initialize($config);
-        $this->upload->do_upload('product_image');
-        if ($this->upload->data('file_name') != '')
+        if ($this->upload->do_upload('product_image'))
         {
-            $_POST['product_image'] = $this->upload->data('file_name');
-        }
-
-        $productQuantity = $this->input->post('product_quantity') - $this->ProductModel->selectProduct(array('id' => $productId))[0]->product_quantity;
-        $this->db->trans_start();
-        $this->ProductModel->updateProduct($productId, $this->input->post());
-        $this->db->trans_complete();
-
-        if ($this->db->trans_status())
-        {
-            if ($productQuantity > 0)
+            if ($this->upload->data('file_name') != '')
             {
-                for ($i = 1; $i <= $productQuantity; $i++)
+                $_POST['product_image'] = $this->upload->data('file_name');
+            }
+
+            $productQuantity = $this->input->post('product_quantity') - $this->ProductModel->selectProduct(array('id' => $productId))[0]->product_quantity;
+            $this->db->trans_start();
+            $this->ProductModel->updateProduct($productId, $this->input->post());
+            $this->db->trans_complete();
+
+            if ($this->db->trans_status())
+            {
+                if ($productQuantity > 0)
                 {
-                    $this->ProductModel->insertProductToStorage(array('product_id' => $productId));
+                    for ($i = 1; $i <= $productQuantity; $i++)
+                    {
+                        $this->ProductModel->insertProductToStorage(array('product_id' => $productId));
+                    }
+                } else
+                {
+                    for ($i = 1; $i <= abs($productQuantity); $i++)
+                    {
+                        $this->ProductModel->deleteProductFromStorage(array('product_id' => $productId, 'flag' => 'A'));
+                    }
                 }
+                $this->session->set_flashdata('category_success', 'Produkt bol aktualizovany.');
             } else
             {
-                for ($i = 1; $i <= abs($productQuantity); $i++)
-                {
-                    $this->ProductModel->deleteProductFromStorage(array('product_id' => $productId, 'flag' => 'A'));
-                }
+                $this->session->set_flashdata('category_danger', 'Produkt nebol aktualizovany.');
             }
-            $this->session->set_flashdata('category_success', 'Produkt bol aktualizovany.');
         } else
         {
-            $this->session->set_flashdata('category_danger', 'Produkt nebol aktualizovany.');
+            $this->session->set_flashdata('category_danger', $this->upload->display_errors());
         }
         redirect($_SERVER['HTTP_REFERER']);
     }
