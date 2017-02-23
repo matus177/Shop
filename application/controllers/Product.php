@@ -34,10 +34,10 @@ class Product extends MY_Controller {
     {
         if (array_key_exists('sort_options', $this->session->get_userdata()))
         {
-            echo $this->session->get_userdata()['sort_options'];
+            echo json_encode(['price' => $this->session->get_userdata()['sort_options']['price'], 'stock' => $this->session->get_userdata()['sort_options']['stock']]);
         } else
         {
-            echo 'default_sort';
+            echo json_encode(['price' => 'favorite_sort', 'stock' => 'false']);
         }
     }
 

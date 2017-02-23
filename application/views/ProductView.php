@@ -24,12 +24,12 @@
         </div>
     </div>
     <ul class="nav nav-tabs">
-        <li class="default_sort"><a data-toggle="tab" href="#home">Home</a></li>
+        <li class="favorite_sort" onclick="sortProductByFavorite()"><a data-toggle="tab" href="#">Najpredavanejsie</a>
+        </li>
         <li class="lowest_price" onclick="sortProductByLowestPrice();"><a data-toggle="tab" href="#">Najlacnejsie</a>
         </li>
         <li class="highest_price" onclick="sortProductByHighestPrice();"><a data-toggle="tab" href="#">Najdrahsie</a>
         </li>
-        <li><a data-toggle="tab" href="#">Menu 3</a></li>
     </ul>
     <br>
     <?php
@@ -151,7 +151,7 @@
     <?php } ?>
 </div>
 <script>
+    loadSortOptions();
     productsPaggination(<?php echo $numberOfPages; ?>);
     getSubcategoryForAdminUpdate(<?php echo $isAdmin ? 1 : 0; ?>, <?php echo $numberOfProducts; ?>);
-    loadSortOptions();
 </script>
