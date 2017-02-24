@@ -26,16 +26,18 @@
     <ul class="nav nav-tabs">
         <li class="favorite_sort" onclick="sortProductByFavorite()"><a data-toggle="tab" href="#">Najpredavanejsie</a>
         </li>
-        <li class="lowest_price" onclick="sortProductByLowestPrice();"><a data-toggle="tab" href="#">Najlacnejsie</a>
+        <li class="lowest_price" onclick="sortProductByLowestPrice();"><a
+                    href="<?php echo base_url('Product/index/') . $subCategoryId . '/' . $resultPerPage . '/ASC?page=1'; ?>">Najlacnejsie</a>
         </li>
-        <li class="highest_price" onclick="sortProductByHighestPrice();"><a data-toggle="tab" href="#">Najdrahsie</a>
+        <li class="highest_price" onclick="sortProductByHighestPrice();"><a
+                    href="<?php echo base_url('Product/index/') . $subCategoryId . '/' . $resultPerPage . '/DESC?page=1'; ?>">Najdrahsie</a>
         </li>
     </ul>
     <br>
     <?php
     $con = mysqli_connect('localhost', 'root', '');
     mysqli_select_db($con, 'test');
-    $sql = "SELECT * FROM products WHERE subcategory_id = " . $subCategoryId;
+    $sql = "SELECT * FROM products WHERE subcategory_id = " . $subCategoryId . " ORDER BY product_price " . $sort;
     $result = mysqli_query($con, $sql);
     $numberOfProducts = mysqli_num_rows($result);
     $numberOfPages = ceil($numberOfProducts / $resultPerPage);
@@ -51,10 +53,10 @@
     if ($searchTerm)
     {
         $like = implode(' OR ', $searchTerm);
-        $sql = "SELECT * FROM products WHERE subcategory_id = " . $subCategoryId . " AND " . $like . " LIMIT " . $pageFirstResult . ", " . $resultPerPage;
+        $sql = "SELECT * FROM products WHERE subcategory_id = " . $subCategoryId . " AND " . $like . " ORDER BY product_price " . $sort . " LIMIT " . $pageFirstResult . ", " . $resultPerPage;
     } else
     {
-        $sql = "SELECT * FROM products WHERE subcategory_id = " . $subCategoryId . " LIMIT " . $pageFirstResult . ", " . $resultPerPage;
+        $sql = "SELECT * FROM products WHERE subcategory_id = " . $subCategoryId . " ORDER BY product_price " . $sort . " LIMIT " . $pageFirstResult . ", " . $resultPerPage;
     }
 
     $result = mysqli_query($con, $sql);
@@ -139,7 +141,7 @@
             {
                 ?>
                 <a id="<?php echo $i; ?>"
-                   href="<?php echo base_url('Product/index/') . $subCategoryId . '/' . $resultPerPage . '?page=' . $i; ?>"><?php echo $i . ' '; ?></a>
+                   href="<?php echo base_url('Product/index/') . $subCategoryId . '/' . $resultPerPage . '/' . $sort . '?page=' . $i; ?>"><?php echo $i . ' '; ?></a>
                 <?php
             }
             ?>

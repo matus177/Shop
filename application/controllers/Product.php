@@ -6,7 +6,7 @@ class Product extends MY_Controller {
         parent::__construct();
     }
 
-    public function index($subCategoryId, $resultPerPage = 10)
+    public function index($subCategoryId, $resultPerPage = 10, $sort = '')
     {
         $searchTerm = FALSE;
         if ($this->input->post('product_description'))
@@ -26,7 +26,7 @@ class Product extends MY_Controller {
         $this->load->view('HeaderView');
         $this->load->view('UpperMenuView');
         $this->load->view('LeftMenuView');
-        $this->load->view('ProductView', array('isAdmin' => ($this->encryption->decrypt($this->session->role) == 'Admin'), 'searchTerm' => $searchTerm, 'subCategoryId' => $subCategoryId, 'resultPerPage' => $resultPerPage));
+        $this->load->view('ProductView', array('isAdmin' => ($this->encryption->decrypt($this->session->role) == 'Admin'), 'searchTerm' => $searchTerm, 'subCategoryId' => $subCategoryId, 'resultPerPage' => $resultPerPage, 'sort' => $sort));
         $this->load->view('FooterView');
     }
 
