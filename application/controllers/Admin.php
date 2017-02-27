@@ -120,7 +120,7 @@ class Admin extends MY_Controller {
 
     public function updateProduct($productId)
     {
-        $config['file_name'] = str_replace(" ", "_", $_FILES["userfiles"]['product_image']);
+        $config['file_name'] = str_replace(" ", "_", $_FILES['userfiles']['product_image']);
         $config['upload_path'] = './assets/img/';
         $config['allowed_types'] = 'gif|jpg|png';
         $config['max_size'] = 100;
@@ -129,41 +129,49 @@ class Admin extends MY_Controller {
         $config['remove_spaces'] = TRUE;
         $this->load->library('upload', $config);
         $this->upload->initialize($config);
-        if ($this->upload->do_upload('product_image'))
+
+
+        if ($_FILES['product_image']['size'] != 0)
         {
-            if ($this->upload->data('file_name') != '')
+            if ( ! $this->upload->do_upload('product_image'))
             {
-                $_POST['product_image'] = $this->upload->data('file_name');
+                $this->session->set_flashdata('category_danger', $this->upload->display_errors());
+                redirect($_SERVER['HTTP_REFERER']);
             }
+        }
 
-            $productQuantity = $this->input->post('product_quantity') - $this->ProductModel->selectProduct(array('id' => $productId))[0]->product_quantity;
-            $this->db->trans_start();
-            $this->ProductModel->updateProduct($productId, $this->input->post());
-            $this->db->trans_complete();
-
-            if ($this->db->trans_status())
-            {
-                if ($productQuantity > 0)
-                {
-                    for ($i = 1; $i <= $productQuantity; $i++)
-                    {
-                        $this->ProductModel->insertProductToStorage(array('product_id' => $productId));
-                    }
-                } else
-                {
-                    for ($i = 1; $i <= abs($productQuantity); $i++)
-                    {
-                        $this->ProductModel->deleteProductFromStorage(array('product_id' => $productId, 'flag' => 'A'));
-                    }
-                }
-                $this->session->set_flashdata('category_success', 'Produkt bol aktualizovany.');
-            } else
-            {
-                $this->session->set_flashdata('category_danger', 'Produkt nebol aktualizovany.');
-            }
+        if ($this->upload->data('file_name') == '')
+        {
+            $_POST['product_image'] = 'no_photo.jpg';
         } else
         {
-            $this->session->set_flashdata('category_danger', $this->upload->display_errors());
+            $_POST['product_image'] = $this->upload->data('file_name');
+        }
+
+        $productQuantity = $this->input->post('product_quantity') - $this->ProductModel->selectProduct(array('id' => $productId))[0]->product_quantity;
+        $this->db->trans_start();
+        $this->ProductModel->updateProduct($productId, $this->input->post());
+        $this->db->trans_complete();
+
+        if ($this->db->trans_status())
+        {
+            if ($productQuantity > 0)
+            {
+                for ($i = 1; $i <= $productQuantity; $i++)
+                {
+                    $this->ProductModel->insertProductToStorage(array('product_id' => $productId));
+                }
+            } else
+            {
+                for ($i = 1; $i <= abs($productQuantity); $i++)
+                {
+                    $this->ProductModel->deleteProductFromStorage(array('product_id' => $productId, 'flag' => 'A'));
+                }
+            }
+            $this->session->set_flashdata('category_success', 'Produkt bol aktualizovany.');
+        } else
+        {
+            $this->session->set_flashdata('category_danger', 'Produkt nebol aktualizovany.');
         }
         redirect($_SERVER['HTTP_REFERER']);
     }
