@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hostiteľ: 127.0.0.1
--- Čas generovania: Út 21.Feb 2017, 14:17
+-- Čas generovania: Po 27.Feb 2017, 16:12
 -- Verzia serveru: 5.7.14
 -- Verzia PHP: 5.6.25
 
@@ -4312,7 +4312,10 @@ VALUES
    '320d4656b0c78c4dd3158180334abf86318febdb39cc165688f42c7b09bf92a836e31a4061c788920c4a5ddf33f86cd999afdf73bc7dc68bb8dab030dd468972ptpcyhfXzEtvWLVLAtmv6dL62Hw/KRywm5rgvde7aHk='),
   (9, '', '', '', '',
    '2d96db469d71feb192bfa083f3f7ba8d84c993469cc0d9112311fb76362693374db7a8c0248c4f774fe2200d4c870047ba1d60a1bcbbf869874f99220375f452jd5ZMWMFbzhpUa/+3WXaNvurn1mNiOh4mWPElu2rBV8=',
-   '51e974b148a8503e2d8dbc17e7c3a16192ce1f7502da452852190b68b94fe277367f30456924b3a46cb08731455bb83a918ff0c9efd2c784fbde6b590db34b26A/aVeySCVhEL+p9VrEDjhPeUJ4+n1DxJ0WTIfU+wcbE=');
+   '51e974b148a8503e2d8dbc17e7c3a16192ce1f7502da452852190b68b94fe277367f30456924b3a46cb08731455bb83a918ff0c9efd2c784fbde6b590db34b26A/aVeySCVhEL+p9VrEDjhPeUJ4+n1DxJ0WTIfU+wcbE='),
+  (10, '', '', '', '',
+   '79069c60987ba6188e04e92ad81c75ec6481cb6c07697d33723bbfdfb23867defc72565642ed82a48ee3baaca400ccf54eeb3a121726bb774dc0d8d859a8cc4bT1ac0mlNo0nUtC5tLIMB8BEkzJ95YjXu5wBBjA2OT5o=',
+   '465db400fd462c6f4e527fa2772bd329649cbc8384f709fa3c50ae30cad93cbd82681705de652c256c5db42a62b2cdde9d63f4f99a4df2fdb90da9a2f68fb5e4xEbKeNtGXyGoMXCnsXf+ou96Oc+QS7c9b7tywcgxTQ4=');
 
 -- --------------------------------------------------------
 
@@ -4356,6 +4359,10 @@ VALUES
   (9,
    'a5202f1b89aa87750a415d88a832afce5cd8afba0651ffef3a92a94ce219c87928207edd656977b7327f5824a772a8ca11976e0d22127bc4820aac3525647649Z7yh0KO3TqkqVh2+TQUgvXLURXtgkDGU6ZMwnJM196E=',
    '22812f2c2dd4498ff993142179147859a5b2610e0949e6defec44fc65581d88fbcd0502051c5002bfc93115d07605b48eedbefb581dca40af9fcaa7023d49fd8A/Hv1XaAXvAB+R2fEn48/fRQISeghe9U57WAYSky3Fk=',
+   '', '', '', '', '', '+421'),
+  (10,
+   '928e1c47b78d7e75082268ac4bebe323e5344b888284d874ac5c20e9304382a415aeb8a7678cf75f4898026564c5f96875fe3639809f81a51fb0db9926f41a744rFrkfFFNPxaHWzv8RZnlYVugmQvG4wudB9CM55JuzU=',
+   'f6a7f212853a540bb2aa24ab502bd08cb313c62aaf72e3ad1d4341d50fd8ea86d91d8d41ea443a1b83d38909c368e9394b92e2c7fa8536d03874db495fbdc584l6KWTdf8JYDcQ/0BGxEJKiNP5aiFvTec/xPXwgSLKZE=',
    '', '', '', '', '', '+421');
 
 -- --------------------------------------------------------
@@ -4386,6 +4393,9 @@ INSERT INTO `login` (`id`, `email`, `password`, `role`) VALUES
    '1f40fc92da241694750979ee6cf582f2d5d7d28e18335de05abc54d0560e0f5302860c652bf08d560252aa5e74210546f369fbbbce8c12cfc7957b2652fe9a75',
    'Admin'),
   (9, 'aa@a.sk',
+   '1f40fc92da241694750979ee6cf582f2d5d7d28e18335de05abc54d0560e0f5302860c652bf08d560252aa5e74210546f369fbbbce8c12cfc7957b2652fe9a75',
+   'Buser'),
+  (10, 'soldier1994@azet.sk',
    '1f40fc92da241694750979ee6cf582f2d5d7d28e18335de05abc54d0560e0f5302860c652bf08d560252aa5e74210546f369fbbbce8c12cfc7957b2652fe9a75',
    'Buser');
 
@@ -4621,7 +4631,15 @@ VALUES
   (192, 'success', 8, '22', '33', '::1', 'Chrome 56.0.2924.87', 'Windows 7', '2017-02-20 10:52:45', '', ''),
   (193, 'success', 8, '22', '33', '::1', 'Chrome 56.0.2924.87', 'Windows 7', '2017-02-21 09:48:42', '', ''),
   (194, 'success', 8, '22', '33', '::1', 'Chrome 56.0.2924.87', 'Windows 7', '2017-02-21 14:52:46', '', ''),
-  (195, 'success', 8, '22', '33', '::1', 'Chrome 56.0.2924.87', 'Windows 7', '2017-02-21 15:00:15', '', '');
+  (195, 'success', 8, '22', '33', '::1', 'Chrome 56.0.2924.87', 'Windows 7', '2017-02-21 15:00:15', '', ''),
+  (196, 'success', 10, 'w', 'w', '::1', 'Chrome 56.0.2924.87', 'Windows 7', '2017-02-21 15:37:13', '', ''),
+  (197, 'success', 8, '22', '33', '::1', 'Chrome 56.0.2924.87', 'Windows 7', '2017-02-21 15:38:20', '', ''),
+  (198, 'success', 10, 'w', 'w', '::1', 'Chrome 56.0.2924.87', 'Windows 7', '2017-02-21 15:38:49', '', ''),
+  (199, 'success', 8, '22', '33', '::1', 'Chrome 56.0.2924.87', 'Windows 7', '2017-02-22 10:35:13', '', ''),
+  (200, 'success', 8, '22', '33', '::1', 'Chrome 56.0.2924.87', 'Windows 7', '2017-02-22 14:50:13', '', ''),
+  (201, 'success', 8, '22', '33', '::1', 'Chrome 56.0.2924.87', 'Windows 7', '2017-02-24 09:38:25', '', ''),
+  (202, 'success', 8, '22', '33', '::1', 'Chrome 56.0.2924.87', 'Windows 7', '2017-02-27 08:12:02', '', ''),
+  (203, 'success', 8, '22', '33', '::1', 'Chrome 56.0.2924.87', 'Windows 7', '2017-02-27 14:06:09', '', '');
 
 -- --------------------------------------------------------
 
@@ -4661,7 +4679,11 @@ VALUES
   (9,
    'c7efaac75aa14dbb753ce8586ae41cb9987770d5131462e0cfdd62b030a8fe03a896a22d25ce87ce19915fcdaf252a2a17f9e6ee467c3777d1ab2060b6d6b5f6CydRu9tgC+A3csMNnnk804+2lgeu1/wS+0lYa8Vljgc=',
    'c38827d5745e2a521f14412bf761ca86d88f197489075ae76bcde6048ba779a4bf449e14fbc0c494ea7423917dd852debfcfb673410af4f373e6aaa22aee654d/haWaXIFg0M6O+8NvIk05RvQl6P8yafBeP4wOObYjOg=',
-   'A. Dvořáka', 'Abrahám', '925 45', '+421 222 222 222');
+   'A. Dvořáka', 'Abrahám', '925 45', '+421 222 222 222'),
+  (10,
+   '13ba10327f7ce68b6d195a350743db35623aec02518d1858b194b77b6422e24d76762e576bb111a7e56e33e6fc1b6806e346a9ccac4ac6c266a02dfd87f774b47JUYowSlN36+bEj1lS69YScpFVazd5rzHHHtpdGD7Fc=',
+   '96974a52e96684c4aa8a5bdce5410b425b817a890b5cfea4428f38a97f8e16deda0f32bedc7f9bbd0e52a4124c8bf7c7175b329f3828827a0eb6d881a87d29f0hoXfBVQRJtf1S3KqQgxtH9Ywp3DJ5mJFHORRVfJVglk=',
+   'Watsonova', 'Egreš', '075 01', '+421 222 222 222');
 
 -- --------------------------------------------------------
 
@@ -4692,12 +4714,24 @@ CREATE TABLE `products` (
 
 INSERT INTO `products` (`id`, `subcategory_id`, `product_name`, `product_description`, `product_price_dph`, `product_price`, `product_quantity`, `product_image`)
 VALUES
-  (140, 16, 'Lenovo', 'Herny', 2.67, 16, 4, 'pc.jpg'),
-  (141, 16, 'HP', 'Laser', 1.67, 10, 2, 'prin_ter.jpg'),
-  (142, 16, 'aa', 'aa', 20.5, 123, 0, 'no_photo.jpg'),
-  (144, 16, 'f', 'f', 0.17, 1, 1, 'no_photo.jpg'),
-  (146, 16, 'ui', 'u', 83.33, 500, 1, 'no_photo.jpg'),
-  (147, 16, 'p', 'u', 0.33, 2, 1, 'no_photo.jpg');
+  (140, 16, 'Lenovo Miix 300-10IBY Black 64 GB + dock s klávesnicou + 32SDHC',
+   'Tablet PC - Intel Atom Quad Core Z3735F, kapacitný multidotykový IPS 10,1" LED 1280 x 800, Intel HD Graphics, RAM 2 GB, 64 GB eMMC, WiFi, bluetooth 4.0, webkamera 2 Mpx + 5 Mpx, 2-článková batéria, Windows 10 Home 32-bit + MS Office Mobile',
+   31.5, 189, 3, 'no_photo.jpg'),
+  (141, 16, 'Lenovo IdeaCentre 700-24ISH White',
+   'All In One PC - 23.8" 3840x2160, Intel Core i5 6400 Skylake, RAM 8GB DDR4 SDRAM, NVIDIA GeForce GTX 950A 4GB, SSD 128GB + HDD 1TB 7200 otáčok, WiFi 802.11ac, Bluetooth 4.0, NFC, webkamera, HDMI, USB 3.0, bezdrôtová klávesnica a myš, reproduktory, Windows ',
+   43.15, 258.9, 2, 'no_photo.jpg'),
+  (142, 16, 'Samsung Galaxy Tab E 9.6 WiFi čierny (SM-T560)',
+   'Tablet - Quad-Core 1.3Ghz, 9.6" 1280 x 800, RAM 1.5 GB, interná pamäť 8 GB, microSDXC až 128 GB, fotoaparát predný 2 Mpx + zadný 5 Mpx, GPS, WiFi, bluetooth 4.1, microUSB, batéria 5000 mAh, Android 4.4',
+   24.82, 148.9, 0, 'no_photo.jpg'),
+  (144, 16, 'Lenovo ThinkPad E550 Black',
+   'Notebook - Intel Core i3 4005 Haswell, 15,6" LED 1366x768 antireflexná, RAM 4GB, Intel HD Graphics 4400, HDD 500GB 7200 otáčok, DVD, WiFi, bluetooth 4.0, HD webkamera, HDMI, USB 3.0, čítačka odtlačkov prstov, dokovatelný, 6 článková batéria , Windows 10 P',
+   73.33, 440, 1, 'no_photo.jpg'),
+  (146, 16, 'Lenovo IdeaCentre Y700 Gaming',
+   'Počítač - Intel Core i5 6600 Skylake, RAM 8GB DDR4, NVIDIA GeForce GTX 960 2GB, SSHD 1TB + 8GB cache na zrýchlenie chodu OS, DVD, WiFi, čítačka kariet, Windows 10 Home 64-bit',
+   136.5, 819, 1, 'no_photo.jpg'),
+  (147, 16, 'MacBook Air 13" CZ 2016',
+   '- Intel Core i5 1.6GHz Broadwell, 13,3" LED 1440×900, RAM 8GB, Intel HD Graphics 6000, SSD 128 GB, Wi-Fi 802.11ac, BlueTooth 4.0, Webkamera, USB 3.0, 1× Thunderbolt port, podsvietená klávesnica, MAC OS X El Capitan',
+   176.5, 1059, 1, 'no_photo.jpg');
 
 -- --------------------------------------------------------
 
@@ -4721,7 +4755,7 @@ CREATE TABLE `storage` (
 
 INSERT INTO `storage` (`id`, `product_id`, `flag`) VALUES
   (194, 140, 'S'),
-  (195, 140, 'A'),
+  (195, 140, 'S'),
   (196, 140, 'A'),
   (197, 140, 'A'),
   (198, 140, 'A'),
@@ -10358,12 +10392,12 @@ CREATE TABLE `tax_prices` (
 
 INSERT INTO `tax_prices` (`id`, `product_id`, `product_price`, `dph`, `personal_price`, `courier`, `slovak_post`, `dobierka`, `cash`, `card`)
 VALUES
-  (80, 140, 16, 6, 1, 6, 3.5, 3.5, 0, 0),
-  (81, 141, 10, 6, 1, 6, 3.5, 3.5, 0, 0),
-  (82, 142, 123, 6, 1, 6, 3.5, 3.5, 0, 0),
-  (83, 144, 1, 6, 1, 6, 3.5, 3.5, 0, 0),
-  (84, 146, 500, 6, 1, 6, 3.5, 3.5, 0, 0),
-  (85, 147, 2, 6, 1, 6, 3.5, 3.5, 0, 0);
+  (80, 140, 189, 6, 1, 6, 3.5, 3.5, 0, 0),
+  (81, 141, 258.9, 6, 1, 6, 3.5, 3.5, 0, 0),
+  (82, 142, 148.9, 6, 1, 6, 3.5, 3.5, 0, 0),
+  (83, 144, 440, 6, 1, 6, 3.5, 3.5, 0, 0),
+  (84, 146, 819, 6, 1, 6, 3.5, 3.5, 0, 0),
+  (85, 147, 1059, 6, 1, 6, 3.5, 3.5, 0, 0);
 
 --
 -- Spúšťače `tax_prices`
@@ -10451,9 +10485,10 @@ CREATE TABLE `user_orders_login` (
 
 INSERT INTO `user_orders_login` (`id`, `user_id`, `product_id`, `subtotal`, `qty`, `price`, `name`, `shipping_options`, `payment_options`, `delivery_price`, `date`, `status`)
 VALUES
-  (159, 8, 123, 246, 2, 123, 'AAAAA', 'osobny odber', 'kartou', 1, '2017-01-31 10:14:44', 'odosielanie'),
+  (159, 8, 123, 246, 2, 123, 'AAAAA', 'osobny odber', 'kartou', 1, '2017-01-31 10:14:44', 'hotovo'),
   (160, 8, 119, 23, 1, 23, 'vykon ', 'osobny odber', 'kartou', 1, '2017-01-31 10:14:44', 'hotovo'),
-  (161, 8, 140, 16, 1, 16, 'Lenovo', 'osobny odber', 'dobierkou', 0, '2017-02-20 13:55:07', 'prijate');
+  (161, 8, 140, 16, 1, 16, 'Lenovo', 'osobny odber', 'dobierkou', 0, '2017-02-20 13:55:07', 'hotovo'),
+  (162, 10, 140, 16, 1, 16, 'Lenovo', 'postou', 'dobierkou', 7, '2017-02-21 14:37:54', 'hotovo');
 
 -- --------------------------------------------------------
 
@@ -10536,7 +10571,7 @@ VALUES
     'A. Dvořáka', 'Abrahámovce', '059 72', '+421 222 222 222',
     '1ffba56a9ae07d4324c2d7a78bab700f8359dc56bdcd8934263bc691ad630d4925492ef3610c99dc56e45f8f969aa54b8b8a0ba13f33861168dad914b4b83746jhms6u/gkzSVflC8c09gMgZ8Pui2lNJTNBiWXZy/LOM=',
     '92b0a7224ff3ae610e020f1e5a73e24a0021a5ac597d3fca5f0ef2804d9e9ab649e7c39f8d8e83fdf01077d661f29310f544515f0db044c4e5b6e9b14d62762bg+gjiqtTw4Y0/Yt4dXWiTEIkZaQ9yZpLCh2xsqHyuN8=',
-    '', '', '', '', '', '+421', '', '', '', '', '', '', 'soldier1994@azet.sk', '2017-02-01 13:12:32', 'odosielanie'),
+    '', '', '', '', '', '+421', '', '', '', '', '', '', 'soldier1994@azet.sk', '2017-02-01 13:12:32', 'hotovo'),
   (2, 119, 'vykon ', 1, 23, 23, 'kurierom', 'dobierkou', 9.5,
       'b7c5d42f079eff91f9740cd1ef27f2fa75b8282bd43d1e1eae8af08ba7f3aeae678e5fc85dce82faa9881904e9b20b82b07aa23e73a6c0ca223c38aebb277ec0QVsuolgLdEs17kK+7E1tYx34ntftzXkC161hog8zRQ8=',
       'adae3a29b6ec482ced3ab09f7b99d0866b5bae2e3015c73ad9677a488c6e8ed2f2010d810f701623442a70e8ba01245fd53050c15841ed669d5ba3528f621758ii6AgU/Jn/h9QYMttehtfxSFqh9mVwgXjCl3AIgFlhg=',
@@ -10677,31 +10712,31 @@ ALTER TABLE `cities`
 --
 ALTER TABLE `company_data`
   MODIFY `id` INT(11) NOT NULL AUTO_INCREMENT,
-  AUTO_INCREMENT = 10;
+  AUTO_INCREMENT = 11;
 --
 -- AUTO_INCREMENT pre tabuľku `delivery_data`
 --
 ALTER TABLE `delivery_data`
   MODIFY `id` INT(11) NOT NULL AUTO_INCREMENT,
-  AUTO_INCREMENT = 10;
+  AUTO_INCREMENT = 11;
 --
 -- AUTO_INCREMENT pre tabuľku `login`
 --
 ALTER TABLE `login`
   MODIFY `id` INT(11) NOT NULL AUTO_INCREMENT,
-  AUTO_INCREMENT = 10;
+  AUTO_INCREMENT = 11;
 --
 -- AUTO_INCREMENT pre tabuľku `logs`
 --
 ALTER TABLE `logs`
   MODIFY `id` INT(11) NOT NULL AUTO_INCREMENT,
-  AUTO_INCREMENT = 196;
+  AUTO_INCREMENT = 204;
 --
 -- AUTO_INCREMENT pre tabuľku `personal_data`
 --
 ALTER TABLE `personal_data`
   MODIFY `id` INT(11) NOT NULL AUTO_INCREMENT,
-  AUTO_INCREMENT = 10;
+  AUTO_INCREMENT = 11;
 --
 -- AUTO_INCREMENT pre tabuľku `products`
 --
@@ -10737,7 +10772,7 @@ ALTER TABLE `tax_prices`
 --
 ALTER TABLE `user_orders_login`
   MODIFY `id` INT(11) NOT NULL AUTO_INCREMENT,
-  AUTO_INCREMENT = 162;
+  AUTO_INCREMENT = 163;
 --
 -- AUTO_INCREMENT pre tabuľku `user_orders_logout`
 --
