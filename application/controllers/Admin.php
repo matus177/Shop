@@ -84,36 +84,35 @@ class Admin extends MY_Controller {
                     redirect(base_url('Admin/index/AdminAddProductView'));
                 }
             }
-                if ($this->upload->data('file_name') != '')
+            if ($this->upload->data('file_name') != '')
+            {
+                $request['product_image'] = $this->upload->data('file_name');
+                $config['width'] = 160;
+                $config['height'] = 160;
+                $config['source_image'] = './assets/img/' . $this->upload->data('file_name');
+                $config['create_thumb'] = FALSE;
+                $config['maintain_ratio'] = FALSE;
+                $this->load->library('image_lib', $config);
+                $this->image_lib->resize();
+            }
+            $productQuantity = $request['product_quantity'];
+            $request['product_id'] = $this->ProductModel->insertProduct($request);
+            if ($this->db->affected_rows() == 1)
+            {
+                foreach ($request as $key => $value)
                 {
-                    $request['product_image'] = $this->upload->data('file_name');
-                    $config['width'] = 160;
-                    $config['height'] = 160;
-                    $config['source_image'] = './assets/img/' . $this->upload->data('file_name');
-                    $config['create_thumb'] = FALSE;
-                    $config['maintain_ratio'] = FALSE;
-                    $this->load->library('image_lib', $config);
-                    $this->image_lib->resize();
+                    if ($key != 'product_id')
+                    {
+                        unset($request[$key]);
+                    }
                 }
 
-                $productQuantity = $request['product_quantity'];
-                $request['product_id'] = $this->ProductModel->insertProduct($request);
-                if ($this->db->affected_rows() == 1)
+                for ($i = 1; $i <= $productQuantity; $i++)
                 {
-                    foreach ($request as $key => $value)
-                    {
-                        if ($key != 'product_id')
-                        {
-                            unset($request[$key]);
-                        }
-                    }
-
-                    for ($i = 1; $i <= $productQuantity; $i++)
-                    {
-                        $this->ProductModel->insertProductToStorage($request);
-                    }
-                    $this->session->set_flashdata('category_success', 'Produkt bol vytvoreny.');
+                    $this->ProductModel->insertProductToStorage($request);
                 }
+                $this->session->set_flashdata('category_success', 'Produkt bol vytvoreny.');
+            }
             redirect(base_url('Admin/index/AdminAddProductView'));
         }
     }
