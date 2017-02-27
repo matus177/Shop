@@ -71,17 +71,29 @@ class Admin extends MY_Controller {
             $config['file_name'] = str_replace(" ", "_", $_FILES["userfiles"]['product_image']);
             $config['upload_path'] = './assets/img/';
             $config['allowed_types'] = 'gif|jpg|png';
-            $config['max_size'] = 100;
-            $config['max_width'] = 1024;
-            $config['max_height'] = 768;
+            $config['max_size'] = 200;
             $config['remove_spaces'] = TRUE;
             $this->load->library('upload', $config);
             $this->upload->initialize($config);
-            if ($this->upload->do_upload('product_image'))
+
+            if ($_FILES['product_image']['size'] != 0)
             {
+                if ( ! $this->upload->do_upload('product_image'))
+                {
+                    $this->session->set_flashdata('category_danger', $this->upload->display_errors());
+                    redirect(base_url('Admin/index/AdminAddProductView'));
+                }
+            }
                 if ($this->upload->data('file_name') != '')
                 {
                     $request['product_image'] = $this->upload->data('file_name');
+                    $config['width'] = 160;
+                    $config['height'] = 160;
+                    $config['source_image'] = './assets/img/' . $this->upload->data('file_name');
+                    $config['create_thumb'] = FALSE;
+                    $config['maintain_ratio'] = FALSE;
+                    $this->load->library('image_lib', $config);
+                    $this->image_lib->resize();
                 }
 
                 $productQuantity = $request['product_quantity'];
@@ -102,11 +114,6 @@ class Admin extends MY_Controller {
                     }
                     $this->session->set_flashdata('category_success', 'Produkt bol vytvoreny.');
                 }
-            } else
-            {
-                $this->session->set_flashdata('category_danger', 'Produkt nebol vytvoreny.');
-                $this->session->set_flashdata('category_danger', $this->upload->display_errors());
-            }
             redirect(base_url('Admin/index/AdminAddProductView'));
         }
     }
@@ -123,13 +130,10 @@ class Admin extends MY_Controller {
         $config['file_name'] = str_replace(" ", "_", $_FILES['userfiles']['product_image']);
         $config['upload_path'] = './assets/img/';
         $config['allowed_types'] = 'gif|jpg|png';
-        $config['max_size'] = 100;
-        $config['max_width'] = 1024;
-        $config['max_height'] = 768;
+        $config['max_size'] = 200;
         $config['remove_spaces'] = TRUE;
         $this->load->library('upload', $config);
         $this->upload->initialize($config);
-
 
         if ($_FILES['product_image']['size'] != 0)
         {
@@ -140,12 +144,16 @@ class Admin extends MY_Controller {
             }
         }
 
-        if ($this->upload->data('file_name') == '')
-        {
-            $_POST['product_image'] = 'no_photo.jpg';
-        } else
+        if ($this->upload->data('file_name') != '')
         {
             $_POST['product_image'] = $this->upload->data('file_name');
+            $config['width'] = 160;
+            $config['height'] = 160;
+            $config['source_image'] = './assets/img/' . $this->upload->data('file_name');
+            $config['create_thumb'] = FALSE;
+            $config['maintain_ratio'] = FALSE;
+            $this->load->library('image_lib', $config);
+            $this->image_lib->resize();
         }
 
         $productQuantity = $this->input->post('product_quantity') - $this->ProductModel->selectProduct(array('id' => $productId))[0]->product_quantity;
