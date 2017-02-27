@@ -1,4 +1,4 @@
-<div class="col-md-9">
+﻿<div class="col-md-9">
     <?php $this->load->view('FlashMessagesView'); ?>
     <div class="col-md-12">
         <?php if ($searchTerm)
@@ -37,6 +37,9 @@
     <?php
     $con = mysqli_connect('localhost', 'root', '');
     mysqli_select_db($con, 'test');
+    $con->query("SET NAMES 'utf8'");
+    $con->query("SET CHARACTER SET utf8");
+    $con->query("SET SESSION collation_connection = 'utf8_unicode_ci'");
     $sql = "SELECT * FROM products WHERE subcategory_id = " . $subCategoryId . " ORDER BY product_price " . $sort;
     $result = mysqli_query($con, $sql);
     $numberOfProducts = mysqli_num_rows($result);
