@@ -38,7 +38,7 @@ class Cart extends CI_Controller {
                 'qty' => 1,
                 'price' => $product->product_price,
                 'name' => $product->product_name
-            );
+            );d
         }
 
         if ($isProduct != 0)
