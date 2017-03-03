@@ -9,6 +9,7 @@ class Cart extends CI_Controller {
 
     public function index()
     {
+
         $orderData['orderStep'] = 0;
         $this->load->view('HeaderView');
         $this->load->view('UpperMenuView');
