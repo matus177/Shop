@@ -156,3 +156,28 @@ function loadSortOptions() {
         });
     });
 }
+
+function addRatingStarsToEachProduct(numberOfProduct) {
+    $(document).ready(function () {
+        for (var i = 0; i < numberOfProduct; i++) {
+            for (var j = 1; j <= 5; j++) {
+                $('.rating' + i).append('<span id="' + i + '_' + j + '" class="glyphicon glyphicon-star-empty" onmouseover="fillAndEmptyRatingStars(this.id)" style="font-size: 25px; color: yellow;"></span>');
+            }
+        }
+    });
+}
+
+function fillAndEmptyRatingStars(id) {
+    //fill stars
+    var productOrder = ("" + id).split("_");
+    var userRating = productOrder.pop().toString();
+    for (var i = 1; i <= userRating; i++) {
+        $('#' + (productOrder + '_' + i)).addClass('glyphicon glyphicon-star').removeClass('glyphicon-star-empty');
+    }
+    //empty stars
+    var maxRate = 5;
+    var emptyStar = maxRate - parseInt(userRating);
+    for (var j = 1; j <= emptyStar; j++) {
+        $('#' + (productOrder + '_' + (maxRate--))).addClass('glyphicon glyphicon-star-empty').removeClass('glyphicon-star');
+    }
+}

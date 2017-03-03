@@ -63,9 +63,9 @@
     }
 
     $result = mysqli_query($con, $sql);
+    $productCount = 0;
     if (mysqli_num_rows($result) != 0)
     {
-        $productCount = 0;
         ?>
         <div class="col-md-12" style="padding-left: 0">
             <ul class="list-unstyled" id="products" data-role="list">
@@ -82,7 +82,7 @@
                                 <p><?php echo $product['product_description']; ?></p>
                             </div>
                             <div class="product_footer caption">
-                                <div class="<?php echo 'rating' . $productCount; ?>">
+                                <div class="<?php echo 'rating' . $productCount; ?>" style="text-align: center">
                                 </div>
                                 <?php if ($product['product_quantity'] == 0)
                                 { ?>
@@ -158,12 +158,7 @@
     <?php } ?>
 </div>
 <script>
-
-    for (var i = 0; i < <?php echo $productCount; ?>; i++) {
-        for (var j = 1; j <= 5; j++) {
-            $('.rating' + i).append('<span id="' + i + j + '" class="glyphicon glyphicon-star-empty" onmouseover="myFunction(this.id)" style="font-size: 25px"></span>');
-        }
-    }
+    addRatingStarsToEachProduct(<?php echo $productCount; ?>);
     loadSortOptions();
     productsPaggination(<?php echo $numberOfPages; ?>);
     getSubcategoryForAdminUpdate(<?php echo $isAdmin ? 1 : 0; ?>, <?php echo $numberOfProducts; ?>);
