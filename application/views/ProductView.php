@@ -82,6 +82,8 @@
                                 <p><?php echo $product['product_description']; ?></p>
                             </div>
                             <div class="product_footer caption">
+                                <div class="<?php echo 'rating' . $productCount; ?>">
+                                </div>
                                 <?php if ($product['product_quantity'] == 0)
                                 { ?>
                                     <p style="text-align: center"><span
@@ -156,6 +158,12 @@
     <?php } ?>
 </div>
 <script>
+
+    for (var i = 0; i < <?php echo $productCount; ?>; i++) {
+        for (var j = 1; j <= 5; j++) {
+            $('.rating' + i).append('<span id="' + i + j + '" class="glyphicon glyphicon-star-empty" onmouseover="myFunction(this.id)" style="font-size: 25px"></span>');
+        }
+    }
     loadSortOptions();
     productsPaggination(<?php echo $numberOfPages; ?>);
     getSubcategoryForAdminUpdate(<?php echo $isAdmin ? 1 : 0; ?>, <?php echo $numberOfProducts; ?>);
