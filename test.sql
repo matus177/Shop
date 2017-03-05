@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hostiteľ: 127.0.0.1
--- Čas generovania: Po 27.Feb 2017, 16:12
+-- Čas generovania: Ne 05.Mar 2017, 23:01
 -- Verzia serveru: 5.7.14
 -- Verzia PHP: 5.6.25
 
@@ -4315,7 +4315,10 @@ VALUES
    '51e974b148a8503e2d8dbc17e7c3a16192ce1f7502da452852190b68b94fe277367f30456924b3a46cb08731455bb83a918ff0c9efd2c784fbde6b590db34b26A/aVeySCVhEL+p9VrEDjhPeUJ4+n1DxJ0WTIfU+wcbE='),
   (10, '', '', '', '',
    '79069c60987ba6188e04e92ad81c75ec6481cb6c07697d33723bbfdfb23867defc72565642ed82a48ee3baaca400ccf54eeb3a121726bb774dc0d8d859a8cc4bT1ac0mlNo0nUtC5tLIMB8BEkzJ95YjXu5wBBjA2OT5o=',
-   '465db400fd462c6f4e527fa2772bd329649cbc8384f709fa3c50ae30cad93cbd82681705de652c256c5db42a62b2cdde9d63f4f99a4df2fdb90da9a2f68fb5e4xEbKeNtGXyGoMXCnsXf+ou96Oc+QS7c9b7tywcgxTQ4=');
+   '465db400fd462c6f4e527fa2772bd329649cbc8384f709fa3c50ae30cad93cbd82681705de652c256c5db42a62b2cdde9d63f4f99a4df2fdb90da9a2f68fb5e4xEbKeNtGXyGoMXCnsXf+ou96Oc+QS7c9b7tywcgxTQ4='),
+  (11, '', '', '', '',
+   '4a3021f062eb89fa951ff3c7773c77bd7a74500ac30eb48737ee208ad00ab4d533797615a10a9e7a8467033fa5d8efbc118e512196fdffe1b1f63b2230f522dbtXUihNH9LOPC54xm5XTRm0vafiNh5mStrMdQrI2SzkE=',
+   '4f4608d9a15ae82a7a31f956369c6a8c4f8ab778eaeab152fae4508d7fd32503fe6e1ac12a82c414ab249f6c524baaab76d7a663184057fac4ab0e005fd41c35LAMrZggwcbTUFPLaEI8XPkyLhWkSYIIHWGOMpaRB6PI=');
 
 -- --------------------------------------------------------
 
@@ -4363,6 +4366,10 @@ VALUES
   (10,
    '928e1c47b78d7e75082268ac4bebe323e5344b888284d874ac5c20e9304382a415aeb8a7678cf75f4898026564c5f96875fe3639809f81a51fb0db9926f41a744rFrkfFFNPxaHWzv8RZnlYVugmQvG4wudB9CM55JuzU=',
    'f6a7f212853a540bb2aa24ab502bd08cb313c62aaf72e3ad1d4341d50fd8ea86d91d8d41ea443a1b83d38909c368e9394b92e2c7fa8536d03874db495fbdc584l6KWTdf8JYDcQ/0BGxEJKiNP5aiFvTec/xPXwgSLKZE=',
+   '', '', '', '', '', '+421'),
+  (11,
+   '0d4646990e73f70d48d108d46b5f01b2f7872455bc3598f1bdee4311abd8c17521121833c4548980ada97600f63866a0b79c0bcfc061e4569d098912506e99cbQlM+IV9notK+rQhPoVDBPuZSa6DtSShXyjFSGCXmtiw=',
+   'fa33b42dfb418df5ffdc9351e1ab1d7f0ed3d6bedfe4d2da892f65bb7d42b5e83f5403294de866dcab2ed1b299078d2e0ab07c6cfc2088afeaeb06f4ff209c0aC4L5+vgZpbjgWvIyop4pEcUigFXgw1HpsS7U/rz8oGo=',
    '', '', '', '', '', '+421');
 
 -- --------------------------------------------------------
@@ -4397,6 +4404,9 @@ INSERT INTO `login` (`id`, `email`, `password`, `role`) VALUES
    'Buser'),
   (10, 'soldier1994@azet.sk',
    '1f40fc92da241694750979ee6cf582f2d5d7d28e18335de05abc54d0560e0f5302860c652bf08d560252aa5e74210546f369fbbbce8c12cfc7957b2652fe9a75',
+   'Buser'),
+  (11, 'b@b.sk',
+   '5267768822ee624d48fce15ec5ca79cbd602cb7f4c2157a516556991f22ef8c7b5ef7b18d1ff41c59370efb0858651d44a936c11b7b144c48fe04df3c6a3e8da',
    'Buser');
 
 -- --------------------------------------------------------
@@ -4639,7 +4649,31 @@ VALUES
   (200, 'success', 8, '22', '33', '::1', 'Chrome 56.0.2924.87', 'Windows 7', '2017-02-22 14:50:13', '', ''),
   (201, 'success', 8, '22', '33', '::1', 'Chrome 56.0.2924.87', 'Windows 7', '2017-02-24 09:38:25', '', ''),
   (202, 'success', 8, '22', '33', '::1', 'Chrome 56.0.2924.87', 'Windows 7', '2017-02-27 08:12:02', '', ''),
-  (203, 'success', 8, '22', '33', '::1', 'Chrome 56.0.2924.87', 'Windows 7', '2017-02-27 14:06:09', '', '');
+  (203, 'success', 8, '22', '33', '::1', 'Chrome 56.0.2924.87', 'Windows 7', '2017-02-27 14:06:09', '', ''),
+  (204, 'success', 8, '22', '33', '::1', 'Chrome 56.0.2924.87', 'Windows 10', '2017-02-27 21:22:17', '', ''),
+  (205, 'success', 8, '22', '33', '::1', 'Chrome 56.0.2924.87', 'Windows 10', '2017-02-28 19:44:35', '', ''),
+  (206, 'success', 8, '22', '33', '::1', 'Chrome 56.0.2924.87', 'Windows 10', '2017-02-28 19:46:05', '', ''),
+  (207, 'success', 8, '22', '33', '::1', 'Chrome 56.0.2924.87', 'Windows 10', '2017-02-28 19:47:04', '', ''),
+  (208, 'success', 8, '22', '33', '::1', 'Chrome 56.0.2924.87', 'Windows 10', '2017-02-28 19:47:55', '', ''),
+  (209, 'success', 8, '22', '33', '::1', 'Chrome 56.0.2924.87', 'Windows 10', '2017-02-28 19:49:08', '', ''),
+  (210, 'success', 8, '22', '33', '::1', 'Chrome 56.0.2924.87', 'Windows 10', '2017-02-28 19:53:17', '', ''),
+  (211, 'success', 8, '22', '33', '::1', 'Chrome 56.0.2924.87', 'Windows 10', '2017-02-28 19:54:51', '', ''),
+  (212, 'success', 8, '22', '33', '::1', 'Chrome 56.0.2924.87', 'Windows 10', '2017-02-28 19:55:37', '', ''),
+  (213, 'success', 8, '22', '33', '::1', 'Chrome 56.0.2924.87', 'Windows 10', '2017-02-28 19:56:18', '', ''),
+  (214, 'success', 8, '22', '33', '::1', 'Chrome 56.0.2924.87', 'Windows 10', '2017-02-28 20:30:29', '', ''),
+  (215, 'success', 8, '22', '33', '::1', 'Chrome 56.0.2924.87', 'Windows 10', '2017-02-28 20:31:35', '', ''),
+  (216, 'success', 8, '22', '33', '::1', 'Chrome 56.0.2924.87', 'Windows 10', '2017-02-28 20:33:10', '', ''),
+  (217, 'success', 8, '22', '33', '::1', 'Chrome 56.0.2924.87', 'Windows 10', '2017-02-28 20:35:04', '', ''),
+  (218, 'success', 8, '22', '33', '::1', 'Chrome 56.0.2924.87', 'Windows 10', '2017-02-28 21:59:50', '', ''),
+  (219, 'success', 8, '22', '33', '::1', 'Chrome 56.0.2924.87', 'Windows 10', '2017-02-28 22:00:45', '', ''),
+  (220, 'success', 8, '22', '33', '::1', 'Chrome 56.0.2924.87', 'Windows 10', '2017-02-28 22:01:27', '', ''),
+  (221, 'success', 8, '22', '33', '::1', 'Chrome 56.0.2924.87', 'Windows 10', '2017-02-28 22:02:33', '', ''),
+  (222, 'success', 8, '22', '33', '::1', 'Chrome 56.0.2924.87', 'Windows 10', '2017-03-03 22:00:10', '', ''),
+  (223, 'success', 8, '22', '33', '::1', 'Chrome 56.0.2924.87', 'Windows 10', '2017-03-03 22:28:02', '', ''),
+  (224, 'success', 8, '22', '33', '::1', 'Chrome 56.0.2924.87', 'Windows 10', '2017-03-05 21:15:31', '', ''),
+  (225, 'success', 8, '22', '33', '::1', 'Chrome 56.0.2924.87', 'Windows 10', '2017-03-05 21:54:23', '', ''),
+  (226, 'success', 11, 'asd', 'asd', '::1', 'Chrome 56.0.2924.87', 'Windows 10', '2017-03-05 22:36:12', '', ''),
+  (227, 'success', 8, '22', '33', '::1', 'Chrome 56.0.2924.87', 'Windows 10', '2017-03-05 23:57:43', '', '');
 
 -- --------------------------------------------------------
 
@@ -4683,7 +4717,11 @@ VALUES
   (10,
    '13ba10327f7ce68b6d195a350743db35623aec02518d1858b194b77b6422e24d76762e576bb111a7e56e33e6fc1b6806e346a9ccac4ac6c266a02dfd87f774b47JUYowSlN36+bEj1lS69YScpFVazd5rzHHHtpdGD7Fc=',
    '96974a52e96684c4aa8a5bdce5410b425b817a890b5cfea4428f38a97f8e16deda0f32bedc7f9bbd0e52a4124c8bf7c7175b329f3828827a0eb6d881a87d29f0hoXfBVQRJtf1S3KqQgxtH9Ywp3DJ5mJFHORRVfJVglk=',
-   'Watsonova', 'Egreš', '075 01', '+421 222 222 222');
+   'Watsonova', 'Egreš', '075 01', '+421 222 222 222'),
+  (11,
+   'f8431b328dd4a27da8d2bf683ef70bf30db97d2d760b7cf1e67f86beeba24806f4fdc5f333b178a2fca31c3fe201553f1c1891ebb36e264ab3dc11fe7f3f24e4x2eP+XHmSfHaI7TILmAf7gVMOkpM4QCMEoHCjqbsSpk=',
+   '3843b6f1c784effc797e662c200e32b3ce07d59913667a03ba128410b97b1d512e602d798c98c40151ff609c964474f94696ef9abb5a981ff5de98bca54cfdbdA9HvVl1+zr0QL4kN3jIKPgSA6zhLawzEq9fWGlR5fNE=',
+   'A. Bernoláka', 'Abrahámovce', '059 72', '+421 333 333 333');
 
 -- --------------------------------------------------------
 
@@ -4716,22 +4754,53 @@ INSERT INTO `products` (`id`, `subcategory_id`, `product_name`, `product_descrip
 VALUES
   (140, 16, 'Lenovo Miix 300-10IBY Black 64 GB + dock s klávesnicou + 32SDHC',
    'Tablet PC - Intel Atom Quad Core Z3735F, kapacitný multidotykový IPS 10,1" LED 1280 x 800, Intel HD Graphics, RAM 2 GB, 64 GB eMMC, WiFi, bluetooth 4.0, webkamera 2 Mpx + 5 Mpx, 2-článková batéria, Windows 10 Home 32-bit + MS Office Mobile',
-   31.5, 189, 3, 'no_photo.jpg'),
-  (141, 16, 'Lenovo IdeaCentre 700-24ISH White',
-   'All In One PC - 23.8" 3840x2160, Intel Core i5 6400 Skylake, RAM 8GB DDR4 SDRAM, NVIDIA GeForce GTX 950A 4GB, SSD 128GB + HDD 1TB 7200 otáčok, WiFi 802.11ac, Bluetooth 4.0, NFC, webkamera, HDMI, USB 3.0, bezdrôtová klávesnica a myš, reproduktory, Windows ',
-   43.15, 258.9, 2, 'no_photo.jpg'),
-  (142, 16, 'Samsung Galaxy Tab E 9.6 WiFi čierny (SM-T560)',
-   'Tablet - Quad-Core 1.3Ghz, 9.6" 1280 x 800, RAM 1.5 GB, interná pamäť 8 GB, microSDXC až 128 GB, fotoaparát predný 2 Mpx + zadný 5 Mpx, GPS, WiFi, bluetooth 4.1, microUSB, batéria 5000 mAh, Android 4.4',
-   24.82, 148.9, 0, 'no_photo.jpg'),
-  (144, 16, 'Lenovo ThinkPad E550 Black',
-   'Notebook - Intel Core i3 4005 Haswell, 15,6" LED 1366x768 antireflexná, RAM 4GB, Intel HD Graphics 4400, HDD 500GB 7200 otáčok, DVD, WiFi, bluetooth 4.0, HD webkamera, HDMI, USB 3.0, čítačka odtlačkov prstov, dokovatelný, 6 článková batéria , Windows 10 P',
-   73.33, 440, 1, 'no_photo.jpg'),
-  (146, 16, 'Lenovo IdeaCentre Y700 Gaming',
-   'Počítač - Intel Core i5 6600 Skylake, RAM 8GB DDR4, NVIDIA GeForce GTX 960 2GB, SSHD 1TB + 8GB cache na zrýchlenie chodu OS, DVD, WiFi, čítačka kariet, Windows 10 Home 64-bit',
-   136.5, 819, 1, 'no_photo.jpg'),
-  (147, 16, 'MacBook Air 13" CZ 2016',
-   '- Intel Core i5 1.6GHz Broadwell, 13,3" LED 1440×900, RAM 8GB, Intel HD Graphics 6000, SSD 128 GB, Wi-Fi 802.11ac, BlueTooth 4.0, Webkamera, USB 3.0, 1× Thunderbolt port, podsvietená klávesnica, MAC OS X El Capitan',
-   176.5, 1059, 1, 'no_photo.jpg');
+   31.5, 189, 3, 'pc.jpg'),
+  (141, 16, 'Lenovo IdeaCentre 700-24ISH White', 'All In One PC - 23.8" 3840x2160, Intel Core i5 6400 Skylake, RAM 8GB DDR4 SDRAM, NVIDIA GeForce GTX 950A 4GB, SSD 128GB + HDD 1TB 7200 otáčok, WiFi 802.11ac, Bluetooth 4.0, NFC, webkamera, HDMI, USB 3.0, bezdrôtová klávesnica a myš, reproduktory, Windows ', 43.15, 258.9, 2, 'no_photo.jpg'),
+  (142, 16, 'Samsung Galaxy Tab E 9.6 WiFi čierny (SM-T560)', 'Tablet - Quad-Core 1.3Ghz, 9.6" 1280 x 800, RAM 1.5 GB, interná pamäť 8 GB, microSDXC až 128 GB, fotoaparát predný 2 Mpx + zadný 5 Mpx, GPS, WiFi, bluetooth 4.1, microUSB, batéria 5000 mAh, Android 4.4', 24.82, 148.9, 0, 'pc.jpg'),
+  (144, 16, 'Lenovo ThinkPad E550 Black', 'Notebook - Intel Core i3 4005 Haswell, 15,6" LED 1366x768 antireflexná, RAM 4GB, Intel HD Graphics 4400, HDD 500GB 7200 otáčok, DVD, WiFi, bluetooth 4.0, HD webkamera, HDMI, USB 3.0, čítačka odtlačkov prstov, dokovatelný, 6 článková batéria , Windows 10 P', 73.33, 440, 1, 'no_photo.jpg'),
+  (146, 16, 'Lenovo IdeaCentre Y700 Gaming', 'Počítač - Intel Core i5 6600 Skylake, RAM 8GB DDR4, NVIDIA GeForce GTX 960 2GB, SSHD 1TB + 8GB cache na zrýchlenie chodu OS, DVD, WiFi, čítačka kariet, Windows 10 Home 64-bit', 136.5, 819, 1, 'no_photo.jpg'),
+  (147, 16, 'MacBook Air 13" CZ 2016', '- Intel Core i5 1.6GHz Broadwell, 13,3" LED 1440×900, RAM 8GB, Intel HD Graphics 6000, SSD 128 GB, Wi-Fi 802.11ac, BlueTooth 4.0, Webkamera, USB 3.0, 1× Thunderbolt port, podsvietená klávesnica, MAC OS X El Capitan', 176.5, 1059, 1, 'no_photo.jpg'),
+  (148, 16, 'a', 'a', 20.33, 122, 1, 'pc.jpg'),
+  (150, 16, 'a', 'a', 2, 12, 1, 'no_photo.jpg'),
+  (151, 16, 'asd', 'asdasd', 3.67, 22, 1, 'no_photo.jpg'),
+  (152, 16, 'cc', 'cc', 0.5, 3, 1, 'no_photo.jpg'),
+  (154, 16, 'dd', 'd', 0.33, 2, 1, 'no_photo.jpg');
+
+-- --------------------------------------------------------
+
+--
+-- Štruktúra tabuľky pre tabuľku `rating_products`
+--
+
+CREATE TABLE `rating_products` (
+  `id`         INT(11) NOT NULL,
+  `user_id`    INT(11) NOT NULL,
+  `product_id` INT(11) NOT NULL,
+  `user_rate`  INT(11) NOT NULL
+)
+  ENGINE = InnoDB
+  DEFAULT CHARSET = utf8
+  COLLATE = utf8_bin;
+
+--
+-- Sťahujem dáta pre tabuľku `rating_products`
+--
+
+INSERT INTO `rating_products` (`id`, `user_id`, `product_id`, `user_rate`) VALUES
+  (21, 11, 154, 5),
+  (22, 11, 152, 5),
+  (23, 11, 150, 1),
+  (24, 11, 151, 3),
+  (25, 11, 148, 4),
+  (26, 11, 142, 2),
+  (27, 11, 140, 3),
+  (28, 8, 154, 1),
+  (29, 8, 152, 3),
+  (30, 8, 150, 4),
+  (31, 8, 151, 2),
+  (32, 8, 148, 5),
+  (33, 8, 142, 1),
+  (34, 8, 140, 4);
 
 -- --------------------------------------------------------
 
@@ -4764,7 +4833,12 @@ INSERT INTO `storage` (`id`, `product_id`, `flag`) VALUES
   (202, 142, 'C'),
   (203, 144, 'A'),
   (204, 146, 'A'),
-  (205, 147, 'A');
+  (205, 147, 'A'),
+  (206, 148, 'A'),
+  (207, 150, 'A'),
+  (208, 151, 'A'),
+  (209, 152, 'A'),
+  (210, 154, 'A');
 
 -- --------------------------------------------------------
 
@@ -10397,7 +10471,12 @@ VALUES
   (82, 142, 148.9, 6, 1, 6, 3.5, 3.5, 0, 0),
   (83, 144, 440, 6, 1, 6, 3.5, 3.5, 0, 0),
   (84, 146, 819, 6, 1, 6, 3.5, 3.5, 0, 0),
-  (85, 147, 1059, 6, 1, 6, 3.5, 3.5, 0, 0);
+  (85, 147, 1059, 6, 1, 6, 3.5, 3.5, 0, 0),
+  (86, 148, 122, 6, 1, 6, 3.5, 3.5, 0, 0),
+  (87, 150, 12, 6, 1, 6, 3.5, 3.5, 0, 0),
+  (88, 151, 22, 6, 1, 6, 3.5, 3.5, 0, 0),
+  (89, 152, 3, 6, 1, 6, 3.5, 3.5, 0, 0),
+  (90, 154, 2, 6, 1, 6, 3.5, 3.5, 0, 0);
 
 --
 -- Spúšťače `tax_prices`
@@ -10652,6 +10731,14 @@ ALTER TABLE `products`
   ADD KEY `storage_id` (`subcategory_id`);
 
 --
+-- Indexy pre tabuľku `rating_products`
+--
+ALTER TABLE `rating_products`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `product_id` (`product_id`),
+  ADD KEY `user_id` (`user_id`);
+
+--
 -- Indexy pre tabuľku `storage`
 --
 ALTER TABLE `storage`
@@ -10712,43 +10799,49 @@ ALTER TABLE `cities`
 --
 ALTER TABLE `company_data`
   MODIFY `id` INT(11) NOT NULL AUTO_INCREMENT,
-  AUTO_INCREMENT = 11;
+  AUTO_INCREMENT = 12;
 --
 -- AUTO_INCREMENT pre tabuľku `delivery_data`
 --
 ALTER TABLE `delivery_data`
   MODIFY `id` INT(11) NOT NULL AUTO_INCREMENT,
-  AUTO_INCREMENT = 11;
+  AUTO_INCREMENT = 12;
 --
 -- AUTO_INCREMENT pre tabuľku `login`
 --
 ALTER TABLE `login`
   MODIFY `id` INT(11) NOT NULL AUTO_INCREMENT,
-  AUTO_INCREMENT = 11;
+  AUTO_INCREMENT = 12;
 --
 -- AUTO_INCREMENT pre tabuľku `logs`
 --
 ALTER TABLE `logs`
   MODIFY `id` INT(11) NOT NULL AUTO_INCREMENT,
-  AUTO_INCREMENT = 204;
+  AUTO_INCREMENT = 228;
 --
 -- AUTO_INCREMENT pre tabuľku `personal_data`
 --
 ALTER TABLE `personal_data`
   MODIFY `id` INT(11) NOT NULL AUTO_INCREMENT,
-  AUTO_INCREMENT = 11;
+  AUTO_INCREMENT = 12;
 --
 -- AUTO_INCREMENT pre tabuľku `products`
 --
 ALTER TABLE `products`
   MODIFY `id` INT(11) NOT NULL AUTO_INCREMENT,
-  AUTO_INCREMENT = 148;
+  AUTO_INCREMENT = 155;
+--
+-- AUTO_INCREMENT pre tabuľku `rating_products`
+--
+ALTER TABLE `rating_products`
+  MODIFY `id` INT(11) NOT NULL AUTO_INCREMENT,
+  AUTO_INCREMENT = 35;
 --
 -- AUTO_INCREMENT pre tabuľku `storage`
 --
 ALTER TABLE `storage`
   MODIFY `id` INT(11) NOT NULL AUTO_INCREMENT,
-  AUTO_INCREMENT = 206;
+  AUTO_INCREMENT = 211;
 --
 -- AUTO_INCREMENT pre tabuľku `streets`
 --
@@ -10766,7 +10859,7 @@ ALTER TABLE `subcategory`
 --
 ALTER TABLE `tax_prices`
   MODIFY `id` INT(11) NOT NULL AUTO_INCREMENT,
-  AUTO_INCREMENT = 86;
+  AUTO_INCREMENT = 91;
 --
 -- AUTO_INCREMENT pre tabuľku `user_orders_login`
 --
@@ -10788,6 +10881,13 @@ ALTER TABLE `user_orders_logout`
 --
 ALTER TABLE `products`
   ADD CONSTRAINT `products_ibfk_1` FOREIGN KEY (`subcategory_id`) REFERENCES `subcategory` (`id`);
+
+--
+-- Obmedzenie pre tabuľku `rating_products`
+--
+ALTER TABLE `rating_products`
+  ADD CONSTRAINT `rating_products_ibfk_1` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`),
+  ADD CONSTRAINT `rating_products_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `login` (`id`);
 
 --
 -- Obmedzenie pre tabuľku `storage`

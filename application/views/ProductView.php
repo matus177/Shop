@@ -82,7 +82,8 @@
                                 <p><?php echo $product['product_description']; ?></p>
                             </div>
                             <div class="product_footer caption">
-                                <div class="<?php echo 'rating' . $productCount; ?>" style="text-align: center">
+                                <div class="<?php echo 'rating' . $productCount; ?>" id="<?php echo $product['id']; ?>"
+                                     style="text-align: center">
                                 </div>
                                 <?php if ($product['product_quantity'] == 0)
                                 { ?>

@@ -160,10 +160,42 @@ function loadSortOptions() {
 function addRatingStarsToEachProduct(numberOfProduct) {
     $(document).ready(function () {
         for (var i = 0; i < numberOfProduct; i++) {
-            for (var j = 1; j <= 5; j++) {
-                $('.rating' + i).append('<span id="' + i + '_' + j + '" class="glyphicon glyphicon-star-empty" onmouseover="fillAndEmptyRatingStars(this.id)" style="font-size: 25px; color: yellow;"></span>');
-            }
+            (function (i) {
+                var productId = $('.rating' + i).attr('id');
+
+                $.ajax({
+                    url: window.location.origin + '/Shop/Rating/getDefaultRating',
+                    type: 'GET',
+                    data: {rating_data: productId},
+                    success: function (response) {
+                        var numberOfEmptyStar = 5 - response;
+                        for (var k = 1; k <= response; k++) {
+                            $('.rating' + i).append('<span id="' + productId + '_' + k + '" class="glyphicon glyphicon-star" onmouseover="fillAndEmptyRatingStars(this.id)" onclick="addUserRating(this.id)" style="font-size: 25px; color: yellow;"></span>');
+                        }
+                        for (var j = response; j < 5; j++) {
+                            $('.rating' + i).append('<span id="' + productId + '_' + (parseInt(j) + 1) + '" class="glyphicon glyphicon-star-empty" onmouseover="fillAndEmptyRatingStars(this.id)" onclick="addUserRating(this.id)" style="font-size: 25px; color: yellow;"></span>');
+                        }
+                    }
+                });
+            })(i);
         }
+    });
+}
+
+function addUserRating(id) {
+    $(document).ready(function () {
+        $.ajax({
+            url: window.location.origin + '/Shop/Rating/addUserRating',
+            type: 'GET',
+            data: {rating_data: id},
+            success: function (response) {
+                if (response == '') {
+                    alert('Dakujeme za Vas hlas.')
+                } else {
+                    alert(response);
+                }
+            }
+        });
     });
 }
 
