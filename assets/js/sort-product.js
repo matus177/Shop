@@ -168,7 +168,6 @@ function addRatingStarsToEachProduct(numberOfProduct) {
                     type: 'GET',
                     data: {rating_data: productId},
                     success: function (response) {
-                        var numberOfEmptyStar = 5 - response;
                         for (var k = 1; k <= response; k++) {
                             $('.rating' + i).append('<span id="' + productId + '_' + k + '" class="glyphicon glyphicon-star" onmouseover="fillAndEmptyRatingStars(this.id)" onclick="addUserRating(this.id)" style="font-size: 25px; color: yellow;"></span>');
                         }

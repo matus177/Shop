@@ -4,14 +4,12 @@
     <title>Shop</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="<?php echo base_url('assets/lib/bootstrap-3.3.7/css/bootstrap.css'); ?>" rel="stylesheet">
-    <link href="<?php echo base_url('assets/lib/bootstrap-table/src/bootstrap-table.css'); ?>" rel="stylesheet">
+    <link href="<?php echo base_url('assets/lib/bootstrap-3.3.7/css/bootstrap.min.css'); ?>" rel="stylesheet">
+    <link href="<?php echo base_url('assets/lib/bootstrap-table/dist/bootstrap-table.min.css'); ?>" rel="stylesheet">
     <link rel="stylesheet"
           href="//rawgit.com/vitalets/x-editable/master/dist/bootstrap3-editable/css/bootstrap-editable.css">
     <script src="<?php echo base_url('assets/lib/bootstrap-3.3.7/js/jquery.min.js'); ?>"></script>
-    <script src="<?php echo base_url('assets/lib/bootstrap-3.3.7/js/bootstrap.js'); ?>"></script>
-    <script src="<?php echo base_url('assets/lib/bootstrap-table/src/bootstrap-table.js'); ?>"></script>
-    <script src="<?php echo base_url('assets/lib/bootstrap-table/src/locale/bootstrap-table-sk-SK.js'); ?>"></script>
+    <script src="<?php echo base_url('assets/lib/bootstrap-3.3.7/js/bootstrap.min.js'); ?>"></script>
     <link href="<?php echo base_url('assets/css/login.css'); ?>" rel="stylesheet"/>
     <link href="<?php echo base_url('assets/css/register.css'); ?>" rel="stylesheet"/>
     <script src="<?php echo base_url('assets/js/jquery-ui-autocomplete.js'); ?>"></script>
