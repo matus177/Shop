@@ -4,6 +4,7 @@ class Product extends MY_Controller {
     public function __construct()
     {
         parent::__construct();
+        $this->load->model('ProductModel');
     }
 
     public function index($subCategoryId, $resultPerPage = 10, $sort = '')
@@ -28,6 +29,10 @@ class Product extends MY_Controller {
         $this->load->view('LeftMenuView');
         $this->load->view('ProductView', array('isAdmin' => ($this->encryption->decrypt($this->session->role) == 'Admin'), 'searchTerm' => $searchTerm, 'subCategoryId' => $subCategoryId, 'resultPerPage' => $resultPerPage, 'sort' => $sort));
         $this->load->view('FooterView');
+    }
+
+    public function a(){
+       echo json_encode($this->ProductModel->selectProduct($this->input->get()));
     }
 
     public function loadSortProduct()

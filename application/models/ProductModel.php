@@ -8,9 +8,9 @@ class ProductModel extends CI_Model {
         parent::__construct();
     }
 
-    function selectProduct($data, $match)
+    function selectProduct($data)
     {
-        return $this->db->like('LOWER(product_description)', strtolower($match), 'both')->get_where($this->table, $data)->result();
+        return $this->db->get_where($this->table, $data)->result();
     }
 
     public function updateStorage($id, $data, $condition)
