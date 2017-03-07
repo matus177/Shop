@@ -178,13 +178,13 @@
 <script>
 
     $(document).ready(function () {
+        var counter = 1;
         $.ajax({
             url: window.location.origin + '/Shop/Product/a',
             type: 'GET',
             data: {subcategory_id: <?php echo $subCategoryId; ?>},
             success: function (response) {
                 $.each(JSON.parse(response), function (i, product) {
-                    console.debug(product);
                     var productId = product.id;
                     var productDescription = product.product_description;
                     var productImage = product.product_image;
@@ -193,19 +193,45 @@
                     var productPriceDph = product.product_price_dph;
                     var subcategoryId = product.product_subcategory_id;
                     var productQuantity = product.product_quantity;
+                    var productAvailabe;
+                    var editButton;
+                    var modalWindow;
+
+                    if (<?php echo $isAdmin ?>) {
+                        editButton = '<button href="" type="button" id="' + productId + '"  class="btn btn-warning" data-toggle="modal" data-target="#modal_' + counter + '" style="margin-left: 5px">Upravit</button>';
+
+                    } else {
+                        editButton = '';
+                        modalWindow = '';
+                    }
+
+                    if (productQuantity == 0) {
+                        productAvailabe = '<p style="text-align: center"><span style="color:orange"><b>Na objednavku.</b></span></p>'
+                    } else {
+                        productAvailabe = '<p style="text-align: center"><span style="color:green"><b>Na sklade ' + productQuantity + 'ks.</b></span></p>'
+                    }
 
                     $("#products").append('<li data-sort="' + productPrice + '" class="col-md-3"><div class="thumbnail"><a href="product_details.html"><img src="' + window.location.origin + '/Shop/assets/img/' + productImage + '"></a>' +
-                        '<div class="caption" style="height: 300px; overflow: hidden"><h5>' + productName + '</h5><p>' + productDescription + '</p></div><div class="product_footer caption"><p style="text-align: center"><span style="color:green"><b>Na sklade ' + productQuantity + 'ks.</b></span></p>' +
-                        '<h3><a type="button" id="' + productId + '" class="btn btn-success buy_button">Kupit</a><span class="pull-right">' + productPrice + ' &euro;</span></h3><p style="text-align: center">Cena bez DPH ' + (productPrice - productPriceDph) + ' &euro;</p></div></div></li>');
-//                    } else {
-//                        $("#accordion").append('<div class="panel panel-default"><div class="panel-heading"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse' + categoryId + '">' + categoryName + '</a>' +
-//                            '</h4></div><div id="collapse' + categoryId + '" class="panel-collapse collapse"><div class="panel-body"><a href="' + baseUrl + 'Product/index/' + subcategoryId + '?page=1' + '">' + subcategoryName + '</a></div></div></div>');
-//                    }
+                        '<div class="caption" style="height: 300px; overflow: hidden"><h5>' + productName + '</h5><p>' + productDescription + '</p></div><div class="product_footer caption">' + productAvailabe +
+                        '<h3><a type="button" id="' + productId + '" class="btn btn-success buy_button">Kupit</a>' + editButton + '<span class="pull-right">' + productPrice + ' &euro;</span></h3><div class="modal fade" id="modal_' + counter + '" data-backdrop="static" data-keyboard="false"><div class="modal-dialog"><div class="modal-body"></div></div></div><p style="text-align: center">Cena bez DPH ' + (productPrice - productPriceDph).toFixed(2) + ' &euro;</p></div></div></li>');
+                    counter++;
                 });
             }
         });
     });
 
+    function abc(data) {
+        $(document).ready(function () {
+            $.ajax({
+                url: window.location.origin + '/Shop/Product/modal',
+                type: 'GET',
+                success: function (response) {
+                   // $('#modal_' +data).modal('show');
+
+                }
+            });
+        });
+    }
     addRatingStarsToEachProduct(<?php echo 0; ?>);
     loadSortOptions();
     productsPaggination(<?php echo 0; ?>);

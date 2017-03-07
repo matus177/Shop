@@ -1,7 +1,7 @@
 <div class="container">
     <div id="admin_product_update" class="mainbox col-md-9">
-        <?php if ($product['id'] == $id)
-        { ?>
+        <?php// if ($product['id'] == $id)
+        //{ ?>
             <div class="panel panel-info">
                 <div class="panel-heading">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -9,13 +9,13 @@
                 </div>
                 <div class="panel-body">
                     <div class="panel-body">
-                        <?php echo form_open_multipart('Admin/updateProduct/' . $product['id'],
+                        <?php echo form_open_multipart('Admin/updateProduct/',//$product['id'],
                             ['id' => 'form_product_update', 'class' => 'form-horizontal', 'role' => 'form']); ?>
                         <div class="form-group">
                             <label for="subcategory_id" class="control-label col-sm-4">Zmenit podkategoriu</label>
                             <div class="col-sm-8">
                                 <select class="form-control" name="subcategory_id"
-                                        id="subcategory_id_<?php echo $productCount; ?>" required>
+                                        id="subcategory_id_<?php //echo//$productCount; ?>" required>
                                     <option selected disabled>Vyberte podkategoriu</option>
                                 </select>
                             </div>
@@ -25,7 +25,7 @@
                             <div class="col-sm-8">
                                 <input type="text" class="form-control" name="product_name" id="product_name"
                                        placeholder="Nazov produktu"
-                                       value="<?php echo $product['product_name']; ?>"
+                                       value="<?php// echo// $product['product_name']; ?>"
                                        required>
                             </div>
                         </div>
@@ -34,7 +34,7 @@
                             <div class="col-sm-8">
                             <textarea rows="6" class="form-control" name="product_description" id="product_description"
                                       placeholder="Popis produktu"
-                                      required><?php echo $product['product_description']; ?></textarea>
+                                      required><?php// echo// $product['product_description']; ?></textarea>
                             </div>
                         </div>
                         <div class="form-group">
@@ -42,7 +42,7 @@
                             <div class="col-sm-8">
                                 <input type="text" class="form-control" name="product_price" id="product_price"
                                        placeholder="Cena produktu"
-                                       value="<?php echo $product['product_price']; ?>" required>
+                                       value="<?php //echo// $product['product_price']; ?>" required>
                             </div>
                         </div>
                         <div class="form-group">
@@ -51,7 +51,7 @@
                                 <input type="text" class="form-control" name="product_quantity"
                                        id="product_quantity"
                                        placeholder="Pocet kusov"
-                                       value="<?php echo $product['product_quantity']; ?>" required>
+                                       value="<?php// echo $product['product_quantity']; ?>" required>
                             </div>
                         </div>
                         <div class="form-group">
@@ -70,6 +70,6 @@
                     <?php echo form_close(); ?>
                 </div>
             </div>
-        <?php } ?>
+        <?php// } ?>
     </div>
 </div>
