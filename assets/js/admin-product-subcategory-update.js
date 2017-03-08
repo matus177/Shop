@@ -7,7 +7,7 @@ function getSubcategoryForAdminUpdate(isAdmin, numberOfProducts) {
                 success: function (response) {
                     $.each(JSON.parse(response), function (i, subcategory) {
                         for (i = 0; i < numberOfProducts; i++)
-                            $("#subcategory_id_" + i).append('<option value="' + subcategory.id + '">' + subcategory.subcategory_name + '</option>');
+                            $("#subcategory" + i).append('<option value="' + subcategory.id + '">' + subcategory.subcategory_name + '</option>');
                     });
                 }
             });

@@ -28,7 +28,6 @@ class Product extends MY_Controller {
         $this->load->view('UpperMenuView');
         $this->load->view('LeftMenuView');
         $this->load->view('ProductView', array('isAdmin' => ($this->encryption->decrypt($this->session->role) == 'Admin') ? '1' : '0', 'searchTerm' => $searchTerm, 'subCategoryId' => $subCategoryId, 'resultPerPage' => $resultPerPage, 'sort' => $sort));
-        $this->load->view('AdminProductUpdateView');
 
         $this->load->view('FooterView');
     }
@@ -38,9 +37,6 @@ class Product extends MY_Controller {
         echo json_encode($this->ProductModel->selectProduct($this->input->get()));
     }
 
-    public function modal(){
-        //$this->load->view('AdminProductUpdateView');
-    }
     public function loadSortProduct()
     {
         if (array_key_exists('sort_options', $this->session->get_userdata()))
