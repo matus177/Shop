@@ -20,9 +20,8 @@ class Cart extends CI_Controller {
 
     public function addToCart()
     {
-        $id = $this->uri->segment(3);
+        $id = array_key_exists('id', $this->input->get()) ? $this->input->get()['id'] : '';
         $arrayOfProducts = $this->ProductModel->selectProductToCart($id);
-
         $cartData = array();
         $updatedQuantity = array();
         $isProduct = 1;

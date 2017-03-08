@@ -45,14 +45,16 @@
                             <div class="panel-title">Aktualizovat produkt</div>
                         </div>
                         <div class="panel-body">
-                            <form class="form-horizontal" action="Admin/updateProduct" method="post"
+                            <form class="form-horizontal" role="form" id="modal_product" method="POST"
                                   enctype="multipart/form-data">
                                 <input type="hidden" name="id" id="id" required>
+                                <input type="hidden" name="<?php echo $this->security->get_csrf_token_name(); ?>"
+                                       value="<?php echo $this->security->get_csrf_hash(); ?>">
                                 <div class="form-group">
                                     <label for="subcategory" class="control-label col-sm-4">Zmenit podkategoriu</label>
                                     <div class="col-sm-8">
                                         <select class="form-control" name="subcategory" id="subcategory"
-                                                required></select>
+                                        ></select>
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -87,7 +89,7 @@
                                 <div class="form-group">
                                     <label for="product_image" class="control-label col-sm-4">Foto</label>
                                     <div class="col-sm-8">
-                                        <input type="file" class="form-control" class="btn" name="product_image">
+                                        <input type="file" class="form-control" name="product_image">
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -109,7 +111,7 @@
     $(document).ready(function () {
         var counter = 0;
         $.ajax({
-            url: window.location.origin + '/Shop/Product/a',
+            url: window.location.origin + '/Shop/Product/getProduct',
             type: 'GET',
             data: {subcategory_id: <?php echo $subCategoryId; ?>},
             success: function (response) {
@@ -127,7 +129,7 @@
                     var editButton;
 
                     if (<?php echo $isAdmin ?>) {
-                        editButton = '<button type="button" class="btn btn-warning" onclick="abc(' + productId + ')">Upravit</button>';
+                        editButton = '<button href="" type="button" id="' + productId + '" class="btn btn-warning" data-toggle="modal" data-target="#modal" onclick="getModalData(' + productId + ')">Upravit</button>';
                     } else {
                         editButton = '';
                     }
@@ -149,7 +151,7 @@
                     html += '<div class="col-md-12"><h5>' + productName + '</h5></div> ';
                     html += '<div class="col-md-12"><p>' + productDescription + '</p></div> ';
                     html += '<div class="col-md-12">' + productAvailabe + '</div> ';
-                    html += '<div class="col-md-12"><button type="button" class="btn btn-success">Kupit</button> ' + editButton + '</div> ';
+                    html += '<div class="col-md-12"><a type="button" onclick="addProductToCart(this.id)" id="' + productId + '" class="btn btn-success buy_button">Kupit</a> ' + editButton + '</div> ';
                     html += '<div class="col-md-12"><p style="text-align: center">Cena bez DPH ' + (productPrice - productPriceDph).toFixed(2) + ' &euro;</p></div> ';
                     html += '<div class="col-md-12"><p style="text-align: center">Cena s DPH ' + productPrice + ' &euro;</p></div> ';
                     html += '</div>';
@@ -160,14 +162,21 @@
         });
     });
 
-    function abc(productId) {
+    function getModalData(productId) {
         $(document).ready(function () {
             $.ajax({
-                url: window.location.origin + '/Shop/Product/modal',
+                url: window.location.origin + '/Shop/Product/getModalData',
                 type: 'GET',
-                data: {modalData: productId},
+                data: {id: productId},
                 success: function (response) {
-                    $('.modal-body').append(response);
+                    $('#modal_product').attr('action', window.location.origin + '/Shop/Admin/updateProduct/' + productId);
+                    $.each(JSON.parse(response), function (i, modalData) {
+                        $('#id').val(modalData.id);
+                        $('#product_name').val(modalData.product_name);
+                        $('#product_description').val(modalData.product_description);
+                        $('#product_price').val(modalData.product_price);
+                        $('#product_quantity').val(modalData.product_quantity);
+                    });
                     getSubcategoryForAdminUpdate(<?php echo 1; ?>, <?php echo 2; ?>);
                 }
             });

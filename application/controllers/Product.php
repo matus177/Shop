@@ -32,7 +32,12 @@ class Product extends MY_Controller {
         $this->load->view('FooterView');
     }
 
-    public function a()
+    public function getProduct()
+    {
+        echo json_encode($this->ProductModel->selectProduct($this->input->get()));
+    }
+
+    public function getModalData()
     {
         echo json_encode($this->ProductModel->selectProduct($this->input->get()));
     }
