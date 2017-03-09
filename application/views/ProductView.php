@@ -146,12 +146,12 @@
                     if (counter % 4 == 0 && counter != 0) {
                         html += '</div><div class="row">';
                     }
-                    html += '<div class="col-md-3">';
-                    html += '<div class="col-md-12"><a href="#"><img src="' + window.location.origin + '/Shop/assets/img/' + productImage + '"></a></div> ';
-                    html += '<div class="col-md-12"><h5>' + productName + '</h5></div> ';
-                    html += '<div class="col-md-12"><p>' + productDescription + '</p></div> ';
+                    html += '<div class="col-md-3" style="border: solid 1px">';
+                    html += '<div class="col-md-12" style="text-align: center"><a href="#"><img src="' + window.location.origin + '/Shop/assets/img/' + productImage + '"></a></div> ';
+                    html += '<div class="col-md-12" style="height: 80px"><h5><b>' + productName + '</b></h5></div> ';
+                    html += '<div class="col-md-12" style="height: 160px; font-size: small; overflow: auto"><p>' + productDescription + '</p></div> ';
                     html += '<div class="col-md-12">' + productAvailabe + '</div> ';
-                    html += '<div class="col-md-12"><a type="button" onclick="addProductToCart(this.id)" id="' + productId + '" class="btn btn-success buy_button">Kupit</a> ' + editButton + '</div> ';
+                    html += '<div class="col-md-12" style="text-align: center"><a  type="button" onclick="addProductToCart(this.id)" id="' + productId + '" class="btn btn-success buy_button">Kupit</a> ' + editButton + '</div> ';
                     html += '<div class="col-md-12"><p style="text-align: center">Cena bez DPH ' + (productPrice - productPriceDph).toFixed(2) + ' &euro;</p></div> ';
                     html += '<div class="col-md-12"><p style="text-align: center">Cena s DPH ' + productPrice + ' &euro;</p></div> ';
                     html += '</div>';
