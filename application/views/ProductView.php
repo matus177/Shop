@@ -35,6 +35,21 @@
     </ul>
     <br>
     <div class="col-md-12" id="products"></div>
+    <div class="col-md-12">
+        <div class="row">
+            <div class="col-md-1" style="min-width: 100px">
+                <select class="form-control results_per_page">
+                    <option>1</option>
+                    <option>2</option>
+                    <option selected>3</option>
+                    <option>10</option>
+                    <option>20</option>
+                    <option>50</option>
+                </select>
+            </div>
+            <div class="products_pagination"></div>
+        </div>
+    </div>
     <div class="modal fade" id="modal" data-backdrop="static" data-keyboard="false">
         <div class="modal-dialog">
             <div class="modal-body">
@@ -108,59 +123,68 @@
     </div>
 </div>
 <script>
-    $(document).ready(function () {
-        var counter = 0;
-        $.ajax({
-            url: window.location.origin + '/Shop/Product/getProduct',
-            type: 'GET',
-            data: {subcategory_id: <?php echo $subCategoryId; ?>},
-            success: function (response) {
-                var html = '';
-                $.each(JSON.parse(response), function (i, product) {
-                    var productId = product.id;
-                    var productDescription = product.product_description;
-                    var productImage = product.product_image;
-                    var productName = product.product_name;
-                    var productPrice = product.product_price;
-                    var productPriceDph = product.product_price_dph;
-                    var subcategoryId = product.product_subcategory_id;
-                    var productQuantity = product.product_quantity;
-                    var productAvailabe;
-                    var editButton;
+    paggination();
 
-                    if (<?php echo $isAdmin ?>) {
-                        editButton = '<button href="" type="button" id="' + productId + '" class="btn btn-warning" data-toggle="modal" data-target="#modal" onclick="getModalData(' + productId + ')">Upravit</button>';
-                    } else {
-                        editButton = '';
-                    }
+    getProduct();
+    // paggination();
 
-                    if (productQuantity == 0) {
-                        productAvailabe = '<p style="text-align: center"><span style="color:orange"><b>Na objednavku.</b></span></p>'
-                    } else {
-                        productAvailabe = '<p style="text-align: center"><span style="color:green"><b>Na sklade ' + productQuantity + 'ks.</b></span></p>'
-                    }
+    function getProduct(limit = 5, page) {
+        $(document).ready(function () {
+            var offset = (page - 1) * limit;
+            var counter = 0;
+            $.ajax({
+                url: window.location.origin + '/Shop/Product/getProduct',
+                type: 'GET',
+                data: {subcategory_id: <?php echo $subCategoryId; ?>, limit: limit, offset: offset},
+                success: function (response) {
+                    var html = '';
+                    $.each(JSON.parse(response), function (i, product) {
+                        var productId = product.id;
+                        var productDescription = product.product_description;
+                        var productImage = product.product_image;
+                        var productName = product.product_name;
+                        var productPrice = product.product_price;
+                        var productPriceDph = product.product_price_dph;
+                        var subcategoryId = product.product_subcategory_id;
+                        var productQuantity = product.product_quantity;
+                        var productAvailabe;
+                        var editButton;
 
-                    if (counter == 0) {
-                        html += '<div class="row">';
-                    }
-                    if (counter % 4 == 0 && counter != 0) {
-                        html += '</div><div class="row">';
-                    }
-                    html += '<div class="col-md-3" style="border: solid 1px">';
-                    html += '<div class="col-md-12" style="text-align: center"><a href="#"><img src="' + window.location.origin + '/Shop/assets/img/' + productImage + '"></a></div> ';
-                    html += '<div class="col-md-12" style="height: 80px"><h5><b>' + productName + '</b></h5></div> ';
-                    html += '<div class="col-md-12" style="height: 160px; font-size: small; overflow: auto"><p>' + productDescription + '</p></div> ';
-                    html += '<div class="col-md-12">' + productAvailabe + '</div> ';
-                    html += '<div class="col-md-12" style="text-align: center"><a  type="button" onclick="addProductToCart(this.id)" id="' + productId + '" class="btn btn-success buy_button">Kupit</a> ' + editButton + '</div> ';
-                    html += '<div class="col-md-12"><p style="text-align: center">Cena bez DPH ' + (productPrice - productPriceDph).toFixed(2) + ' &euro;</p></div> ';
-                    html += '<div class="col-md-12"><p style="text-align: center">Cena s DPH ' + productPrice + ' &euro;</p></div> ';
-                    html += '</div>';
-                    ++counter;
-                });
-                $('#products').append(html);
-            }
+                        if (<?php echo $isAdmin ?>) {
+                            editButton = '<button href="" type="button" id="' + productId + '" class="btn btn-warning" data-toggle="modal" data-target="#modal" onclick="getModalData(' + productId + ')">Upravit</button>';
+                        } else {
+                            editButton = '';
+                        }
+
+                        if (productQuantity == 0) {
+                            productAvailabe = '<p style="text-align: center"><span style="color:orange"><b>Na objednavku.</b></span></p>'
+                        } else {
+                            productAvailabe = '<p style="text-align: center"><span style="color:green"><b>Na sklade ' + productQuantity + 'ks.</b></span></p>'
+                        }
+
+                        if (counter == 0) {
+                            html += '<div class="row">';
+                        }
+                        if (counter % 4 == 0 && counter != 0) {
+                            html += '</div><div class="row">';
+                        }
+                        html += '<div class="col-md-3 panel panel-default">';
+                        html += '<div class="col-md-12" style="text-align: center"><a href="#"><img src="' + window.location.origin + '/Shop/assets/img/' + productImage + '"></a></div> ';
+                        html += '<div class="col-md-12" style="height: 80px"><h5><b>' + productName + '</b></h5></div> ';
+                        html += '<div class="col-md-12" style="height: 160px; font-size: small; overflow: auto"><p>' + productDescription + '</p></div> ';
+                        html += '<div class="col-md-12">' + productAvailabe + '</div> ';
+                        html += '<div class="col-md-12" style="text-align: center"><a  type="button" onclick="addProductToCart(this.id)" id="' + productId + '" class="btn btn-success buy_button">Kupit</a> ' + editButton + '</div> ';
+                        html += '<div class="col-md-12"><p style="text-align: center">Cena bez DPH ' + (productPrice - productPriceDph).toFixed(2) + ' &euro;</p></div> ';
+                        html += '<div class="col-md-12"><p style="text-align: center">Cena s DPH ' + productPrice + ' &euro;</p></div> ';
+                        html += '</div>';
+                        ++counter;
+                    });
+                    $('#products').empty();
+                    $('#products').append(html);
+                }
+            });
         });
-    });
+    }
 
     function getModalData(productId) {
         $(document).ready(function () {
@@ -182,6 +206,26 @@
             });
         });
     }
+    function paggination() {
+        $(document).ready(function () {
+            $.ajax({
+                url: window.location.origin + '/Shop/Product/getNumberOfproduct',
+                type: 'GET',
+                success: function (response) {
+                    var limit = 5;
+                    $('.results_per_page').change(function () {
+                        limit = $('.results_per_page').val();
+                    });
+                    var buts = Math.ceil(response / limit);
+                    $('.products_pagination').empty();
+                    for (var i = 1; i <= buts; i++) {
+                        $('.products_pagination').append('<a id="' + i + '" href="#" onclick="getProduct(' + limit + ',' + i + ')">' + i + '</a>');
+                    }
+                }
+            });
+        });
+    }
+
     addRatingStarsToEachProduct(<?php echo 0; ?>);
     loadSortOptions();
     productsPaggination(<?php echo 0; ?>);

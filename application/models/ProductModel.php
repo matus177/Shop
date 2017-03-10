@@ -13,6 +13,16 @@ class ProductModel extends CI_Model {
         return $this->db->get_where($this->table, $data)->result();
     }
 
+    function selectProductForPaggination($data, $limit, $offset)
+    {
+        return $this->db->get($this->table, $limit, $offset)->result();
+    }
+
+    function selectNumberOfProduct()
+    {
+        return $this->db->get($this->table)->num_rows();
+    }
+
     public function updateStorage($id, $data, $condition)
     {
         $this->db->limit(1)->set('flag', $data)->where('product_id',

@@ -34,12 +34,26 @@ class Product extends MY_Controller {
 
     public function getProduct()
     {
-        echo json_encode($this->ProductModel->selectProduct($this->input->get()));
+        $limit = $this->input->get()['limit'];
+        $offset = $this->input->get()['offset'];
+        echo json_encode($this->ProductModel->selectProductForPaggination($this->input->get(), $limit, $offset));
+    }
+
+    public function getPag()
+    {
+        $limit = $this->input->get()['limit'];
+        $offset = $this->input->get()['offset'];
+        echo json_encode($this->ProductModel->selectPag($limit, $offset));
     }
 
     public function getModalData()
     {
         echo json_encode($this->ProductModel->selectProduct($this->input->get()));
+    }
+
+    public function getNumberOfproduct()
+    {
+        echo json_encode($this->ProductModel->selectNumberOfProduct());
     }
 
     public function loadSortProduct()
