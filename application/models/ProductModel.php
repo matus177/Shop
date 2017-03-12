@@ -15,12 +15,12 @@ class ProductModel extends CI_Model {
 
     function selectProductForPaggination($data, $limit, $offset)
     {
-        return $this->db->get($this->table, $limit, $offset)->result();
+        return $this->db->where('subcategory_id', $data['subcategory_id'])->get($this->table, $limit, $offset)->result();
     }
 
-    function selectNumberOfProduct()
+    function selectNumberOfProduct($data)
     {
-        return $this->db->get($this->table)->num_rows();
+        return $this->db->get_where($this->table, $data)->num_rows();
     }
 
     public function updateStorage($id, $data, $condition)

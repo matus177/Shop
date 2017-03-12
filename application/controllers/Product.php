@@ -7,7 +7,7 @@ class Product extends MY_Controller {
         $this->load->model('ProductModel');
     }
 
-    public function index($subCategoryId, $resultPerPage = 10, $sort = '')
+    public function index($subCategoryId)
     {
         $searchTerm = FALSE;
         if ($this->input->post('product_description'))
@@ -27,8 +27,7 @@ class Product extends MY_Controller {
         $this->load->view('HeaderView');
         $this->load->view('UpperMenuView');
         $this->load->view('LeftMenuView');
-        $this->load->view('ProductView', array('isAdmin' => ($this->encryption->decrypt($this->session->role) == 'Admin') ? '1' : '0', 'searchTerm' => $searchTerm, 'subCategoryId' => $subCategoryId, 'resultPerPage' => $resultPerPage, 'sort' => $sort));
-
+        $this->load->view('ProductView', array('isAdmin' => ($this->encryption->decrypt($this->session->role) == 'Admin') ? '1' : '0', 'searchTerm' => $searchTerm, 'subCategoryId' => $subCategoryId));
         $this->load->view('FooterView');
     }
 
@@ -39,13 +38,6 @@ class Product extends MY_Controller {
         echo json_encode($this->ProductModel->selectProductForPaggination($this->input->get(), $limit, $offset));
     }
 
-    public function getPag()
-    {
-        $limit = $this->input->get()['limit'];
-        $offset = $this->input->get()['offset'];
-        echo json_encode($this->ProductModel->selectPag($limit, $offset));
-    }
-
     public function getModalData()
     {
         echo json_encode($this->ProductModel->selectProduct($this->input->get()));
@@ -53,7 +45,7 @@ class Product extends MY_Controller {
 
     public function getNumberOfproduct()
     {
-        echo json_encode($this->ProductModel->selectNumberOfProduct());
+        echo json_encode($this->ProductModel->selectNumberOfProduct($this->input->get()));
     }
 
     public function loadSortProduct()
