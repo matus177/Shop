@@ -36,8 +36,9 @@ class Product extends MY_Controller {
         $limit = $this->input->get()['limit'];
         $offset = $this->input->get()['offset'];
         $sort = array_key_exists('sort', $this->input->get()) ? $this->input->get()['sort'] : 'ASC';
+        $stock = $this->input->get()['stock'];
 
-        echo json_encode($this->ProductModel->selectProductForPaggination($this->input->get(), $limit, $offset, $sort));
+        echo json_encode($this->ProductModel->selectProductForPaggination($this->input->get(), $limit, $offset, $sort, $stock));
     }
 
     public function getModalData()

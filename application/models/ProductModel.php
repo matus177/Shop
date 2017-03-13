@@ -13,14 +13,26 @@ class ProductModel extends CI_Model {
         return $this->db->get_where($this->table, $data)->result();
     }
 
-    function selectProductForPaggination($data, $limit, $offset, $sort)
+    function selectProductForPaggination($data, $limit, $offset, $sort, $stock)
     {
-        return $this->db->where('subcategory_id', $data['subcategory_id'])->order_by('product_price', $sort)->get($this->table, $limit, $offset)->result();
+        if ($stock == 'true')
+        {
+            return $this->db->where('subcategory_id', $data['subcategory_id'])->where('product_quantity > ', 0)->order_by('product_price', $sort)->get($this->table, $limit, $offset)->result();
+        } else
+        {
+            return $this->db->where('subcategory_id', $data['subcategory_id'])->order_by('product_price', $sort)->get($this->table, $limit, $offset)->result();
+        }
     }
 
     function selectNumberOfProduct($data)
     {
-        return $this->db->get_where($this->table, $data)->num_rows();
+        if ($data['stock'] == 'true')
+        {
+            return $this->db->where('subcategory_id', $data['subcategory_id'])->where('product_quantity > ', 0)->get($this->table)->num_rows();
+        } else
+        {
+            return $this->db->where('subcategory_id', $data['subcategory_id'])->get($this->table)->num_rows();
+        }
     }
 
     public function updateStorage($id, $data, $condition)

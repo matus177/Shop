@@ -83,12 +83,14 @@ function fillAndEmptyRatingStars(id) {
     }
 }
 
-function paggination(subCategoryId, isAdmin, sort) {
+function paggination(subCategoryId, isAdmin) {
     $(document).ready(function () {
+        var sort = $("li.highest_price").hasClass('active') ? 'DESC' : 'ASC';
+        var stock = $('#stock_sort').is(':checked');
         $.ajax({
             url: window.location.origin + '/Shop/Product/getNumberOfproduct',
             type: 'GET',
-            data: {subcategory_id: subCategoryId},
+            data: {subcategory_id: subCategoryId, stock: stock},
             success: function (numberOfProducts) {
                 var limit = 5;
                 addButtons(numberOfProducts);
@@ -104,7 +106,6 @@ function paggination(subCategoryId, isAdmin, sort) {
                     for (var i = 1; i <= buts; i++) {
                         $('.products_pagination').append('<a id="' + i + '" href="#" onclick="getProduct(' + subCategoryId + ',' + isAdmin + ',' + limit + ',' + i + ',' + "'" + sort + "'" + ' )">' + i + '</a>');
                     }
-
                     getProduct(subCategoryId, isAdmin, limit, 1, sort);
 
                     $('#1').addClass('active');
@@ -138,14 +139,16 @@ function paggination(subCategoryId, isAdmin, sort) {
     });
 }
 
-function getProduct(subCategoryId, isAdmin, limit, page, sort) {
+function getProduct(subCategoryId, isAdmin, limit, page) {
     $(document).ready(function () {
+        var stock = $('#stock_sort').is(':checked');
+        var sort = $("li.highest_price").hasClass('active') ? 'DESC' : 'ASC';
         var offset = (page - 1) * limit;
         var counter = 0;
         $.ajax({
             url: window.location.origin + '/Shop/Product/getProduct',
             type: 'GET',
-            data: {subcategory_id: subCategoryId, limit: limit, offset: offset, sort: sort},
+            data: {subcategory_id: subCategoryId, limit: limit, offset: offset, sort: sort, stock: stock},
             success: function (response) {
                 var html = '';
                 $.each(JSON.parse(response), function (i, product) {
@@ -161,7 +164,7 @@ function getProduct(subCategoryId, isAdmin, limit, page, sort) {
                     var editButton;
 
                     if (isAdmin) {
-                        editButton = '<button href="" type="button" id="' + productId + '" class="btn btn-warning" data-toggle="modal" data-target="#modal" onclick="getModalData(' + productId + ','+"'" + 1 +"'"+ ')">Upravit</button>';
+                        editButton = '<button href="" type="button" id="' + productId + '" class="btn btn-warning" data-toggle="modal" data-target="#modal" onclick="getModalData(' + productId + ',' + "'" + 1 + "'" + ')">Upravit</button>';
                     } else {
                         editButton = '';
                     }
@@ -211,8 +214,7 @@ function getModalData(productId, isAdmin) {
                     $('#product_price').val(modalData.product_price);
                     $('#product_quantity').val(modalData.product_quantity);
                 });
-
-                getCategoryAndSubCategoryDropdowns(1);
+                getCategoryAndSubCategoryDropdowns(isAdmin);
             }
         });
     });
@@ -220,18 +222,24 @@ function getModalData(productId, isAdmin) {
 
 function sortProduct(subCategoryId, isAdmin, limit, page) {
     $(document).ready(function () {
+        $('#stock_sort').on('click', function () {
+            var sort = $("li.highest_price").hasClass('active') ? 'DESC' : 'ASC';
+            paggination(subCategoryId, isAdmin);
+            getProduct(subCategoryId, isAdmin, limit, page);
+        });
+
         $('.lowest_price').on('click', function () {
             $(".highest_price").removeClass("active");
             $(".lowest_price").addClass("active");
-            getProduct(subCategoryId, isAdmin, limit, page, 'ASC');
-            paggination(subCategoryId, isAdmin, 'ASC');
+            paggination(subCategoryId, isAdmin);
+            getProduct(subCategoryId, isAdmin, limit, page);
         });
 
         $('.highest_price').on('click', function () {
             $(".lowest_price").removeClass("active");
             $(".highest_price").addClass("active");
-            getProduct(subCategoryId, isAdmin, limit, page, 'DESC');
-            paggination(subCategoryId, isAdmin, 'DESC');
+            paggination(subCategoryId, isAdmin);
+            getProduct(subCategoryId, isAdmin, limit, page);
         });
     });
 }

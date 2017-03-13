@@ -24,7 +24,6 @@
         </div>
     </div>
     <ul class="nav nav-tabs">
-        <li class="favorite_sort"><a data-toggle="tab" href="#">Najpredavanejsie</a></li>
         <li class="lowest_price active"><a href="#">Najlacnejsie</a></li>
         <li class="highest_price"><a href="#">Najdrahsie</a></li>
     </ul>
@@ -119,7 +118,7 @@
 </div>
 <script>
     sortProduct(<?php echo $subCategoryId; ?>, <?php echo $isAdmin; ?>, 5, 1);
-    paggination(<?php echo $subCategoryId; ?>, <?php echo $isAdmin; ?>, 'ASC');
+    paggination(<?php echo $subCategoryId; ?>, <?php echo $isAdmin; ?>);
     getProduct(<?php echo $subCategoryId; ?>, <?php echo $isAdmin; ?>, 5, 1);
     addRatingStarsToEachProduct(<?php echo 0; ?>);
 </script>
