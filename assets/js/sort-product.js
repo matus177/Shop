@@ -1,61 +1,3 @@
-function sortProductByFavorite() {
-    $(document).ready(function () {
-        var stockSort = $('#stock_sort').is(':checked').toString();
-        saveSortOption('favorite_sort', stockSort);
-    });
-}
-
-function sortProductByLowestPrice() {
-    $(document).ready(function () {
-        var list = $('.list-unstyled');
-        var listItems = list.find('li').sort(function (a, b) {
-            return $(a).attr('data-sort') - $(b).attr('data-sort');
-        });
-        list.find('li').remove();
-        list.append(listItems);
-
-        var stockSort = $('#stock_sort').is(':checked').toString();
-        saveSortOption('lowest_price', stockSort);
-    });
-}
-
-function sortProductByHighestPrice() {
-    $(document).ready(function () {
-        var list = $('.list-unstyled');
-        var listItems = list.find('li').sort(function (a, b) {
-            return $(b).attr('data-sort') - $(a).attr('data-sort');
-        });
-        list.find('li').remove();
-        list.append(listItems);
-
-        var stockSort = $('#stock_sort').is(':checked').toString();
-        saveSortOption('highest_price', stockSort);
-    });
-}
-
-function sortProductByStock() {
-    $(document).ready(function () {
-        var list = $('.list-unstyled');
-        var listItems = list.find('li');
-        var priceSort = $('.lowest_price').hasClass('active') ? 'lowest_price' : $('.highest_price').hasClass('active') ? 'highest_price' : 'favorite_sort';
-        var isStockSort = $('#stock_sort').is(':checked').toString();
-
-        for (i = 0; i < listItems.length; i++) {
-            var string = listItems[i].textContent;
-            var result = string.match(/Na objednavku./i);
-
-            if (result && (isStockSort == 'true')) {
-                listItems[i].hidden = true;
-            } else {
-                listItems[i].hidden = false;
-            }
-        }
-        setTimeout(function () {
-            (isStockSort == 'true') ? saveSortOption(priceSort, 'true') : saveSortOption(priceSort, 'false');
-        }, 300);
-    });
-}
-
 function numberOfOrdersIcon() {
     $(document).ready(function () {
         $.ajax({
@@ -79,55 +21,6 @@ function numberOfOrdersIcon() {
                     $(".logout_orders").append('<button type="button" class="btn btn-default btn-xs"><span class="badge">' + response + '</span></button>');
                 } else {
                     $(".logout_orders").append('<button type="button" class="btn btn-danger btn-xs"><span class="badge">' + response + '</span></button>');
-                }
-            }
-        });
-    });
-}
-
-function saveSortOption(priceOption, stockOption) {
-    $(document).ready(function () {
-        $.ajax({
-            url: window.location.origin + '/Shop/Product/saveSortProduct',
-            type: 'GET',
-            data: {sort_options: {price: priceOption, stock: stockOption}},
-            success: function () {
-
-            }
-        });
-    });
-}
-
-function loadSortOptions() {
-    $(document).ready(function () {
-        $.ajax({
-            url: window.location.origin + '/Shop/Product/loadSortProduct',
-            type: 'GET',
-            success: function (response) {
-                if (JSON.parse(response).price != undefined) {
-                    switch (JSON.parse(response).price) {
-                        case 'favorite_sort':
-                            $('.favorite_sort').trigger('click').addClass('active');
-                            break;
-                        case 'lowest_price':
-                            $('.lowest_price').trigger('click').addClass('active');
-                            break;
-                        case 'highest_price':
-                            $('.highest_price').trigger('click').addClass('active');
-                            break;
-                        default:
-                    }
-                }
-                if (JSON.parse(response).stock != undefined) {
-                    switch (JSON.parse(response).stock) {
-                        case 'false':
-                            $('#stock_sort').prop('checked', false);
-                            break;
-                        case 'true':
-                            $('#stock_sort').trigger('click');
-                            break;
-                        default:
-                    }
                 }
             }
         });
@@ -190,7 +83,7 @@ function fillAndEmptyRatingStars(id) {
     }
 }
 
-function paggination(subCategoryId, isAdmin) {
+function paggination(subCategoryId, isAdmin, sort) {
     $(document).ready(function () {
         $.ajax({
             url: window.location.origin + '/Shop/Product/getNumberOfproduct',
@@ -209,10 +102,10 @@ function paggination(subCategoryId, isAdmin) {
                     var buts = Math.ceil(numberOfProducts / limit);
                     $('.products_pagination').empty();
                     for (var i = 1; i <= buts; i++) {
-                        $('.products_pagination').append('<a id="' + i + '" href="#" onclick="getProduct(' + subCategoryId + ',' + isAdmin + ',' + limit + ',' + i + ')">' + i + '</a>');
+                        $('.products_pagination').append('<a id="' + i + '" href="#" onclick="getProduct(' + subCategoryId + ',' + isAdmin + ',' + limit + ',' + i + ',' + "'" + sort + "'" + ' )">' + i + '</a>');
                     }
 
-                    getProduct(subCategoryId, isAdmin, limit, 1);
+                    getProduct(subCategoryId, isAdmin, limit, 1, sort);
 
                     $('#1').addClass('active');
                     for (var j = 4; j < buts; j++) {
@@ -245,14 +138,14 @@ function paggination(subCategoryId, isAdmin) {
     });
 }
 
-function getProduct(subCategoryId, isAdmin, limit, page) {
+function getProduct(subCategoryId, isAdmin, limit, page, sort) {
     $(document).ready(function () {
         var offset = (page - 1) * limit;
         var counter = 0;
         $.ajax({
             url: window.location.origin + '/Shop/Product/getProduct',
             type: 'GET',
-            data: {subcategory_id: subCategoryId, limit: limit, offset: offset},
+            data: {subcategory_id: subCategoryId, limit: limit, offset: offset, sort: sort},
             success: function (response) {
                 var html = '';
                 $.each(JSON.parse(response), function (i, product) {
@@ -268,7 +161,7 @@ function getProduct(subCategoryId, isAdmin, limit, page) {
                     var editButton;
 
                     if (isAdmin) {
-                        editButton = '<button href="" type="button" id="' + productId + '" class="btn btn-warning" data-toggle="modal" data-target="#modal" onclick="getModalData(' + productId + ')">Upravit</button>';
+                        editButton = '<button href="" type="button" id="' + productId + '" class="btn btn-warning" data-toggle="modal" data-target="#modal" onclick="getModalData(' + productId + ','+"'" + 1 +"'"+ ')">Upravit</button>';
                     } else {
                         editButton = '';
                     }
@@ -303,7 +196,7 @@ function getProduct(subCategoryId, isAdmin, limit, page) {
     });
 }
 
-function getModalData(productId) {
+function getModalData(productId, isAdmin) {
     $(document).ready(function () {
         $.ajax({
             url: window.location.origin + '/Shop/Product/getModalData',
@@ -318,8 +211,27 @@ function getModalData(productId) {
                     $('#product_price').val(modalData.product_price);
                     $('#product_quantity').val(modalData.product_quantity);
                 });
-                // getSubcategoryForAdminUpdate(<?php echo 1; ?>, <?php echo 2; ?>);
+
+                getCategoryAndSubCategoryDropdowns(1);
             }
+        });
+    });
+}
+
+function sortProduct(subCategoryId, isAdmin, limit, page) {
+    $(document).ready(function () {
+        $('.lowest_price').on('click', function () {
+            $(".highest_price").removeClass("active");
+            $(".lowest_price").addClass("active");
+            getProduct(subCategoryId, isAdmin, limit, page, 'ASC');
+            paggination(subCategoryId, isAdmin, 'ASC');
+        });
+
+        $('.highest_price').on('click', function () {
+            $(".lowest_price").removeClass("active");
+            $(".highest_price").addClass("active");
+            getProduct(subCategoryId, isAdmin, limit, page, 'DESC');
+            paggination(subCategoryId, isAdmin, 'DESC');
         });
     });
 }

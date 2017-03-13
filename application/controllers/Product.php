@@ -35,7 +35,9 @@ class Product extends MY_Controller {
     {
         $limit = $this->input->get()['limit'];
         $offset = $this->input->get()['offset'];
-        echo json_encode($this->ProductModel->selectProductForPaggination($this->input->get(), $limit, $offset));
+        $sort = array_key_exists('sort', $this->input->get()) ? $this->input->get()['sort'] : 'ASC';
+
+        echo json_encode($this->ProductModel->selectProductForPaggination($this->input->get(), $limit, $offset, $sort));
     }
 
     public function getModalData()
@@ -46,21 +48,5 @@ class Product extends MY_Controller {
     public function getNumberOfproduct()
     {
         echo json_encode($this->ProductModel->selectNumberOfProduct($this->input->get()));
-    }
-
-    public function loadSortProduct()
-    {
-        if (array_key_exists('sort_options', $this->session->get_userdata()))
-        {
-            echo json_encode(['price' => $this->session->get_userdata()['sort_options']['price'], 'stock' => $this->session->get_userdata()['sort_options']['stock']]);
-        } else
-        {
-            echo json_encode(['price' => 'favorite_sort', 'stock' => 'false']);
-        }
-    }
-
-    public function saveSortProduct()
-    {
-        $this->session->set_userdata($this->input->get());
     }
 }

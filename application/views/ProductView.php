@@ -8,7 +8,7 @@
                    class="glyphicon glyphicon-remove" aria-hidden="true"></a>
             </h3>
         <?php } ?>
-        Len skladom <input type="checkbox" id="stock_sort" name="stock_only" onclick="sortProductByStock()">
+        Len skladom <input type="checkbox" id="stock_sort" name="stock_only">
         <div class="col-md-3" style="float: right">
             <?php echo form_open('Product/index/' . $subCategoryId,
                 ['id' => 'form_search', 'class' => 'form-horizontal', 'role' => 'form']); ?>
@@ -24,14 +24,9 @@
         </div>
     </div>
     <ul class="nav nav-tabs">
-        <li class="favorite_sort" onclick="sortProductByFavorite()"><a data-toggle="tab" href="#">Najpredavanejsie</a>
-        </li>
-        <li class="lowest_price" onclick="sortProductByLowestPrice();"><a
-                    href="#">Najlacnejsie</a>
-        </li>
-        <li class="highest_price" onclick="sortProductByHighestPrice();"><a
-                    href="#">Najdrahsie</a>
-        </li>
+        <li class="favorite_sort"><a data-toggle="tab" href="#">Najpredavanejsie</a></li>
+        <li class="lowest_price active"><a href="#">Najlacnejsie</a></li>
+        <li class="highest_price"><a href="#">Najdrahsie</a></li>
     </ul>
     <br>
     <div class="col-md-12" id="products"></div>
@@ -68,7 +63,7 @@
                                 <div class="form-group">
                                     <label for="subcategory" class="control-label col-sm-4">Zmenit podkategoriu</label>
                                     <div class="col-sm-8">
-                                        <select class="form-control" name="subcategory" id="subcategory"
+                                        <select class="form-control" name="subcategory" id="subcategory_id"
                                         ></select>
                                     </div>
                                 </div>
@@ -123,8 +118,8 @@
     </div>
 </div>
 <script>
-    paggination(<?php echo $subCategoryId; ?>, <?php echo $isAdmin; ?>);
-    getProduct(<?php echo $subCategoryId; ?>, <?php echo $isAdmin; ?>, 2);
+    sortProduct(<?php echo $subCategoryId; ?>, <?php echo $isAdmin; ?>, 5, 1);
+    paggination(<?php echo $subCategoryId; ?>, <?php echo $isAdmin; ?>, 'ASC');
+    getProduct(<?php echo $subCategoryId; ?>, <?php echo $isAdmin; ?>, 5, 1);
     addRatingStarsToEachProduct(<?php echo 0; ?>);
-    loadSortOptions();
 </script>

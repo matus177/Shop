@@ -13,9 +13,9 @@ class ProductModel extends CI_Model {
         return $this->db->get_where($this->table, $data)->result();
     }
 
-    function selectProductForPaggination($data, $limit, $offset)
+    function selectProductForPaggination($data, $limit, $offset, $sort)
     {
-        return $this->db->where('subcategory_id', $data['subcategory_id'])->get($this->table, $limit, $offset)->result();
+        return $this->db->where('subcategory_id', $data['subcategory_id'])->order_by('product_price', $sort)->get($this->table, $limit, $offset)->result();
     }
 
     function selectNumberOfProduct($data)
