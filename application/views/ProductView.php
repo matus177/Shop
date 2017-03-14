@@ -119,5 +119,4 @@
 <script>
     sortProduct(<?php echo $subCategoryId; ?>, <?php echo $isAdmin; ?>);
     paggination(<?php echo $subCategoryId; ?>, <?php echo $isAdmin; ?>);
-    addRatingStarsToEachProduct(<?php echo 0; ?>);
 </script>

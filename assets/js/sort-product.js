@@ -32,7 +32,6 @@ function addRatingStarsToEachProduct(numberOfProduct) {
         for (var i = 0; i < numberOfProduct; i++) {
             (function (i) {
                 var productId = $('.rating' + i).attr('id');
-
                 $.ajax({
                     url: window.location.origin + '/Shop/Rating/getDefaultRating',
                     type: 'GET',
@@ -100,9 +99,9 @@ function paggination(subCategoryId, isAdmin) {
                     var buts = Math.ceil(numberOfProducts / limit);
                     $('.products_pagination').empty();
                     for (var i = 1; i <= buts; i++) {
-                        $('.products_pagination').append('<a id="' + i + '" href="#" onclick="getProduct(' + subCategoryId + ',' + isAdmin + ',' + limit + ',' + i + ',' + "'" + sort + "'" + ' )">' + i + '</a>');
+                        $('.products_pagination').append('<a id="' + i + '" href="#" onclick="getProduct(' + subCategoryId + ',' + isAdmin + ',' + limit + ',' + i + ',' + limit + ')">' + i + '</a>');
                     }
-                    getProduct(subCategoryId, isAdmin, limit, 1, sort);
+                    getProduct(subCategoryId, isAdmin, limit, 1, limit);
 
                     $('#1').addClass('active');
                     for (var j = 4; j < buts; j++) {
@@ -140,7 +139,7 @@ function getProduct(subCategoryId, isAdmin, limit, page) {
         var stock = $('#stock_sort').is(':checked');
         var sort = $("li.highest_price").hasClass('active') ? 'DESC' : 'ASC';
         var offset = (page - 1) * limit;
-        var counter = 0;
+        var counterOfProduct = 0;
         $.ajax({
             url: window.location.origin + '/Shop/Product/getProduct',
             type: 'GET',
@@ -171,25 +170,28 @@ function getProduct(subCategoryId, isAdmin, limit, page) {
                         productAvailabe = '<p style="text-align: center"><span style="color:green"><b>Na sklade ' + productQuantity + 'ks.</b></span></p>'
                     }
 
-                    if (counter == 0) {
+                    if (counterOfProduct == 0) {
                         html += '<div class="row">';
                     }
-                    if (counter % 4 == 0 && counter != 0) {
+                    if (counterOfProduct % 4 == 0 && counterOfProduct != 0) {
                         html += '</div><div class="row">';
                     }
                     html += '<div class="col-md-3 panel panel-default">';
                     html += '<div class="col-md-12" style="text-align: center"><a href="#"><img src="' + window.location.origin + '/Shop/assets/img/' + productImage + '"></a></div> ';
                     html += '<div class="col-md-12" style="height: 80px"><h5><b>' + productName + '</b></h5></div> ';
                     html += '<div class="col-md-12" style="height: 160px; font-size: small; overflow: auto"><p>' + productDescription + '</p></div> ';
+                    html += '<div class="col-md-12"><div class="rating' + counterOfProduct + '" id="' + productId + '"></div></div> ';
                     html += '<div class="col-md-12">' + productAvailabe + '</div> ';
                     html += '<div class="col-md-12" style="text-align: center"><a  type="button" onclick="addProductToCart(this.id)" id="' + productId + '" class="btn btn-success buy_button">Kupit</a> ' + editButton + '</div> ';
                     html += '<div class="col-md-12"><p style="text-align: center">Cena bez DPH ' + (productPrice - productPriceDph).toFixed(2) + ' &euro;</p></div> ';
                     html += '<div class="col-md-12"><p style="text-align: center">Cena s DPH ' + productPrice + ' &euro;</p></div> ';
                     html += '</div>';
-                    ++counter;
+                    ++counterOfProduct;
                 });
+
                 $('#products').empty();
                 $('#products').append(html);
+                addRatingStarsToEachProduct(counterOfProduct);
             }
         });
     });

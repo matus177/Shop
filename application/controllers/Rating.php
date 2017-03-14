@@ -28,17 +28,19 @@ class Rating extends MY_Controller {
 
     public function getDefaultRating()
     {
-        $ratingData = explode('_', $this->input->get()['rating_data']);
-        $data['product_id'] = $ratingData[0];
+        $ratingData = $this->input->get()['rating_data'];
+        $data['product_id'] = $ratingData;
         $valueOfUserRating = 0;
         $counterOfRating = 0;
         $finalDefaultRating = 0;
+
         foreach ($this->RatingModel->getDefaultRating($data) as $value => $key)
         {
             $valueOfUserRating += $key->user_rate;
             $counterOfRating++;
             $finalDefaultRating = $valueOfUserRating / $counterOfRating;
         }
+
         echo round($finalDefaultRating);
     }
 }
