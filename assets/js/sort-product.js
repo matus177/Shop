@@ -36,18 +36,26 @@ function addRatingStarsToEachProduct(numberOfProduct) {
                     url: window.location.origin + '/Shop/Rating/getDefaultRating',
                     type: 'GET',
                     data: {rating_data: productId},
-                    success: function (response) {
-                        for (var k = 1; k <= response; k++) {
-                            $('.rating' + i).append('<span id="' + productId + '_' + k + '" class="glyphicon glyphicon-star" onmouseover="fillAndEmptyRatingStars(this.id)" onclick="addUserRating(this.id)" style="font-size: 25px; color: yellow;"></span>');
-                        }
-                        for (var j = response; j < 5; j++) {
-                            $('.rating' + i).append('<span id="' + productId + '_' + (parseInt(j) + 1) + '" class="glyphicon glyphicon-star-empty" onmouseover="fillAndEmptyRatingStars(this.id)" onclick="addUserRating(this.id)" style="font-size: 25px; color: yellow;"></span>');
-                        }
+                    success: function (defaultRating) {
+                        $('.rating' + i).mouseleave(function () {
+                            addDefaultRating(defaultRating, productId, i);
+                        });
+                        addDefaultRating(defaultRating, productId, i);
                     }
                 });
             })(i);
         }
     });
+}
+
+function addDefaultRating(defaultRating, productId, i) {
+    $('.rating' + i).empty();
+    for (var k = 1; k <= defaultRating; k++) {
+        $('.rating' + i).append('<span id="' + productId + '_' + k + '" class="glyphicon glyphicon-star" onmouseover="fillAndEmptyRatingStars(this.id)" onclick="addUserRating(this.id)" style="font-size: 25px; color: yellow;"></span>');
+    }
+    for (var j = defaultRating; j < 5; j++) {
+        $('.rating' + i).append('<span id="' + productId + '_' + (parseInt(j) + 1) + '" class="glyphicon glyphicon-star-empty" onmouseover="fillAndEmptyRatingStars(this.id)" onclick="addUserRating(this.id)" style="font-size: 25px; color: yellow;"></span>');
+    }
 }
 
 function addUserRating(id) {
@@ -180,7 +188,7 @@ function getProduct(subCategoryId, isAdmin, limit, page) {
                     html += '<div class="col-md-12" style="text-align: center"><a href="#"><img src="' + window.location.origin + '/Shop/assets/img/' + productImage + '"></a></div> ';
                     html += '<div class="col-md-12" style="height: 80px"><h5><b>' + productName + '</b></h5></div> ';
                     html += '<div class="col-md-12" style="height: 160px; font-size: small; overflow: auto"><p>' + productDescription + '</p></div> ';
-                    html += '<div class="col-md-12"><div class="rating' + counterOfProduct + '" id="' + productId + '"></div></div> ';
+                    html += '<div class="col-md-12"><div class="rating' + counterOfProduct + '" id="' + productId + '" style="text-align: center"></div></div> ';
                     html += '<div class="col-md-12">' + productAvailabe + '</div> ';
                     html += '<div class="col-md-12" style="text-align: center"><a  type="button" onclick="addProductToCart(this.id)" id="' + productId + '" class="btn btn-success buy_button">Kupit</a> ' + editButton + '</div> ';
                     html += '<div class="col-md-12"><p style="text-align: center">Cena bez DPH ' + (productPrice - productPriceDph).toFixed(2) + ' &euro;</p></div> ';
