@@ -95,10 +95,6 @@ function paggination(subCategoryId, isAdmin) {
                 var limit = 5;
                 addButtons(numberOfProducts);
 
-                $('.results_per_page').change(function () {
-                    addButtons(numberOfProducts);
-                });
-
                 function addButtons(numberOfProducts) {
                     limit = $('.results_per_page').val();
                     var buts = Math.ceil(numberOfProducts / limit);
@@ -220,26 +216,26 @@ function getModalData(productId, isAdmin) {
     });
 }
 
-function sortProduct(subCategoryId, isAdmin, limit, page) {
+function sortProduct(subCategoryId, isAdmin) {
     $(document).ready(function () {
-        $('#stock_sort').on('click', function () {
-            var sort = $("li.highest_price").hasClass('active') ? 'DESC' : 'ASC';
+        $('.results_per_page').change(function () {
             paggination(subCategoryId, isAdmin);
-            getProduct(subCategoryId, isAdmin, limit, page);
+        });
+
+        $('#stock_sort').on('click', function () {
+            paggination(subCategoryId, isAdmin);
         });
 
         $('.lowest_price').on('click', function () {
             $(".highest_price").removeClass("active");
             $(".lowest_price").addClass("active");
             paggination(subCategoryId, isAdmin);
-            getProduct(subCategoryId, isAdmin, limit, page);
         });
 
         $('.highest_price').on('click', function () {
             $(".lowest_price").removeClass("active");
             $(".highest_price").addClass("active");
             paggination(subCategoryId, isAdmin);
-            getProduct(subCategoryId, isAdmin, limit, page);
         });
     });
 }

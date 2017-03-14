@@ -117,8 +117,7 @@
     </div>
 </div>
 <script>
-    sortProduct(<?php echo $subCategoryId; ?>, <?php echo $isAdmin; ?>, 5, 1);
+    sortProduct(<?php echo $subCategoryId; ?>, <?php echo $isAdmin; ?>);
     paggination(<?php echo $subCategoryId; ?>, <?php echo $isAdmin; ?>);
-    getProduct(<?php echo $subCategoryId; ?>, <?php echo $isAdmin; ?>, 5, 1);
     addRatingStarsToEachProduct(<?php echo 0; ?>);
 </script>
