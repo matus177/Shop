@@ -5,10 +5,13 @@ function numberOfOrdersIcon() {
             type: 'GET',
             success: function (response) {
                 if (response == 0) {
-                    $(".login_orders").append(' <button type="button" class="btn btn-success btn-xs"><span class="badge">' + response + '</span></button>');
+                    $(".login_orders").append('<span class="badge progress-bar-success">' + response + '</span>');
                 } else {
-                    $(".login_orders").append(' <button type="button" class="btn btn-danger btn-xs"><span class="badge">' + response + '</span></button>');
+                    $(".login_orders").append('<span class="badge progress-bar-danger">' + response + '</span>');
                 }
+            },
+            error: function () {
+                $(".login_orders").append('<span class="badge progress-bar-danger">Chyba!</span>');
             }
         });
     });
@@ -18,10 +21,13 @@ function numberOfOrdersIcon() {
             type: 'GET',
             success: function (response) {
                 if (response == 0) {
-                    $(".logout_orders").append('<button type="button" class="btn btn-default btn-xs"><span class="badge">' + response + '</span></button>');
+                    $(".logout_orders").append('<span class="badge progress-bar-success">' + response + '</span>');
                 } else {
-                    $(".logout_orders").append('<button type="button" class="btn btn-danger btn-xs"><span class="badge">' + response + '</span></button>');
+                    $(".logout_orders").append('<span class="badge progress-bar-danger">' + response + '</span>');
                 }
+            },
+            error: function () {
+                $(".logout_orders").append('<span class="badge progress-bar-danger">Chyba!</span>');
             }
         });
     });
