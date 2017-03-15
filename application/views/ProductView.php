@@ -60,9 +60,9 @@
                                 <input type="hidden" name="<?php echo $this->security->get_csrf_token_name(); ?>"
                                        value="<?php echo $this->security->get_csrf_hash(); ?>">
                                 <div class="form-group">
-                                    <label for="subcategory" class="control-label col-sm-4">Zmenit podkategoriu</label>
+                                    <label for="subcategory_id" class="control-label col-sm-4">Zmenit podkategoriu</label>
                                     <div class="col-sm-8">
-                                        <select class="form-control" name="subcategory" id="subcategory_id"
+                                        <select class="form-control" name="subcategory_id" id="subcategory_id"
                                         ></select>
                                     </div>
                                 </div>
