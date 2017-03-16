@@ -41,7 +41,7 @@ function addRatingStarsToEachProduct(numberOfProduct) {
                 $.ajax({
                     url: window.location.origin + '/Shop/Rating/getDefaultRating',
                     type: 'GET',
-                    data: {rating_data: productId},
+                    data: {id: productId},
                     success: function (defaultRating) {
                         $('.rating' + i).mouseleave(function () {
                             addDefaultRating(defaultRating, productId, i);
@@ -105,11 +105,11 @@ function paggination(subCategoryId, isAdmin) {
             type: 'GET',
             data: {subcategory_id: subCategoryId, stock: stock},
             success: function (numberOfProducts) {
-                var limit = 5;
                 addButtons(numberOfProducts);
 
                 function addButtons(numberOfProducts) {
-                    limit = $('.results_per_page').val();
+                    var limit = ($('.results_per_page').val() == undefined) ? 10 : $('.results_per_page').val();
+
                     var buts = Math.ceil(numberOfProducts / limit);
                     $('.products_pagination').empty();
                     for (var i = 1; i <= buts; i++) {

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hostiteľ: 127.0.0.1
--- Čas generovania: Ne 05.Mar 2017, 23:01
+-- Čas generovania: Št 16.Mar 2017, 23:56
 -- Verzia serveru: 5.7.14
 -- Verzia PHP: 5.6.25
 
@@ -4673,7 +4673,13 @@ VALUES
   (224, 'success', 8, '22', '33', '::1', 'Chrome 56.0.2924.87', 'Windows 10', '2017-03-05 21:15:31', '', ''),
   (225, 'success', 8, '22', '33', '::1', 'Chrome 56.0.2924.87', 'Windows 10', '2017-03-05 21:54:23', '', ''),
   (226, 'success', 11, 'asd', 'asd', '::1', 'Chrome 56.0.2924.87', 'Windows 10', '2017-03-05 22:36:12', '', ''),
-  (227, 'success', 8, '22', '33', '::1', 'Chrome 56.0.2924.87', 'Windows 10', '2017-03-05 23:57:43', '', '');
+  (227, 'success', 8, '22', '33', '::1', 'Chrome 56.0.2924.87', 'Windows 10', '2017-03-05 23:57:43', '', ''),
+  (228, 'success', 8, '22', '33', '::1', 'Chrome 56.0.2924.87', 'Windows 10', '2017-03-08 20:29:23', '', ''),
+  (229, 'success', 8, '22', '33', '::1', 'Chrome 56.0.2924.87', 'Windows 10', '2017-03-08 23:32:54', '', ''),
+  (230, 'success', 8, '22', '33', '::1', 'Chrome 56.0.2924.87', 'Windows 10', '2017-03-12 20:16:44', '', ''),
+  (231, 'success', 8, '22', '33', '::1', 'Chrome 56.0.2924.87', 'Windows 10', '2017-03-12 20:20:19', '', ''),
+  (232, 'success', 8, '22', '33', '::1', 'Chrome 57.0.2987.98', 'Windows 10', '2017-03-15 22:28:10', '', ''),
+  (233, 'success', 8, '22', '33', '::1', 'Chrome 57.0.2987.98', 'Windows 10', '2017-03-16 22:54:37', '', '');
 
 -- --------------------------------------------------------
 
@@ -4740,7 +4746,8 @@ CREATE TABLE `products` (
   `product_price`       FLOAT            NOT NULL,
   `product_quantity`    INT(11) UNSIGNED NOT NULL,
   `product_image`       VARCHAR(30)
-                        COLLATE utf8_bin NOT NULL DEFAULT 'no_photo.jpg'
+                        COLLATE utf8_bin NOT NULL DEFAULT 'no_photo.jpg',
+  `default_rating`      INT(11)          NOT NULL DEFAULT '0'
 )
   ENGINE = InnoDB
   DEFAULT CHARSET = utf8
@@ -4750,21 +4757,21 @@ CREATE TABLE `products` (
 -- Sťahujem dáta pre tabuľku `products`
 --
 
-INSERT INTO `products` (`id`, `subcategory_id`, `product_name`, `product_description`, `product_price_dph`, `product_price`, `product_quantity`, `product_image`)
+INSERT INTO `products` (`id`, `subcategory_id`, `product_name`, `product_description`, `product_price_dph`, `product_price`, `product_quantity`, `product_image`, `default_rating`)
 VALUES
   (140, 16, 'Lenovo Miix 300-10IBY Black 64 GB + dock s klávesnicou + 32SDHC',
    'Tablet PC - Intel Atom Quad Core Z3735F, kapacitný multidotykový IPS 10,1" LED 1280 x 800, Intel HD Graphics, RAM 2 GB, 64 GB eMMC, WiFi, bluetooth 4.0, webkamera 2 Mpx + 5 Mpx, 2-článková batéria, Windows 10 Home 32-bit + MS Office Mobile',
-   31.5, 189, 3, 'pc.jpg'),
-  (141, 16, 'Lenovo IdeaCentre 700-24ISH White', 'All In One PC - 23.8" 3840x2160, Intel Core i5 6400 Skylake, RAM 8GB DDR4 SDRAM, NVIDIA GeForce GTX 950A 4GB, SSD 128GB + HDD 1TB 7200 otáčok, WiFi 802.11ac, Bluetooth 4.0, NFC, webkamera, HDMI, USB 3.0, bezdrôtová klávesnica a myš, reproduktory, Windows ', 43.15, 258.9, 2, 'no_photo.jpg'),
-  (142, 16, 'Samsung Galaxy Tab E 9.6 WiFi čierny (SM-T560)', 'Tablet - Quad-Core 1.3Ghz, 9.6" 1280 x 800, RAM 1.5 GB, interná pamäť 8 GB, microSDXC až 128 GB, fotoaparát predný 2 Mpx + zadný 5 Mpx, GPS, WiFi, bluetooth 4.1, microUSB, batéria 5000 mAh, Android 4.4', 24.82, 148.9, 0, 'pc.jpg'),
-  (144, 16, 'Lenovo ThinkPad E550 Black', 'Notebook - Intel Core i3 4005 Haswell, 15,6" LED 1366x768 antireflexná, RAM 4GB, Intel HD Graphics 4400, HDD 500GB 7200 otáčok, DVD, WiFi, bluetooth 4.0, HD webkamera, HDMI, USB 3.0, čítačka odtlačkov prstov, dokovatelný, 6 článková batéria , Windows 10 P', 73.33, 440, 1, 'no_photo.jpg'),
-  (146, 16, 'Lenovo IdeaCentre Y700 Gaming', 'Počítač - Intel Core i5 6600 Skylake, RAM 8GB DDR4, NVIDIA GeForce GTX 960 2GB, SSHD 1TB + 8GB cache na zrýchlenie chodu OS, DVD, WiFi, čítačka kariet, Windows 10 Home 64-bit', 136.5, 819, 1, 'no_photo.jpg'),
-  (147, 16, 'MacBook Air 13" CZ 2016', '- Intel Core i5 1.6GHz Broadwell, 13,3" LED 1440×900, RAM 8GB, Intel HD Graphics 6000, SSD 128 GB, Wi-Fi 802.11ac, BlueTooth 4.0, Webkamera, USB 3.0, 1× Thunderbolt port, podsvietená klávesnica, MAC OS X El Capitan', 176.5, 1059, 1, 'no_photo.jpg'),
-  (148, 16, 'a', 'a', 20.33, 122, 1, 'pc.jpg'),
-  (150, 16, 'a', 'a', 2, 12, 1, 'no_photo.jpg'),
-  (151, 16, 'asd', 'asdasd', 3.67, 22, 1, 'no_photo.jpg'),
-  (152, 16, 'cc', 'cc', 0.5, 3, 1, 'no_photo.jpg'),
-  (154, 16, 'dd', 'd', 0.33, 2, 1, 'no_photo.jpg');
+   31.67, 190, 0, 'pc.jpg', 0),
+  (141, 16, 'Lenovo IdeaCentre 700-24ISH White', 'All In One PC - 23.8" 3840x2160, Intel Core i5 6400 Skylake, RAM 8GB DDR4 SDRAM, NVIDIA GeForce GTX 950A 4GB, SSD 128GB + HDD 1TB 7200 otáčok, WiFi 802.11ac, Bluetooth 4.0, NFC, webkamera, HDMI, USB 3.0, bezdrôtová klávesnica a myš, reproduktory, Windows ', 43.33, 260, 2, 'no_photo.jpg', 0),
+  (142, 16, 'Samsung Galaxy Tab E 9.6 WiFi čierny (SM-T560)', 'Tablet - Quad-Core 1.3Ghz, 9.6" 1280 x 800, RAM 1.5 GB, interná pamäť 8 GB, microSDXC až 128 GB, fotoaparát predný 2 Mpx + zadný 5 Mpx, GPS, WiFi, bluetooth 4.1, microUSB, batéria 5000 mAh, Android 4.4', 24.82, 148.9, 0, 'pc.jpg', 0),
+  (144, 16, 'Lenovo ThinkPad E550 Black', 'Notebook - Intel Core i3 4005 Haswell, 15,6" LED 1366x768 antireflexná, RAM 4GB, Intel HD Graphics 4400, HDD 500GB 7200 otáčok, DVD, WiFi, bluetooth 4.0, HD webkamera, HDMI, USB 3.0, čítačka odtlačkov prstov, dokovatelný, 6 článková batéria , Windows 10 P', 73.33, 440, 1, 'no_photo.jpg', 0),
+  (146, 16, 'Lenovo IdeaCentre Y700 Gaming', 'Počítač - Intel Core i5 6600 Skylake, RAM 8GB DDR4, NVIDIA GeForce GTX 960 2GB, SSHD 1TB + 8GB cache na zrýchlenie chodu OS, DVD, WiFi, čítačka kariet, Windows 10 Home 64-bit', 136.5, 819, 1, 'no_photo.jpg', 0),
+  (147, 16, 'MacBook Air 13" CZ 2016', '- Intel Core i5 1.6GHz Broadwell, 13,3" LED 1440×900, RAM 8GB, Intel HD Graphics 6000, SSD 128 GB, Wi-Fi 802.11ac, BlueTooth 4.0, Webkamera, USB 3.0, 1× Thunderbolt port, podsvietená klávesnica, MAC OS X El Capitan', 176.67, 1060, 0, 'no_photo.jpg', 0),
+  (148, 16, 'a', 'a', 20.33, 122, 1, 'pc.jpg', 0),
+  (150, 16, 'a', 'a', 2, 12, 1, 'no_photo.jpg', 0),
+  (151, 16, 'asd', 'asdasd', 3.67, 22, 1, 'no_photo.jpg', 0),
+  (152, 16, 'cc', 'cc', 0.5, 3, 1, 'no_photo.jpg', 0),
+  (154, 15, 'dd', 'd', 0.17, 1, 1, '31.jpg', 0);
 
 -- --------------------------------------------------------
 
@@ -4781,26 +4788,6 @@ CREATE TABLE `rating_products` (
   ENGINE = InnoDB
   DEFAULT CHARSET = utf8
   COLLATE = utf8_bin;
-
---
--- Sťahujem dáta pre tabuľku `rating_products`
---
-
-INSERT INTO `rating_products` (`id`, `user_id`, `product_id`, `user_rate`) VALUES
-  (21, 11, 154, 5),
-  (22, 11, 152, 5),
-  (23, 11, 150, 1),
-  (24, 11, 151, 3),
-  (25, 11, 148, 4),
-  (26, 11, 142, 2),
-  (27, 11, 140, 3),
-  (28, 8, 154, 1),
-  (29, 8, 152, 3),
-  (30, 8, 150, 4),
-  (31, 8, 151, 2),
-  (32, 8, 148, 5),
-  (33, 8, 142, 1),
-  (34, 8, 140, 4);
 
 -- --------------------------------------------------------
 
@@ -4825,15 +4812,15 @@ CREATE TABLE `storage` (
 INSERT INTO `storage` (`id`, `product_id`, `flag`) VALUES
   (194, 140, 'S'),
   (195, 140, 'S'),
-  (196, 140, 'A'),
-  (197, 140, 'A'),
-  (198, 140, 'A'),
+  (196, 140, 'C'),
+  (197, 140, 'C'),
+  (198, 140, 'C'),
   (200, 141, 'A'),
   (201, 141, 'A'),
   (202, 142, 'C'),
   (203, 144, 'A'),
   (204, 146, 'A'),
-  (205, 147, 'A'),
+  (205, 147, 'C'),
   (206, 148, 'A'),
   (207, 150, 'A'),
   (208, 151, 'A'),
@@ -10466,17 +10453,17 @@ CREATE TABLE `tax_prices` (
 
 INSERT INTO `tax_prices` (`id`, `product_id`, `product_price`, `dph`, `personal_price`, `courier`, `slovak_post`, `dobierka`, `cash`, `card`)
 VALUES
-  (80, 140, 189, 6, 1, 6, 3.5, 3.5, 0, 0),
-  (81, 141, 258.9, 6, 1, 6, 3.5, 3.5, 0, 0),
+  (80, 140, 190, 6, 1, 6, 3.5, 3.5, 0, 0),
+  (81, 141, 260, 6, 1, 6, 3.5, 3.5, 0, 0),
   (82, 142, 148.9, 6, 1, 6, 3.5, 3.5, 0, 0),
   (83, 144, 440, 6, 1, 6, 3.5, 3.5, 0, 0),
   (84, 146, 819, 6, 1, 6, 3.5, 3.5, 0, 0),
-  (85, 147, 1059, 6, 1, 6, 3.5, 3.5, 0, 0),
+  (85, 147, 1060, 6, 1, 6, 3.5, 3.5, 0, 0),
   (86, 148, 122, 6, 1, 6, 3.5, 3.5, 0, 0),
   (87, 150, 12, 6, 1, 6, 3.5, 3.5, 0, 0),
   (88, 151, 22, 6, 1, 6, 3.5, 3.5, 0, 0),
   (89, 152, 3, 6, 1, 6, 3.5, 3.5, 0, 0),
-  (90, 154, 2, 6, 1, 6, 3.5, 3.5, 0, 0);
+  (90, 154, 1, 6, 1, 6, 3.5, 3.5, 0, 0);
 
 --
 -- Spúšťače `tax_prices`
@@ -10817,7 +10804,7 @@ ALTER TABLE `login`
 --
 ALTER TABLE `logs`
   MODIFY `id` INT(11) NOT NULL AUTO_INCREMENT,
-  AUTO_INCREMENT = 228;
+  AUTO_INCREMENT = 234;
 --
 -- AUTO_INCREMENT pre tabuľku `personal_data`
 --
@@ -10835,7 +10822,7 @@ ALTER TABLE `products`
 --
 ALTER TABLE `rating_products`
   MODIFY `id` INT(11) NOT NULL AUTO_INCREMENT,
-  AUTO_INCREMENT = 35;
+  AUTO_INCREMENT = 76;
 --
 -- AUTO_INCREMENT pre tabuľku `storage`
 --

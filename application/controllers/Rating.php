@@ -22,25 +22,22 @@ class Rating extends MY_Controller {
             echo 'Tento produkt ste uz hodnotili.';
         } else
         {
+            $valueOfUserRating = 0;
+            $counterOfRating = 0;
+            $finalDefaultRating = 0;
             $this->RatingModel->inserUserRating($data);
+            foreach ($this->RatingModel->selectTemporaryRating($data) as $value => $key)
+            {
+                $valueOfUserRating += $key->user_rate;
+                $counterOfRating++;
+                $finalDefaultRating = $valueOfUserRating / $counterOfRating;
+            }
+            $this->ProductModel->updateDefaultRating(array('default_rating' => $finalDefaultRating, 'id' => $ratingData[0]));
         }
     }
 
     public function getDefaultRating()
     {
-        $ratingData = $this->input->get()['rating_data'];
-        $data['product_id'] = $ratingData;
-        $valueOfUserRating = 0;
-        $counterOfRating = 0;
-        $finalDefaultRating = 0;
-
-        foreach ($this->RatingModel->getDefaultRating($data) as $value => $key)
-        {
-            $valueOfUserRating += $key->user_rate;
-            $counterOfRating++;
-            $finalDefaultRating = $valueOfUserRating / $counterOfRating;
-        }
-
-        echo round($finalDefaultRating);
+        echo $this->ProductModel->selectDefaultRating($this->input->get());
     }
 }

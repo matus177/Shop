@@ -15,24 +15,47 @@ class ProductModel extends CI_Model {
 
     function selectProductForPaggination($data, $limit, $offset, $sort, $stock)
     {
-        if ($stock == 'true')
+        if ($data['subcategory_id'] == 0)
         {
-            return $this->db->where('subcategory_id', $data['subcategory_id'])->where('product_quantity > ', 0)->order_by('product_price', $sort)->get($this->table, $limit, $offset)->result();
+            return $this->db->where('default_rating > ', 3)->get($this->table, $limit, $offset)->result();
+
         } else
         {
-            return $this->db->where('subcategory_id', $data['subcategory_id'])->order_by('product_price', $sort)->get($this->table, $limit, $offset)->result();
+            if ($stock == 'true')
+            {
+                return $this->db->where('subcategory_id', $data['subcategory_id'])->where('product_quantity > ', 0)->order_by('product_price', $sort)->get($this->table, $limit, $offset)->result();
+            } else
+            {
+                return $this->db->where('subcategory_id', $data['subcategory_id'])->order_by('product_price', $sort)->get($this->table, $limit, $offset)->result();
+            }
         }
     }
 
     function selectNumberOfProduct($data)
     {
-        if ($data['stock'] == 'true')
+        if ($data['subcategory_id'] == 0)
         {
-            return $this->db->where('subcategory_id', $data['subcategory_id'])->where('product_quantity > ', 0)->get($this->table)->num_rows();
+            return $this->db->where('default_rating > ', 3)->get($this->table)->num_rows();
         } else
         {
-            return $this->db->where('subcategory_id', $data['subcategory_id'])->get($this->table)->num_rows();
+            if ($data['stock'] == 'true')
+            {
+                return $this->db->where('subcategory_id', $data['subcategory_id'])->where('product_quantity > ', 0)->get($this->table)->num_rows();
+            } else
+            {
+                return $this->db->where('subcategory_id', $data['subcategory_id'])->get($this->table)->num_rows();
+            }
         }
+    }
+
+    public function selectDefaultRating($data)
+    {
+        return $this->db->get_where($this->table, $data)->row()->default_rating;
+    }
+
+    public function updateDefaultRating($data)
+    {
+        $this->db->set('default_rating', $data['default_rating'])->where('id', $data['id'])->update($this->table);
     }
 
     public function updateStorage($id, $data, $condition)

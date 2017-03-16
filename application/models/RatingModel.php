@@ -18,7 +18,7 @@ class RatingModel extends CI_Model {
         return $this->db->get_where($this->table, array('user_id' => $data['user_id'], 'product_id' => $data['product_id']))->result();
     }
 
-    public function getDefaultRating($data)
+    public function selectTemporaryRating($data)
     {
         return $this->db->get_where($this->table, array('product_id' => $data['product_id']))->result();
     }
