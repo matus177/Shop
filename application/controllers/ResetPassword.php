@@ -102,9 +102,10 @@ class ResetPassword extends CI_Controller {
         $this->form_validation->set_rules('email', 'Email Hash', 'trim|required');
         $this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email|xss_clean|max_length[30]');
         $this->form_validation->set_rules('password', 'Heslo',
-            'trim|required|matches[confpassword]|xss_clean|max_length[30]');
-        $this->form_validation->set_rules('confpassword', 'Conf Heslo', 'trim|required|xss_clean|max_length[30]');
+            'trim|required|xss_clean|min_length[8]|max_length[30]|callback_password_check');
+        $this->form_validation->set_rules('confpassword', 'Conf Heslo', 'trim|required|xss_clean|matches[password]');
 
+        $this->form_validation->set_message('min_length', 'Heslo musi mat minimalne 8 znakov.');
         $this->form_validation->set_message('max_length', '%s nesmie mat viac ako 30 znakov.');
         $this->form_validation->set_message('required', '%s je povinny udaj.');
         $this->form_validation->set_message('matches', 'Hesla sa nezhoduju.');

@@ -23,15 +23,11 @@ class MY_Controller extends CI_Controller {
     {
         if ($this->access != "Buser")
         {
-            // here we check the role of the user
             if ( ! $this->permission_check())
             {
                 die("Access denied");
             }
 
-            // if user try to access logged in page
-            // check does he/she has logged in
-            // if not, redirect to login page
             if ( ! $this->session->userdata("logged_in"))
             {
                 redirect("auth");
@@ -76,5 +72,16 @@ class MY_Controller extends CI_Controller {
     public function isUserLogged()
     {
         return $this->session->userdata('logged_in');
+    }
+
+    public function password_check($str)
+    {
+        if (preg_match('#[0-9]#', $str) && preg_match('#[a-z]#', $str) && preg_match('#[A-Z]#', $str) && preg_match('#[\W]#', $str))
+        {
+            return TRUE;
+        }
+
+        $this->form_validation->set_message('password_check', 'Heslo musi obsahovat velke pismeno, male pismeno, cislo a specialny znak.');
+        return FALSE;
     }
 }

@@ -1,9 +1,5 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 
-/**
- * This controller can be accessed
- * for Admin group only
- */
 class Admin extends MY_Controller {
     protected $access = 'Admin';
 

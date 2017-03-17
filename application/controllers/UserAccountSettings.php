@@ -43,9 +43,11 @@ class UserAccountSettings extends MY_Controller {
         $userData = array('id', 'email', 'role', 'fact_name', 'fact_surname', 'logged_in');
 
         $this->form_validation->set_rules('oldPass', 'Stare heslo', 'required|xss_clean|max_length[30]');
-        $this->form_validation->set_rules('newPass', 'Nove heslo', 'required|matches[cPass]|xss_clean|max_length[30]');
-        $this->form_validation->set_rules('cPass', 'Opakovane heslo', 'required|xss_clean|max_length[30]');
+        $this->form_validation->set_rules('newPass', 'Nove heslo', 'required|xss_clean|min_length[8]|max_length[30]|callback_password_check');
+        $this->form_validation->set_rules('cPass', 'Opakovane heslo', 'required|matches[newPass]|xss_clean');
         $this->form_validation->set_message('matches', 'Hesla sa nezhoduju.');
+        $this->form_validation->set_message('min_length', 'Heslo musi mat minimalne 8 znakov.');
+        $this->form_validation->set_message('max_length', '%s nesmie mat viac ako 30 znakov.');
 
         if ($this->form_validation->run())
         {

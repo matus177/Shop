@@ -20,9 +20,9 @@ class Registration extends CI_Controller {
     {
         $this->form_validation->set_rules('email', 'Email',
             'trim|required|valid_email|is_unique[login.email]|xss_clean|max_length[30]');
-        $this->form_validation->set_rules('password', 'Password',
-            'trim|required|xss_clean|matches[cpassword]|max_length[30]');
-        $this->form_validation->set_rules('cpassword', 'Cpassword', 'trim|max_length[30]');
+        $this->form_validation->set_rules('password', 'Heslo',
+            'trim|required|xss_clean|min_length[8]|max_length[30]|callback_password_check');
+        $this->form_validation->set_rules('cpassword', 'Reheslo', 'trim|matches[password]');
         $this->form_validation->set_rules('fact_name', 'Fakturacne Meno', 'trim|required|max_length[30]');
         $this->form_validation->set_rules('fact_surname', 'Fakturacne Priezvisko', 'trim|required|max_length[30]');
         $this->form_validation->set_rules('fact_street', 'Fakturacna Ulica', 'trim|required|max_length[30]');
@@ -49,6 +49,7 @@ class Registration extends CI_Controller {
         $this->form_validation->set_message('max_length', '%s nesmie mat viac ako 30 znakov.');
         $this->form_validation->set_message('required', '%s je povinny udaj.');
         $this->form_validation->set_message('matches', 'Hesla sa nezhoduju.');
+        $this->form_validation->set_message('min_length', 'Heslo musi mat minimalne 8 znakov.');
 
         if ($this->form_validation->run())
         {
