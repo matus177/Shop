@@ -33,35 +33,19 @@ function numberOfOrdersIcon() {
     });
 }
 
-function addRatingStarsToEachProduct(numberOfProduct) {
-    $(document).ready(function () {
-        for (var i = 0; i < numberOfProduct; i++) {
-            (function (i) {
-                var productId = $('.rating' + i).attr('id');
-                $.ajax({
-                    url: window.location.origin + '/Shop/Rating/getDefaultRating',
-                    type: 'GET',
-                    data: {id: productId},
-                    success: function (defaultRating) {
-                        $('.rating' + i).mouseleave(function () {
-                            addDefaultRating(defaultRating, productId, i);
-                        });
-                        addDefaultRating(defaultRating, productId, i);
-                    }
-                });
-            })(i);
-        }
-    });
-}
-
-function addDefaultRating(defaultRating, productId, i) {
+function addDefaultRating(i) {
     $('.rating' + i).empty();
+    var productId = $('.rating' + i).attr('id');
+    var defaultRating = $('.rating' + i).attr('data-default_rating');
     for (var k = 1; k <= defaultRating; k++) {
-        $('.rating' + i).append('<span id="' + productId + '_' + k + '" class="glyphicon glyphicon-star" onmouseover="fillAndEmptyRatingStars(this.id)" onclick="addUserRating(this.id)" style="font-size: 25px; color: yellow;"></span>');
+        $('#products').find('.rating' + i).append('<span id="' + productId + '_' + k + '" class="glyphicon glyphicon-star" onmouseover="fillAndEmptyRatingStars(this.id)" onclick="addUserRating(this.id)" style="font-size: 25px; color: yellow;"></span>');
     }
     for (var j = defaultRating; j < 5; j++) {
-        $('.rating' + i).append('<span id="' + productId + '_' + (parseInt(j) + 1) + '" class="glyphicon glyphicon-star-empty" onmouseover="fillAndEmptyRatingStars(this.id)" onclick="addUserRating(this.id)" style="font-size: 25px; color: yellow;"></span>');
+        $('#products').find('.rating' + i).append('<span id="' + productId + '_' + (parseInt(j) + 1) + '" class="glyphicon glyphicon-star-empty" onmouseover="fillAndEmptyRatingStars(this.id)" onclick="addUserRating(this.id)" style="font-size: 25px; color: yellow;"></span>');
     }
+    $('#products').find('.rating' + i).mouseleave(function () {
+        addDefaultRating(i);
+    });
 }
 
 function addUserRating(id) {
@@ -167,11 +151,10 @@ function getProduct(subCategoryId, isAdmin, limit, page) {
                     var productName = product.product_name;
                     var productPrice = product.product_price;
                     var productPriceDph = product.product_price_dph;
-                    var subcategoryId = product.product_subcategory_id;
+                    var defautRaing = product.default_rating;
                     var productQuantity = product.product_quantity;
                     var productAvailabe;
                     var editButton;
-
                     if (isAdmin) {
                         editButton = '<button href="" type="button" id="' + productId + '" class="btn btn-warning" data-toggle="modal" data-target="#modal" onclick="getModalData(' + productId + ',' + "'" + 1 + "'" + ')">Upravit</button>';
                     } else {
@@ -194,7 +177,7 @@ function getProduct(subCategoryId, isAdmin, limit, page) {
                     html += '<div class="col-md-12" style="text-align: center"><a href="#"><img src="' + window.location.origin + '/Shop/assets/img/' + productImage + '"></a></div> ';
                     html += '<div class="col-md-12" style="height: 80px"><h5><b>' + productName + '</b></h5></div> ';
                     html += '<div class="col-md-12" style="height: 160px; font-size: small; overflow: auto"><p>' + productDescription + '</p></div> ';
-                    html += '<div class="col-md-12"><div class="rating' + counterOfProduct + '" id="' + productId + '" style="text-align: center"></div></div> ';
+                    html += '<div class="col-md-12"><div class="rating' + counterOfProduct + '" id="' + productId + '" data-default_rating="' + defautRaing + '" style="text-align: center"></div></div> ';
                     html += '<div class="col-md-12">' + productAvailabe + '</div> ';
                     html += '<div class="col-md-12" style="text-align: center"><a  type="button" onclick="addProductToCart(this.id)" id="' + productId + '" class="btn btn-success buy_button">Kupit</a> ' + editButton + '</div> ';
                     html += '<div class="col-md-12"><p style="text-align: center">Cena bez DPH ' + (productPrice - productPriceDph).toFixed(2) + ' &euro;</p></div> ';
@@ -205,7 +188,9 @@ function getProduct(subCategoryId, isAdmin, limit, page) {
 
                 $('#products').empty();
                 $('#products').append(html);
-                addRatingStarsToEachProduct(counterOfProduct);
+                for (var i = 0; i < counterOfProduct; i++) {
+                    addDefaultRating(i);
+                }
             }
         });
     });
