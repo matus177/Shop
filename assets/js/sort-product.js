@@ -240,3 +240,84 @@ function sortProduct(subCategoryId, isAdmin) {
         });
     });
 }
+
+function updateUserEmail(userId) {
+    $(document).ready(function () {
+        $('.update_email').click(function () {
+            var emailValue = $('p.email').text();
+            $("p.email").replaceWith('<input data-toggle="tooltip" title="Format emailu: nazov@domena.sk" type="email" id="email_input" class="form-control" name="email1" value="' + emailValue + '">');
+            $('[data-toggle="tooltip"]').tooltip();
+            $('#email_input').unbind();
+            $('#email_input').on('keyup', function (e) {
+                if (!event.shiftKey && !(event.altKey + event.shiftKey) && !(event.altKey + e.which == 102 )) {
+                    var newEmailValue = $('#email_input').val();
+                    var idOfUser = userId;
+                    $.ajax({
+                        url: window.location.origin + '/Shop/UserAccountSettings/updateEmail',
+                        type: 'GET',
+                        data: {email: newEmailValue, id: idOfUser},
+                        success: function (response) {
+                            switch (response) {
+                                case 'emailIsUsed':
+                                    document.getElementById('email_input').style.borderColor = "red";
+                                    alert('Tento email sa uz pouziva, zvolte prosim iny.');
+                                    break;
+                                default:
+                                    document.getElementById('email_input').style.borderColor = "green";
+                            }
+                        }
+                    });
+                }
+            });
+        });
+        $('.update_email').on('click', function () {
+            event.stopPropagation();
+        });
+        $('body').on('click', '.row', function () {
+            var newEmailValue = $('#email_input').val();
+            $("#email_input").replaceWith('<p id="updateEmail" class="email" style="margin-left: 15px">' + newEmailValue + ' <a class="glyphicon glyphicon-pencil"></a></p>');
+            document.getElementById('updateEmail').style.color = "green";
+        });
+    });
+}
+
+function updateUserPhone(userId) {
+    $(document).ready(function () {
+        $('.update_phone').click(function () {
+            var phoneValue = $('p.phone').text();
+            $("p.phone").replaceWith('<input type="text" id="phone_input" class="form-control phone_mask" pattern=".{7,}" title="+421 xxx xxx xxx" required  name="phone" value="' + phoneValue + '">');
+            $('#phone_pencil').hide();
+            $('#phone_input').unbind();
+            $('#phone_input').on('keyup', function (e) {
+                var newPhoneValue = $('#phone_input').val();
+                var idOfUser = userId;
+                $.ajax({
+                    url: window.location.origin + '/Shop/UserAccountSettings/updatePhone',
+                    type: 'GET',
+                    data: {phone: newPhoneValue, id: idOfUser},
+                    success: function (response) {
+                        document.getElementById('phone_input').style.borderColor = "green";
+                    }
+                });
+            });
+        });
+        $('.update_phone').on('click', function () {
+            event.stopPropagation();
+        });
+        $('body').on('click', '.row', function () {
+            var newPhoneValue = $('#phone_input').val();
+            $("#phone_input").replaceWith('<p id="updatePhone" class="phone phone_mask" style="margin-left: 15px">' + newPhoneValue + '</p>');
+            document.getElementById('updatePhone').style.color = "green";
+            $('#phone_pencil').show();
+        });
+    });
+}
+
+function markCurrentBar(markCurrentBar) {
+    if (markCurrentBar == 'UserAccountBasicInfoView') {
+        $('#basic_info').addClass('alert-info');
+    }
+    else {
+        $('#delivery_info').addClass('alert-info');
+    }
+}

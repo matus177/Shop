@@ -23,10 +23,13 @@
             </td>
             <td>
                 <div class="update_phone" style="cursor: pointer">
-                    <p class="phone" style="margin-left: 15px"><?php echo $data['fact_phone'] ?> <a id="updatePhone"
-                                                                                                    class="glyphicon glyphicon-pencil"></a>
-                    </p>
+                    <p id="updatePhone" class="phone phone_mask"
+                       style="margin-left: 15px"><?php echo $data['fact_phone'] ?></p>
                 </div>
+            </td>
+            <td>
+                <a id="phone_pencil" style="padding-bottom: 15px; padding-left: 5px; cursor: pointer"
+                   class="update_phone glyphicon glyphicon-pencil"></a>
             </td>
         </tr>
         <tr>
@@ -164,32 +167,7 @@
     <a class="btn btn-default" href='<?php echo base_url('Home'); ?>'><i class="glyphicon glyphicon-home"></i> Domov</a>
 </div>
 <script>
-    $(document).ready(function () {
-        $('#updateEmail').click(function () {
-            var emailValue = $('p.email').text();
-            $("p.email").replaceWith('<input data-toggle="tooltip" title="Format emailu: nazov@domena.sk" type="email" id="email_input" class="form-control" name="email1" value="' + emailValue + '">');
-            $('[data-toggle="tooltip"]').tooltip();
-            $('#email_input').keyup(function () {
-                var newEmailValue = $('#email_input').val();
-                var idOfUser = '<?php echo $data['id']; ?>';
-                $.ajax({
-                    url: window.location.origin + '/Shop/UserAccountSettings/updateEmail',
-                    type: 'GET',
-                    data: {email: newEmailValue, id: idOfUser},
-                    success: function (response) {
-                        if (response == 'error')
-                            alert('Tento email sa uz pouziva, zvolte prosim iny.');
-                    }
-                });
-                document.getElementById('email_input').style.borderColor = "green";
-                $('.update_phone').click(function () {
-                    $("#email_input").replaceWith('<p id="updateEmail" class="email" style="margin-left: 15px">' + newEmailValue + ' <a class="glyphicon glyphicon-pencil"></a></p>');
-                    document.getElementById('updateEmail').style.color = "green";
-                });
-            });
-        });
-    });
-</script>
-<script>
+    updateUserEmail(<?php echo $data['id']; ?>);
+    updateUserPhone(<?php echo $data['id']; ?>);
     autocompleteCityStreetZip();
 </script>

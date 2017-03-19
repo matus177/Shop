@@ -129,7 +129,7 @@ class ReviewAndPayment extends MY_Controller {
         $pdf->Cell(40, 10, 'Dna: ' . date("d. m. Y  H:i:s"));
         $pdf->Output('f', $factureName);
 
-        $this->sendEmailWithFacture($factureName);
+        $this->sendEmailWithFacture($factureName, $this->session->userdata('email'));
         $this->updateProductFlag();
         $this->insertUserOrder();
 
@@ -137,15 +137,15 @@ class ReviewAndPayment extends MY_Controller {
         redirect('CompleteOrder?id=4');
     }
 
-    private function sendEmailWithFacture($factureName)
+    private function sendEmailWithFacture($factureName, $userEmail)
     {
         $this->email->set_mailtype('html');
         $this->email->from('shop-support@seznam.cz', 'Shop support');
-        $this->email->to('andrejmat12@gmail.com');
+        $this->email->to($userEmail);
         $this->email->attach(dirname(dirname(__DIR__)) . '/assets/facture/' . $factureName);
         $this->email->subject('Objednavka Shop.sk');
         $message = '<!DOCTYPE html><html><meta content="text/html" charset="UTF-8" /></head><body>';
-        $message .= '<p>Mili zakaznik,</p>';
+        $message .= '<p>Mily zakaznik,</p>';
         $message .= '<p>dakujeme za Vas nakup. V prilohe Vam posielame fakturu.</p>';
         $message .= '<p>S pozdravom team Shop.sk</p>';
         $message .= '</body></html>';

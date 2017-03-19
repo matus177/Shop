@@ -44,11 +44,15 @@
         </ul>
         <ul class="nav navbar-nav navbar-right">
             <li>
-                <a id="cart" style="font-size: 20px" href="<?php echo base_url('Cart'); ?>"><span
-                            class="glyphicon glyphicon-shopping-cart"><sup><?php echo $this->cart->total_items(); ?></sup></span></a>
+                <a id="cart" href="<?php echo base_url('Cart'); ?>"><span
+                            class="glyphicon glyphicon-shopping-cart"></span> <sup><span
+                                class="badge progress-bar-info"><?php echo $this->cart->total_items(); ?></span></sup></a>
             </li>
             <?php if ($this->session->userdata('logged_in'))
             { ?>
+                <li style="padding-top: 15px">
+                    <span class="glyphicon glyphicon-user"></span> <?php echo $this->encryption->decrypt($this->session->fact_name) . ' ' . $this->encryption->decrypt($this->session->fact_surname); ?>
+                </li>
                 <li><a href="<?php echo base_url('Login/logout'); ?>"><span class="glyphicon glyphicon-log-out">
                         </span> Odhlasit sa</a></li>
             <?php } else

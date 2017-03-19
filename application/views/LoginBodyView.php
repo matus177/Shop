@@ -9,7 +9,7 @@
                 <?php echo form_open('Login/login',
                     ['id' => 'form_login', 'class' => 'form-horizontal', 'role' => 'form']); ?>
                 <div class="input-group">
-                    <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
                     <input id="login-username" type="email" class="form-control" name="email" placeholder="Email"
                            required>
                 </div>

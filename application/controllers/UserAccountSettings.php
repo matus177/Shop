@@ -11,7 +11,7 @@ class UserAccountSettings extends MY_Controller {
     {
         $this->load->view('HeaderView');
         $this->load->view('UpperMenuView');
-        $this->load->view('UserAccountSettingsMenuView');
+        $this->load->view('UserAccountSettingsMenuView', array('markCurrentBar' => $view));
         $this->load->view($view, array('data' => $this->userInfo()));
         $this->load->view('FooterView');
     }
@@ -26,7 +26,13 @@ class UserAccountSettings extends MY_Controller {
     {
         $email = $this->input->get('email');
         $id = $this->input->get('id');
-        echo $this->UserModel->isUserExist($email) ? 'error' : $this->UserModel->updateEmail($email, $id);
+        if ($this->UserModel->isUserExist($email))
+        {
+            echo 'emailIsUsed';
+        } else
+        {
+            $this->UserModel->updateEmail($email, $id);
+        }
     }
 
     public function updatePhone()
