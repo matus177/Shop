@@ -6,10 +6,11 @@
         <ul class="nav navbar-nav">
             <?php if ($this->encryption->decrypt($this->session->role) == 'Admin')
             { ?>
-                <li>
-                    <div class="dropdown admin_button_dropdown">
-                        <a class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"><span
-                                    class="glyphicon glyphicon-eye-open"></span> Admin <span class="caret"></span></a>
+                <li style="padding-top: 15px; cursor: pointer">
+                    <div class="dropdown">
+                        <span class="dropdown-toggle admin_button_dropdown" data-toggle="dropdown"><span
+                                    class="glyphicon glyphicon-eye-open"></span> Admin <span
+                                    class="caret"></span></span>
                         <ul class="dropdown-menu">
                             <li><a href="<?php echo base_url("Admin/index/AdminAddProductView"); ?>">Vytvorenie
                                     kategorie, podkategorie a produktu</a></li>
@@ -46,7 +47,8 @@
             <li>
                 <a id="cart" href="<?php echo base_url('Cart'); ?>"><span
                             class="glyphicon glyphicon-shopping-cart"></span> <sup><span
-                                class="badge progress-bar-info"><?php echo $this->cart->total_items(); ?></span></sup></a>
+                                class="badge progress-bar-info"><?php echo $this->cart->total_items(); ?></span></sup>
+                </a>
             </li>
             <?php if ($this->session->userdata('logged_in'))
             { ?>

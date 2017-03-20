@@ -9,7 +9,11 @@
 }
 
 .admin_button_dropdown {
-    margin-top: 6px;
+    color: grey;
+}
+
+.admin_button_dropdown:hover {
+    color: black;
 }
 
 .products_pagination {
