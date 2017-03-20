@@ -66,11 +66,11 @@ class UserAccountSettings extends MY_Controller {
                 echo json_encode(array($this->security->get_csrf_hash(), 'ok'));
             } else
             {
-                echo  json_encode(array($this->security->get_csrf_hash(), 'badPass'));
+                echo json_encode(array($this->security->get_csrf_hash(), 'badPass'));
             }
         } else
         {
-            echo  json_encode(array($this->security->get_csrf_hash(), validation_errors()));
+            echo json_encode(array($this->security->get_csrf_hash(), validation_errors()));
         }
     }
 
