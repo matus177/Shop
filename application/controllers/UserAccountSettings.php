@@ -63,17 +63,15 @@ class UserAccountSettings extends MY_Controller {
                 $this->UserModel->updateOldPassword($newPass, $userId);
                 $this->session->unset_userdata($userData);
                 $this->session->set_flashdata('category_success', 'Heslo bolo zmenene. Boli ste odhlaseny.');
-                redirect('Home');
+                echo json_encode(array($this->security->get_csrf_hash(), 'ok'));
             } else
             {
-                $this->session->set_flashdata('category_danger', 'Chybne zadane stare heslo.');
+                echo  json_encode(array($this->security->get_csrf_hash(), 'badPass'));
             }
         } else
         {
-            $this->session->set_flashdata('category_warning', validation_errors());
+            echo  json_encode(array($this->security->get_csrf_hash(), validation_errors()));
         }
-
-        redirect('UserAccountSettings/updateAccount/UserAccountBasicInfoView');
     }
 
     public function updateCompanyData()

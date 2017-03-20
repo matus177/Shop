@@ -321,3 +321,28 @@ function markCurrentBar(markCurrentBar) {
         $('#delivery_info').addClass('alert-info');
     }
 }
+
+function updateUserPassword() {
+    $('#form_update_password').submit(function (e) {
+        e.preventDefault();
+        $.ajax({
+            type: "POST",
+            url: window.location.origin + '/Shop/UserAccountSettings/updateOldPassword',
+            data: $('form#form_update_password').serialize(),
+            success: function (data) {
+                $('#csrf_token').html('<input type="hidden" name="csrf_test_name" value="' + JSON.parse(data)[0] + '">');
+                switch (JSON.parse(data)[1]) {
+                    case 'ok':
+                        window.location.href = window.location.origin + '/Shop/Home';
+                        break;
+                    case 'badPass':
+                        $('.messages').html('<div class="alert alert-danger"><strong>Chybne zadane stare heslo.</strong></div>');
+                        break;
+                    default:
+                        $('.messages').html('<div class="alert alert-warning"><strong>' + JSON.parse(data)[1] + '</strong></div>');
+                        break;
+                }
+            }
+        })
+    });
+}
