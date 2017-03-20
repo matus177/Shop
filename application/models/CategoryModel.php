@@ -14,10 +14,17 @@ class CategoryModel extends CI_Model {
         return $query = $this->db->get($this->table)->result();
     }
 
-    function selectCategorySubCategory()
+    function selectCategorySubCategory($categoryId = NULL)
     {
-        return $query = $this->db->join($this->subCategoryTable, $this->subCategoryTable . '.category_id = ' . $this->table . '.id',
-            'right')->get($this->table)->result();
+        if (is_null($categoryId))
+        {
+            return $this->db->join($this->subCategoryTable, $this->subCategoryTable . '.category_id = ' . $this->table . '.id',
+                'right')->get($this->table)->result();
+        } else
+        {
+            return $this->db->join($this->subCategoryTable, $this->subCategoryTable . '.category_id = ' . $this->table . '.id',
+                'right')->where('category_id =', $categoryId)->get($this->table)->result();
+        }
     }
 
     function insertCategory($data)

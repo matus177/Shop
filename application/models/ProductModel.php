@@ -66,6 +66,7 @@ class ProductModel extends CI_Model {
 
     function updateProduct($id, $data)
     {
+        unset($data['prod_category_id']);
         foreach ($data as $key => $value)
         {
             $this->db->set($key, $value)->where('id',

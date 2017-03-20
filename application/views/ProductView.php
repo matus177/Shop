@@ -60,6 +60,16 @@
                                 <input type="hidden" name="<?php echo $this->security->get_csrf_token_name(); ?>"
                                        value="<?php echo $this->security->get_csrf_hash(); ?>">
                                 <div class="form-group">
+                                    <label for="prod_category_id" class="control-label col-sm-4">Kategoria</label>
+                                    <div class="col-sm-8">
+                                        <select class="form-control" name="prod_category_id"
+                                                onchange="getSubCategoryDropdowns(<?php echo $isAdmin; ?>, this.value)"
+                                                id="prod_category_id" required>
+                                            <option selected disabled>Vyberte kategoriu</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
                                     <label for="subcategory_id" class="control-label col-sm-4">Zmenit
                                         podkategoriu</label>
                                     <div class="col-sm-8">

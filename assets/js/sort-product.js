@@ -211,7 +211,7 @@ function getModalData(productId, isAdmin) {
                     $('#product_price').val(modalData.product_price);
                     $('#product_quantity').val(modalData.product_quantity);
                 });
-                getCategoryAndSubCategoryDropdowns(isAdmin);
+                getCategoryDropdowns(isAdmin);
             }
         });
     });

@@ -61,6 +61,7 @@ class Admin extends MY_Controller {
     public function createNewProduct()
     {
         $request = $this->input->post();
+        unset($request['prod_category_id']);
 
         if ( ! empty($request))
         {
@@ -115,7 +116,7 @@ class Admin extends MY_Controller {
 
     public function getSubCategoryDropdown()
     {
-        $result = $this->CategoryModel->selectCategorySubCategory();
+        $result = $this->CategoryModel->selectCategorySubCategory($this->input->get('category_id'));
 
         echo json_encode($result);
     }

@@ -68,6 +68,16 @@
             <?php echo form_open_multipart('Admin/createNewProduct',
                 ['id' => 'form_product', 'class' => 'form-horizontal', 'role' => 'form']); ?>
             <div class="form-group">
+                <label for="prod_category_id" class="control-label col-sm-4">Kategoria</label>
+                <div class="col-sm-8">
+                    <select class="form-control" name="prod_category_id"
+                            onchange="getSubCategoryDropdowns(<?php echo $isAdmin; ?>, this.value)"
+                            id="prod_category_id" required>
+                        <option selected disabled>Vyberte kategoriu</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
                 <label for="subcategory_id" class="control-label col-sm-4">Podkategoria</label>
                 <div class="col-sm-8">
                     <select class="form-control" name="subcategory_id" id="subcategory_id" required>
@@ -106,7 +116,7 @@
             <div class="form-group">
                 <label for="product_image" class="control-label col-sm-4">Foto</label>
                 <div class="col-sm-8">
-                    <input type="file" class="btn" name="product_image">
+                    <input type="file" class="form-control" name="product_image">
                 </div>
             </div>
             <div class="form-group">
@@ -121,5 +131,5 @@
     </div>
 </div>
 <script>
-    getCategoryAndSubCategoryDropdowns(<?php echo $isAdmin; ?>);
+    getCategoryDropdowns(<?php echo $isAdmin; ?>);
 </script>
