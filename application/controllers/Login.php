@@ -18,6 +18,11 @@ class Login extends CI_Controller {
         {
             if ( ! is_null($this->UserModel->validateUser($_POST)))
             {
+                if ($this->UserModel->validateUser($_POST)->status == 2)
+                {
+                    $this->session->set_flashdata('category_danger', 'Uzivatel ma zablokovany pristup. Kontaktujte spravcu.');
+                    redirect();
+                }
                 $this->session->set_userdata($this->UserModel->getData());
                 $this->session->set_userdata('logged_in', TRUE);
                 $this->session->set_flashdata('category_success', 'Uzivatel bol uspesne prihlaseny.');
@@ -30,7 +35,7 @@ class Login extends CI_Controller {
             $this->session->set_flashdata('category_warning', validation_errors());
         }
         $this->createLog();
-        redirect('Home');
+        redirect();
     }
 
     public function createLog()

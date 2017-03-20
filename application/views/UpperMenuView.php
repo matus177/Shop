@@ -27,6 +27,12 @@
                                     Objednavky registrovanych uzivatelov
                                 </a>
                             </li>
+                            <li class="divider"></li>
+                            <li><a class="user_management"
+                                   href="<?php echo base_url("Admin/index/UserManagementView"); ?>">
+                                    Sprava uzivatelov
+                                </a>
+                            </li>
                         </ul>
                     </div>
                 </li>

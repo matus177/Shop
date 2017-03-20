@@ -24,9 +24,8 @@ class UserModel extends CI_Model {
 
     public function validateUser($data)
     {
-        $this->load->library('encryption');
         $data['password'] = hash('sha512', $data['password']);
-        $query = $this->db->select('login.id, email, role, fact_name, fact_surname')->join('personal_data',
+        $query = $this->db->select('login.id, email, role, status, fact_name, fact_surname')->join('personal_data',
             'personal_data.id = login.id', 'left')->get_where('login', $data);
 
         if ($query->num_rows())
@@ -67,19 +66,35 @@ class UserModel extends CI_Model {
         return $this->_data;
     }
 
-    public function getAllUserData($id)
+    public function getAllUserData($id = NULL)
     {
-        $query = $this->db->select()->join('personal_data', 'personal_data.id = login.id',
-            'left')->join('delivery_data', 'delivery_data.id = login.id', 'left')->join('company_data',
-            'company_data.id = login.id', 'left')->where('login.id', $id)->get('login')->row_array();
-        unset($query['password']);
-        unset($query['role']);
-        return $query;
+        if (is_null($id))
+        {
+            $query = $this->db->select()->join('personal_data', 'personal_data.id = login.id',
+                'left')->join('delivery_data', 'delivery_data.id = login.id', 'left')->join('company_data',
+                'company_data.id = login.id', 'left')->get('login')->result();
+            unset($query['password']);
+            unset($query['role']);
+            return $query;
+        } else
+        {
+            $query = $this->db->select()->join('personal_data', 'personal_data.id = login.id',
+                'left')->join('delivery_data', 'delivery_data.id = login.id', 'left')->join('company_data',
+                'company_data.id = login.id', 'left')->where('login.id', $id)->get('login')->row_array();
+            unset($query['password']);
+            unset($query['role']);
+            return $query;
+        }
     }
 
     public function updateEmail($email, $id)
     {
         return $this->db->set('email', $email)->where('id', $id)->update('login');
+    }
+
+    public function updateStatus($data)
+    {
+        return $this->db->set('status', $data['status'])->where('id', $data['id'])->update('login');
     }
 
     public function updatePhone($phone, $id)
