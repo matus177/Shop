@@ -54,7 +54,7 @@
                 <div class="form-group">
                     IČO
                     <input type="text" id="comp_ico" onclick="updateCompanyData(this.id, <?php echo $data['id']; ?>)"
-                           class="form-control"
+                           class="form-control ico_mask"
                            name="comp_ico"
                            value="<?php echo $data['comp_ico'] ?>">
                 </div>
@@ -63,7 +63,7 @@
                 <div class="inline_inputs form-group">
                     IČ DPH
                     <input type="text" id="comp_icdph" onclick="updateCompanyData(this.id, <?php echo $data['id']; ?>)"
-                           class="form-control"
+                           class="form-control icdph_mask"
                            name="comp_icdph"
                            value="<?php echo $data['comp_icdph'] ?>">
                 </div>
@@ -72,7 +72,7 @@
                 <div class="inline_inputs form-group">
                     DIČ
                     <input type="text" id="comp_dic" onclick="updateCompanyData(this.id, <?php echo $data['id']; ?>)"
-                           class="form-control"
+                           class="form-control dic_mask"
                            name="comp_dic"
                            value="<?php echo $data['comp_dic'] ?>">
                 </div>
