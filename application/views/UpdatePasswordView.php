@@ -42,5 +42,5 @@
     </div>
 </div>
 <script>
-   updateUserPassword();
+    updateUserPassword();
 </script>
