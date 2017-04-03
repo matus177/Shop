@@ -15,13 +15,15 @@
                                       value="1">Osobny odber
                         </label>
                         <div id="personal_price" class="hidden">Cena za
-                            dopravu <?php echo $shippingData->personal_price; ?>&euro;</div>
+                            dopravu <?php echo $shippingData->personal_price; ?>&euro;
+                        </div>
                     </div>
                     <div onmouseover="shippingAndPaymentInfo('courier_price', 'courier_price_checkbox')"
                          class="courier_price_checkbox checkbox">
                         <label><input type="checkbox" name="courier" id="courier" class="shipping_checkbox" value="6">Kurier</label>
                         <div id="courier_price" class="hidden">Cena za
-                            dopravu <?php echo $shippingData->courier; ?>&euro;</div>
+                            dopravu <?php echo $shippingData->courier; ?>&euro;
+                        </div>
                     </div>
                     <div onmouseover="shippingAndPaymentInfo('post_price', 'post_price_checkbox')"
                          class="post_price_checkbox checkbox">
@@ -29,7 +31,8 @@
                                       value="3.5">Slovenska
                             posta</label>
                         <div id="post_price" class="hidden">Cena za
-                            dopravu <?php echo $shippingData->slovak_post; ?>&euro;</div>
+                            dopravu <?php echo $shippingData->slovak_post; ?>&euro;
+                        </div>
                     </div>
                 </div>
             </div>
@@ -46,7 +49,8 @@
                                           value="3.5"
                                           disabled>Dobierkou</label>
                             <div id="dobierka_price" class="hidden">Cena za
-                                platbu <?php echo $shippingData->dobierka; ?>&euro;</div>
+                                platbu <?php echo $shippingData->dobierka; ?>&euro;
+                            </div>
                         </div>
                         <div onmouseover="shippingAndPaymentInfo('hotovost_price', 'hotovost_price_checkbox')"
                              class="hotovost_price_checkbox checkbox">
@@ -54,14 +58,16 @@
                                           value="0"
                                           disabled>V hotovosti</label>
                             <div id="hotovost_price" class="hidden">Cena za
-                                platbu <?php echo $shippingData->cash; ?>&euro;</div>
+                                platbu <?php echo $shippingData->cash; ?>&euro;
+                            </div>
                         </div>
                         <div onmouseover="shippingAndPaymentInfo('card_price', 'card_price_checkbox')"
                              class="card_price_checkbox checkbox">
                             <label><input id="card" name="card" class="payment_checkbox" type="checkbox" value="0"
                                           disabled>Kartou</label>
                             <div id="card_price" class="hidden">Cena za
-                                platbu <?php echo $shippingData->card; ?>&euro;</div>
+                                platbu <?php echo $shippingData->card; ?>&euro;
+                            </div>
                         </div>
                     </div>
                 </div>

@@ -12,7 +12,7 @@ class Home extends CI_Controller {
         $this->load->view('HeaderView');
         $this->load->view('UpperMenuView');
         $this->load->view('LeftMenuView');
-        $this->load->view('HomeBodyView');
+        $this->load->view('HomeBodyView', array('isAdmin' => ($this->encryption->decrypt($this->session->role) == 'Admin') ? '1' : '0'));
         $this->load->view('FooterView');
     }
 

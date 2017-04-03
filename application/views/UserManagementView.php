@@ -33,14 +33,14 @@
     function operateFormatter(value, row, index) {
         if (row.status == 1) {
             return [
-                '<a class="btn-xs btn-danger status_block" data-toggle="modal" data-target="#user_status_change" href="" title="Zablokovat uzivatela">',
-                '<i class="glyphicon glyphicon-ban-circle"></i>',
+                '<a class="btn-sm btn-danger status_block" data-toggle="modal" data-target="#user_status_change" href="" title="Zablokovat uzivatela">',
+                '<span class="glyphicon glyphicon-ban-circle"></span>',
                 '</a>  '
             ].join('');
         } else {
             return [
-                '<a class="btn-xs btn-success status_active" data-toggle="modal" data-target="#user_status_change" href="" title="Odblokovat uzivatela">',
-                '<i class="glyphicon glyphicon-ok-circle"></i>',
+                '<a class="btn-sm btn-success status_active" data-toggle="modal" data-target="#user_status_change" href="" title="Odblokovat uzivatela">',
+                '<span class="glyphicon glyphicon-ok-circle"></span>',
                 '</a>  '
             ].join('');
         }

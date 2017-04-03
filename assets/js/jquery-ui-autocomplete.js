@@ -7379,7 +7379,7 @@
                         title: buttonText
                     }) :
                     $("<button type='button'></button>").addClass(this._triggerClass).html(!buttonImage ? buttonText : $("<img/>").attr(
-                            {src: buttonImage, alt: buttonText, title: buttonText})));
+                        {src: buttonImage, alt: buttonText, title: buttonText})));
                 input[isRTL ? "before" : "after"](inst.trigger);
                 inst.trigger.on("click", function () {
                     if ($.datepicker._datepickerShowing && $.datepicker._lastInput === input[0]) {
@@ -7629,7 +7629,7 @@
             if (arguments.length === 2 && typeof name === "string") {
                 return ( name === "defaults" ? $.extend({}, $.datepicker._defaults) :
                     ( inst ? ( name === "all" ? $.extend({}, inst.settings) :
-                            this._get(inst, name) ) : null ) );
+                        this._get(inst, name) ) : null ) );
             }
 
             settings = name || {};
@@ -8299,7 +8299,7 @@
                 getNumber = function (match) {
                     var isDoubled = lookAhead(match),
                         size = ( match === "@" ? 14 : ( match === "!" ? 20 :
-                                ( match === "y" && isDoubled ? 4 : ( match === "o" ? 3 : 2 ) ) ) ),
+                            ( match === "y" && isDoubled ? 4 : ( match === "o" ? 3 : 2 ) ) ) ),
                         minSize = ( match === "y" ? size : 1 ),
                         digits = new RegExp("^\\d{" + minSize + "," + size + "}"),
                         num = value.substring(iValue).match(digits);
@@ -8700,7 +8700,7 @@
                     return new Date(year, month, day);
                 },
                 newDate = ( date == null || date === "" ? defaultDate : ( typeof date === "string" ? offsetString(date) :
-                        ( typeof date === "number" ? ( isNaN(date) ? defaultDate : offsetNumeric(date) ) : new Date(date.getTime()) ) ) );
+                    ( typeof date === "number" ? ( isNaN(date) ? defaultDate : offsetNumeric(date) ) : new Date(date.getTime()) ) ) );
 
             newDate = ( newDate && newDate.toString() === "Invalid Date" ? defaultDate : newDate );
             if (newDate) {
@@ -8838,8 +8838,8 @@
 
             prevText = this._get(inst, "prevText");
             prevText = ( !navigationAsDateFormat ? prevText : this.formatDate(prevText,
-                    this._daylightSavingAdjust(new Date(drawYear, drawMonth - stepMonths, 1)),
-                    this._getFormatConfig(inst)) );
+                this._daylightSavingAdjust(new Date(drawYear, drawMonth - stepMonths, 1)),
+                this._getFormatConfig(inst)) );
 
             prev = ( this._canAdjustMonth(inst, -1, drawYear, drawMonth) ?
                 "<a class='ui-datepicker-prev ui-corner-all' data-handler='prev' data-event='click'" +
@@ -8848,8 +8848,8 @@
 
             nextText = this._get(inst, "nextText");
             nextText = ( !navigationAsDateFormat ? nextText : this.formatDate(nextText,
-                    this._daylightSavingAdjust(new Date(drawYear, drawMonth + stepMonths, 1)),
-                    this._getFormatConfig(inst)) );
+                this._daylightSavingAdjust(new Date(drawYear, drawMonth + stepMonths, 1)),
+                this._getFormatConfig(inst)) );
 
             next = ( this._canAdjustMonth(inst, +1, drawYear, drawMonth) ?
                 "<a class='ui-datepicker-next ui-corner-all' data-handler='next' data-event='click'" +
@@ -9168,7 +9168,7 @@
                 inst.currentYear = inst.selectedYear;
             }
             var date = ( day ? ( typeof day === "object" ? day :
-                    this._daylightSavingAdjust(new Date(year, month, day)) ) :
+                this._daylightSavingAdjust(new Date(year, month, day)) ) :
                 this._daylightSavingAdjust(new Date(inst.currentYear, inst.currentMonth, inst.currentDay)) );
             return this.formatDate(this._get(inst, "dateFormat"), date, this._getFormatConfig(inst));
         }
@@ -10166,19 +10166,19 @@
                     top = o.grid[1] ? this.originalPageY + Math.round(( pageY -
                             this.originalPageY ) / o.grid[1]) * o.grid[1] : this.originalPageY;
                     pageY = containment ? ( ( top - this.offset.click.top >= containment[1] ||
-                        top - this.offset.click.top > containment[3] ) ?
-                            top :
-                            ( ( top - this.offset.click.top >= containment[1] ) ?
-                                top - o.grid[1] : top + o.grid[1] ) ) : top;
+                    top - this.offset.click.top > containment[3] ) ?
+                        top :
+                        ( ( top - this.offset.click.top >= containment[1] ) ?
+                            top - o.grid[1] : top + o.grid[1] ) ) : top;
 
                     left = o.grid[0] ? this.originalPageX +
                         Math.round(( pageX - this.originalPageX ) / o.grid[0]) * o.grid[0] :
                         this.originalPageX;
                     pageX = containment ? ( ( left - this.offset.click.left >= containment[0] ||
-                        left - this.offset.click.left > containment[2] ) ?
-                            left :
-                            ( ( left - this.offset.click.left >= containment[0] ) ?
-                                left - o.grid[0] : left + o.grid[0] ) ) : left;
+                    left - this.offset.click.left > containment[2] ) ?
+                        left :
+                        ( ( left - this.offset.click.left >= containment[0] ) ?
+                            left - o.grid[0] : left + o.grid[0] ) ) : left;
                 }
 
                 if (o.axis === "y") {
@@ -11104,20 +11104,20 @@
             this.position = {left: curleft, top: curtop};
 
             this.size = this._helper ? {
-                    width: this.helper.width(),
-                    height: this.helper.height()
-                } : {
-                    width: el.width(),
-                    height: el.height()
-                };
+                width: this.helper.width(),
+                height: this.helper.height()
+            } : {
+                width: el.width(),
+                height: el.height()
+            };
 
             this.originalSize = this._helper ? {
-                    width: el.outerWidth(),
-                    height: el.outerHeight()
-                } : {
-                    width: el.width(),
-                    height: el.height()
-                };
+                width: el.outerWidth(),
+                height: el.outerHeight()
+            } : {
+                width: el.width(),
+                height: el.height()
+            };
 
             this.sizeDiff = {
                 width: el.outerWidth() - el.width(),
@@ -12889,8 +12889,8 @@
             this.isout = true;
 
             this.accept = $.isFunction(accept) ? accept : function (d) {
-                    return d.is(accept);
-                };
+                return d.is(accept);
+            };
 
             this.proportions = function (/* valueToWrite */) {
                 if (arguments.length) {
@@ -12941,8 +12941,8 @@
 
             if (key === "accept") {
                 this.accept = $.isFunction(value) ? value : function (d) {
-                        return d.is(value);
-                    };
+                    return d.is(value);
+                };
             } else if (key === "scope") {
                 var drop = $.ui.ddmanager.droppables[this.options.scope];
 
@@ -14660,13 +14660,13 @@
             offset = closestHandle.offset();
             mouseOverHandle = !$(event.target).parents().addBack().is(".ui-slider-handle");
             this._clickOffset = mouseOverHandle ? {left: 0, top: 0} : {
-                    left: event.pageX - offset.left - ( closestHandle.width() / 2 ),
-                    top: event.pageY - offset.top -
-                    ( closestHandle.height() / 2 ) -
-                    ( parseInt(closestHandle.css("borderTopWidth"), 10) || 0 ) -
-                    ( parseInt(closestHandle.css("borderBottomWidth"), 10) || 0 ) +
-                    ( parseInt(closestHandle.css("marginTop"), 10) || 0 )
-                };
+                left: event.pageX - offset.left - ( closestHandle.width() / 2 ),
+                top: event.pageY - offset.top -
+                ( closestHandle.height() / 2 ) -
+                ( parseInt(closestHandle.css("borderTopWidth"), 10) || 0 ) -
+                ( parseInt(closestHandle.css("borderBottomWidth"), 10) || 0 ) +
+                ( parseInt(closestHandle.css("marginTop"), 10) || 0 )
+            };
 
             if (!this.handles.hasClass("ui-state-hover")) {
                 this._slide(event, index, normValue);

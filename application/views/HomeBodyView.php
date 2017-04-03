@@ -28,7 +28,14 @@
             </div>
         </div>
     </div>
-    <div class="col-md-12" id="products"></div>
+    <h2>Najoblubenejsie:</h2>
+    <div class="col-md-12" id="products0"></div>
+    <ul class="pagination pagination-sm"></ul>
+
+    <h2>Oblubene:</h2>
+    <div class="col-md-12" id="products1"></div>
+    <ul class="pagination pagination-sm"></ul>
+
     <div class="modal fade" id="modal" data-backdrop="static" data-keyboard="false">
         <div class="modal-dialog">
             <div class="modal-body">
@@ -101,8 +108,8 @@
             </div>
         </div>
     </div>
-    <div class="products_pagination"></div>
 </div>
 <script>
-    paggination(<?php echo 0; ?>, <?php echo 1; ?>);
+    paggination('products0', 0, <?php echo $isAdmin; ?>);
+    paggination('products1', 0, <?php echo $isAdmin; ?>);
 </script>

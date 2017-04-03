@@ -28,9 +28,9 @@
         <li class="highest_price"><a href="#">Najdrahsie</a></li>
     </ul>
     <br>
-    <div class="col-md-12" id="products"></div>
     <div class="col-md-12">
-        <div class="row">Produkty na stranku
+        <div class="row">
+            Produkty na stranku
             <div class="col-md-1" style="min-width: 100px">
                 <select class="form-control results_per_page">
                     <option>2</option>
@@ -41,7 +41,10 @@
                     <option>50</option>
                 </select>
             </div>
-            <div class="products_pagination"></div>
+        </div>
+        <div class="row">
+            <div class="col-md-12" id="products"></div>
+            <ul class="pagination pagination-sm"></ul>
         </div>
     </div>
     <div class="modal fade" id="modal" data-backdrop="static" data-keyboard="false">
@@ -129,5 +132,5 @@
 </div>
 <script>
     sortProduct(<?php echo $subCategoryId; ?>, <?php echo $isAdmin; ?>);
-    paggination(<?php echo $subCategoryId; ?>, <?php echo $isAdmin; ?>);
+    paggination('products',<?php echo $subCategoryId; ?>, <?php echo $isAdmin; ?>);
 </script>
