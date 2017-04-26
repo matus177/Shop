@@ -174,21 +174,21 @@
         var fp = $.isEmptyObject(this.filterColumnsPartial) ? null : this.filterColumnsPartial;
 
         this.data = fp ? $.grep(this.data, function (item, i) {
-                for (var key in fp) {
-                    var fval = fp[key].toLowerCase();
-                    var value = item[key];
-                    value = $.fn.bootstrapTable.utils.calculateObjectValue(that.header,
-                        that.header.formatters[$.inArray(key, that.header.fields)],
-                        [value, item, i], value);
+            for (var key in fp) {
+                var fval = fp[key].toLowerCase();
+                var value = item[key];
+                value = $.fn.bootstrapTable.utils.calculateObjectValue(that.header,
+                    that.header.formatters[$.inArray(key, that.header.fields)],
+                    [value, item, i], value);
 
-                    if (!($.inArray(key, that.header.fields) !== -1 &&
-                        (typeof value === 'string' || typeof value === 'number') &&
-                        (value + '').toLowerCase().indexOf(fval) !== -1)) {
-                        return false;
-                    }
+                if (!($.inArray(key, that.header.fields) !== -1 &&
+                    (typeof value === 'string' || typeof value === 'number') &&
+                    (value + '').toLowerCase().indexOf(fval) !== -1)) {
+                    return false;
                 }
-                return true;
-            }) : this.data;
+            }
+            return true;
+        }) : this.data;
     };
 
     BootstrapTable.prototype.onColumnAdvancedSearch = function (event) {

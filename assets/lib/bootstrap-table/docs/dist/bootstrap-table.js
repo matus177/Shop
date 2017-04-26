@@ -1233,56 +1233,56 @@
 
             // Check filter
             this.data = f ? $.grep(this.options.data, function (item, i) {
-                    for (var key in f) {
-                        if ($.isArray(f[key]) && $.inArray(item[key], f[key]) === -1 ||
-                            item[key] !== f[key]) {
-                            return false;
-                        }
+                for (var key in f) {
+                    if ($.isArray(f[key]) && $.inArray(item[key], f[key]) === -1 ||
+                        item[key] !== f[key]) {
+                        return false;
                     }
-                    return true;
-                }) : this.options.data;
+                }
+                return true;
+            }) : this.options.data;
 
             this.data = s ? $.grep(this.data, function (item, i) {
-                    for (var j = 0; j < that.header.fields.length; j++) {
+                for (var j = 0; j < that.header.fields.length; j++) {
 
-                        if (!that.header.searchables[j]) {
-                            continue;
+                    if (!that.header.searchables[j]) {
+                        continue;
+                    }
+
+                    var key = $.isNumeric(that.header.fields[j]) ? parseInt(that.header.fields[j], 10) : that.header.fields[j];
+                    var column = that.columns[getFieldIndex(that.columns, key)];
+                    var value;
+
+                    if (typeof key === 'string') {
+                        value = item;
+                        var props = key.split('.');
+                        for (var prop_index = 0; prop_index < props.length; prop_index++) {
+                            value = value[props[prop_index]];
                         }
 
-                        var key = $.isNumeric(that.header.fields[j]) ? parseInt(that.header.fields[j], 10) : that.header.fields[j];
-                        var column = that.columns[getFieldIndex(that.columns, key)];
-                        var value;
+                        // Fix #142: respect searchForamtter boolean
+                        if (column && column.searchFormatter) {
+                            value = calculateObjectValue(column,
+                                that.header.formatters[j], [value, item, i], value);
+                        }
+                    } else {
+                        value = item[key];
+                    }
 
-                        if (typeof key === 'string') {
-                            value = item;
-                            var props = key.split('.');
-                            for (var prop_index = 0; prop_index < props.length; prop_index++) {
-                                value = value[props[prop_index]];
-                            }
-
-                            // Fix #142: respect searchForamtter boolean
-                            if (column && column.searchFormatter) {
-                                value = calculateObjectValue(column,
-                                    that.header.formatters[j], [value, item, i], value);
+                    if (typeof value === 'string' || typeof value === 'number') {
+                        if (that.options.strictSearch) {
+                            if ((value + '').toLowerCase() === s) {
+                                return true;
                             }
                         } else {
-                            value = item[key];
-                        }
-
-                        if (typeof value === 'string' || typeof value === 'number') {
-                            if (that.options.strictSearch) {
-                                if ((value + '').toLowerCase() === s) {
-                                    return true;
-                                }
-                            } else {
-                                if ((value + '').toLowerCase().indexOf(s) !== -1) {
-                                    return true;
-                                }
+                            if ((value + '').toLowerCase().indexOf(s) !== -1) {
+                                return true;
                             }
                         }
                     }
-                    return false;
-                }) : this.data;
+                }
+                return false;
+            }) : this.data;
         }
     };
 
@@ -1750,15 +1750,15 @@
                         that.options.undefinedText : value;
 
                     text = that.options.cardView ? ['<div class="card-view">',
-                            that.options.showHeader ? sprintf('<span class="title" %s>%s</span>', style,
-                                    getPropertyFromOther(that.columns, 'field', 'title', field)) : '',
-                            sprintf('<span class="value">%s</span>', value),
-                            '</div>'
-                        ].join('') : [sprintf('<td%s %s %s %s %s %s %s>',
-                            id_, class_, style, data_, rowspan_, colspan_, title_),
-                            value,
-                            '</td>'
-                        ].join('');
+                        that.options.showHeader ? sprintf('<span class="title" %s>%s</span>', style,
+                            getPropertyFromOther(that.columns, 'field', 'title', field)) : '',
+                        sprintf('<span class="value">%s</span>', value),
+                        '</div>'
+                    ].join('') : [sprintf('<td%s %s %s %s %s %s %s>',
+                        id_, class_, style, data_, rowspan_, colspan_, title_),
+                        value,
+                        '</td>'
+                    ].join('');
 
                     // Hide empty data on Card view when smartDisplay is set to true.
                     if (that.options.cardView && that.options.smartDisplay && value === '') {
