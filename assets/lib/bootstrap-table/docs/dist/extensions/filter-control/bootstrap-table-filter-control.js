@@ -538,40 +538,40 @@
 
         //Check partial column filter
         this.data = fp ? $.grep(this.data, function (item, i) {
-                for (var key in fp) {
-                    var thisColumn = that.columns[$.fn.bootstrapTable.utils.getFieldIndex(that.columns, key)];
-                    var fval = fp[key].toLowerCase();
-                    var value = item[key];
+            for (var key in fp) {
+                var thisColumn = that.columns[$.fn.bootstrapTable.utils.getFieldIndex(that.columns, key)];
+                var fval = fp[key].toLowerCase();
+                var value = item[key];
 
-                    // Fix #142: search use formated data
-                    if (thisColumn && thisColumn.searchFormatter) {
-                        value = $.fn.bootstrapTable.utils.calculateObjectValue(that.header,
-                            that.header.formatters[$.inArray(key, that.header.fields)],
-                            [value, item, i], value);
+                // Fix #142: search use formated data
+                if (thisColumn && thisColumn.searchFormatter) {
+                    value = $.fn.bootstrapTable.utils.calculateObjectValue(that.header,
+                        that.header.formatters[$.inArray(key, that.header.fields)],
+                        [value, item, i], value);
+                }
+
+                if (thisColumn.filterStrictSearch) {
+                    if (!($.inArray(key, that.header.fields) !== -1 &&
+                        (typeof value === 'string' || typeof value === 'number') &&
+                        value.toString().toLowerCase() === fval.toString().toLowerCase())) {
+                        return false;
                     }
-
-                    if (thisColumn.filterStrictSearch) {
-                        if (!($.inArray(key, that.header.fields) !== -1 &&
-                            (typeof value === 'string' || typeof value === 'number') &&
-                            value.toString().toLowerCase() === fval.toString().toLowerCase())) {
-                            return false;
-                        }
-                    } else if (thisColumn.filterStartsWithSearch) {
-                        if (!($.inArray(key, that.header.fields) !== -1 &&
-                            (typeof value === 'string' || typeof value === 'number') &&
-                            (value + '').toLowerCase().indexOf(fval) === 0)) {
-                            return false;
-                        }
-                    } else {
-                        if (!($.inArray(key, that.header.fields) !== -1 &&
-                            (typeof value === 'string' || typeof value === 'number') &&
-                            (value + '').toLowerCase().indexOf(fval) !== -1)) {
-                            return false;
-                        }
+                } else if (thisColumn.filterStartsWithSearch) {
+                    if (!($.inArray(key, that.header.fields) !== -1 &&
+                        (typeof value === 'string' || typeof value === 'number') &&
+                        (value + '').toLowerCase().indexOf(fval) === 0)) {
+                        return false;
+                    }
+                } else {
+                    if (!($.inArray(key, that.header.fields) !== -1 &&
+                        (typeof value === 'string' || typeof value === 'number') &&
+                        (value + '').toLowerCase().indexOf(fval) !== -1)) {
+                        return false;
                     }
                 }
-                return true;
-            }) : this.data;
+            }
+            return true;
+        }) : this.data;
     };
 
     BootstrapTable.prototype.initColumnSearch = function (filterColumnsDefaults) {

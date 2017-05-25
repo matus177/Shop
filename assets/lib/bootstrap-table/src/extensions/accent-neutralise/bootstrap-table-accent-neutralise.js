@@ -230,45 +230,45 @@
 
             // Check filter
             this.data = f ? $.grep(this.options.data, function (item, i) {
-                    for (var key in f) {
-                        if (item[key] !== f[key]) {
-                            return false;
-                        }
+                for (var key in f) {
+                    if (item[key] !== f[key]) {
+                        return false;
                     }
-                    return true;
-                }) : this.options.data;
+                }
+                return true;
+            }) : this.options.data;
 
             this.data = s ? $.grep(this.data, function (item, i) {
-                    for (var key in item) {
-                        key = $.isNumeric(key) ? parseInt(key, 10) : key;
-                        var value = item[key],
-                            column = that.columns[$.fn.bootstrapTable.utils.getFieldIndex(that.columns, key)],
-                            j = $.inArray(key, that.header.fields);
+                for (var key in item) {
+                    key = $.isNumeric(key) ? parseInt(key, 10) : key;
+                    var value = item[key],
+                        column = that.columns[$.fn.bootstrapTable.utils.getFieldIndex(that.columns, key)],
+                        j = $.inArray(key, that.header.fields);
 
-                        if (column && column.searchFormatter) {
-                            value = $.fn.bootstrapTable.utils.calculateObjectValue(column,
-                                that.header.formatters[j], [value, item, i], value);
+                    if (column && column.searchFormatter) {
+                        value = $.fn.bootstrapTable.utils.calculateObjectValue(column,
+                            that.header.formatters[j], [value, item, i], value);
+                    }
+
+                    var index = $.inArray(key, that.header.fields);
+                    if (index !== -1 && that.header.searchables[index] && (typeof value === 'string' || typeof value === 'number')) {
+                        if (that.options.searchAccentNeutralise) {
+                            value = removeDiacritics(value);
+                            s = removeDiacritics(s);
                         }
-
-                        var index = $.inArray(key, that.header.fields);
-                        if (index !== -1 && that.header.searchables[index] && (typeof value === 'string' || typeof value === 'number')) {
-                            if (that.options.searchAccentNeutralise) {
-                                value = removeDiacritics(value);
-                                s = removeDiacritics(s);
+                        if (that.options.strictSearch) {
+                            if ((value + '').toLowerCase() === s) {
+                                return true;
                             }
-                            if (that.options.strictSearch) {
-                                if ((value + '').toLowerCase() === s) {
-                                    return true;
-                                }
-                            } else {
-                                if ((value + '').toLowerCase().indexOf(s) !== -1) {
-                                    return true;
-                                }
+                        } else {
+                            if ((value + '').toLowerCase().indexOf(s) !== -1) {
+                                return true;
                             }
                         }
                     }
-                    return false;
-                }) : this.data;
+                }
+                return false;
+            }) : this.data;
         }
     };
 
