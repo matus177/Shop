@@ -28,3 +28,6 @@ function zipForCity(city, factOrDelivZip) {
 }
 $(".phone_mask").mask("+000 000 000 000");
 $(".zip_mask").mask("000 00");
+$(".ico_mask").mask("00000000");
+$(".dic_mask").mask("0000000000");
+$(".icdph_mask").mask("AA0000000000");
